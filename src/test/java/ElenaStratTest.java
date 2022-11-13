@@ -33,4 +33,22 @@ public class ElenaStratTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
         }
     }
+
+
+
+
+    @Test
+    public void testStartForVerifyWishesFromTheTeamFirstParagraph_HappyPath() {
+        String expectedResult = "This Website holds a collection of the Song 99 Bottles of Beer programmed in different programming languages. " +
+                "Actually the song is represented in 1500 different programming languages and variations. " +
+                "For more detailed information refer to historic information.";
+
+        getDriver().get(BASE_URL);
+
+        WebElement verifyText = getDriver().findElement(By.xpath("//div[@id = 'main']/descendant-or-self::p"));
+        String actualResult = verifyText.getText();
+
+        Assert.assertEquals(actualResult,expectedResult);
+
+    }
 }
