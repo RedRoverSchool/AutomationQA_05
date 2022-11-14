@@ -20,14 +20,11 @@ public class MariaKuzhTest extends BaseTest {
                 By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
         );
         searchLanguagesMenu.click();
-
         WebElement searchForField = getDriver().findElement(By.name("search"));
         searchForField.click();
         searchForField.sendKeys(LANGUAGE_NAME);
-
         WebElement goButton = getDriver().findElement(By.name("submitsearch"));
         goButton.click();
-
         List<WebElement> languagesNamesList = getDriver().findElements(
                 By.xpath("//table[@id='category']/tbody/tr/td[1]/a"));
 
