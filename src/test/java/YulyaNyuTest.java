@@ -35,4 +35,21 @@ public class YulyaNyuTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+    @Test
+    public void testVerifyH2TagText_WhenClickingSubmenuTeam_HappyPath()  {
+        String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "The Team";
+
+        getDriver().get(BASE_URL);
+
+        WebElement subMenuTeam = getDriver().findElement(By.xpath("//a[@href = 'team.html']"));
+        subMenuTeam.click();
+
+        WebElement h2TagTeam = getDriver().findElement(By.xpath("//div[@id ='main']/h2"));
+
+        String actualResult = h2TagTeam.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
