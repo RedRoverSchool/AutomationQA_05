@@ -9,6 +9,7 @@ import java.util.List;
 public class VictoriaLemaTest extends BaseTest {
 
     static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
     @Test
     public void testSearchForLanguageByName_HappyPath() {
         final String LANGUAGE_NAME = "python";
@@ -33,8 +34,23 @@ public class VictoriaLemaTest extends BaseTest {
 
         Assert.assertTrue(languagesNameList.size() > 0);
 
-        for (int i = 0; i < languagesNameList.size(); i++){
+        for (int i = 0; i < languagesNameList.size(); i++) {
             Assert.assertTrue(languagesNameList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
+    }
+
+    @Test
+    public void testIfTopListsReferenceOnTheFooterMenuRedirectsToTheTopListPage_WhenClickingOnIt() {
+        String expectedResult = "https://www.99-bottles-of-beer.net/toplist.html";
+
+        getDriver().get(BASE_URL);
+        WebElement topListsOnTheFooter = getDriver().findElement(
+                By.xpath("//div[@id='footer']/p/a[@href='/toplist.html']")
+        );
+        topListsOnTheFooter.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult,expectedResult);
     }
 }
