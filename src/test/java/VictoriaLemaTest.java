@@ -70,6 +70,5 @@ public class VictoriaLemaTest extends BaseTest {
         Assert.assertTrue(topRatedLanguagesNames.size()>0);
 
         Assert.assertTrue(topRatedLanguagesNames.size()>=TOP_LANGUAGES_MINIMAL_QUANTITY);
-
     }
 }
