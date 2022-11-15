@@ -13,6 +13,7 @@ public class Aidai001Test extends BaseTest {
         final String LANGUAGE_PYTHON = "python";
 
         getDriver().get(BASE_URL);
+
         WebElement searchLanguagesMenu = getDriver().findElement(
                 By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
                 );
