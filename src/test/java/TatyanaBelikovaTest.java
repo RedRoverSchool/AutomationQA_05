@@ -6,7 +6,6 @@ import runner.BaseTest;
 import java.util.List;
 
 public class TatyanaBelikovaTest extends BaseTest {
-
     @Test
     public void testSearchForLanguageFieldByName_HappyPath() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
