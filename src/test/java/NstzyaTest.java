@@ -38,4 +38,24 @@ public class NstzyaTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+
+    @Test
+    public void testHistoricInfoLink_WhenClickingOnLink_HappyPath() {
+
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/info.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement historicInfoLink = getDriver().findElement(
+                By.xpath("//div[@id='main']/p/a[@href='./info.html']")
+        );
+
+        historicInfoLink.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
