@@ -16,15 +16,19 @@ public class MariaKuzhTest extends BaseTest {
         final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
+
         WebElement searchLanguagesMenu = getDriver().findElement(
                 By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
         );
         searchLanguagesMenu.click();
+
         WebElement searchForField = getDriver().findElement(By.name("search"));
         searchForField.click();
         searchForField.sendKeys(LANGUAGE_NAME);
+
         WebElement goButton = getDriver().findElement(By.name("submitsearch"));
         goButton.click();
+
         List<WebElement> languagesNamesList = getDriver().findElements(
                 By.xpath("//table[@id='category']/tbody/tr/td[1]/a"));
 
@@ -33,5 +37,21 @@ public class MariaKuzhTest extends BaseTest {
         for (int i = 0; i < languagesNamesList.size(); i++) {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
+    }
+
+    @Test
+    public void testVerifyTextTopListsToTheStartPage() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        final String CorrectTextTopLists = "Top Lists";
+        String expectedResult = CorrectTextTopLists.toLowerCase();
+
+        getDriver().get(BASE_URL);
+
+        WebElement buttonTopLists = getDriver().findElement(
+                By.xpath("//div[@id = 'navigation']//a[@href = '/toplist.html']")
+        );
+
+        String actualResult = buttonTopLists.getText().toLowerCase();
+        Assert.assertEquals(actualResult,expectedResult);
     }
 }
