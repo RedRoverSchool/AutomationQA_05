@@ -42,7 +42,7 @@ public class IrynaDanilevskaTest extends BaseTest {
 
     @Test
     public void testSortingLanguagesByLetter_AfterSelectingLetterInSubmenu_HappyPath() {
-        final String LETTER = "w";
+        final String LETTER = "b";
 
         getDriver().get(BASE_URL);
 
@@ -52,7 +52,6 @@ public class IrynaDanilevskaTest extends BaseTest {
         browseLanguageMenu.click();
 
         WebElement submenuElementLettersNumbers = getDriver().findElement(
-                //By.xpath("//ul[@id='submenu']//a[@href='".concat(LETTER).concat(".html'] "))
                 By.xpath(String.format("//ul[@id='submenu']//a[@href='%s.html']", LETTER))
         );
         submenuElementLettersNumbers.click();
