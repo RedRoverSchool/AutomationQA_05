@@ -3,20 +3,20 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
-
 import java.util.List;
 
-public class Aidai001Test extends BaseTest {
+public class EnmedvTest extends BaseTest {
+    static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
     @Test
-    public void testSearchForLanguageByName_HappyPath() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    public void testSearchLanguageByName_HappyPath() {
         final String LANGUAGE_PYTHON = "python";
 
         getDriver().get(BASE_URL);
-        WebElement searchLanguagesMenu = getDriver().findElement(
+        WebElement SearchLanguagesMenu = getDriver().findElement(
                 By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
                 );
-        searchLanguagesMenu.click();
+        SearchLanguagesMenu.click();
 
         WebElement searchForField = getDriver().findElement(By.name("search"));
         searchForField.click();
@@ -25,13 +25,13 @@ public class Aidai001Test extends BaseTest {
         WebElement goButton = getDriver().findElement(By.name("submitsearch"));
         goButton.click();
 
-        List<WebElement> languageNamesList = getDriver().findElements(
-                By.xpath("//table[@id='category']/tbody/tr/td[1]/a"));
+        List<WebElement> languagesNamesList = getDriver().findElements(
+                By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a")
+        );
+        Assert.assertTrue(languagesNamesList.size() > 0);
 
-        Assert.assertTrue(languageNamesList.size() > 0);
-
-        for (int i = 0; i < languageNamesList.size(); i ++){
-            Assert.assertTrue(languageNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
+        for (int i = 0; i < languagesNamesList.size(); i ++) {
+            Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
         }
     }
 }
