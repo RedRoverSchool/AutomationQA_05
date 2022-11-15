@@ -37,4 +37,35 @@ public class KseniyaKudrinaTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
         }
     }
+    @Test
+    public void testConfirmThatAddCommentOnPage_HappyPath(){
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        final String CONFIRM_COMMENT = "Add Comment";
+
+        getDriver().get(BASE_URL);
+        WebElement searchLanguagesMenu = getDriver().findElement(
+                By.xpath("//ul[@id = 'menu']/li/a[@href = '/abc.html']    ")
+        );
+        searchLanguagesMenu.click();
+
+        WebElement searchLetterHSubMenu = getDriver().findElement(
+                By.xpath("//ul[@id = 'submenu']//li/a[@href = 'h.html']")
+        );
+        searchLetterHSubMenu.click();
+
+        WebElement searchLanguageHeraOnTable = getDriver().findElement(
+                By.xpath("//table[@id = 'category']/tbody/tr/td/a[contains(text(),'HERA')] ")
+        );
+        searchLanguageHeraOnTable.click();
+
+        WebElement addCommentLink = getDriver().findElement(
+                By.linkText("Write Comment")
+        );
+        addCommentLink.click();
+
+        WebElement addCommentOnThePageField = getDriver().findElement(
+                By.xpath("//div[@id  ='addcomments']/h2[text() = 'Add Comment']")
+        );
+        Assert.assertEquals(addCommentOnThePageField.getText(),CONFIRM_COMMENT);
+    }
 }
