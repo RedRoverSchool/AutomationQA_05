@@ -53,4 +53,23 @@ public class VictoriaLemaTest extends BaseTest {
 
         Assert.assertEquals(actualResult,expectedResult);
     }
+
+    @Test
+    public void testIfToplistsFooterMenRedirectsToPageWithInformation_WhenClickingOnIt() {
+        final int TOP_LANGUAGES_MINIMAL_QUANTITY = 2;
+        getDriver().get(BASE_URL);
+        WebElement topListsOnTheFooter = getDriver().findElement(
+                By.xpath("//div[@id='footer']/p/a[@href='/toplist.html']")
+        );
+        topListsOnTheFooter.click();
+
+        List <WebElement> topRatedLanguagesNames = getDriver().findElements(
+                By.xpath("//table[@id='category']/tbody/tr/td[2]")
+        );
+
+        Assert.assertTrue(topRatedLanguagesNames.size()>0);
+
+        Assert.assertTrue(topRatedLanguagesNames.size()>=TOP_LANGUAGES_MINIMAL_QUANTITY);
+
+    }
 }
