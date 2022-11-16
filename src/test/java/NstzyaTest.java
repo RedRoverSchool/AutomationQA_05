@@ -8,11 +8,11 @@ import java.util.List;
 
 public class NstzyaTest extends BaseTest {
 
+    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final String LANGUAGE_NAME = "python";
+
     @Test
     public void testSearchForLanguageByNameField_HappyPath() {
-
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-        final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
 
