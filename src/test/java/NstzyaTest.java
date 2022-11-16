@@ -43,7 +43,6 @@ public class NstzyaTest extends BaseTest {
     @Test
     public void testHistoricInfoLink_WhenClickingOnLink_HappyPath() {
 
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         String expectedResult = "https://www.99-bottles-of-beer.net/info.html";
 
         getDriver().get(BASE_URL);
