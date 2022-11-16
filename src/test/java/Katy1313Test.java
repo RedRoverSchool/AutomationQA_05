@@ -35,4 +35,17 @@ public class Katy1313Test extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+   @Test
+    public void testBrowseLanguagesDefaultValue_HappyPath() {
+       final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+       final String BROWSE_LANGUAGES_DEFAULT_VALUE = "Category A";
+
+       getDriver().get(BASE_URL);
+       WebElement browseLanguagesMenu = getDriver().findElement(By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']"));
+       browseLanguagesMenu.click();
+
+       WebElement h2Category = getDriver().findElement(By.xpath("//div[@id ='main']/h2[contains(text(), 'A')]"));
+       Assert.assertEquals(h2Category.getText(), BROWSE_LANGUAGES_DEFAULT_VALUE);
+   }
 }
