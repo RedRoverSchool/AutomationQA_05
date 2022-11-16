@@ -71,10 +71,10 @@ public class NataliiaOliverTest extends BaseTest {
 
         getDriver().get(BASE_URL);
 
-        WebElement startMenu = getDriver().findElement(By.xpath("//div[@id='navigation']//a[@href='/']"));
+        WebElement startMenu = getDriver().findElement(START_MENU);
         startMenu.click();
 
-        WebElement teamSubmenu = getDriver().findElement(By.xpath("//div[@id='navigation']//a[@href='team.html']"));
+        WebElement teamSubmenu = getDriver().findElement(SUBMENU_TEAM);
         teamSubmenu.click();
 
         List<WebElement> creatorsNames = getDriver().findElements(
