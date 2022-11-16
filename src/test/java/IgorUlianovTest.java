@@ -15,12 +15,12 @@ public class IgorUlianovTest extends BaseTest {
         getDriver().get(BASE_URL);
 
         WebElement browseLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']//a[@href='/abc.html']")
+                By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']")
         );
         browseLanguagesMenu.click();
 
         WebElement searchForCategory = getDriver().findElement(
-                By.xpath("//ul[@id = 'submenu']//a[@href='x.html']")
+                By.xpath("//ul[@id = 'submenu']//a[@href = 'x.html']")
         );
         searchForCategory.click();
 
