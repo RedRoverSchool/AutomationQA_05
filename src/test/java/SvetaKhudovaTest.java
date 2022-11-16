@@ -35,4 +35,18 @@ public class SvetaKhudovaTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+    @Test
+    public void testClickStartFromHomepage_HappyPath(){
+        getDriver().get(BASE_URL);
+
+        WebElement searchStartMenu = getDriver().findElement(
+                By.xpath("//ul[@id = 'menu']/li/a[@href='/']")
+        );
+        Assert.assertTrue(searchStartMenu.getText().toLowerCase().contains("start"));
+        searchStartMenu.click();
+
+        String currentUrl = getDriver().getCurrentUrl();
+        Assert.assertEquals(currentUrl, BASE_URL);
+    }
 }
