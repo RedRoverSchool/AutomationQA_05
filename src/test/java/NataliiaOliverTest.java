@@ -10,11 +10,11 @@ import java.util.List;
 
 public class NataliiaOliverTest extends BaseTest {
 
-    private final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-    private final By START_MENU = By.xpath("//div[@id='navigation']//a[@href='/']");
-    private final By SUBMENU_TEAM = By.xpath("//div[@id='navigation']//a[@href='team.html']");
+    final static String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static By START_MENU = By.xpath("//div[@id='navigation']//a[@href='/']");
+    final static By SUBMENU_TEAM = By.xpath("//div[@id='navigation']//a[@href='team.html']");
 
-    public List<String> WebElementToString(List<WebElement> elementList) {
+    private List<String> WebElementToString(List<WebElement> elementList) {
         List<String> stringList = new ArrayList<>();
         for (WebElement element : elementList) {
             stringList.add(element.getText());
@@ -23,12 +23,12 @@ public class NataliiaOliverTest extends BaseTest {
         return stringList;
     }
 
-    public List<WebElement> getTeamLinks() {
+    private List<WebElement> getTeamLinks() {
 
         return getDriver().findElements(By.xpath("//div[@id='main']/p/a"));
     }
 
-    public List<String> getAllCreatorsLinks() {
+    private List<String> getAllCreatorsLinks() {
         List<String> linksText = new ArrayList<>();
         for (WebElement element: getTeamLinks()) {
             linksText.add(element.getText());
