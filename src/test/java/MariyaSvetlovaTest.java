@@ -8,7 +8,7 @@ public class MariyaSvetlovaTest extends BaseTest {
     public void testVerifyHeaderH1OnStartPage() {
         final String HEADER_H1 = "99 Bottles of Beer";
 
-        //getDriver().
+        getDriver().
 
 
     }
