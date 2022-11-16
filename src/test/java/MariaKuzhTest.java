@@ -42,8 +42,7 @@ public class MariaKuzhTest extends BaseTest {
     @Test
     public void testVerifyTextTopListsToTheStartPage() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-        final String CorrectTextTopLists = "Top Lists";
-        String expectedResult = CorrectTextTopLists.toLowerCase();
+        final String expectedResult = "TOP LISTS";
 
         getDriver().get(BASE_URL);
 
@@ -51,7 +50,7 @@ public class MariaKuzhTest extends BaseTest {
                 By.xpath("//div[@id = 'navigation']//a[@href = '/toplist.html']")
         );
 
-        String actualResult = buttonTopLists.getText().toLowerCase();
+        String actualResult = buttonTopLists.getText();
         Assert.assertEquals(actualResult,expectedResult);
     }
 }
