@@ -76,6 +76,37 @@ public class IrynaDanilevskaTest extends BaseTest {
             Assert.assertTrue(webElement.getText().toLowerCase().startsWith(LETTER));
         }
     }
+
+    @Test
+    public void testDefaultStateOfABCPage_AfterNavigatingOnPage_HappyPath() {
+        final String DEFAULT_LETTER = "a";
+
+        getDriver().get(BASE_URL);
+
+        WebElement browseLanguageMenu = getDriver().findElement(
+                By.xpath("//div[@id='navigation']/ul//a[@href='/abc.html']")
+        );
+        browseLanguageMenu.click();
+
+        WebElement categoryByDefaultLetter = getDriver().findElement(
+                By.xpath(String.format("//h2[normalize-space()='Category %s']", DEFAULT_LETTER.toUpperCase()))
+        );
+        Assert.assertTrue(categoryByDefaultLetter.getText().toLowerCase().endsWith(DEFAULT_LETTER));
+
+        WebElement textWithDefaultLetter = getDriver().findElement(
+                By.xpath(String.format("//strong[normalize-space()='%s']", DEFAULT_LETTER.toUpperCase()))
+        );
+        Assert.assertTrue(textWithDefaultLetter.getText().toLowerCase().contains(DEFAULT_LETTER));
+
+        List<WebElement> languageListByDefaultLetter = getDriver().findElements(
+                By.xpath("//table[@id='category']/tbody/tr/td[1]/a")
+        );
+        Assert.assertFalse(languageListByDefaultLetter.isEmpty());
+
+        for (WebElement webElement : languageListByDefaultLetter) {
+            Assert.assertTrue(webElement.getText().toLowerCase().startsWith(DEFAULT_LETTER));
+        }
+    }
 }
 
 
