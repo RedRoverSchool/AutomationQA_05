@@ -7,8 +7,6 @@ public abstract class BaseTest {
 
     private WebDriver driver;
 
-    private final String BASE_URL = "http://www.99-bottles-of-beer.net";
-
     @BeforeMethod
     protected void beforeMethod() {
         driver = BaseUtils.createDriver();
