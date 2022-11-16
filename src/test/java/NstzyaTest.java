@@ -57,4 +57,24 @@ public class NstzyaTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+
+    @Test
+    public void testHereLink_WhenClickingOnLink_HappyPath() {
+
+        String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement hereLink = getDriver().findElement(
+                By.xpath("//div[@id='main']/p/a[@href='./lyrics.html']")
+        );
+
+        hereLink.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+
+    }
 }
