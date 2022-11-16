@@ -34,4 +34,21 @@ public class EnmedvTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
         }
     }
+
+    @Test
+    public void testVerifyTextInHeaderH2() {
+        String expectedResult = "Privacy";
+        getDriver().get(BASE_URL);
+        WebElement searchPrivacy = getDriver().findElement(
+                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']")
+        );
+        searchPrivacy.click();
+
+        WebElement h2PrivacyHeader = getDriver().findElement(
+                By.xpath("//div[@id = 'main']/h2")
+        );
+        String actualResult = h2PrivacyHeader.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
