@@ -6,13 +6,13 @@ import runner.BaseTest;
 
 public class MariyaSvetlovaTest extends BaseTest {
 
-    static final String BACE_URL = "https://www.99-bottles-of-beer.net/";
+    static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
 
     @Test
     public void testVerifyHeaderH1OnStartPage() {
         final String HEADER_H1 = "99 Bottles of Beer";
 
-        getDriver().get(BACE_URL);
+        getDriver().get(BASE_URL);
 
         WebElement headerH1 = getDriver().findElement(
                 By.xpath("//div[@id='header']/h1")
