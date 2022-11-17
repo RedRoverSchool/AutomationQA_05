@@ -68,4 +68,27 @@ public class KseniyaKudrinaTest extends BaseTest {
         );
         Assert.assertEquals(addCommentOnThePageField.getText(),CONFIRM_COMMENT);
     }
+    @Test
+    public void testConfirmNewTitleOfPagePiet_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        final String CONFIRM_TITLE = "DM's Esoteric Programming Languages - Piet";
+
+        getDriver().get(BASE_URL);
+        WebElement topListMenu = getDriver().findElement(
+                By.xpath("//ul[@id = 'menu']//li/a[@href = '/toplist.html']   ")
+        );
+        topListMenu.click();
+
+        WebElement languagePietTable = getDriver().findElement(
+                By.xpath("//table[@id = 'category']/tbody//tr/td/a[contains(text(),'Piet')]")
+        );
+        languagePietTable.click();
+
+        WebElement infoLanguagePietLink = getDriver().findElement(
+                By.xpath("//div[@id = 'main']/table/tbody//tr//td/a[@href = 'http://www.dangermouse.net/esoteric/piet.html']")
+        );
+        infoLanguagePietLink.click();
+
+        Assert.assertEquals(getDriver().getTitle(),CONFIRM_TITLE);
+    }
 }
