@@ -39,6 +39,7 @@ public class SvetaSV15Test extends BaseTest {
     @Test
     public void testNavigatingTheSiteToFindTheNamesOfTeamMembers_HappyPath() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "The Team";
 
         getDriver().get(BASE_URL);
 
@@ -47,7 +48,13 @@ public class SvetaSV15Test extends BaseTest {
         searchStartMenu.click();
 
         WebElement searchSubmenuTeam = getDriver().findElement(By.xpath("//a[@href='team.html']"));
-        searchSubmenuTeam.click();                                      
+        searchSubmenuTeam.click();
+
+        WebElement h2TagTeam = getDriver().findElement(By.xpath("//div[@id ='main']/h2"));
+        h2TagTeam.click();
+        String actualResult = h2TagTeam.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
 
     }
 }
