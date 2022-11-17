@@ -35,4 +35,19 @@ public class SvetaSV15Test extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+    @Test
+    public void testNavigatingTheSiteToFindTheNamesOfTeamMembers_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
+        getDriver().get(BASE_URL);
+
+        WebElement searchStartMenu = getDriver().findElement(
+                By.xpath("//ul[@id = 'menu']/li/a[@href = '/']"));
+        searchStartMenu.click();
+
+        WebElement searchSubmenuTeam = getDriver().findElement(By.xpath("//a[@href='team.html']"));
+        searchSubmenuTeam.click();                                      
+
+    }
 }
