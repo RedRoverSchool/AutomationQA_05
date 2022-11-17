@@ -96,4 +96,21 @@ public class NstzyaTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+
+    @Test
+    public void testGuestbookLink_WhenClickingOnLink_HappyPath() {
+
+        String expectedResult = "https://www.99-bottles-of-beer.net/guestbookv2.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement guestbookLink = getDriver().findElement(
+                By.xpath("//div[@id='main']/p/a[@href='./guestbookv2.html']")
+        );
+        guestbookLink.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
