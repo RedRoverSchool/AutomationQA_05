@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -47,5 +49,33 @@ public class Katy1313Test extends BaseTest {
 
        WebElement h2Category = getDriver().findElement(By.xpath("//div[@id ='main']/h2[contains(text(), 'A')]"));
        Assert.assertEquals(h2Category.getText(), BROWSE_LANGUAGES_DEFAULT_VALUE);
+   }
+
+   @Test
+    public void testBrowseLanguagesLanguagesSortedAscending_HappyPath()  {
+       final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
+       getDriver().get(BASE_URL);
+       WebElement browseLanguagesMenu = getDriver().findElement(By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']"));
+       browseLanguagesMenu.click();
+
+       WebElement categoryLetter = getDriver().findElement(By.xpath("//ul[@id='submenu']//a[@href='p.html']"));
+       categoryLetter.click();
+
+       List<String> displayed = new ArrayList<String>();
+       List<String> sorted = new ArrayList<String>();
+       List<WebElement> languagesNamesListDisplayed = getDriver().findElements(By.xpath("//table[@id='category']/tbody//a"));
+
+       Assert.assertTrue(languagesNamesListDisplayed.size() > 0);
+
+       for (int i = 0; i < languagesNamesListDisplayed.size(); i++) {
+          String listOfElements;
+          listOfElements = languagesNamesListDisplayed.get(i).getText().toLowerCase();
+          displayed.add(listOfElements);
+          sorted.add(listOfElements);
+       }
+
+       Collections.sort(sorted);
+       Assert.assertEquals(displayed,sorted);
    }
 }
