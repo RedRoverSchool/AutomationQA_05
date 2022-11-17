@@ -51,4 +51,24 @@ public class EnmedvTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void testVerifyTextInHeaderH3() {
+        String expectedResult = "Oliver Schade";
+
+        getDriver().get(BASE_URL);
+
+        WebElement privacy = getDriver().findElement(
+                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']")
+        );
+        privacy.click();
+
+        WebElement h3OliverSchadeInHeader = getDriver().findElement(
+                By.xpath("//div[@id = 'main']/h3")
+        );
+
+        String actualResult = h3OliverSchadeInHeader.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
