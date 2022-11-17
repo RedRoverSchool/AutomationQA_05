@@ -77,4 +77,23 @@ public class NstzyaTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
 
     }
+
+
+    @Test
+    public void testSubmitYourOwnCodeLink_WhenClickingOnLink_HappyPath() {
+
+        String expectedResult = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement submitYourCodeLink = getDriver().findElement(
+                By.xpath("//div[@id='main']/p/a[@href='./submitnewlanguage.html']")
+        );
+        submitYourCodeLink.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
 }
