@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import runner.BaseTest;
 
 import java.util.List;
+import java.util.Locale;
 
 public class IrynaDanilevskaTest extends BaseTest {
 
@@ -36,6 +37,74 @@ public class IrynaDanilevskaTest extends BaseTest {
 
         for (int i = 0; i < languagesNamesList.size(); i++) {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
+        }
+    }
+
+    @Test
+    public void testSortingLanguagesByLetter_AfterSelectingLetterInSubmenu_HappyPath() {
+        final String LETTER = "b";
+
+        getDriver().get(BASE_URL);
+
+        WebElement browseLanguageMenu = getDriver().findElement(
+                By.xpath("//div[@id='navigation']/ul//a[@href='/abc.html']")
+        );
+        browseLanguageMenu.click();
+
+        WebElement submenuElementLettersNumbers = getDriver().findElement(
+                By.xpath(String.format("//ul[@id='submenu']//a[@href='%s.html']", LETTER))
+        );
+        submenuElementLettersNumbers.click();
+
+        WebElement categoryByLetter = getDriver().findElement(
+                By.xpath(String.format("//h2[normalize-space()='Category %s']", LETTER.toUpperCase()))
+        );
+        Assert.assertTrue(categoryByLetter.getText().toLowerCase().endsWith(LETTER));
+
+        WebElement textWithSelectedLetter = getDriver().findElement(
+                By.xpath(String.format("//strong[normalize-space()='%s']", LETTER.toUpperCase()))
+        );
+        Assert.assertTrue(textWithSelectedLetter.getText().toLowerCase().contains(LETTER));
+
+        List<WebElement> languageListByLetter = getDriver().findElements(
+                By.xpath("//table[@id='category']/tbody/tr/td[1]/a")
+        );
+
+        Assert.assertFalse(languageListByLetter.isEmpty());
+
+        for (WebElement webElement : languageListByLetter) {
+            Assert.assertTrue(webElement.getText().toLowerCase().startsWith(LETTER));
+        }
+    }
+
+    @Test
+    public void testDefaultStateOfABCPage_AfterNavigatingOnPage_HappyPath() {
+        final String DEFAULT_LETTER = "a";
+
+        getDriver().get(BASE_URL);
+
+        WebElement browseLanguageMenu = getDriver().findElement(
+                By.xpath("//div[@id='navigation']/ul//a[@href='/abc.html']")
+        );
+        browseLanguageMenu.click();
+
+        WebElement categoryByDefaultLetter = getDriver().findElement(
+                By.xpath(String.format("//h2[normalize-space()='Category %s']", DEFAULT_LETTER.toUpperCase()))
+        );
+        Assert.assertTrue(categoryByDefaultLetter.getText().toLowerCase().endsWith(DEFAULT_LETTER));
+
+        WebElement textWithDefaultLetter = getDriver().findElement(
+                By.xpath(String.format("//strong[normalize-space()='%s']", DEFAULT_LETTER.toUpperCase()))
+        );
+        Assert.assertTrue(textWithDefaultLetter.getText().toLowerCase().contains(DEFAULT_LETTER));
+
+        List<WebElement> languageListByDefaultLetter = getDriver().findElements(
+                By.xpath("//table[@id='category']/tbody/tr/td[1]/a")
+        );
+        Assert.assertFalse(languageListByDefaultLetter.isEmpty());
+
+        for (WebElement webElement : languageListByDefaultLetter) {
+            Assert.assertTrue(webElement.getText().toLowerCase().startsWith(DEFAULT_LETTER));
         }
     }
 }

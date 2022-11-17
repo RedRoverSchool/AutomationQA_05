@@ -8,11 +8,11 @@ import java.util.List;
 
 public class NstzyaTest extends BaseTest {
 
+    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final String LANGUAGE_NAME = "python";
+
     @Test
     public void testSearchForLanguageByNameField_HappyPath() {
-
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-        final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
 
@@ -38,4 +38,62 @@ public class NstzyaTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+
+    @Test
+    public void testHistoricInfoLink_WhenClickingOnLink_HappyPath() {
+
+        String expectedResult = "https://www.99-bottles-of-beer.net/info.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement historicInfoLink = getDriver().findElement(
+                By.xpath("//div[@id='main']/p/a[@href='./info.html']")
+        );
+
+        historicInfoLink.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+
+    @Test
+    public void testHereLink_WhenClickingOnLink_HappyPath() {
+
+        String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement hereLink = getDriver().findElement(
+                By.xpath("//div[@id='main']/p/a[@href='./lyrics.html']")
+        );
+
+        hereLink.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+
+    }
+
+
+    @Test
+    public void testSubmitYourOwnCodeLink_WhenClickingOnLink_HappyPath() {
+
+        String expectedResult = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement submitYourCodeLink = getDriver().findElement(
+                By.xpath("//div[@id='main']/p/a[@href='./submitnewlanguage.html']")
+        );
+        submitYourCodeLink.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
 }

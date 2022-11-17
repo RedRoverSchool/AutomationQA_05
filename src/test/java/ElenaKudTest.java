@@ -6,11 +6,11 @@ import runner.BaseTest;
 
 import java.util.List;
 
-public class SvetaKhudovaTest extends BaseTest {
-    static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+public class ElenaKudTest extends BaseTest {
 
     @Test
-    public void testSearchLanguageByName_HappyPath(){
+    public  void testSearchForLanguageByName_HappyPath() {
+        final String BASE_URL = "http://www.99-bottles-of-beer.net/";
         final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
@@ -27,26 +27,13 @@ public class SvetaKhudovaTest extends BaseTest {
         WebElement goButton = getDriver().findElement(By.name("submitsearch"));
         goButton.click();
 
-        List<WebElement> languagesNamesList = getDriver().findElements(By.xpath("//table[@id='category']/tbody/tr/td[1]/a"));
+        List<WebElement> languagesNamesList = getDriver().findElements(
+                By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a"));
 
         Assert.assertTrue(languagesNamesList.size() > 0);
 
-        for (int i = 0; i < languagesNamesList.size(); i++) {
+        for (int i = 0; i < languagesNamesList.size(); i ++) {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
-    }
-
-    @Test
-    public void testClickStartFromHomepage_HappyPath(){
-        getDriver().get(BASE_URL);
-
-        WebElement searchStartMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href='/']")
-        );
-        Assert.assertTrue(searchStartMenu.getText().toLowerCase().contains("start"));
-        searchStartMenu.click();
-
-        String currentUrl = getDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, BASE_URL);
     }
 }

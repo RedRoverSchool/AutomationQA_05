@@ -6,16 +6,17 @@ import runner.BaseTest;
 
 import java.util.List;
 
-public class IrinaDud_Test extends BaseTest {
+
+public class Kot612005Test extends BaseTest {
     @Test
-    public void testSearchForLanguageByName_HappyPath () {
+    public void testSearchForLanguageByName_HappyPath() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
 
         WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id='menu']/li/a[@href='/search.html']")
+                By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
         );
         searchLanguagesMenu.click();
 
@@ -30,23 +31,26 @@ public class IrinaDud_Test extends BaseTest {
 
         Assert.assertTrue(languagesNamesList.size() > 0);
 
-        for(int i = 0;i < languagesNamesList.size();i ++) {
+        for (int i = 0; i < languagesNamesList.size(); i++) {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
-   }
+    }
 
 
     @Test
-    public void testVerifyTextHeader1_HappyPath() {
+    public void testClickOnStartInFooter_HappyPath(){
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-        final String expectedResult = "99 Bottles of Beer";
+        String expectedResult = "https://www.99-bottles-of-beer.net/";
 
         getDriver().get(BASE_URL);
 
-        WebElement titleHeader1 = getDriver().findElement(By.xpath("//div[@id='header']/h1"));
+        WebElement searchStartInMenu = getDriver().findElement(
+                By.xpath("//div[@id='footer']//a[@href = '/']"));
+        searchStartInMenu.click();
 
-        String actualResult = titleHeader1.getText();
+        String actualResult = getDriver().getCurrentUrl();
 
         Assert.assertEquals(actualResult, expectedResult);
+
     }
 }
