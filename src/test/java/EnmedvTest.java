@@ -71,4 +71,29 @@ public class EnmedvTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void testVerifyTextOnThePageImpressum() {
+        String expectedResult = "os@ls-la.net";
+        String textOnThePage = "os@ls-la.net";
+
+        getDriver().get(BASE_URL);
+
+        WebElement privacy = getDriver().findElement(
+                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']")
+        );
+        privacy.click();
+
+        WebElement textEmailAdressOnThePage = getDriver().findElement(
+                By.xpath("//div[@id = 'main']/p")
+        );
+        textEmailAdressOnThePage.click();
+
+        String actualResult = textEmailAdressOnThePage.getText();
+
+        Assert.assertTrue(textEmailAdressOnThePage.getText().contains(textOnThePage));
+
+        Assert.assertEquals(actualResult, expectedResult);
+
+    }
 }
