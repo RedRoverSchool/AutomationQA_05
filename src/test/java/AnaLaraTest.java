@@ -33,8 +33,26 @@ public class AnaLaraTest extends BaseTest {
         );
         Assert.assertTrue(languagesNamesList.size() > 0);
 
-        for (int i = 0; i < languagesNamesList.size(); i ++) {
+        for (int i = 0; i < languagesNamesList.size(); i++) {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
-}
+        @Test
+        public void testNavigationToLyricsSubmenu_HappyPath() {
+
+            final String BASE_URL2 = "https://www.99-bottles-of-beer.net/";
+            final String EXPECTED_URL = "https://www.99-bottles-of-beer.net/lyrics.html";
+
+            getDriver().get(BASE_URL2);
+
+            WebElement searchSongLyricsSubmenu = getDriver().findElement(By.xpath(
+                    "//ul[@id='submenu']/li/a[@href='lyrics.html']")
+            );
+            searchSongLyricsSubmenu.click();
+
+            String ACTUAL_URL = getDriver().getCurrentUrl();
+
+            Assert.assertEquals(ACTUAL_URL, EXPECTED_URL);
+        }
+    }
+
