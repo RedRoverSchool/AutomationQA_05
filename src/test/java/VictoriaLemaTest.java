@@ -71,4 +71,50 @@ public class VictoriaLemaTest extends BaseTest {
 
         Assert.assertTrue(topRatedLanguagesNames.size()>=TOP_LANGUAGES_MINIMAL_QUANTITY);
     }
+
+    @Test
+    public void testLanguageCategories_WhenSubmittingANewLanguage() {
+        final int expectedResultNumber = 3;
+        final String category1 = "real";
+        final String category2 = "esoteric";
+        final String category3 = "assembly";
+        final String expectedResultCategory = "esoteric language";
+
+        getDriver().get(BASE_URL);
+        WebElement submitNewLanguageReference = getDriver().findElement(
+                By.xpath("//div[@id='footer']/p/a[@href='/submitnewlanguage.html']")
+        );
+        submitNewLanguageReference.click();
+
+        WebElement categoryField = getDriver().findElement(
+                By.xpath("//form[@id='addlanguage']/p/select[@name='category']")
+        );
+        categoryField.click();
+
+        String categoryName = getDriver().findElement(By.xpath("//select[@name='category']")).getText();
+        List <WebElement> languagesCategories = getDriver().findElements(
+                By.xpath("//form[@id='addlanguage']/p/select[@name='category']/option")
+        );
+        Assert.assertTrue(languagesCategories.size()>0);
+
+        WebElement esotericLanguage = getDriver().findElement(
+                By.xpath("//form[@id='addlanguage']/p/select[@name='category']/"
+                        + "option[text()='esoteric language']")
+        );
+        esotericLanguage.click();
+
+        WebElement submitLanguageButton = getDriver().findElement(
+                By.xpath("//input[@type='submit'][@name='submitlanguage']")
+        );
+        submitLanguageButton.click();
+
+        String actualResultCategory = getDriver().findElement(
+                By.xpath("//select[@name='category']/option[@selected]")).getText();
+
+        Assert.assertEquals(languagesCategories.size(),expectedResultNumber);
+        Assert.assertTrue(categoryName.contains(category1)&& categoryName.contains(category2)
+                &&categoryName.contains(category3));
+        Assert.assertEquals(actualResultCategory,expectedResultCategory);
+    }
 }
+
