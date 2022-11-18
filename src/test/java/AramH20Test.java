@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -34,5 +35,19 @@ public class AramH20Test extends BaseTest {
         for (int i = 0; i < languagesNamesList.size(); i++) {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
         }
+    }
+
+
+    final static String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static String URL_KEY_VALUE = "guest";
+    private void click(By by, WebDriver driver){
+        driver.findElement(by).click();
+    }
+    @Test
+    public void test_MainFooterGuestBookv2(){
+        getDriver().get(BASE_URL);
+        By Menu_Guestbook = By.xpath("//ul[@id='menu']/li[5]/a");//
+        click(Menu_Guestbook, getDriver());
+        Assert.assertTrue(getDriver().getCurrentUrl().toLowerCase().contains(URL_KEY_VALUE));
     }
 }
