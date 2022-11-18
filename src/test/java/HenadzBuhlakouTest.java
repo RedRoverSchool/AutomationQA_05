@@ -37,4 +37,20 @@ public class HenadzBuhlakouTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+    @Test
+    public void testClickOnStartInFooter_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String expectedResult = "https://www.99-bottles-of-beer.net/";
+
+        getDriver().get(BASE_URL);
+
+        WebElement searchStartInMenu = getDriver().findElement(
+                By.xpath("//div[@id='footer']//a[@href = '/']"));
+        searchStartInMenu.click();
+
+        String actualResult = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
