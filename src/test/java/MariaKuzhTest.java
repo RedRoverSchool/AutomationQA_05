@@ -53,4 +53,36 @@ public class MariaKuzhTest extends BaseTest {
         String actualResult = buttonTopLists.getText();
         Assert.assertEquals(actualResult,expectedResult);
     }
+
+    @Test
+    public void testVerifyLinkTextWhenClickTopLists() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String TopLists = "toplist";
+
+        getDriver().get(BASE_URL);
+
+        WebElement buttonTopLists = getDriver().findElement(
+                By.xpath("//div[@id = 'navigation']//a[@href = '/toplist.html']")
+        );
+        buttonTopLists.click();
+        String newUrl = getDriver().getCurrentUrl();
+
+        Boolean actualResultWord;
+        if (newUrl.contains(TopLists)) {
+            actualResultWord = true;
+        } else {
+            actualResultWord = false;
+        }
+        Boolean expectedResultWord = true;
+        Assert.assertEquals(actualResultWord,expectedResultWord);
+
+        Boolean actualResultNewUrl;
+        if (newUrl != BASE_URL) {
+            actualResultNewUrl = true;
+        } else {
+            actualResultNewUrl = false;
+        }
+        Boolean expectedResultNewUrl = true;
+        Assert.assertEquals(actualResultNewUrl,expectedResultNewUrl);
+    }
 }
