@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-import static java.sql.DriverManager.getDriver;
+
 
 
 public class IrinaDud_Test extends BaseTest {
@@ -18,6 +18,22 @@ public class IrinaDud_Test extends BaseTest {
         WebElement titleHeader1 = getDriver().findElement(By.xpath("//div[@id='header']/h1"));
 
         String actualResult = titleHeader1.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testFooterBrowseLanguages_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        final String expectedResult = "BROWSE LANGUAGES";
+
+        getDriver().get(BASE_URL);
+
+        WebElement browseLanguage = getDriver().findElement(By.xpath
+                ("//div[@id='navigation']//a[@href='/abc.html']")
+        );
+
+        String actualResult = browseLanguage.getText();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
