@@ -12,6 +12,7 @@ import java.util.List;
 public class VerafesTest extends BaseTest {
 
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
@@ -77,7 +78,7 @@ public class VerafesTest extends BaseTest {
         Assert.assertTrue(languageNames.size() > 0);
 
         for (String languageName : languageNames) {
-            Assert.assertTrue(languageNames.contains(LANGUAGE_NAME));
+            Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
 
