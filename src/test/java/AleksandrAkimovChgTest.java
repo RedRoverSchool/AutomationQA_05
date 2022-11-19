@@ -16,7 +16,7 @@ public class AleksandrAkimovChgTest extends BaseTest {
         getDriver().get(BASE_URL);
 
         WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@ href = '/search.html']")
+                By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
         );
         searchLanguagesMenu.click();
 
@@ -42,5 +42,32 @@ public class AleksandrAkimovChgTest extends BaseTest {
         );
 
         Assert.assertTrue(languagesNamesList.size() == 0);
+    }
+
+    @Test
+    public void testH2TagText_WhenClickZOnSubmenuNavigationBarABCMenu() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
+        String expectedResultH2Text = "Category Z";
+
+        getDriver().get(BASE_URL);
+
+        WebElement searchBrowseLanguageMenu = getDriver().findElement(
+                By.xpath("//div[@id = 'navigation']/ul[@id = 'menu']/li/a[@href = '/abc.html']")
+        );
+        searchBrowseLanguageMenu.click();
+
+        WebElement searchZOnSubmenuNavigationBarABCMenu = getDriver().findElement(
+                By.xpath("//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href = 'z.html']")
+        );
+        searchZOnSubmenuNavigationBarABCMenu.click();
+
+
+        WebElement textPageCategoryZ = getDriver().findElement(
+                By.xpath("//div[@id = 'main']/h2")
+        );
+        String actualResultH2Text = textPageCategoryZ.getText();
+
+        Assert.assertEquals(actualResultH2Text, expectedResultH2Text);
     }
 }
