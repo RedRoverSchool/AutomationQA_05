@@ -110,13 +110,9 @@ public class NataliiaOliverTest extends BaseTest {
         List<String> expectedTeamNames = new ArrayList<>(
                 Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));
 
-        getDriver().get(BASE_URL);
-
-        WebElement startMenu = getDriver().findElement(START_MENU);
-        startMenu.click();
-
-        WebElement teamSubmenu = getDriver().findElement(SUBMENU_TEAM);
-        teamSubmenu.click();
+        openBaseURL();
+        clickStartMenu();
+        clickSubmenuTeam();
 
         List<WebElement> creatorsNames = getDriver().findElements(
                 By.xpath("//div[@id='main']/h3"));
