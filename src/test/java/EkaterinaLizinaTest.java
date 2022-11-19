@@ -8,9 +8,9 @@ import java.util.List;
 
 public class EkaterinaLizinaTest extends BaseTest {
 
+    final static String BASE_URL = "https://openweathermap.org/";
     @Test
     public void testSearchForLanguageByName_HappyPath(){
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         final String LANGUAGE_NAME = "python";
 
         getDriver().get(BASE_URL);
@@ -35,4 +35,6 @@ public class EkaterinaLizinaTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+
 }
