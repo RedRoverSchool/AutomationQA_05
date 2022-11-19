@@ -12,6 +12,7 @@ public class AnastasiaYYTest extends BaseTest {
 
     final static String BASE_URL = "https://www.99-bottles-of-beer.net/";
     final static By START_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Start']");
+    final static By TOPLISTS_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Top Lists']");
     final static By TEAM_SUBMENU = By.cssSelector("#submenu a[href = 'team.html']");
 
     private void openBaseURL() {
@@ -71,5 +72,21 @@ public class AnastasiaYYTest extends BaseTest {
         List<String> actualH3headerNames = WebElementToString(h3HeaderNames);
 
         Assert.assertEquals(actualH3headerNames, expectedH3headerNames);
+    }
+
+    @Test
+    public void testVerifyH2HeaderText_TopListsMainPage()  {
+
+        final String expectedResult = "Top Rated";
+
+        openBaseURL();
+
+        WebElement topListsMenu = getDriver().findElement(TOPLISTS_MENU);
+        topListsMenu.click();
+
+        WebElement h2HeaderTopLists = getDriver().findElement(By.xpath("//div[@id = 'main']/h2"));
+        String actualResult = h2HeaderTopLists.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
