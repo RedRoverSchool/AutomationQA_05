@@ -10,13 +10,9 @@ import java.util.List;
 
 public class MariannaLissTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
-
     final static By SEARCH_FOR_FIELD = By.name("search");
-
     final static By GO_BUTTON = By.name("submitsearch");
-
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
 
     private void openBaseURL(WebDriver driver) {
