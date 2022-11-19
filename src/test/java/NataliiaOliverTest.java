@@ -128,13 +128,9 @@ public class NataliiaOliverTest extends BaseTest {
         expectedCreatorsAllLinks.add("E-Taste.org");
         expectedCreatorsAllLinks.add("sts.synflood.de");
 
-        getDriver().get(BASE_URL);
-
-        WebElement startMenu = getDriver().findElement(START_MENU);
-        startMenu.click();
-
-        WebElement teamSubmenu = getDriver().findElement(SUBMENU_TEAM);
-        teamSubmenu.click();
+        openBaseURL();
+        clickStartMenu();
+        clickSubmenuTeam();
 
         List<String> actualCreatorsAllLinks = getAllCreatorsLinks();
 
