@@ -13,6 +13,32 @@ public class NataliiaOliverTest extends BaseTest {
     final static String BASE_URL = "https://www.99-bottles-of-beer.net/";
     final static By START_MENU = By.xpath("//div[@id='navigation']//a[@href='/']");
     final static By SUBMENU_TEAM = By.xpath("//div[@id='navigation']//a[@href='team.html']");
+    final static By OLIVER_SCHADE_WEBSITE_LINK = By.xpath("//div[@id='main']/p/a[@href='http://www.ls-la.net/']");
+
+    private void openBaseURL() {
+
+        getDriver().get(BASE_URL);
+    }
+
+    private WebElement getStartMenu() {
+
+        return getDriver().findElement(START_MENU);
+    }
+
+    private void clickStartMenu() {
+
+        getStartMenu().click();
+    }
+
+    private WebElement getSubmenuTeam() {
+
+        return getDriver().findElement(SUBMENU_TEAM);
+    }
+
+    private void clickSubmenuTeam() {
+
+        getSubmenuTeam().click();
+    }
 
     private List<String> WebElementToString(List<WebElement> elementList) {
         List<String> stringList = new ArrayList<>();
@@ -35,6 +61,21 @@ public class NataliiaOliverTest extends BaseTest {
         }
 
         return linksText;
+    }
+
+    private String getExternalURL() {
+
+        return getDriver().getCurrentUrl();
+    }
+
+    private WebElement getOliverSchadeWebsiteLink() {
+
+        return getDriver().findElement(OLIVER_SCHADE_WEBSITE_LINK);
+    }
+
+    private void clickOliverSchadeWebsiteLink() {
+
+        getOliverSchadeWebsiteLink().click();
     }
 
     @Test
@@ -102,5 +143,17 @@ public class NataliiaOliverTest extends BaseTest {
         List<String> actualCreatorsAllLinks = getAllCreatorsLinks();
 
         Assert.assertEquals(actualCreatorsAllLinks, expectedCreatorsAllLinks);
+    }
+
+    @Test
+    public void testClickabilityLsLaNetLink_OliverSchade() {
+        String expectedLsLaNetLink_OliverShade = "http://www.ls-la.net/";
+
+        openBaseURL();
+        clickStartMenu();
+        clickSubmenuTeam();
+        clickOliverSchadeWebsiteLink();
+
+        Assert.assertEquals(getExternalURL(), expectedLsLaNetLink_OliverShade);
     }
 }
