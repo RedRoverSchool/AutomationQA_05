@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import runner.BaseTest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GalinaKuklevaTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
@@ -45,10 +46,6 @@ public class GalinaKuklevaTest extends BaseTest {
     private List<String> getElementsText(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
-
-//        for (int i = 0; i < elementsList.size(); i++) {
-//            textList.add(elementsList.get(i).getText().toLowerCase());
-//        }
 
         for (WebElement element : elementsList) {
             textList.add(element.getText().toLowerCase());
