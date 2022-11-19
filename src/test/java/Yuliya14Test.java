@@ -54,4 +54,28 @@ public class Yuliya14Test extends BaseTest {
 
         Assert.assertEquals(actualResultGuestbookUrl, expectedResultGuestbookUrl);
     }
+
+    @Test
+    public void testMainNavigationButtonSubmitNewLanguage_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String boxLanguageName = "language";
+        String expectedResultSubmitNewLanguageUrl = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement buttonSubmitNewLanguageMenu = getDriver().findElement(
+                By.xpath("//ul[@id='menu']/li/a[@href= '/submitnewlanguage.html']")
+        );
+        buttonSubmitNewLanguageMenu.click();
+
+        WebElement boxLanguageNameClick = getDriver().findElement(
+                By.xpath("//form[@id='addlanguage']//input[@name='language']")
+        );
+        boxLanguageNameClick.click();
+        boxLanguageNameClick.sendKeys(boxLanguageName);
+
+        String actualResultSubmitNewLanguageUrl = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResultSubmitNewLanguageUrl, expectedResultSubmitNewLanguageUrl);
+    }
 }
