@@ -9,6 +9,8 @@ import java.util.List;
 public class VerafesTest extends BaseTest {
 
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
+    // Global string to be used in multiple tests
     String SUB_MENU_OPTION = "";
 
     @Test
@@ -42,7 +44,7 @@ public class VerafesTest extends BaseTest {
     @Test
     public void testSubmenuInfoLabelText_HappyPath(){
         SUB_MENU_OPTION = "info.html";
-        final String expectedResult = "History";
+        String expectedResult = "History";
 
         getDriver().get(BASE_URL);
 
@@ -52,4 +54,18 @@ public class VerafesTest extends BaseTest {
         Assert.assertEquals(subMenuInfo.getText(), expectedResult);
     }
 
+    @Test
+    public void testSubmenuInfo_VerufylinkText_HappyPath(){
+        SUB_MENU_OPTION = "info.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement subMenuInfo = getDriver().findElement(
+                By.xpath("//ul[@id='submenu']/li/a[@href='" +SUB_MENU_OPTION+ "']")
+        );
+
+        String actualResul = subMenuInfo.getAttribute("href");
+
+        Assert.assertTrue(subMenuInfo.getAttribute("href").contains(SUB_MENU_OPTION));
+    }
 }
