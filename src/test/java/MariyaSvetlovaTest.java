@@ -20,4 +20,17 @@ public class MariyaSvetlovaTest extends BaseTest {
 
         Assert.assertEquals(headerH1.getText(),HEADER_H1);
     }
+
+    @Test
+    public void testVerifyHeaderH2OnStartPage() {
+        final String HEADER_H2 = "one program in 1500 variations";
+
+        getDriver().get(BASE_URL);
+
+        WebElement headerH1 = getDriver().findElement(
+                By.xpath("//div[@id='header']/h2")
+        );
+
+        Assert.assertEquals(headerH1.getText(),HEADER_H2);
+    }
 }

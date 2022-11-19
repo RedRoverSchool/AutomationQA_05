@@ -40,4 +40,18 @@ public class AndreiMironauTest extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_PYTHON));
         }
     }
+
+    @Test
+    public void testH2TagTextHeaderMain_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        final String expectedResult = "one program in 1500 variations";
+
+        getDriver().get(BASE_URL);
+
+        WebElement subtitleHeader = getDriver().findElement(By.xpath("//div[@id='header']/h2"));
+
+        String actualResult = subtitleHeader.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }

@@ -78,4 +78,28 @@ public class Katy1313Test extends BaseTest {
        Collections.sort(sorted);
        Assert.assertEquals(displayed,sorted);
    }
+
+   @Test
+    public void testBrowseLanguagesLanguageSelectionH2HeaderTitle_HappyPath() {
+       final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+       final String LETTER = "j";
+       final String LANGUAGE_NAME = "Java";
+       final String EXPECTED_RESULT_H2_TITLE = "Language Java";
+
+       getDriver().get(BASE_URL);
+       WebElement browseLanguagesMenu = getDriver().findElement(By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']"));
+       browseLanguagesMenu.click();
+
+       WebElement categoryLetter = getDriver().findElement(
+               By.xpath("//ul[@id='submenu']//a[@href='"+ LETTER +".html']"));
+       categoryLetter.click();
+
+       WebElement languageName = getDriver().findElement(
+               By.xpath("//table[@id='category']//td/a[text() = '"+ LANGUAGE_NAME +"']"));
+       languageName.click();
+
+       WebElement h2HeaderTitle = getDriver().findElement(By.xpath("//h2[text() = 'Language "+ LANGUAGE_NAME +"']"));
+
+       Assert.assertEquals(h2HeaderTitle.getText(), EXPECTED_RESULT_H2_TITLE);
+   }
 }

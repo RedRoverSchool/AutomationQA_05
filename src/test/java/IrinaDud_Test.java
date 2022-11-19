@@ -49,4 +49,20 @@ public class IrinaDud_Test extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void testFooterBrowseLanguages_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        final String expectedResult = "BROWSE LANGUAGES";
+
+        getDriver().get(BASE_URL);
+
+        WebElement browseLanguage = getDriver().findElement(By.xpath
+                ("//div[@id='navigation']//a[@href='/abc.html']")
+        );
+
+        String actualResult = browseLanguage.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }

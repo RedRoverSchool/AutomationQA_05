@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.util.List;
+
 public class EkaterinaKochelorovaTest extends BaseTest {
 
     static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
@@ -22,6 +24,24 @@ public class EkaterinaKochelorovaTest extends BaseTest {
         WebElement h2TagText = getDriver().findElement(By.xpath("//div[@id = 'main']/h2"));
 
         String actualResult = h2TagText.getText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testPTagText_WhenChooseSubmenuLyrics() {
+        int expectedResult = 100;
+
+        getDriver().get(BASE_URL);
+
+        WebElement submenuLyricsLink = getDriver().findElement(
+                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']")
+        );
+        submenuLyricsLink.click();
+
+        List<WebElement> pTagText = getDriver().findElements(By.xpath("//div[@id = 'main']/p"));
+
+        int actualResult = pTagText.size();
 
         Assert.assertEquals(actualResult, expectedResult);
     }

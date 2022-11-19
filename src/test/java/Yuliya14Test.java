@@ -37,4 +37,38 @@ public class Yuliya14Test extends BaseTest {
             Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
         }
     }
+
+    @Test
+    public void testMainNavigationButtonGuestbook_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String expectedResultGuestbookUrl = "https://www.99-bottles-of-beer.net/guestbookv2.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement buttonGuestbookMenu = getDriver().findElement(
+                By.xpath("//ul[@id='menu']/li/a[@href= '/guestbookv2.html']")
+        );
+        buttonGuestbookMenu.click();
+
+        String actualResultGuestbookUrl = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResultGuestbookUrl, expectedResultGuestbookUrl);
+    }
+
+    @Test
+    public void testMainNavigationButtonSubmitNewLanguage_HappyPath() {
+        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+        String expectedResultSubmitNewLanguageUrl = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+
+        getDriver().get(BASE_URL);
+
+        WebElement buttonSubmitNewLanguageMenu = getDriver().findElement(
+                By.xpath("//ul[@id='menu']/li/a[@href= '/submitnewlanguage.html']")
+        );
+        buttonSubmitNewLanguageMenu.click();
+
+        String actualResultSubmitNewLanguageUrl = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResultSubmitNewLanguageUrl, expectedResultSubmitNewLanguageUrl);
+    }
 }
