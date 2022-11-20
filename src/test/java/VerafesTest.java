@@ -1,14 +1,10 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,11 +50,6 @@ public class VerafesTest extends BaseTest {
     private String getAttribute(By by, String attribute, WebDriver driver) {
 
         return driver.findElement(by).getAttribute(attribute);
-    }
-
-    private String getCurrentUrl(WebDriver driver) {
-
-        return driver.getCurrentUrl();
     }
 
     private int getListSize(By by, WebDriver driver) {
@@ -125,7 +116,7 @@ public class VerafesTest extends BaseTest {
     }
 
     @Test
-    public void testSubmenuInfo_VerifyNavigation(){
+    public void testClickOnLinkSubmenuInfo(){
         By infoTitle = By.xpath("//*[@id='main']/h2");
         String expectedResultURL = INFO_URL;
         String expectedResultTitle = "History";
@@ -133,7 +124,9 @@ public class VerafesTest extends BaseTest {
         openBaseURL(getDriver());
         click(INFO_SUB_MENU, getDriver());
 
-        Assert.assertEquals(getCurrentUrl(getDriver()), expectedResultURL);
+        String actualResultURL = getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResultURL, expectedResultURL);
 
         String actualResultTitle = getText(infoTitle, getDriver());
 
