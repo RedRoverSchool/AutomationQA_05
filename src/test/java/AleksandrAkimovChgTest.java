@@ -1,49 +1,67 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
 import java.util.List;
 
-public class AleksandrAkimovChgTest extends BaseTest {
+public class AleksandrAkimovChgTest extends BaseTest   {
+    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
+    final static By SEARCH_FOR_FIELD = By.name("search");
+    final static By GO_BUTTON = By.name("submitsearch");
+    final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
 
-    @Test
-    public void testSearchForLanguageField_HappyPath() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-        final String LANGUAGE_PYTHON = "Python";
-
-        getDriver().get(BASE_URL);
-
-        WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
-        );
-        searchLanguagesMenu.click();
-
-        WebElement searchForField = getDriver().findElement(By.name("search"));
-        searchForField.click();
-        searchForField.sendKeys(LANGUAGE_PYTHON);
-
-        WebElement goButton = getDriver().findElement(By.name("submitsearch"));
-        goButton.click();
-
-        WebElement searchForFieldNoEmpty = getDriver().findElement(
-                By.xpath("//input[@ name = 'search']")
-        );
-        searchForFieldNoEmpty.clear();
-
-        WebElement goButton2 = getDriver().findElement(
-                By.xpath("//input[@ name = 'submitsearch']")
-        );
-        goButton2.click();
-
-        List<WebElement> languagesNamesList = getDriver().findElements(
-                By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a")
-        );
-
-        Assert.assertTrue(languagesNamesList.size() == 0);
+    private void openBaseUrl(WebDriver driver) {
+        driver.get(BASE_URL);
     }
 
+    private WebElement getElement(By by, WebDriver driver) {
+
+        return driver.findElement(by);
+    }
+
+    private void click(By by, WebDriver driver) {
+        getElement(by, driver).click();
+    }
+
+    private void input(String text, By by, WebDriver driver) {
+        getElement(by, driver).sendKeys(text);
+    }
+
+    private void clear(By by, WebDriver driver) {
+        getElement(by, driver).clear();
+    }
+
+    private List<WebElement> getListOfElements(By by, WebDriver driver) {
+
+        return driver.findElements(by);
+    }
+
+    private int getListSize(By by, WebDriver driver) {
+
+        return getListOfElements(by, driver).size();
+    }
+
+    @Test
+    public void testSearchForLanguageEmptyField_HappyPath() {
+        final String LANGUAGE_NAME = "Python";
+
+        openBaseUrl(getDriver());
+        click(SEARCH_LANGUAGES_MENU, getDriver());
+        click(SEARCH_FOR_FIELD, getDriver());
+        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
+        click(GO_BUTTON, getDriver());
+        clear(SEARCH_FOR_FIELD, getDriver());
+        click(GO_BUTTON, getDriver());
+
+        Assert.assertTrue(getListSize(LANGUAGES_NAMES_LIST, getDriver()) == 0);
+    }
+
+    @Ignore
     @Test
     public void testH2TagText_WhenClickZOnSubmenuNavigationBarABCMenu() {
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
