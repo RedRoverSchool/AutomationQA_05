@@ -16,6 +16,7 @@ public class VictoriaLemaTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+    final static By TOP_LISTS_ON_THE_FOOTER_MENU = By.xpath("//div[@id='footer']/p/a[@href='/toplist.html']");
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -41,6 +42,12 @@ public class VictoriaLemaTest extends BaseTest {
     private int getListSize(By by, WebDriver driver) {
 
         return getListOfElements(by, driver).size();
+    }
+
+    private String getCurrentURL(By by, WebDriver driver) {
+        getElement(by,driver).click();
+
+        return driver.getCurrentUrl();
     }
 
     private List<String> getElementsText(By by, WebDriver driver) {
@@ -77,13 +84,9 @@ public class VictoriaLemaTest extends BaseTest {
     public void testIfTopListsReferenceOnTheFooterMenuRedirectsToTheTopListPage_WhenClickingOnIt() {
         String expectedResult = "https://www.99-bottles-of-beer.net/toplist.html";
 
-        getDriver().get(BASE_URL);
-        WebElement topListsOnTheFooter = getDriver().findElement(
-                By.xpath("//div[@id='footer']/p/a[@href='/toplist.html']")
-        );
-        topListsOnTheFooter.click();
+        openBaseURL(getDriver());
 
-        String actualResult = getDriver().getCurrentUrl();
+        String actualResult=getCurrentURL(TOP_LISTS_ON_THE_FOOTER_MENU,getDriver());
 
         Assert.assertEquals(actualResult,expectedResult);
     }
