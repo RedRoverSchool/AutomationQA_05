@@ -17,6 +17,7 @@ public class VerafesTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+    final static By INFO_SUB_MENU = By.xpath("//ul[@id='submenu']/li/a[@href='info.html']");
 
     private void openBaseURL(WebDriver driver)  {
         driver.get(BASE_URL);
@@ -38,6 +39,11 @@ public class VerafesTest extends BaseTest {
 
     private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
+    }
+
+    private String getText(By by, WebDriver driver) {
+
+        return driver.findElement(by).getText();
     }
 
     private int getListSize(By by, WebDriver driver) {
@@ -82,18 +88,15 @@ public class VerafesTest extends BaseTest {
         }
     }
 
-    @Ignore
     @Test
-    public void testSubmenuInfoLabelText_HappyPath(){
-        SUB_MENU_OPTION = "info.html";
+    public void testSubmenuInfo_VerifyLabelText_HappyPath(){
         String expectedResult = "History";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
 
-        WebElement subMenuInfo = getDriver().findElement(
-                By.xpath("//ul[@id='submenu']/li/a[@href='" +SUB_MENU_OPTION+ "']")
-        );
-        Assert.assertEquals(subMenuInfo.getText(), expectedResult);
+        String actualResult = getText(INFO_SUB_MENU, getDriver());
+
+        Assert.assertEquals(getText(INFO_SUB_MENU, getDriver()), expectedResult);
     }
 
     @Ignore
