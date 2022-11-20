@@ -8,12 +8,20 @@ import runner.BaseTest;
 
 import java.util.List;
 
-public class AleksandrAkimovChgTest extends BaseTest   {
+public class AleksandrAkimovChgTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
+
+    final static By SEARCH_BROWSE_LANGUAGE_MENU =
+            By.xpath("//div[@id = 'navigation']/ul[@id = 'menu']/li/a[@href = '/abc.html']");
+
+    final static By SEARCH_Z_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU =
+            By.xpath("//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href = 'z.html']");
+
+    final static By TEXT_PAGE_CATEGORY_Z = By.xpath("//div[@id = 'main']/h2");
 
     private void openBaseUrl(WebDriver driver) {
         driver.get(BASE_URL);
@@ -46,6 +54,11 @@ public class AleksandrAkimovChgTest extends BaseTest   {
         return getListOfElements(by, driver).size();
     }
 
+    private String getText(By by, WebDriver driver) {
+
+        return driver.findElement(by).getText();
+    }
+
     @Test
     public void testSearchForLanguageEmptyField_HappyPath() {
         final String LANGUAGE_NAME = "Python";
@@ -61,30 +74,15 @@ public class AleksandrAkimovChgTest extends BaseTest   {
         Assert.assertTrue(getListSize(LANGUAGES_NAMES_LIST, getDriver()) == 0);
     }
 
-    @Ignore
-    @Test
+        @Test
     public void testH2TagText_WhenClickZOnSubmenuNavigationBarABCMenu() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-
         String expectedResultH2Text = "Category Z";
 
-        getDriver().get(BASE_URL);
+        openBaseUrl(getDriver());
+        click(SEARCH_BROWSE_LANGUAGE_MENU, getDriver());
+        click(SEARCH_Z_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU, getDriver());
 
-        WebElement searchBrowseLanguageMenu = getDriver().findElement(
-                By.xpath("//div[@id = 'navigation']/ul[@id = 'menu']/li/a[@href = '/abc.html']")
-        );
-        searchBrowseLanguageMenu.click();
-
-        WebElement searchZOnSubmenuNavigationBarABCMenu = getDriver().findElement(
-                By.xpath("//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href = 'z.html']")
-        );
-        searchZOnSubmenuNavigationBarABCMenu.click();
-
-
-        WebElement textPageCategoryZ = getDriver().findElement(
-                By.xpath("//div[@id = 'main']/h2")
-        );
-        String actualResultH2Text = textPageCategoryZ.getText();
+        String actualResultH2Text = getText(TEXT_PAGE_CATEGORY_Z, getDriver());
 
         Assert.assertEquals(actualResultH2Text, expectedResultH2Text);
     }
