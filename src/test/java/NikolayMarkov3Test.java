@@ -80,25 +80,14 @@ public class NikolayMarkov3Test extends BaseTest {
 
     @Test
     public void testSearchForLanguagesNameEmpty_HappyPath() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
 
-        getDriver().get(BASE_URL);
-        WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
-        );
-        searchLanguagesMenu.click();
+        openBaseURL(getDriver());
+        click(SEARCH_LANGUAGES_MENU, getDriver());
+        click(GO_BUTTON, getDriver());
 
-        WebElement searchForFiend = getDriver().findElement(By.name("search"));
-        searchForFiend.click();
+        List<String> languagesNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
 
-        WebElement goButton = getDriver().findElement(By.name("submitsearch"));
-        goButton.click();
-
-        List<WebElement> languagesNamesList = getDriver().findElements(
-                By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a")
-        );
-
-        Assert.assertTrue(languagesNamesList.size() == 0);
+        Assert.assertTrue(languagesNames.size() == 0);
     }
 
     @Test
