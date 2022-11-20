@@ -14,7 +14,7 @@ public class NikolayMarkov3Test extends BaseTest {
 
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
 
-    final static By SEARCH_FOR_FIEND = By.name("search");
+    final static By SEARCH_FOR_FIELD = By.name("search");
 
     final static By GO_BUTTON = By.name("submitsearch");
 
@@ -65,8 +65,8 @@ public class NikolayMarkov3Test extends BaseTest {
 
         openBaseURL(getDriver());
         click(SEARCH_LANGUAGES_MENU, getDriver());
-        click(SEARCH_FOR_FIEND, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIEND, getDriver());
+        click(SEARCH_FOR_FIELD, getDriver());
+        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
         click(GO_BUTTON, getDriver());
 
         List<String> languagesNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
@@ -97,8 +97,8 @@ public class NikolayMarkov3Test extends BaseTest {
 
         openBaseURL(getDriver());
         click(SEARCH_LANGUAGES_MENU, getDriver());
-        click(SEARCH_FOR_FIEND, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIEND, getDriver());
+        click(SEARCH_FOR_FIELD, getDriver());
+        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
         click(GO_BUTTON, getDriver());
 
         List<String> languagesNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
