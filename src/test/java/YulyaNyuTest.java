@@ -10,10 +10,13 @@ import java.util.List;
 
 public class YulyaNyuTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id='menu']/li/a[@href ='/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
+    final static By SUB_MENU_TEAM = By.xpath("//a[@href = 'team.html']");
+    final static By H2_TEAM_PAGE_HEADER = By.xpath("//div[@id ='main']/h2");
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -27,6 +30,10 @@ public class YulyaNyuTest extends BaseTest {
     }
     private void click (By by, WebDriver driver ) {
         getElement(by, driver).click();
+    }
+    private String getText(By by, WebDriver driver) {
+
+        return driver.findElement(by).getText();
     }
     private void input (String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
@@ -67,17 +74,12 @@ public class YulyaNyuTest extends BaseTest {
 
     @Test
     public void testVerifyH2TagText_WhenClickingSubmenuTeam_HappyPath()  {
-        String BASE_URL = "https://www.99-bottles-of-beer.net/";
         String expectedResult = "The Team";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
+        click(SUB_MENU_TEAM,getDriver());
 
-        WebElement subMenuTeam = getDriver().findElement(By.xpath("//a[@href = 'team.html']"));
-        subMenuTeam.click();
-
-        WebElement h2TagTeam = getDriver().findElement(By.xpath("//div[@id ='main']/h2"));
-
-        String actualResult = h2TagTeam.getText();
+        String actualResult = getText(H2_TEAM_PAGE_HEADER,getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
     }
