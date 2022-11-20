@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
@@ -14,7 +15,7 @@ public class NikolayMarkov3Test extends BaseTest {
 
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
 
-    final static By SEARCH_FOR_FIEND = By.name("search");
+    final static By SEARCH_FOR_FIELD = By.name("search");
 
     final static By GO_BUTTON = By.name("submitsearch");
 
@@ -65,8 +66,8 @@ public class NikolayMarkov3Test extends BaseTest {
 
         openBaseURL(getDriver());
         click(SEARCH_LANGUAGES_MENU, getDriver());
-        click(SEARCH_FOR_FIEND, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIEND, getDriver());
+        click(SEARCH_FOR_FIELD, getDriver());
+        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
         click(GO_BUTTON, getDriver());
 
         List<String> languagesNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
@@ -90,6 +91,7 @@ public class NikolayMarkov3Test extends BaseTest {
         Assert.assertTrue(languagesNames.size() == 0);
     }
 
+    @Ignore
     @Test
     public void testMenuSearchSearchForLanguagesByNameJava_HappyPath() {
 
