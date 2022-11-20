@@ -1,11 +1,13 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,9 @@ public class EkaterinaLizinaTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table [@id = 'category']/tbody/tr/td[1]/a");
+    final static By BROWSE_LANGUAGES = By.xpath("//div[@id = 'navigation']//a[@href = '/abc.html']");
+    final static By LETTER_C = By.xpath("//ul[@id = 'submenu']//a[@href='c.html']");
+    final static By DEFAULT_CATEGORY = By.xpath("//div[@id = 'main']/h2");
     private void openBaseURL(WebDriver driver){
        driver.get(BASE_URL);
     }
@@ -50,6 +55,13 @@ public class EkaterinaLizinaTest extends BaseTest {
 
         return textList;
     }
+    public void waitTextToBeChanged(By by, String text, WebDriver driver, WebDriverWait wait) {
+        wait.until(ExpectedConditions
+                .not(ExpectedConditions.textToBePresentInElement(driver.findElement(by), text)));
+    }
+    private String getText(By by, WebDriver driver){
+        return driver.findElement(by).getText();
+    }
     @Test
     public void testSearchForLanguageByName_HappyPath(){
         final String LANGUAGE_NAME = "python";
@@ -68,6 +80,27 @@ public class EkaterinaLizinaTest extends BaseTest {
 
         for (String languageName : languageNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
+        }
+    }
+    @Test
+    public void testABCNavigationSubmenuClickLetterC() {
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES, getDriver());
+        String expectedResult = "C";
+
+        String old_default_category = getText(DEFAULT_CATEGORY, getDriver());
+
+        click(LETTER_C, getDriver());
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+        waitTextToBeChanged(DEFAULT_CATEGORY, old_default_category, getDriver(), wait);
+
+        List<WebElement> languagesNamesList = getDriver().findElements(LANGUAGES_NAMES_LIST);
+
+        Assert.assertTrue(languagesNamesList.size() > 0);
+        String actualResult;
+        for (int i = 0; i < languagesNamesList.size(); i++) {
+            actualResult = String.valueOf(languagesNamesList.get(i).getText().toUpperCase().charAt(0));
+            Assert.assertEquals(actualResult, expectedResult);
         }
     }
 }
