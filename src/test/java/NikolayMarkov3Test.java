@@ -92,30 +92,21 @@ public class NikolayMarkov3Test extends BaseTest {
 
     @Test
     public void testMenuSearchSearchForLanguagesByNameJava_HappyPath() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
         final String LANGUAGE_NAME = "java";
 
-        getDriver().get(BASE_URL);
-        WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
-        );
-        searchLanguagesMenu.click();
+        openBaseURL(getDriver());
+        click(SEARCH_LANGUAGES_MENU, getDriver());
+        click(SEARCH_FOR_FIEND, getDriver());
+        input(LANGUAGE_NAME, SEARCH_FOR_FIEND, getDriver());
+        click(GO_BUTTON, getDriver());
 
-        WebElement searchForFiend = getDriver().findElement(By.name("search"));
-        searchForFiend.click();
-        searchForFiend.sendKeys(LANGUAGE_NAME);
+        List<String> languagesNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
 
-        WebElement goButton = getDriver().findElement(By.name("submitsearch"));
-        goButton.click();
+        Assert.assertTrue(languagesNames.size() > 0);
 
-        List<WebElement> languagesNamesList = getDriver().findElements(
-                By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a")
-        );
-
-        Assert.assertTrue(languagesNamesList.size() > 0);
-
-        for (int i = 0; i < languagesNamesList.size(); i ++){
-            Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
+        for (String languagesName : languagesNames){
+            Assert.assertTrue(languagesName.contains(LANGUAGE_NAME));
         }
     }
 }
