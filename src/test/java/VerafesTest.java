@@ -46,6 +46,11 @@ public class VerafesTest extends BaseTest {
         return driver.findElement(by).getText();
     }
 
+    private String getAttribute(By by, String attribute, WebDriver driver) {
+
+        return driver.findElement(by).getAttribute(attribute);
+    }
+
     private int getListSize(By by, WebDriver driver) {
 
         return getListOfElements(by, driver).size();
@@ -66,8 +71,6 @@ public class VerafesTest extends BaseTest {
 
         return textList;
     }
-
-    private String SUB_MENU_OPTION = "";
 
     @Test
     public void testSearchForLanguageByName_HappyPath() {
@@ -99,19 +102,15 @@ public class VerafesTest extends BaseTest {
         Assert.assertEquals(getText(INFO_SUB_MENU, getDriver()), expectedResult);
     }
 
-    @Ignore
     @Test
-    public void testSubmenuInfo_VerufylinkText_HappyPath(){
-        SUB_MENU_OPTION = "info.html";
+    public void testSubmenuInfo_VerifyLinkText_HappyPath(){
+        String attribute = "href";
+        String expectedResult = "info.html";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
 
-        WebElement subMenuInfo = getDriver().findElement(
-                By.xpath("//ul[@id='submenu']/li/a[@href='" +SUB_MENU_OPTION+ "']")
-        );
+        String actualResult = getAttribute(INFO_SUB_MENU, attribute, getDriver());
 
-        String actualResul = subMenuInfo.getAttribute("href");
-
-        Assert.assertTrue(subMenuInfo.getAttribute("href").contains(SUB_MENU_OPTION));
+        Assert.assertTrue(actualResult.contains(expectedResult));
     }
 }
