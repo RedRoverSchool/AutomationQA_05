@@ -1,6 +1,7 @@
 package runner;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 
 public abstract class BaseTest {
@@ -10,6 +11,7 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void beforeMethod() {
         driver = BaseUtils.createDriver();
+        Reporter.log("Test starter", true);
     }
 
     @AfterMethod
