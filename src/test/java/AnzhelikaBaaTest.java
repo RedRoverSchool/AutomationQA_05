@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
@@ -60,6 +61,8 @@ public class AnzhelikaBaaTest extends BaseTest {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
+
+    @Ignore
     @Test
     public void testSongLyricsSubmenu_WhenSearchingForLyricsOfSong_HappyPath() {
         String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
