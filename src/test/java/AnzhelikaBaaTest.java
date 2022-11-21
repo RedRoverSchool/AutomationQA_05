@@ -68,7 +68,6 @@ public class AnzhelikaBaaTest extends BaseTest {
         String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
 
         openBaseURL(getDriver());
-
         click(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
         text(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
         isDisplayed(PAGE_WITH_LYRICS, getDriver());
