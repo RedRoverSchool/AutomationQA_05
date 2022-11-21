@@ -47,9 +47,6 @@ public class ElenaStratTest extends BaseTest {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
 
-//        for (int i = 0; i < elementsList.size(); i++) {
-//            textList.add(elementsList.get(i).getText().toLowerCase());
-//        }
 
         for (WebElement element : elementsList) {
             textList.add(element.getText().toLowerCase());
