@@ -2,7 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
@@ -17,34 +16,63 @@ public class AnzhelikaBaaTest extends BaseTest {
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table [@id = 'category']/tbody/tr/td[1]/a");
     final static By SEARCH_SONG_LYRICS_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='lyrics.html']");
     final static By PAGE_WITH_LYRICS = By.xpath("//div[@id='main']");
+    final static By SEARCH_TEAM_SUBMENU_BUTTON = By.xpath("//ul[@id='submenu']/li/a[@href='team.html']");
+    final static By IMAGE_1 = By.xpath("//div[@id='main']//img[@alt='Picture of Gregor Scheithauer']");
+    final static By IMAGE_2 = By.xpath("//div[@id='main']//img[@alt='Picture of Stefan Scheler']");
+    final static By IMAGES_LIST = By.xpath("//img");
 
-    private void openBaseURL(WebDriver driver) { driver.get(BASE_URL); }
-    private void click (By by, WebDriver driver) {
+    private void openBaseURL(WebDriver driver) {
+        driver.get(BASE_URL);
+    }
+
+    private void click(By by, WebDriver driver) {
         getElement(by, driver).click();
     }
-    private void text (By by, WebDriver driver) { getElement(by, driver).getText(); }
-    private void isDisplayed ( By by, WebDriver driver) { getElement(by, driver).isDisplayed(); }
+
+    private void text(By by, WebDriver driver) {
+        getElement(by, driver).getText();
+    }
+
+    private void isDisplayed(By by, WebDriver driver) {
+        getElement(by, driver).isDisplayed();
+    }
+
     private WebElement getElement(By by, WebDriver driver) {
         return driver.findElement(by);
     }
+
     private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
     }
+
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
         return driver.findElements(by);
     }
-    private int getListSize(By by, WebDriver driver) { return getListOfElements(by, driver).size(); }
-    private int getListSize(List<String> list){ return list.size(); }
+
+    private int getListSize(By by, WebDriver driver) {
+        return getListOfElements(by, driver).size();
+    }
+
+    private int getListSize(List<String> list) {
+        return list.size();
+    }
+
     private List<String> getElementsText(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
 
-        for(WebElement element : elementsList) {
+        for (WebElement element : elementsList) {
             textList.add(element.getText().toLowerCase());
         }
         return textList;
     }
-       @Test
+
+    private String getAttribute(By by, String attribute) {
+
+        return getDriver().findElement(by).getAttribute(attribute);
+    }
+
+    @Test
     public void testSearchForLanguageByName_HappyPath() {
         final String LANGUAGE_NAME = "python";
 
@@ -62,7 +90,7 @@ public class AnzhelikaBaaTest extends BaseTest {
         }
     }
 
-    @Ignore
+
     @Test
     public void testSongLyricsSubmenu_WhenSearchingForLyricsOfSong_HappyPath() {
         String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
@@ -77,5 +105,27 @@ public class AnzhelikaBaaTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
- }
+
+@Test
+    public void testImages_WhenChooseTeamSubmenu_HappyPath() {
+    String attribute1 = "Picture of Gregor Scheithauer";
+    String attribute2 = "Picture of Stefan Scheler";
+    int expectedResult = 2;
+
+    openBaseURL(getDriver());
+
+    click(SEARCH_TEAM_SUBMENU_BUTTON, getDriver());
+    getAttribute(IMAGE_1, attribute1);
+    getAttribute(IMAGE_2, attribute2);
+
+    int actualResult = getListSize(IMAGES_LIST, getDriver());
+
+    Assert.assertEquals(actualResult, expectedResult);
+}
+
+
+}
+
+
+
 
