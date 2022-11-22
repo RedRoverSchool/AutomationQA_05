@@ -41,6 +41,7 @@ public class IgorUlianovTest extends BaseTest {
         for (WebElement element : elementsList) {
            textList.add(element.getText().toLowerCase());
         }
+
         return textList;
     }
     @Test
