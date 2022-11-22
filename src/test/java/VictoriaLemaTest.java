@@ -27,6 +27,14 @@ public class VictoriaLemaTest extends BaseTest {
             + "option[text()='esoteric language']");
     final static By SUBMIT_LANGUAGE_BUTTON = By.xpath("//input[@type='submit'][@name='submitlanguage']");
     final static By LANGUAGES_CATEGORIES_SELECTED = By.xpath("//select[@name='category']/option[@selected]");
+    final static By LANGUAGE_FIELD = By.xpath("//form[@id='addlanguage']/p/input[@name='language']");
+    final static By AUTHOR_FIELD = By.name("author");
+    final static By EMAIL_FIELD = By.name("email");
+    final static By REAL_LANGUAGE_OPTION = By.xpath("//form[@id='addlanguage']/p/select[@name='category']/"
+            + "option[text()='real language']");
+    final static By CODE_FIELD = By.name("code");
+    final static By FULL_ERROR_MESSAGE = By.xpath("//div[@id='main']/p");
+
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -74,6 +82,11 @@ public class VictoriaLemaTest extends BaseTest {
     private String getText (By by, WebDriver driver) {
 
         return getElement(by,driver).getText();
+    }
+
+    private String getTextInLowerCase (By by, WebDriver driver) {
+
+        return getElement(by,driver).getText().toLowerCase();
     }
 
     @Test
@@ -144,6 +157,32 @@ public class VictoriaLemaTest extends BaseTest {
         Assert.assertTrue(categoryNames.contains(category1)&& categoryNames.contains(category2)
                 &&categoryNames.contains(category3));
         Assert.assertEquals(actualResultCategory,expectedResultCategory);
+    }
+
+    @Test
+    public void testErrorMessageTextAfterIncompleteInput() {
+        final String language = "java";
+        final String author = "tester";
+        final String email = "jka59433@xcoxc.com";
+        final String code = "String";
+        final String error = "error";
+        final String errorReason = "incomplete input";
+
+        openBaseURL(getDriver());
+        click(SUBMIT_NEW_LANGUAGE_REFERENCE,getDriver());
+        input(language,LANGUAGE_FIELD,getDriver());
+        input(author,AUTHOR_FIELD,getDriver());
+        input(email,EMAIL_FIELD,getDriver());
+        click(CATEGORY_FIELD,getDriver());
+        click(REAL_LANGUAGE_OPTION,getDriver());
+        input(code, CODE_FIELD,getDriver());
+        click(SUBMIT_LANGUAGE_BUTTON,getDriver());
+        String errorMessage = getTextInLowerCase(FULL_ERROR_MESSAGE,getDriver());
+
+        Assert.assertNotNull(errorMessage);
+
+        Assert.assertTrue(errorMessage.contains(error));
+        Assert.assertTrue(errorMessage.contains(errorReason));
     }
 }
 
