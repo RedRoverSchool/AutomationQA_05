@@ -12,7 +12,6 @@ public class ViktoriiaKarpusTest extends BaseTest {
 
     final static By LETTER_V = By.xpath("//div/ul[@id='submenu']/li/a[@href='v.html']");
 
-
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -25,7 +24,6 @@ public class ViktoriiaKarpusTest extends BaseTest {
 
         return driver.findElement(by);
     }
-
 
     @Test
     public void testNavigationSubmenuClickLetterV() {
