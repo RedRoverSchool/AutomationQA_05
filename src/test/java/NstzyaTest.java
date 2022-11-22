@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
@@ -15,27 +16,42 @@ public class NstzyaTest extends BaseTest {
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
 
+    final static By HISTORIC_INFO_URL = By.xpath("//div[@id='main']/p/a[@href='./info.html']");
+    final static By HERE_URL = By.xpath("//div[@id='main']/p/a[@href='./lyrics.html']");
+    final static By SUBMIT_YOUR_OWN_CODE_URL = By.xpath("//div[@id='main']/p/a[@href='./submitnewlanguage.html']");
+    final static By GUESTBOOK_URL = By.xpath("//div[@id='main']/p/a[@href='./guestbookv2.html']");
+    final static By TEAM_MEMBERS_URL = By.xpath("//div[@id='main']/p/a[@href='./team.html']");
+
+    final static By MAIN = By.xpath("//div[@id='main']");
+
+
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
+
     private WebElement getElement(By by, WebDriver driver) {
 
         return driver.findElement(by);
     }
+
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
 
         return driver.findElements(by);
     }
+
     private void click(By by, WebDriver driver) {
         getElement(by, driver).click();
     }
+
     private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
     }
+
     private int getListSize(By by, WebDriver driver) {
 
         return getListOfElements(by, driver).size();
     }
+
     private List<String> getElementsText(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
@@ -46,6 +62,16 @@ public class NstzyaTest extends BaseTest {
 
         return textList;
     }
+
+    private String getCurrentUrl(WebDriver driver) {
+
+        return driver.getCurrentUrl();
+    }
+
+    private void isDisplayed(By by, WebDriver driver) {
+        getElement(by, driver).isDisplayed();
+    }
+
 
     @Test
     public void testSearchForLanguageByNameField_HappyPath() {
@@ -68,6 +94,45 @@ public class NstzyaTest extends BaseTest {
 
 
     @Test
+    public void testAllLinksInsideMain_WhenClickingOnLinks_HappyPath() {
+
+        String expectedResult1 = "https://www.99-bottles-of-beer.net/info.html";
+        String expectedResult2 = "https://www.99-bottles-of-beer.net/lyrics.html";
+        String expectedResult3 = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+        String expectedResult4 = "https://www.99-bottles-of-beer.net/guestbookv2.html";
+        String expectedResult5 = "https://www.99-bottles-of-beer.net/team.html";
+
+        openBaseURL(getDriver());
+        isDisplayed(MAIN, getDriver());
+
+        click(HISTORIC_INFO_URL,getDriver());
+        String actualResult1 = getCurrentUrl(getDriver());
+        Assert.assertEquals(actualResult1, expectedResult1);
+        getDriver().navigate().back();
+
+        click(HERE_URL, getDriver());
+        String actualResult2 = getCurrentUrl(getDriver());
+        Assert.assertEquals(actualResult2, expectedResult2);
+        getDriver().navigate().back();
+
+        click(SUBMIT_YOUR_OWN_CODE_URL, getDriver());
+        String actualResult3 = getCurrentUrl(getDriver());
+        Assert.assertEquals(actualResult3, expectedResult3);
+        getDriver().navigate().back();
+
+        click(GUESTBOOK_URL, getDriver());
+        String actualResult4 = getCurrentUrl(getDriver());
+        Assert.assertEquals(actualResult4, expectedResult4);
+        getDriver().navigate().back();
+
+        click(TEAM_MEMBERS_URL, getDriver());
+        String actualResult5 = getCurrentUrl(getDriver());
+        Assert.assertEquals(actualResult5, expectedResult5);
+    }
+
+
+    @Ignore
+    @Test
     public void testHistoricInfoLink_WhenClickingOnLink_HappyPath() {
 
         String expectedResult = "https://www.99-bottles-of-beer.net/info.html";
@@ -86,6 +151,7 @@ public class NstzyaTest extends BaseTest {
     }
 
 
+    @Ignore
     @Test
     public void testHereLink_WhenClickingOnLink_HappyPath() {
 
@@ -106,6 +172,7 @@ public class NstzyaTest extends BaseTest {
     }
 
 
+    @Ignore
     @Test
     public void testSubmitYourOwnCodeLink_WhenClickingOnLink_HappyPath() {
 
@@ -124,6 +191,7 @@ public class NstzyaTest extends BaseTest {
     }
 
 
+    @Ignore
     @Test
     public void testGuestbookLink_WhenClickingOnLink_HappyPath() {
 
@@ -142,6 +210,7 @@ public class NstzyaTest extends BaseTest {
     }
 
 
+    @Ignore
     @Test
     public void testTeamMembersLink_WhenClickingOnLink_HappyPath() {
 
