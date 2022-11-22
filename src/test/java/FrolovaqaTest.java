@@ -33,6 +33,7 @@ public class FrolovaqaTest extends BaseTest {
         getElement(by, driver).sendKeys(text);
     }
     private int getListSize(By by, WebDriver driver) {
+
        return getListOfElements(by, driver).size();
     }
     private List<String> getElementsText(By by, WebDriver driver) {
@@ -42,6 +43,7 @@ public class FrolovaqaTest extends BaseTest {
         for (WebElement element : elementsList) {
            textList.add(element.getText().toLowerCase());
         }
+
         return textList;
     }
     @Test
