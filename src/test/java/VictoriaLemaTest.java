@@ -2,7 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
@@ -19,6 +18,15 @@ public class VictoriaLemaTest extends BaseTest {
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
     final static By TOP_LISTS_ON_THE_FOOTER_MENU = By.xpath("//div[@id='footer']/p/a[@href='/toplist.html']");
     final static By TOP_RATED_LANGUAGES_NAMES = By.xpath("//table[@id='category']/tbody/tr/td[2]");
+    final static By SUBMIT_NEW_LANGUAGE_REFERENCE = By.xpath(
+            "//div[@id='footer']/p/a[@href='/submitnewlanguage.html']");
+    final static By CATEGORY_FIELD = By.xpath("//form[@id='addlanguage']/p/select[@name='category']");
+    final static By CATEGORY_NAMES = By.xpath("//select[@name='category']");
+    final static By LANGUAGES_CATEGORIES_OPTIONS = By.xpath("//form[@id='addlanguage']/p/select[@name='category']/option");
+    final static By ESOTERIC_LANGUAGE_OPTION = By.xpath("//form[@id='addlanguage']/p/select[@name='category']/"
+            + "option[text()='esoteric language']");
+    final static By SUBMIT_LANGUAGE_BUTTON = By.xpath("//input[@type='submit'][@name='submitlanguage']");
+    final static By LANGUAGES_CATEGORIES_SELECTED = By.xpath("//select[@name='category']/option[@selected]");
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -61,6 +69,11 @@ public class VictoriaLemaTest extends BaseTest {
         }
 
         return textList;
+    }
+
+    private String getText (By by, WebDriver driver) {
+
+        return getElement(by,driver).getText();
     }
 
     @Test
@@ -107,7 +120,7 @@ public class VictoriaLemaTest extends BaseTest {
         Assert.assertTrue(topRatedLanguages.size()>=TOP_LANGUAGES_MINIMAL_QUANTITY);
     }
 
-    @Ignore
+
     @Test
     public void testLanguageCategories_WhenSubmittingANewLanguage() {
         final int expectedResultNumber = 3;
@@ -116,40 +129,20 @@ public class VictoriaLemaTest extends BaseTest {
         final String category3 = "assembly";
         final String expectedResultCategory = "esoteric language";
 
-        getDriver().get(BASE_URL);
-        WebElement submitNewLanguageReference = getDriver().findElement(
-                By.xpath("//div[@id='footer']/p/a[@href='/submitnewlanguage.html']")
-        );
-        submitNewLanguageReference.click();
-
-        WebElement categoryField = getDriver().findElement(
-                By.xpath("//form[@id='addlanguage']/p/select[@name='category']")
-        );
-        categoryField.click();
-
-        String categoryName = getDriver().findElement(By.xpath("//select[@name='category']")).getText();
-        List <WebElement> languagesCategories = getDriver().findElements(
-                By.xpath("//form[@id='addlanguage']/p/select[@name='category']/option")
-        );
+        openBaseURL(getDriver());
+        click(SUBMIT_NEW_LANGUAGE_REFERENCE,getDriver());
+        click(CATEGORY_FIELD,getDriver());
+        String categoryNames = getText(CATEGORY_NAMES,getDriver());
+        List<String> languagesCategories = getElementsText(LANGUAGES_CATEGORIES_OPTIONS,getDriver());
         Assert.assertTrue(languagesCategories.size()>0);
+        click(ESOTERIC_LANGUAGE_OPTION,getDriver());
+        click(SUBMIT_LANGUAGE_BUTTON,getDriver());
 
-        WebElement esotericLanguage = getDriver().findElement(
-                By.xpath("//form[@id='addlanguage']/p/select[@name='category']/"
-                        + "option[text()='esoteric language']")
-        );
-        esotericLanguage.click();
-
-        WebElement submitLanguageButton = getDriver().findElement(
-                By.xpath("//input[@type='submit'][@name='submitlanguage']")
-        );
-        submitLanguageButton.click();
-
-        String actualResultCategory = getDriver().findElement(
-                By.xpath("//select[@name='category']/option[@selected]")).getText();
+        String actualResultCategory = getText(LANGUAGES_CATEGORIES_SELECTED,getDriver());
 
         Assert.assertEquals(languagesCategories.size(),expectedResultNumber);
-        Assert.assertTrue(categoryName.contains(category1)&& categoryName.contains(category2)
-                &&categoryName.contains(category3));
+        Assert.assertTrue(categoryNames.contains(category1)&& categoryNames.contains(category2)
+                &&categoryNames.contains(category3));
         Assert.assertEquals(actualResultCategory,expectedResultCategory);
     }
 }
