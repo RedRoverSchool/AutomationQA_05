@@ -20,6 +20,9 @@ public class AnzhelikaBaaTest extends BaseTest {
     final static By IMAGE_1 = By.xpath("//div[@id='main']//img[@alt='Picture of Gregor Scheithauer']");
     final static By IMAGE_2 = By.xpath("//div[@id='main']//img[@alt='Picture of Stefan Scheler']");
     final static By IMAGES_LIST = By.xpath("//img");
+    final static By BROWSE_LANGUAGES_MENU = By.xpath("//ul[@id='menu']/li//a[@href='/abc.html']");
+    final static By LETTER_A_SUBMENU = By.xpath("//ul[@id='submenu']/li//a[contains(text(), 'A')]");
+    final static By H_2_TAG = By.xpath("//div[@id='main']/h2[contains(text(), 'Category A')]");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -29,8 +32,8 @@ public class AnzhelikaBaaTest extends BaseTest {
         getElement(by, driver).click();
     }
 
-    private void text(By by, WebDriver driver) {
-        getElement(by, driver).getText();
+    private String text(By by, WebDriver driver) {
+        return getElement(by, driver).getText();
     }
 
     private void isDisplayed(By by, WebDriver driver) {
@@ -121,8 +124,20 @@ public class AnzhelikaBaaTest extends BaseTest {
 
     Assert.assertEquals(actualResult, expectedResult);
 }
+    @Test
+    public void testH2TagText_WhenSearchingLanguagesStartWithLetterA_HappyPath() {
+        final String expectedResult = "Category A";
 
+        openBaseURL(getDriver());
 
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        getElement(LETTER_A_SUBMENU, getDriver());
+        isDisplayed(H_2_TAG, getDriver());
+
+        String actualResult = text(H_2_TAG, getDriver());
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
 
 
