@@ -16,13 +16,18 @@ public class MariaKuzhTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
-
+    final static By BUTTON_TOP_LISTS = By.xpath("//div[@id = 'navigation']//a[@href = '/toplist.html']");
     private void openBaseUrl(WebDriver driver) {
         driver.get(BASE_URL);
     }
     private WebElement getElement(By by, WebDriver driver) {
 
         return driver.findElement(by);
+    }
+
+    private String getElementText(By by, WebDriver driver) {
+
+        return getElement(by, driver).getText();
     }
 
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
@@ -75,16 +80,11 @@ public class MariaKuzhTest extends BaseTest {
 
     @Test
     public void testVerifyTextTopListsToTheStartPage() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         final String expectedResult = "TOP LISTS";
 
-        getDriver().get(BASE_URL);
+        openBaseUrl(getDriver());
+        String actualResult = getElementText(BUTTON_TOP_LISTS, getDriver());
 
-        WebElement buttonTopLists = getDriver().findElement(
-                By.xpath("//div[@id = 'navigation']//a[@href = '/toplist.html']")
-        );
-
-        String actualResult = buttonTopLists.getText();
         Assert.assertEquals(actualResult,expectedResult);
     }
 
