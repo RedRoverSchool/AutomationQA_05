@@ -11,9 +11,13 @@ import java.util.List;
 public class NataliiaOliverTest extends BaseTest {
 
     final static String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static String CREATORS_BASE_WEBSITE_LINK = "//div[@id='main']/p/a";
+
     final static By START_MENU = By.xpath("//div[@id='navigation']//a[@href='/']");
     final static By SUBMENU_TEAM = By.xpath("//div[@id='navigation']//a[@href='team.html']");
-    final static By OLIVER_SCHADE_WEBSITE_LINK = By.xpath("//div[@id='main']/p/a[@href='http://www.ls-la.net/']");
+    final static By OLIVER_SCHADE_WEBSITE_LINK = By.xpath(CREATORS_BASE_WEBSITE_LINK + "[@href='http://www.ls-la.net/']");
+    final static By GREGOR_SCHEITHAUER_WEBSITE_LINK = By.xpath(CREATORS_BASE_WEBSITE_LINK + "[@href='http://www.e-taste.org']");
+    final static By STEFAN_SCHELER_WEBSITE_LINK = By.xpath(CREATORS_BASE_WEBSITE_LINK + "[@href='http://sts.synflood.de/']");
 
     private void openBaseURL() {
 
@@ -76,6 +80,26 @@ public class NataliiaOliverTest extends BaseTest {
     private void clickOliverSchadeWebsiteLink() {
 
         getOliverSchadeWebsiteLink().click();
+    }
+
+    private WebElement getGregorScheithauerWebsiteLink() {
+
+        return getDriver().findElement(GREGOR_SCHEITHAUER_WEBSITE_LINK);
+    }
+
+    private void clickGregorScheithauerWebsiteLink() {
+
+        getGregorScheithauerWebsiteLink().click();
+    }
+
+    private WebElement getStefanSchelerWebsiteLink() {
+
+        return getDriver().findElement(STEFAN_SCHELER_WEBSITE_LINK);
+    }
+
+    private void clickStefanSchelerWebsiteLink() {
+
+        getStefanSchelerWebsiteLink().click();
     }
 
     @Test
@@ -147,5 +171,29 @@ public class NataliiaOliverTest extends BaseTest {
         clickOliverSchadeWebsiteLink();
 
         Assert.assertEquals(getExternalURL(), expectedLsLaNetLink_OliverShade);
+    }
+
+    @Test
+    public void testClickabilityETasteOrgLink_GregorScheithauer() {
+        String expectedETasteOrgLink_GregorScheithauer = "http://www.e-taste.org/";
+
+        openBaseURL();
+        clickStartMenu();
+        clickSubmenuTeam();
+        clickGregorScheithauerWebsiteLink();
+
+        Assert.assertEquals(getExternalURL(), expectedETasteOrgLink_GregorScheithauer);
+    }
+
+    @Test
+    public void testClickabilityStsSynfloodDe_StefanScheler() {
+        String expectedStsSynfloodDe_StefanScheler = "http://sts.synflood.de/";
+
+        openBaseURL();
+        clickStartMenu();
+        clickSubmenuTeam();
+        clickStefanSchelerWebsiteLink();
+
+        Assert.assertEquals(getExternalURL(), expectedStsSynfloodDe_StefanScheler);
     }
 }

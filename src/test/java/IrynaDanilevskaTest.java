@@ -5,12 +5,26 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IrynaDanilevskaTest extends BaseTest {
 
-    private final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-    final By BROWSE_LANGUAGE_MENU = By.xpath("//div[@id='navigation']/ul//a[@href='/abc.html']");
+    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static By BROWSE_LANGUAGE_MENU = By.xpath("//div[@id='navigation']/ul//a[@href='/abc.html']");
+    final static By SEARCH_LANGUAGE_MENU = By.xpath("//ul[@id='menu']/li/a[@href='/search.html']");
+    final static By SEARCH_FIELD = By.name("search");
+    final static By GO_BUTTON = By.name("submitsearch");
+    final static By LIST_OF_LANGUAGES = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+
+    private void openBaseURL(WebDriver driver) {
+        driver.get(BASE_URL);
+    }
+
+    private WebElement getElement(By by, WebDriver driver) {
+
+        return driver.findElement(by);
+    }
 
     private void clickOnElement(By by, WebDriver driver) {
         driver.findElement(by).click();
@@ -22,6 +36,11 @@ public class IrynaDanilevskaTest extends BaseTest {
         return driver.findElement(
                 By.xpath(String.format("//ul[@id='submenu']//a[@href='%s.html']", letter)));
     }
+    private void clickAndEnterInputIntoField(By by, WebDriver driver, String text) {
+        WebElement searchInput = driver.findElement(by);
+        searchInput.click();
+        searchInput.sendKeys(text);
+    }
     private WebElement getCategoryByLetter(String letter, WebDriver driver) {
         return driver.findElement(
                 By.xpath(String.format("//h2[normalize-space()='Category %s']", letter.toUpperCase())));
@@ -30,37 +49,43 @@ public class IrynaDanilevskaTest extends BaseTest {
         return driver.findElement(
                 By.xpath(String.format("//strong[normalize-space()='%s']", letter.toUpperCase())));
     }
-    private List<WebElement> getListOfLanguages(WebDriver driver) {
-        return driver.findElements(By.xpath("//table[@id='category']/tbody/tr/td[1]/a"));
+    private List<WebElement> getListOfElements(By by, WebDriver driver) {
+
+        return driver.findElements(by);
+    }
+
+    private int getListSize(By by, WebDriver driver) {
+
+        return getListOfElements(by, driver).size();
+    }
+
+
+    private List<String> getElementsText(By by, WebDriver driver) {
+        List<WebElement> elementsList = getListOfElements(by, driver);
+        List<String> textList = new ArrayList<>();
+        for (WebElement element : elementsList) {
+            textList.add(element.getText().toLowerCase());
+        }
+
+        return textList;
     }
 
 
     @Test
     public void testSearchLanguageField_HappyPath() {
-        final String LANGUAGE_NAME = "python";
+        String selectedLanguageName = "python";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
+        clickOnElement(SEARCH_LANGUAGE_MENU, getDriver());
+        clickAndEnterInputIntoField(SEARCH_FIELD ,getDriver(), selectedLanguageName);
+        clickOnElement(GO_BUTTON, getDriver());
 
-        WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id='menu']/li/a[@href='/search.html']")
-        );
-        searchLanguagesMenu.click();
+        List<String> languageNames = getElementsText(LIST_OF_LANGUAGES, getDriver());
 
-        WebElement searchForField = getDriver().findElement(By.name("search"));
-        searchForField.click();
-        searchForField.sendKeys(LANGUAGE_NAME);
+        Assert.assertTrue(languageNames.size() > 0);
 
-        WebElement goButton = getDriver().findElement(By.name("submitsearch"));
-        goButton.click();
-
-        List<WebElement> languagesNamesList = getDriver().findElements(
-                By.xpath("//table[@id='category']/tbody/tr/td[1]/a")
-        );
-
-        Assert.assertTrue(languagesNamesList.size() > 0);
-
-        for (int i = 0; i < languagesNamesList.size(); i++) {
-            Assert.assertTrue(languagesNamesList.get(i).getText().toLowerCase().contains(LANGUAGE_NAME));
+        for (String languageName : languageNames) {
+            Assert.assertTrue(languageName.contains(selectedLanguageName));
         }
     }
 
@@ -79,7 +104,7 @@ public class IrynaDanilevskaTest extends BaseTest {
         WebElement textWithSelectedLetter = getTextWithSelectedLetter(LETTER, getDriver());
         Assert.assertTrue(textWithSelectedLetter.getText().toLowerCase().contains(LETTER));
 
-        List<WebElement> languageListByLetter = getListOfLanguages(getDriver());
+        List<WebElement> languageListByLetter = getListOfElements(LIST_OF_LANGUAGES, getDriver());
 
         Assert.assertFalse(languageListByLetter.isEmpty());
 
@@ -119,6 +144,4 @@ public class IrynaDanilevskaTest extends BaseTest {
         }
     }
 }
-
-
 
