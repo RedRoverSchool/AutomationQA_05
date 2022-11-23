@@ -93,14 +93,17 @@ public class YulyaNyuTest extends BaseTest {
 
     @Test
     public void testVerifyPageURLAndPageTitle(){
-        final String EXPECTED_HEADER= "Sign Guestbook";
-        final String EXPECTED_URL = "https://www.99-bottles-of-beer.net/signv2.html";
+        final String expectedResultHeader= "Sign Guestbook";
+        final String expectedResultURL = "https://www.99-bottles-of-beer.net/signv2.html";
 
         openBaseURL(getDriver());
         click(NAVIGATION_MENU_GUESTBOOK,getDriver());
         click(SUBMENU_SIGN_GUESTBOOK,getDriver());
 
-        String actualExpectedHeader = getText(NAVIGATION_MENU_GUESTBOOK,getDriver());
-        String actualExpectedURL = getCurrentURL(SUBMENU_SIGN_GUESTBOOK,getDriver());
+        String actualResultHeader = getText(SUBMENU_SIGN_GUESTBOOK,getDriver());
+        String actualResultURL = getCurrentURL(SUBMENU_SIGN_GUESTBOOK,getDriver());
+
+        Assert.assertEquals(actualResultHeader, expectedResultHeader);
+        Assert.assertEquals(actualResultURL, expectedResultURL);
     }
 }
