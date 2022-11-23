@@ -13,6 +13,7 @@ public class SafOlgaTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+    private final By FOOTER_BAR = By.id("footer");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -62,5 +63,17 @@ public class SafOlgaTest extends BaseTest {
         for (String languageName : languageNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
+    }
+
+    @Test
+    public void testFooterMenuBarMainPage() {
+
+        String expectedResult = "Start | Browse Languages | Search Languages | Top Lists | Guestbook | Submit new Language";
+
+        openBaseURL(getDriver());
+
+        WebElement actualResult = getDriver().findElement(FOOTER_BAR);
+
+        Assert.assertEquals(actualResult.getText(), expectedResult);
     }
 }
