@@ -53,6 +53,44 @@ public class AnastasiaYYTest extends BaseTest {
         return list.size();
     }
 
+    private List<String> getElementsText(By by, WebDriver driver) {
+        List<WebElement> elementsList = getListOfElements(by, driver);
+        List<String> textList = new ArrayList<>();
+        for (WebElement element: elementsList) {
+            textList.add(element.getText().toLowerCase());
+        }
+
+        return textList;
+    }
+
+    private WebElement getElement(By by, WebDriver driver) {
+
+        return driver.findElement(by);
+    }
+
+    private List<WebElement> getListOfElements(By by, WebDriver driver) {
+
+        return driver.findElements(by);
+    }
+
+    private void click(By by, WebDriver driver) {
+        getElement(by, driver).click();
+    }
+
+    private void input(String text, By by, WebDriver driver) {
+        getElement(by, driver).sendKeys(text);
+    }
+
+    private int getListSize(By by, WebDriver driver) {
+
+        return getListOfElements(by, driver).size();
+    }
+
+    private int getListSize(List<String> list) {
+
+        return list.size();
+    }
+
     private List<String> getElementsTextLowerCase(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
