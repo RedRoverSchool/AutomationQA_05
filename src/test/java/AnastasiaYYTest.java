@@ -16,6 +16,7 @@ public class AnastasiaYYTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
+    final static By H3_HEADER_NAMES = By.xpath("//div[@id='main']/h3");
     final static By START_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Start']");
     final static By TOPLISTS_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Top Lists']");
     final static By TEAM_SUBMENU = By.cssSelector("#submenu a[href = 'team.html']");
@@ -52,7 +53,7 @@ public class AnastasiaYYTest extends BaseTest {
         return list.size();
     }
 
-    private List<String> getElementsText(By by, WebDriver driver) {
+    private List<String> getElementsTextLowerCase(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
         for (WebElement element: elementsList) {
@@ -62,13 +63,14 @@ public class AnastasiaYYTest extends BaseTest {
         return textList;
     }
 
-    private List<String> WebElementToString(List<WebElement> elementList) {
-        List<String> stringList = new ArrayList<>();
-        for (WebElement element : elementList) {
-            stringList.add(element.getText());
+    private List<String> getElementsText(By by, WebDriver driver) {
+        List<WebElement> elementsList = getListOfElements(by, driver);
+        List<String> textList = new ArrayList<>();
+        for (WebElement element: elementsList) {
+            textList.add(element.getText());
         }
 
-        return stringList;
+        return textList;
     }
 
     @Test
@@ -82,7 +84,7 @@ public class AnastasiaYYTest extends BaseTest {
         input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
         click(GO_BUTTON, getDriver());
 
-        List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
+        List<String> languageNames = getElementsTextLowerCase(LANGUAGES_NAMES_LIST, getDriver());
 
         Assert.assertTrue(languageNames.size() > 0);
 
@@ -97,15 +99,10 @@ public class AnastasiaYYTest extends BaseTest {
                 Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));
 
         openBaseURL(getDriver());
+        click(START_MENU, getDriver());
+        click(TEAM_SUBMENU, getDriver());
 
-        WebElement startMenu = getDriver().findElement(START_MENU);
-        startMenu.click();
-
-        WebElement teamSubMenu = getDriver().findElement(TEAM_SUBMENU);
-        teamSubMenu.click();
-
-        List<WebElement> h3HeaderNames = getDriver().findElements(By.xpath("//div[@id='main']/h3"));
-        List<String> actualH3headerNames = WebElementToString(h3HeaderNames);
+        List<String> actualH3headerNames = getElementsText(H3_HEADER_NAMES, getDriver());
 
         Assert.assertEquals(actualH3headerNames, expectedH3headerNames);
     }
@@ -115,7 +112,7 @@ public class AnastasiaYYTest extends BaseTest {
 
         final String expectedResult = "Top Rated";
 
-        openBaseURL();
+        openBaseURL(getDriver());
 
         WebElement topListsMenu = getDriver().findElement(TOPLISTS_MENU);
         topListsMenu.click();
