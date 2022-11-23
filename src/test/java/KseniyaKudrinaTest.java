@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,11 @@ public class KseniyaKudrinaTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id ='category']/tbody/tr/td[1]/a");
+    final static By SEARCH_LETTER_H_SUB_MENU = By.xpath("//ul[@id = 'submenu']//li/a[@href = 'h.html']");
+    final static By SEARCH_LANGUAGE_HERA_ON_TABLE = By.xpath("//table[@id = 'category']/tbody/tr/td/a[contains(text(),'HERA')] ");
+    final static By ADD_COMMENT_LINK = By.linkText("Write Comment");
+    final static By ADD_COMMENT_ON_THE_PAGE_FIELD = By.xpath("//div[@id  ='addcomments']/h2[text() = 'Add Comment']");
+    final static By SEARCH_LANGUAGES_ABC_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/abc.html']    ");
 
     private void openBaseURL(WebDriver driver){
         driver.get(BASE_URL);
@@ -50,6 +56,9 @@ public class KseniyaKudrinaTest extends BaseTest {
         }
         return textList;
     }
+    private String getTextByElement( By by, WebDriver driver){
+        return getElement(by, driver).getText();
+    }
 
     @Test
     public void testSearchForLanguageByName_HappyPath() {
@@ -71,34 +80,18 @@ public class KseniyaKudrinaTest extends BaseTest {
     }
     @Test
     public void testConfirmThatAddCommentOnPage_HappyPath(){
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         final String CONFIRM_COMMENT = "Add Comment";
 
-        getDriver().get(BASE_URL);
-        WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href = '/abc.html']    ")
-        );
-        searchLanguagesMenu.click();
+        openBaseURL(getDriver());
+        click(SEARCH_LANGUAGES_ABC_MENU, getDriver());
+        click(SEARCH_LETTER_H_SUB_MENU, getDriver());
+        click(SEARCH_LANGUAGE_HERA_ON_TABLE, getDriver());
+        click(ADD_COMMENT_LINK,getDriver());
+        getElement(ADD_COMMENT_ON_THE_PAGE_FIELD, getDriver()).getText();
 
-        WebElement searchLetterHSubMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'submenu']//li/a[@href = 'h.html']")
-        );
-        searchLetterHSubMenu.click();
-
-        WebElement searchLanguageHeraOnTable = getDriver().findElement(
-                By.xpath("//table[@id = 'category']/tbody/tr/td/a[contains(text(),'HERA')] ")
-        );
-        searchLanguageHeraOnTable.click();
-
-        WebElement addCommentLink = getDriver().findElement(
-                By.linkText("Write Comment")
-        );
-        addCommentLink.click();
-
-        WebElement addCommentOnThePageField = getDriver().findElement(
-                By.xpath("//div[@id  ='addcomments']/h2[text() = 'Add Comment']")
-        );
-        Assert.assertEquals(addCommentOnThePageField.getText(),CONFIRM_COMMENT);
+        Assert.assertEquals(
+                getTextByElement(ADD_COMMENT_ON_THE_PAGE_FIELD,getDriver()),
+                CONFIRM_COMMENT);
     }
     @Test
     public void testConfirmNewTitleOfPagePiet_HappyPath() {
