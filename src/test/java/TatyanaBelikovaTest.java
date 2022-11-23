@@ -17,6 +17,8 @@ public class TatyanaBelikovaTest extends BaseTest {
         final static By GO_BUTTON = By.name("submitsearch");
         final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
 
+        final static By SUB_MENU_IMPRESSUM = By.xpath("//div[@id='navigation']/ul//li/a[@href='impressum.html']");
+
         private void openBaseURL(WebDriver driver) {
             driver.get(BASE_URL);
         }
@@ -24,6 +26,10 @@ public class TatyanaBelikovaTest extends BaseTest {
         private WebElement getElement(By by, WebDriver driver) {
 
             return driver.findElement(by);
+        }
+        private String getText(By by, WebDriver driver) {
+
+            return driver.findElement(by).getText();
         }
         private List<WebElement> getListOfElements(By by, WebDriver driver) {
 
@@ -49,7 +55,6 @@ public class TatyanaBelikovaTest extends BaseTest {
 
             return textList;
         }
-    String SUB_MENU_OPTION = "";
 
     @Test
     public void testSearchForLanguageFieldByName_HappyPath() {
@@ -72,14 +77,10 @@ public class TatyanaBelikovaTest extends BaseTest {
     @Test
     public void testSubmenuImpressumLabelText_Privacy() {
 
-        SUB_MENU_OPTION = "impressum.html";
         final String expectedResult = "Privacy";
 
       openBaseURL(getDriver());
-
-        WebElement subMenuImpressum = getDriver().findElement(
-                By.xpath("//div[@id='navigation']/ul//li/a[@href='" +SUB_MENU_OPTION+ "']"));
-
-        Assert.assertEquals(subMenuImpressum.getText(), expectedResult);
+      //  String subMenuImpressum = getText(SUB_MENU_IMPRESSUM, getDriver());
+        Assert.assertEquals(getText(SUB_MENU_IMPRESSUM, getDriver()), expectedResult);
          }
     }
