@@ -10,7 +10,6 @@ import java.util.List;
 public class TatyanaBelikovaTest extends BaseTest {
 
         final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-
         final String LANGUAGE_NAME = "python";
         final static By SEARCH_LANGUAGES_MENU =  By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
         final static By SEARCH_FOR_FIELD = By.name("search");
@@ -58,7 +57,6 @@ public class TatyanaBelikovaTest extends BaseTest {
 
     @Test
     public void testSearchForLanguageFieldByName_HappyPath() {
-        final String LANGUAGE_NAME = "python";
 
             openBaseURL(getDriver());
             click(SEARCH_LANGUAGES_MENU, getDriver());
