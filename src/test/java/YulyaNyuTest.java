@@ -17,6 +17,8 @@ public class YulyaNyuTest extends BaseTest {
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
     final static By SUB_MENU_TEAM = By.xpath("//a[@href = 'team.html']");
     final static By H2_TEAM_PAGE_HEADER = By.xpath("//div[@id ='main']/h2");
+    final static By NAVIGATION_MENU_GUESTBOOK = By.xpath("//li//a[@href ='/guestbookv2.html']");
+    final static By SUBMENU_SIGN_GUESTBOOK = By.xpath("//li//a[@href = './signv2.html']");
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -34,6 +36,11 @@ public class YulyaNyuTest extends BaseTest {
     private String getText(By by, WebDriver driver) {
 
         return driver.findElement(by).getText();
+    }
+    private String getCurrentURL(By by, WebDriver driver) {
+        getElement(by,driver).click();
+
+        return driver.getCurrentUrl();
     }
     private void input (String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
@@ -82,5 +89,21 @@ public class YulyaNyuTest extends BaseTest {
         String actualResult = getText(H2_TEAM_PAGE_HEADER,getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testVerifyPageURLAndPageTitle(){
+        final String expectedResultHeader= "Sign Guestbook";
+        final String expectedResultURL = "https://www.99-bottles-of-beer.net/signv2.html";
+
+        openBaseURL(getDriver());
+        click(NAVIGATION_MENU_GUESTBOOK,getDriver());
+        click(SUBMENU_SIGN_GUESTBOOK,getDriver());
+
+        String actualResultHeader = getText(SUBMENU_SIGN_GUESTBOOK,getDriver());
+        String actualResultURL = getCurrentURL(SUBMENU_SIGN_GUESTBOOK,getDriver());
+
+        Assert.assertEquals(actualResultHeader, expectedResultHeader);
+        Assert.assertEquals(actualResultURL, expectedResultURL);
     }
 }
