@@ -16,8 +16,9 @@ public class AnastasiaYYTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
+    final static By H3_HEADER_NAMES = By.xpath("//div[@id='main']/h3");
     final static By START_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Start']");
-    final static By TOPLISTS_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Top Lists']");
+    final static By TOP_LISTS_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Top Lists']");
     final static By TEAM_SUBMENU = By.cssSelector("#submenu a[href = 'team.html']");
 
     private void openBaseURL(WebDriver driver) {
@@ -97,15 +98,10 @@ public class AnastasiaYYTest extends BaseTest {
                 Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));
 
         openBaseURL(getDriver());
+        click(START_MENU, getDriver());
+        click(TEAM_SUBMENU, getDriver());
 
-        WebElement startMenu = getDriver().findElement(START_MENU);
-        startMenu.click();
-
-        WebElement teamSubMenu = getDriver().findElement(TEAM_SUBMENU);
-        teamSubMenu.click();
-
-        List<WebElement> h3HeaderNames = getDriver().findElements(By.xpath("//div[@id='main']/h3"));
-        List<String> actualH3headerNames = WebElementToString(h3HeaderNames);
+        List<String> actualH3headerNames = getElementsText(H3_HEADER_NAMES, getDriver());
 
         Assert.assertEquals(actualH3headerNames, expectedH3headerNames);
     }
@@ -117,7 +113,7 @@ public class AnastasiaYYTest extends BaseTest {
 
         openBaseURL(getDriver());
 
-        WebElement topListsMenu = getDriver().findElement(TOPLISTS_MENU);
+        WebElement topListsMenu = getDriver().findElement(TOP_LISTS_MENU);
         topListsMenu.click();
 
         WebElement h2HeaderTopLists = getDriver().findElement(By.xpath("//div[@id = 'main']/h2"));
