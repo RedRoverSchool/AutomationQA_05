@@ -20,6 +20,7 @@ public class AnastasiaYYTest extends BaseTest {
     final static By START_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Start']");
     final static By TOPLISTS_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Top Lists']");
     final static By TEAM_SUBMENU = By.cssSelector("#submenu a[href = 'team.html']");
+    final static By H2_HEADER_TOP_LISTS = By.xpath("//div[@id = 'main']/h2");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -41,6 +42,11 @@ public class AnastasiaYYTest extends BaseTest {
 
     private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
+    }
+
+    private String getText(By by, WebDriver driver) {
+
+        return getElement(by, driver).getText();
     }
 
     private int getListSize(By by, WebDriver driver) {
@@ -113,12 +119,9 @@ public class AnastasiaYYTest extends BaseTest {
         final String expectedResult = "Top Rated";
 
         openBaseURL(getDriver());
+        click(TOPLISTS_MENU, getDriver());
 
-        WebElement topListsMenu = getDriver().findElement(TOPLISTS_MENU);
-        topListsMenu.click();
-
-        WebElement h2HeaderTopLists = getDriver().findElement(By.xpath("//div[@id = 'main']/h2"));
-        String actualResult = h2HeaderTopLists.getText();
+        String actualResult = getText(H2_HEADER_TOP_LISTS, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
     }
