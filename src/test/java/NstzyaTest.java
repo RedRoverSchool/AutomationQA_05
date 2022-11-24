@@ -23,6 +23,10 @@ public class NstzyaTest extends BaseTest {
 
     final static By MAIN = By.xpath("//div[@id='main']");
 
+    final static By BROWSE_LANGUAGES_MENU = By.xpath("//div[@id='navigation']/ul/li/a[@href='/abc.html']");
+    final static By B_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='b.html']");
+    final static By HEADER_H2_ON_PAGE_B_SUBMENU = By.xpath("//div[@id='main']/h2[contains(text(), 'Category B')]");
+
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -69,6 +73,11 @@ public class NstzyaTest extends BaseTest {
 
     private void isDisplayed(By by, WebDriver driver) {
         getElement(by, driver).isDisplayed();
+    }
+
+    private String getTextOfWebElement(By by, WebDriver driver) {
+
+        return getElement(by, driver).getText();
     }
 
 
@@ -127,5 +136,20 @@ public class NstzyaTest extends BaseTest {
         click(TEAM_MEMBERS_URL, getDriver());
         String actualResult5 = getCurrentUrl(getDriver());
         Assert.assertEquals(actualResult5, expectedResult5);
+    }
+
+
+    @Test
+    public void testHeaderH2Text_WhenOpenBrowseLanguageMenu_PageBSubmenu_HappyPath() {
+
+        String expectedResult = "Category B";
+
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(B_SUBMENU, getDriver());
+
+        String actualResult = getTextOfWebElement(HEADER_H2_ON_PAGE_B_SUBMENU, getDriver());
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
