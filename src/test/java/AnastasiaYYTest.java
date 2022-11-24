@@ -21,6 +21,9 @@ public class AnastasiaYYTest extends BaseTest {
     final static By TOPLISTS_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Top Lists']");
     final static By TEAM_SUBMENU = By.cssSelector("#submenu a[href = 'team.html']");
     final static By H2_HEADER_TOP_LISTS = By.xpath("//div[@id = 'main']/h2");
+    final static By BROWSE_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']//a[text() = 'Browse Languages']");
+    final static By Y_SUBMENU = By.xpath("//ul[@id = 'submenu']//a[text() = 'Y']");
+    final static By Y_LANGUAGES_LIST = By.xpath("//table[@id = 'category']//a[starts-with(text(), 'Y')]");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -124,5 +127,22 @@ public class AnastasiaYYTest extends BaseTest {
         String actualResult = getText(H2_HEADER_TOP_LISTS, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testElementsStartWithYAreDisplayed_WhenClickingOnY() {
+        final String letterY = "y";
+
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(Y_SUBMENU, getDriver());
+
+        List<String> letterYLanguages = getElementsTextLowerCase(Y_LANGUAGES_LIST, getDriver());
+
+        Assert.assertTrue(letterYLanguages.size() > 0);
+
+        for (String languageName: letterYLanguages) {
+            Assert.assertTrue(languageName.contains(letterY));
+        }
     }
 }
