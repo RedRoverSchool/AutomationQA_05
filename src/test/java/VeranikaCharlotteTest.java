@@ -51,7 +51,7 @@ public class VeranikaCharlotteTest extends BaseTest{
                 return textList;
         }
         @Test
-        public void testSearchLanguageField_HappyPath(){
+        public void testSearchForLanguageField_HappyPath(){
         final String LANGUAGE_NAME= "python";
 
         openBaseURL(getDriver());
