@@ -15,6 +15,9 @@ public class ElenaKudTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
+    final static By SUBMIT_NEW_LANGUAGE_MENU =
+            By.xpath("//ul[@id='menu']/li//a[@href='/submitnewlanguage.html']");
+    final static By H2_Header_SUBMIT_NEW_LANGUAGE = By.xpath("//div[@id='main']/h2");
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -37,7 +40,6 @@ public class ElenaKudTest extends BaseTest {
 
         return getListOfElements(by,driver).size();
     }
-
     private List<String> getElementsText(By by, WebDriver driver) {
         List<WebElement> elementsList = getListOfElements(by, driver);
         List<String> textList = new ArrayList<>();
@@ -47,6 +49,10 @@ public class ElenaKudTest extends BaseTest {
         }
 
         return textList;
+    }
+    private String getText(By by,WebDriver driver) {
+
+        return driver.findElement(by).getText();
     }
 
     @Test
@@ -66,5 +72,17 @@ public class ElenaKudTest extends BaseTest {
         for (String languageName : languageNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
+    }
+
+    @Test
+    public void testVerifyH2HeaderTest_SubmitNewLanguage_HappyPath() {
+        final String expectedResult = "Submit New Language";
+
+        openBaseURL(getDriver());
+
+        click(SUBMIT_NEW_LANGUAGE_MENU,getDriver());
+        String actualResult = getText(H2_Header_SUBMIT_NEW_LANGUAGE, getDriver());
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
