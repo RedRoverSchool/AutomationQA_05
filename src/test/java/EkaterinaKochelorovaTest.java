@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,22 +9,34 @@ import java.util.List;
 
 public class EkaterinaKochelorovaTest extends BaseTest {
 
-    static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static By SUBMENU_LYRICS_LINK = By.xpath("//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']");
+    final static By H2_TAG_TEXT = By.xpath("//div[@id = 'main']/h2");
+
+    private void openBaseUrl(WebDriver driver) {
+        driver.get(BASE_URL);
+    }
+
+    private WebElement getElement(By by, WebDriver driver) {
+        return driver.findElement(by);
+    }
+
+    private void click(By by, WebDriver driver) {
+        getElement(by, driver).click();
+    }
+
+    private String getElementText(By by, WebDriver driver) {
+        return getElement(by, driver).getText();
+    }
 
     @Test
     public void testH2TagText_WhenChooseSubmenuLyrics() {
         String expectedResult = "Lyrics of the song 99 Bottles of Beer";
 
-        getDriver().get(BASE_URL);
+        openBaseUrl(getDriver());
+        click(SUBMENU_LYRICS_LINK, getDriver());
 
-        WebElement submenuLyricsLink = getDriver().findElement(
-                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']")
-        );
-        submenuLyricsLink.click();
-
-        WebElement h2TagText = getDriver().findElement(By.xpath("//div[@id = 'main']/h2"));
-
-        String actualResult = h2TagText.getText();
+        String actualResult = getElementText(H2_TAG_TEXT, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
     }
