@@ -8,8 +8,6 @@ import runner.BaseTest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-
 public class Katy1313Test extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
 
@@ -19,6 +17,8 @@ public class Katy1313Test extends BaseTest {
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
     final static By BROWSE_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']");
     final static By H_2_CATEGORY = By.xpath("//div[@id ='main']/h2[contains(text(), 'A')]");
+    final static By CATEGORY_LETTER = By.xpath("//ul[@id='submenu']//a[@href='p.html']");
+    final static By LANGUAGES_NAMES_LIST_DISPLAYED = By.xpath("//table[@id='category']/tbody//a");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -30,6 +30,7 @@ public class Katy1313Test extends BaseTest {
     }
 
     private List<WebElement> getListOfElements (By by, WebDriver driver) {
+
         return driver.findElements(by);
     }
 
@@ -62,7 +63,20 @@ public class Katy1313Test extends BaseTest {
         return textList;
     }
 
+    private void sortElementsText(By by, WebDriver driver) {
+        List<WebElement> elementsList = getListOfElements(by, driver);
+        List<String> textList = new ArrayList<>();
+        List<String> textList1 = new ArrayList<>();
+
+        for (WebElement element : elementsList) {
+            textList.add(element.getText().toLowerCase());
+            textList1.add(element.getText().toLowerCase());
+        }
+        Collections.sort(textList1);
+    }
+
     private String getElementText(By by, WebDriver driver) {
+
        return getElement(by, driver).getText();
     }
 
@@ -98,29 +112,17 @@ public class Katy1313Test extends BaseTest {
 
    @Test
     public void testBrowseLanguagesLanguagesSortedAscending_HappyPath()  {
-       final String BASE_URL = "https://www.99-bottles-of-beer.net/";
 
-       getDriver().get(BASE_URL);
-       WebElement browseLanguagesMenu = getDriver().findElement(By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']"));
-       browseLanguagesMenu.click();
-
-       WebElement categoryLetter = getDriver().findElement(By.xpath("//ul[@id='submenu']//a[@href='p.html']"));
-       categoryLetter.click();
+       openBaseURL(getDriver());
+       click(BROWSE_LANGUAGES_MENU, getDriver());
+       click(CATEGORY_LETTER, getDriver());
 
        List<String> displayed = new ArrayList<String>();
        List<String> sorted = new ArrayList<String>();
-       List<WebElement> languagesNamesListDisplayed = getDriver().findElements(By.xpath("//table[@id='category']/tbody//a"));
 
-       Assert.assertTrue(languagesNamesListDisplayed.size() > 0);
+       Assert.assertTrue(getListSize(LANGUAGES_NAMES_LIST_DISPLAYED, getDriver()) > 0);
 
-       for (int i = 0; i < languagesNamesListDisplayed.size(); i++) {
-          String listOfElements;
-          listOfElements = languagesNamesListDisplayed.get(i).getText().toLowerCase();
-          displayed.add(listOfElements);
-          sorted.add(listOfElements);
-       }
-
-       Collections.sort(sorted);
+       sortElementsText(LANGUAGES_NAMES_LIST_DISPLAYED,getDriver());
        Assert.assertEquals(displayed,sorted);
    }
 
