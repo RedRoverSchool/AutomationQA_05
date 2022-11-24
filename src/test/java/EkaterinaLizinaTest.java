@@ -72,7 +72,6 @@ public class EkaterinaLizinaTest extends BaseTest {
     private String getText(By by, WebDriver driver){
         return driver.findElement(by).getText();
     }
-
     private void sendKeys(By by, String text, WebDriver driver) {
         driver.findElement(by).sendKeys(text);
     }
