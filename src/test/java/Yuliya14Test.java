@@ -8,7 +8,6 @@ import runner.BaseTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.sql.DriverManager.getDriver;
 
 public class Yuliya14Test extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
@@ -17,6 +16,9 @@ public class Yuliya14Test extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+
+    final static By BUTTON_GUESTBOOK_MENU = By.xpath("//ul[@id='menu']/li/a[@href= '/guestbookv2.html']");
+    final static By BUTTON_SUBMIT_NEW_LANGUAGE_MENU = By.xpath("//ul[@id='menu']/li/a[@href= '/submitnewlanguage.html']");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -79,31 +81,22 @@ public class Yuliya14Test extends BaseTest {
     public void testMainNavigationButtonGuestbook_HappyPath() {
         String expectedResultGuestbookUrl = "https://www.99-bottles-of-beer.net/guestbookv2.html";
 
-        getDriver().get(BASE_URL);
-
-        WebElement buttonGuestbookMenu = getDriver().findElement(
-                By.xpath("//ul[@id='menu']/li/a[@href= '/guestbookv2.html']")
-        );
-        buttonGuestbookMenu.click();
+        openBaseURL(getDriver());
+        click(BUTTON_GUESTBOOK_MENU, getDriver());
 
         String actualResultGuestbookUrl = getDriver().getCurrentUrl();
-
         Assert.assertEquals(actualResultGuestbookUrl, expectedResultGuestbookUrl);
     }
 
     @Test
-    public void testMainNavigationButtonSubmitNewLanguage_HappyPath() {
+    public void testMainNavigationButtonSubmitNewLanguage_HappyPath() throws InterruptedException {
         String expectedResultSubmitNewLanguageUrl = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
 
         getDriver().get(BASE_URL);
-
-        WebElement buttonSubmitNewLanguageMenu = getDriver().findElement(
-                By.xpath("//ul[@id='menu']/li/a[@href= '/submitnewlanguage.html']")
-        );
-        buttonSubmitNewLanguageMenu.click();
+        click(BUTTON_SUBMIT_NEW_LANGUAGE_MENU, getDriver());
+        Thread.sleep(3000);
 
         String actualResultSubmitNewLanguageUrl = getDriver().getCurrentUrl();
-
         Assert.assertEquals(actualResultSubmitNewLanguageUrl, expectedResultSubmitNewLanguageUrl);
     }
 }
