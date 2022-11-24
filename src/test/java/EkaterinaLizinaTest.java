@@ -13,14 +13,23 @@ import java.util.List;
 
 
 public class EkaterinaLizinaTest extends BaseTest {
-    final static String BASE_URL = "http://www.99-bottles-of-beer.net/";
-    final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href ='/search.html']");
-    final static By SEARCH_FOR_FIELD = By.name("search");
-    final static By GO_BUTTON = By.name("submitsearch");
-    final static By LANGUAGES_NAMES_LIST = By.xpath("//table [@id = 'category']/tbody/tr/td[1]/a");
-    final static By BROWSE_LANGUAGES = By.xpath("//div[@id = 'navigation']//a[@href = '/abc.html']");
-    final static By LETTER_C = By.xpath("//ul[@id = 'submenu']//a[@href='c.html']");
-    final static By DEFAULT_CATEGORY = By.xpath("//div[@id = 'main']/h2");
+    private final String BASE_URL = "http://www.99-bottles-of-beer.net/";
+    private final By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href ='/search.html']");
+    private final By SEARCH_FOR_FIELD = By.name("search");
+    private final By GO_BUTTON = By.name("submitsearch");
+    private final By LANGUAGES_NAMES_LIST = By.xpath("//table [@id = 'category']/tbody/tr/td[1]/a");
+    private final By BROWSE_LANGUAGES = By.xpath("//div[@id = 'navigation']//a[@href = '/abc.html']");
+    private final By LETTER_C = By.xpath("//ul[@id = 'submenu']//a[@href='c.html']");
+    private final By DEFAULT_CATEGORY = By.xpath("//div[@id = 'main']/h2");
+    private final By GUEST_BOOK_MENU = By.xpath("//div[@id = 'navigation']//a[@href = '/guestbookv2.html']");
+    private final By ERROR_MESSAGE = By.xpath("//div[@id = 'main']/p/b/u");
+    private final By SIGN_GUESTBOOK_SUBMENU = By.xpath("//ul[@id = 'submenu']/li/a[@href = './signv2.html']");
+    private final By NAME= By.name("name");
+    private final By LOCATION = By.name("location");
+    private final By EMAIL = By.name("email");
+    private final By MESSAGE = By.name("comment");
+    private final By SUBMIT_BUTTON = By.name("submit");
+
     private void openBaseURL(WebDriver driver){
        driver.get(BASE_URL);
     }
@@ -63,6 +72,10 @@ public class EkaterinaLizinaTest extends BaseTest {
     private String getText(By by, WebDriver driver){
         return driver.findElement(by).getText();
     }
+
+    private void sendKeys(By by, String text, WebDriver driver) {
+        driver.findElement(by).sendKeys(text);
+    }
     @Test
     public void testSearchForLanguageByName_HappyPath(){
         final String LANGUAGE_NAME = "python";
@@ -103,5 +116,28 @@ public class EkaterinaLizinaTest extends BaseTest {
             actualResult = String.valueOf(languagesNamesList.get(i).getText().toUpperCase().charAt(0));
             Assert.assertEquals(actualResult, expectedResult);
         }
+    }
+    @Test
+    public void testVerifyErrorMessageIfSubmitWithoutCode_ekaterinalizina(){
+        String name = "guest";
+        String email = "guest@gmail.com";
+        String location = "Fairfax";
+        String message = "it is a message";
+        String expectedResult = "Error:";
+
+        openBaseURL(getDriver());
+        click(GUEST_BOOK_MENU, getDriver());
+        click(SIGN_GUESTBOOK_SUBMENU, getDriver());
+        click(NAME, getDriver());
+        sendKeys(NAME,name,getDriver());
+        click(LOCATION, getDriver());
+        sendKeys(LOCATION, location, getDriver());
+        click(EMAIL, getDriver());
+        sendKeys(EMAIL, email, getDriver());
+        click(MESSAGE, getDriver());
+        sendKeys(MESSAGE, message, getDriver());
+        click(SUBMIT_BUTTON, getDriver());
+
+        Assert.assertEquals(getText(ERROR_MESSAGE, getDriver()), expectedResult);
     }
 }
