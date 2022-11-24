@@ -2,7 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
@@ -128,103 +127,5 @@ public class NstzyaTest extends BaseTest {
         click(TEAM_MEMBERS_URL, getDriver());
         String actualResult5 = getCurrentUrl(getDriver());
         Assert.assertEquals(actualResult5, expectedResult5);
-    }
-
-
-    @Ignore
-    @Test
-    public void testHistoricInfoLink_WhenClickingOnLink_HappyPath() {
-
-        String expectedResult = "https://www.99-bottles-of-beer.net/info.html";
-
-        getDriver().get(BASE_URL);
-
-        WebElement historicInfoLink = getDriver().findElement(
-                By.xpath("//div[@id='main']/p/a[@href='./info.html']")
-        );
-
-        historicInfoLink.click();
-
-        String actualResult = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-
-    @Ignore
-    @Test
-    public void testHereLink_WhenClickingOnLink_HappyPath() {
-
-        String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
-
-        getDriver().get(BASE_URL);
-
-        WebElement hereLink = getDriver().findElement(
-                By.xpath("//div[@id='main']/p/a[@href='./lyrics.html']")
-        );
-
-        hereLink.click();
-
-        String actualResult = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
-
-    }
-
-
-    @Ignore
-    @Test
-    public void testSubmitYourOwnCodeLink_WhenClickingOnLink_HappyPath() {
-
-        String expectedResult = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
-
-        getDriver().get(BASE_URL);
-
-        WebElement submitYourCodeLink = getDriver().findElement(
-                By.xpath("//div[@id='main']/p/a[@href='./submitnewlanguage.html']")
-        );
-        submitYourCodeLink.click();
-
-        String actualResult = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-
-    @Ignore
-    @Test
-    public void testGuestbookLink_WhenClickingOnLink_HappyPath() {
-
-        String expectedResult = "https://www.99-bottles-of-beer.net/guestbookv2.html";
-
-        getDriver().get(BASE_URL);
-
-        WebElement guestbookLink = getDriver().findElement(
-                By.xpath("//div[@id='main']/p/a[@href='./guestbookv2.html']")
-        );
-        guestbookLink.click();
-
-        String actualResult = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-
-    @Ignore
-    @Test
-    public void testTeamMembersLink_WhenClickingOnLink_HappyPath() {
-
-        String expectedResult = "https://www.99-bottles-of-beer.net/team.html";
-
-        getDriver().get(BASE_URL);
-
-        WebElement guestbookLink = getDriver().findElement(
-                By.xpath("//div[@id='main']/p/a[@href='./team.html']")
-        );
-        guestbookLink.click();
-
-        String actualResult = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
     }
 }

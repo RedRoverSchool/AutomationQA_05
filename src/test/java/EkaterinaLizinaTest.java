@@ -11,6 +11,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class EkaterinaLizinaTest extends BaseTest {
     final static String BASE_URL = "http://www.99-bottles-of-beer.net/";
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href ='/search.html']");

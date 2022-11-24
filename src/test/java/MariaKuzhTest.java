@@ -56,6 +56,30 @@ public class MariaKuzhTest extends BaseTest {
         }
         return textList;
     }
+    private String getCurrentUrl(WebDriver driver){
+        return driver.getCurrentUrl();
+    }
+    private Boolean wordContains(String a, String b){
+        boolean wordContains;
+        if (a.contains(b)) {
+            wordContains = true;
+        } else {
+            wordContains = false;
+        }
+
+        return wordContains;
+    }
+    private Boolean urlContains(String a, String b) {
+        Boolean urlContains;
+        if (a != b) {
+            urlContains = true;
+        } else {
+            urlContains = false;
+        }
+
+        return urlContains;
+    }
+
 
     @Test
     public void testSearchForLanguageByName_HappyPath() {
@@ -90,32 +114,18 @@ public class MariaKuzhTest extends BaseTest {
 
     @Test
     public void testVerifyLinkTextWhenClickTopLists() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         String TopLists = "toplist";
 
-        getDriver().get(BASE_URL);
+        openBaseUrl(getDriver());
+        click(BUTTON_TOP_LISTS, getDriver());
 
-        WebElement buttonTopLists = getDriver().findElement(
-                By.xpath("//div[@id = 'navigation']//a[@href = '/toplist.html']")
-        );
-        buttonTopLists.click();
-        String newUrl = getDriver().getCurrentUrl();
+        String newUrl = getCurrentUrl(getDriver());
 
-        Boolean actualResultWord;
-        if (newUrl.contains(TopLists)) {
-            actualResultWord = true;
-        } else {
-            actualResultWord = false;
-        }
+        Boolean actualResultWord = wordContains(newUrl,TopLists);
         Boolean expectedResultWord = true;
         Assert.assertEquals(actualResultWord,expectedResultWord);
 
-        Boolean actualResultNewUrl;
-        if (newUrl != BASE_URL) {
-            actualResultNewUrl = true;
-        } else {
-            actualResultNewUrl = false;
-        }
+        Boolean actualResultNewUrl = urlContains(newUrl,BASE_URL);
         Boolean expectedResultNewUrl = true;
         Assert.assertEquals(actualResultNewUrl,expectedResultNewUrl);
     }

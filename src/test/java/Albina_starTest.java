@@ -1,12 +1,45 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Albina_starTest extends BaseTest {
+    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static By TOP_LIST_MENU = By.xpath("//ul[@id= 'menu']//li/a[@href='/toplist.html']");
+    final static By TOP_LIST_MENU_LIST = By.xpath("//ul[@id=\"submenu\"]/li/a");
+
+    private void openBaseURL(WebDriver driver) {
+        driver.get(BASE_URL);
+    }
+
+    private WebElement getElement(By by, WebDriver driver) {
+        return driver.findElement(by);
+    }
+
+    private void click(By by, WebDriver driver) {
+        getElement(by, driver).click();
+    }
+
+    private List<WebElement> getListOfElements(By by, WebDriver driver) {
+
+        return driver.findElements(by);
+    }
+
+    private List<String> getElementsText(By by, WebDriver driver) {
+        List<WebElement> elementsList = getListOfElements(by, driver);
+        List<String> textList = new ArrayList<>();
+
+        for (WebElement element : elementsList) {
+            textList.add(element.getText());
+        }
+
+        return textList;
+    }
 
     @Test
     public void testSearchForLanguageByName_HappyPath() {
@@ -58,7 +91,26 @@ public class Albina_starTest extends BaseTest {
         searchFor.isDisplayed();
 
         Assert.assertTrue(searchFor.isDisplayed());
+    }
 
+    @Test
+    public void testVerifyListOfElementsOfMainTopListSubmenu_HappyPath() {
+        List<String> expectedElementsOfTopListSubmenu = new ArrayList<>();
+        expectedElementsOfTopListSubmenu.add("Top Rated");
+        expectedElementsOfTopListSubmenu.add("Top Rated Real");
+        expectedElementsOfTopListSubmenu.add("Top Rated Esoteric");
+        expectedElementsOfTopListSubmenu.add("Top Rated Assembly");
+        expectedElementsOfTopListSubmenu.add("Top Hits");
+        expectedElementsOfTopListSubmenu.add("New Languages this month");
+        expectedElementsOfTopListSubmenu.add("New Comments");
 
+        openBaseURL(getDriver());
+        click(TOP_LIST_MENU, getDriver());
+
+        List<String> elementsOfTopListSubmenu = getElementsText(TOP_LIST_MENU_LIST, getDriver());
+
+        Assert.assertTrue(elementsOfTopListSubmenu.size() > 0);
+
+        Assert.assertEquals(elementsOfTopListSubmenu, expectedElementsOfTopListSubmenu);
     }
 }

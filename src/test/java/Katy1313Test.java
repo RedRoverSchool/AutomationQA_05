@@ -17,6 +17,8 @@ public class Katy1313Test extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+    final static By BROWSE_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']");
+    final static By H_2_CATEGORY = By.xpath("//div[@id ='main']/h2[contains(text(), 'A')]");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -60,6 +62,10 @@ public class Katy1313Test extends BaseTest {
         return textList;
     }
 
+    private String getElementText(By by, WebDriver driver) {
+       return getElement(by, driver).getText();
+    }
+
     @Test
     public void testSearchLanguageByName_HappyPath() {
         final String LANGUAGE_NAME = "python";
@@ -82,15 +88,12 @@ public class Katy1313Test extends BaseTest {
 
    @Test
     public void testBrowseLanguagesDefaultValue_HappyPath() {
-       final String BASE_URL = "https://www.99-bottles-of-beer.net/";
        final String BROWSE_LANGUAGES_DEFAULT_VALUE = "Category A";
 
-       getDriver().get(BASE_URL);
-       WebElement browseLanguagesMenu = getDriver().findElement(By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']"));
-       browseLanguagesMenu.click();
+       openBaseURL(getDriver());
+       click(BROWSE_LANGUAGES_MENU, getDriver());
 
-       WebElement h2Category = getDriver().findElement(By.xpath("//div[@id ='main']/h2[contains(text(), 'A')]"));
-       Assert.assertEquals(h2Category.getText(), BROWSE_LANGUAGES_DEFAULT_VALUE);
+       Assert.assertEquals(getElementText(H_2_CATEGORY,getDriver()), BROWSE_LANGUAGES_DEFAULT_VALUE);
    }
 
    @Test
