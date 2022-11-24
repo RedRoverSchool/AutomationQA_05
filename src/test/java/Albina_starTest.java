@@ -135,9 +135,9 @@ public class Albina_starTest extends BaseTest {
 
         openBaseURL(getDriver());
         click(MAIN_SUBMIT_NEW_LANGUAGE, getDriver());
-        getElement(PLEASE_NOTE, getDriver());
 
         Assert.assertTrue(isDisplayed(PLEASE_NOTE));
+
         List<WebElement> elements = getDriver().findElements(PLEASE_NOTE_LIST);
 
         Assert.assertTrue(elements.size() >0);
