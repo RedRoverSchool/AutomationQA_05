@@ -78,7 +78,6 @@ public class TatyanaBelikovaTest extends BaseTest {
         final String expectedResult = "Privacy";
 
       openBaseURL(getDriver());
-      //  String subMenuImpressum = getText(SUB_MENU_IMPRESSUM, getDriver());
         Assert.assertEquals(getText(SUB_MENU_IMPRESSUM, getDriver()), expectedResult);
          }
     }
