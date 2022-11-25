@@ -87,6 +87,7 @@ public class SvetaKhudovaTest extends BaseTest {
         openBaseURL(getDriver());
         click(SEARCH_LANGUAGES_MENU, getDriver());
         click(SEARCH_START_MENU, getDriver());
+
         Assert.assertEquals(getDriver().getCurrentUrl(), BASE_URL);
     }
 
