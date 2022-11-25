@@ -29,7 +29,15 @@ jobs:
           restore-keys: ${{ runner.os }}-maven-
 
       - name: Maven test
-        run: mvn test
+        run: mvn -B package --file pom.xml
         env:
           CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
           CI_RUN: true
+          
+      - name: Create test report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Unit tests Report
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
