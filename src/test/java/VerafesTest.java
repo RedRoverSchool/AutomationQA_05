@@ -18,7 +18,8 @@ public class VerafesTest extends BaseTest {
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
     final static By INFO_SUB_MENU = By.xpath("//ul[@id='submenu']/li/a[@href='info.html']");
-
+    final static By BROWSE_LANGUAGES_MENU = By.xpath("//div[@id='navigation']//a[@href='/abc.html']");
+    final static By SUBMENU_J = By.xpath("//div[@id='navigation']//a[@href='j.html']");
 
     private void openBaseURL(WebDriver driver)  {
         driver.get(BASE_URL);
@@ -41,6 +42,7 @@ public class VerafesTest extends BaseTest {
     private void input(String text, By by, WebDriver driver) {
         getElement(by, driver).sendKeys(text);
     }
+
 
     private String getText(By by, WebDriver driver) {
 
@@ -133,4 +135,24 @@ public class VerafesTest extends BaseTest {
         Assert.assertEquals(actualResultTitle, expectedResultTitle);
     }
 
+    @Test
+    public void testDeepLinkIsPresent_LanguageJavascript1948MainTable() {
+        final String attribute = "href";
+        final String expectedLanguageJSMainTableLink = "http://en.wikipedia.org/wiki/Javascript";
+        final By javaScript1948 = By.xpath("//*[@id='category']//a[@href='language-javascript-1948.html']");
+        final By javaScriptWikiArticleLink = By.xpath("//*[@id='main']/table//a");
+
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(SUBMENU_J, getDriver());
+        click(javaScript1948, getDriver());
+
+        String actualResultJSWikiArticleLinktext = getText(javaScriptWikiArticleLink, getDriver());
+
+        Assert.assertEquals(expectedLanguageJSMainTableLink, actualResultJSWikiArticleLinktext);
+
+        String actualResultJSWikiArticleLink = getAttribute(javaScriptWikiArticleLink, attribute, getDriver());
+
+        Assert.assertTrue(actualResultJSWikiArticleLink.contains(expectedLanguageJSMainTableLink));
+    }
 }
