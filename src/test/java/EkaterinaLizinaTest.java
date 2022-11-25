@@ -1,3 +1,4 @@
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,6 @@ import runner.BaseTest;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class EkaterinaLizinaTest extends BaseTest {
     private final String BASE_URL = "http://www.99-bottles-of-beer.net/";
@@ -29,7 +29,12 @@ public class EkaterinaLizinaTest extends BaseTest {
     private final By EMAIL = By.name("email");
     private final By MESSAGE = By.name("comment");
     private final By SUBMIT_BUTTON = By.name("submit");
-
+    //
+    private final By TOP_LISTS_MENU = By.xpath("//ul[@id = 'menu']//a[@href = '/toplist.html']");
+    private final By TOP_RATED_REAL_SUBMENU = By.xpath("//ul[@id = 'submenu']//a[@href = './toplist_real.html']");
+    private final By TOP_ESOTERIC_SUBMENU = By.xpath("//ul[@id = 'submenu']//a[@href ='./toplist_esoteric.html']");
+    private final By TOP_RATED_REAL_LANGUAGE_LIST = By.xpath("//table [@id = 'category']/tbody/tr/td[2]/a");
+    private final By TOP_RATED_ESOTERIC_LANGUAGE = By.xpath("//table [@id = 'category']/tbody/tr/td[2]/a");
     private void openBaseURL(WebDriver driver){
        driver.get(BASE_URL);
     }
@@ -57,13 +62,16 @@ public class EkaterinaLizinaTest extends BaseTest {
     }
     private List<String> getElementsText(By by, WebDriver driver){
         List <WebElement> elementsList = getListOfElements(by, driver);
-        List<String> textList = new ArrayList<>();
+        if(elementsList.size() > 0) {
+            List<String> textList = new ArrayList<>();
 
-        for(WebElement element : elementsList){
-            textList.add(element.getText().toLowerCase());
+            for (WebElement element : elementsList) {
+                textList.add(element.getText().toLowerCase());
+            }
+
+            return textList;
         }
-
-        return textList;
+        return null;
     }
     public void waitTextToBeChanged(By by, String text, WebDriver driver, WebDriverWait wait) {
         wait.until(ExpectedConditions
@@ -138,5 +146,37 @@ public class EkaterinaLizinaTest extends BaseTest {
         click(SUBMIT_BUTTON, getDriver());
 
         Assert.assertEquals(getText(ERROR_MESSAGE, getDriver()), expectedResult);
+    }
+    @Test
+    public void testVerifyThe1stTopRatedRealLanguageIsDifferFromTopEsotericLanguage(){
+        openBaseURL(getDriver());
+        click(TOP_LISTS_MENU, getDriver());
+        click(TOP_RATED_REAL_SUBMENU, getDriver());
+
+        Assert.assertNotEquals(BASE_URL, getDriver().getCurrentUrl());
+
+        String oldUrl = getDriver().getCurrentUrl();
+        String languageTopRatedReal = "";
+        List<String> textListTopRatedReal = getElementsText(TOP_RATED_REAL_LANGUAGE_LIST, getDriver());
+
+        if(textListTopRatedReal.size() > 0) {
+            for (String text : textListTopRatedReal) {
+                languageTopRatedReal = textListTopRatedReal.get(0).toLowerCase();
+            }
+        }
+
+        click(TOP_ESOTERIC_SUBMENU, getDriver());
+
+        Assert.assertNotEquals(oldUrl, getDriver().getCurrentUrl());
+
+        String languageTopEsotoric = "";
+        List <String > texListTopEsoteric = getElementsText(TOP_RATED_ESOTERIC_LANGUAGE, getDriver());
+        if(texListTopEsoteric.size() > 0){
+            for (String text : texListTopEsoteric) {
+               languageTopEsotoric = texListTopEsoteric.get(0).toLowerCase();
+            }
+        }
+
+        Assert.assertNotEquals(languageTopRatedReal, languageTopEsotoric);
     }
 }
