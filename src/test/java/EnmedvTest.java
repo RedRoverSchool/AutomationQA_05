@@ -15,7 +15,10 @@ public class EnmedvTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
+    final static By PRIVACY = By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']");
+    final static By H_2_PRIVACY_HEADER = By.xpath("//div[@id = 'main']/h2");
     private void openBaseURL(WebDriver driver) {
+
         driver.get(BASE_URL);
     }
     private WebElement getElement(By by, WebDriver driver) {
@@ -28,16 +31,22 @@ public class EnmedvTest extends BaseTest {
     }
 
     private void click(By by , WebDriver driver) {
+
         getElement(by, driver).click();
     }
     private void input(String text, By by, WebDriver driver) {
+
         getElement(by, driver).sendKeys(text);
     }
 
     private int getListSize(By by, WebDriver driver) {
 
         return getListOfElements(by, driver).size();
+    }
 
+    private String getElementText(By by, WebDriver driver) {
+
+        return getElement(by, driver).getText();
     }
      private List<String> getElementsText(By by, WebDriver driver) {
        List<WebElement> elementsList = getListOfElements(by, driver);
@@ -74,16 +83,11 @@ public class EnmedvTest extends BaseTest {
     @Test
     public void testVerifyTextInHeaderH2() {
         String expectedResult = "Privacy";
-        getDriver().get(BASE_URL);
-        WebElement searchPrivacy = getDriver().findElement(
-                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']")
-        );
-        searchPrivacy.click();
 
-        WebElement h2PrivacyHeader = getDriver().findElement(
-                By.xpath("//div[@id = 'main']/h2")
-        );
-        String actualResult = h2PrivacyHeader.getText();
+        openBaseURL(getDriver());
+        click(PRIVACY, getDriver());
+
+        String actualResult = getElementText(H_2_PRIVACY_HEADER, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
     }
