@@ -12,6 +12,7 @@ public class EkaterinaKochelorovaTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
     final static By SUBMENU_LYRICS_LINK = By.xpath("//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']");
     final static By H2_TAG_TEXT = By.xpath("//div[@id = 'main']/h2");
+    final static By P_TAG_TEXT = By.xpath("//div[@id = 'main']/p");
 
     private void openBaseUrl(WebDriver driver) {
         driver.get(BASE_URL);
@@ -19,6 +20,10 @@ public class EkaterinaKochelorovaTest extends BaseTest {
 
     private WebElement getElement(By by, WebDriver driver) {
         return driver.findElement(by);
+    }
+
+    private List<WebElement> getElements(By by, WebDriver driver) {
+        return driver.findElements(by);
     }
 
     private void click(By by, WebDriver driver) {
@@ -45,16 +50,10 @@ public class EkaterinaKochelorovaTest extends BaseTest {
     public void testPTagText_WhenChooseSubmenuLyrics() {
         int expectedResult = 100;
 
-        getDriver().get(BASE_URL);
+        openBaseUrl(getDriver());
+        click(SUBMENU_LYRICS_LINK, getDriver());
 
-        WebElement submenuLyricsLink = getDriver().findElement(
-                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']")
-        );
-        submenuLyricsLink.click();
-
-        List<WebElement> pTagText = getDriver().findElements(By.xpath("//div[@id = 'main']/p"));
-
-        int actualResult = pTagText.size();
+        int actualResult = getElements(P_TAG_TEXT, getDriver()).size();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
