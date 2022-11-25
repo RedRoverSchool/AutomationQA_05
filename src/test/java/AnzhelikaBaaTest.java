@@ -1,13 +1,12 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.domsnapshot.model.ArrayOfStrings;
+import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class AnzhelikaBaaTest extends BaseTest {
@@ -27,6 +26,12 @@ public class AnzhelikaBaaTest extends BaseTest {
     final static By H_2_TAG = By.xpath("//div[@id='main']/h2[contains(text(), 'Category A')]");
     final static By LETTER_Z_SUBMENU = By.xpath("//ul[@id='submenu']/li//a[contains(text(), 'Z')]");
     final static By LANGUAGES_Z_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[@bgcolor='#efefef']/a");
+
+    final static By TOP_LISTS_MENU = By.xpath("//ul[@id='menu']/li//a[@href='/toplist.html']");
+
+    final static By TOP_RATED_REAL = By.xpath("//ul[@id='submenu']/li/a[@href='./toplist_real.html']");
+
+    final static By H_2_TOP_RATED_REAL_LANGUAGES = By.xpath("//div[@id='main']/h2['Top Rated Real Languages']");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -158,6 +163,22 @@ public class AnzhelikaBaaTest extends BaseTest {
             Assert.assertEquals(String.valueOf(languageZNamesList.get(i).toLowerCase().charAt(0)), expectedFirstLetter);
         }
         Assert.assertTrue(languageZNamesList.size() > 0);
+    }
+
+    @Test
+    public void testH2PresenceAndColor_WhenChoosingTopRatedRealSubmenu_HappyPath() {
+        String expectedHeaderName = "Top Rated Real Languages";
+        String expectedHexColor = "#1b651c";
+
+        openBaseURL(getDriver());
+        click(TOP_LISTS_MENU, getDriver());
+        click(TOP_RATED_REAL, getDriver());
+        isDisplayed(H_2_TOP_RATED_REAL_LANGUAGES, getDriver());
+        String headerColor = getElement(H_2_TOP_RATED_REAL_LANGUAGES, getDriver()).getCssValue("color");
+        String hexColor = Color.fromString(headerColor).asHex();
+
+        Assert.assertEquals(text(H_2_TOP_RATED_REAL_LANGUAGES, getDriver()), expectedHeaderName);
+        Assert.assertEquals(hexColor, expectedHexColor);
     }
 }
 
