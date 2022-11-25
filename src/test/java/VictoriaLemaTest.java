@@ -136,7 +136,6 @@ public class VictoriaLemaTest extends BaseTest {
 
     @Test
     public void testLanguageCategories_WhenSubmittingANewLanguage() {
-// эксперимент
         int expectedResultNumber = 3;
         final String CATEGORY_1 = "real";
         final String CATEGORY_2 = "esoteric";
