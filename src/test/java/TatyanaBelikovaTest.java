@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,17 +64,17 @@ public class TatyanaBelikovaTest extends BaseTest {
     @Test
     public void testSearchForLanguageFieldByName_HappyPath() {
 
-            openBaseURL(getDriver());
+        openBaseURL(getDriver());
         click(SEARCH_LANGUAGES_MENU, getDriver());
         click(SEARCH_FOR_FIELD, getDriver());
         input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
-            click(GO_BUTTON, getDriver());
+        click(GO_BUTTON, getDriver());
 
-            List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
+        List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
 
-            Assert.assertTrue(languageNames.size() > 0);
+        Assert.assertTrue(languageNames.size() > 0);
 
-                for (String languageName : languageNames) {
+        for (String languageName : languageNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
