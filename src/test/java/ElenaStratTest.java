@@ -88,4 +88,21 @@ public class ElenaStratTest extends BaseTest {
         Assert.assertEquals(actualResult,expectedResult);
 
     }
+
+
+
+    @Test
+    public void testMainForVerifyTheHeaderOnTheStartPage_HappyPath() {
+        String expectedResult = "99 Bottles of Beer";
+
+        openBaseURL(getDriver());
+
+        WebElement verifyHeaderH1 = getDriver().findElement(By.xpath("//div[@id = 'header']/h1"));
+
+        String actualResult = verifyHeaderH1.getText();
+        
+        Assert.assertEquals(actualResult,expectedResult);
+    }
+
+
 }

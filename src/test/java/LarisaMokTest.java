@@ -14,6 +14,7 @@ public class LarisaMokTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+
     final static By BROWSE_LANGUAGES_MENU = By.xpath("//ul[@id='menu']/li/a[@href='/abc.html']");
     final static By ZERO_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='0.html']");
     final static By HEADER2_ZERO = By.xpath("//div[@id='main']/h2");
@@ -74,6 +75,7 @@ public class LarisaMokTest extends BaseTest {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
+}
 
     @Test
     public void testVerifyTextHeader2OnZeroPage_HappyPath() {
@@ -88,3 +90,4 @@ public class LarisaMokTest extends BaseTest {
         Assert.assertEquals(actualTextHeader2, expectedTextHeader2);
     }
 }
+
