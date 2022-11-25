@@ -57,7 +57,7 @@ public class TatyanaBelikovaTest extends BaseTest {
         }
 
     @Test
-    public void testSearchForLanguageFieldByName_HappyPath()
+    public void testSearchForLanguageFieldByName_HappyPath() {
    
            openBaseURL(getDriver());
             click(SEARCH_LANGUAGES_MENU, getDriver());
@@ -73,6 +73,7 @@ public class TatyanaBelikovaTest extends BaseTest {
                     Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
+
     @Test
     public void testSubmenuImpressumLabelText_Privacy() {
 

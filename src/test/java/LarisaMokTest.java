@@ -75,7 +75,6 @@ public class LarisaMokTest extends BaseTest {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
-}
 
     @Test
     public void testVerifyTextHeader2OnZeroPage_HappyPath() {
