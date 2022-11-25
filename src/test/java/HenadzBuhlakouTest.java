@@ -14,7 +14,7 @@ public class HenadzBuhlakouTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
-    final static By SEARCH_START_IN_MENU = By.xpath("//div[@id='footer']//a[@href = '/']");
+    final static By FOOTER_START = By.xpath("//div[@id='footer']//a[@href = '/']");
     final static By TOP_LISTS_MENU = By.xpath("//ul[@id='menu']/li/a[@href='/toplist.html']");
     final static By TOPLIST_REAL_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='./toplist_real.html']");
     final static By HEADER_2_TOPLIST_REAL = By.xpath("//div[@id='main']/h2");
@@ -76,11 +76,11 @@ public class HenadzBuhlakouTest extends BaseTest {
     }
 
     @Test
-    public void testClickOnStartInFooter_HappyPath() {
-        String expectedResult = "https://www.99-bottles-of-beer.net/";
+    public void testVerifyLinkTextAfterClickOnFooterMenuStart_HappyPath() {
+        final String expectedResult = "https://www.99-bottles-of-beer.net/";
 
         openBaseURL(getDriver());
-        click(SEARCH_START_IN_MENU, getDriver());
+        click(FOOTER_START, getDriver());
 
         String actualResult = getDriver().getCurrentUrl();
 
