@@ -92,7 +92,7 @@ public class AnastasiaYYTest extends BaseTest {
         click(SEARCH_FOR_FIELD, getDriver());
         input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
         click(GO_BUTTON, getDriver());
-        
+
         List<String> languageNames = getElementsTextLowerCase(LANGUAGES_NAMES_LIST, getDriver());
 
         Assert.assertTrue(languageNames.size() > 0);
@@ -122,7 +122,6 @@ public class AnastasiaYYTest extends BaseTest {
         final String expectedResult = "Top Rated";
 
         openBaseURL(getDriver());
-
         click(TOPLISTS_MENU, getDriver());
 
         String actualResult = getText(H2_HEADER_TOP_LISTS, getDriver());

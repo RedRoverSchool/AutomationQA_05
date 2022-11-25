@@ -138,35 +138,11 @@ public class Albina_starTest extends BaseTest {
 
         Assert.assertTrue(isDisplayed(PLEASE_NOTE));
 
-        Assert.assertTrue(searchFor.isDisplayed());
-    }
-
-    @Test
-    public void testVerifyListOfElementsOfMainTopListSubmenu_HappyPath() {
-        List<String> expectedElementsOfTopListSubmenu = new ArrayList<>();
-        expectedElementsOfTopListSubmenu.add("Top Rated");
-        expectedElementsOfTopListSubmenu.add("Top Rated Real");
-        expectedElementsOfTopListSubmenu.add("Top Rated Esoteric");
-        expectedElementsOfTopListSubmenu.add("Top Rated Assembly");
-        expectedElementsOfTopListSubmenu.add("Top Hits");
-        expectedElementsOfTopListSubmenu.add("New Languages this month");
-        expectedElementsOfTopListSubmenu.add("New Comments");
-
-        openBaseURL(getDriver());
-        click(TOP_LIST_MENU, getDriver());
-
-        List<String> elementsOfTopListSubmenu = getElementsText(TOP_LIST_MENU_LIST, getDriver());
-
-        Assert.assertTrue(elementsOfTopListSubmenu.size() > 0);
-
-        Assert.assertEquals(elementsOfTopListSubmenu, expectedElementsOfTopListSubmenu);
-
         List<WebElement> elements = getDriver().findElements(PLEASE_NOTE_LIST);
 
         Assert.assertTrue(elements.size() >0);
 
         int actualQuantityOfPleaseNote = getListSize(PLEASE_NOTE_LIST, getDriver());
         Assert.assertEquals(actualQuantityOfPleaseNote, expectedQuantityOfPleaseNote);
-
     }
 }
