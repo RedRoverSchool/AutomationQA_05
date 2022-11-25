@@ -1,11 +1,13 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v85.domsnapshot.model.ArrayOfStrings;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AnzhelikaBaaTest extends BaseTest {
@@ -23,6 +25,8 @@ public class AnzhelikaBaaTest extends BaseTest {
     final static By BROWSE_LANGUAGES_MENU = By.xpath("//ul[@id='menu']/li//a[@href='/abc.html']");
     final static By LETTER_A_SUBMENU = By.xpath("//ul[@id='submenu']/li//a[contains(text(), 'A')]");
     final static By H_2_TAG = By.xpath("//div[@id='main']/h2[contains(text(), 'Category A')]");
+    final static By LETTER_Z_SUBMENU = By.xpath("//ul[@id='submenu']/li//a[contains(text(), 'Z')]");
+    final static By LANGUAGES_Z_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[@bgcolor='#efefef']/a");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -69,8 +73,7 @@ public class AnzhelikaBaaTest extends BaseTest {
         }
         return textList;
     }
-
-    private String getAttribute(By by, String attribute) {
+       private String getAttribute(By by, String attribute) {
 
         return getDriver().findElement(by).getAttribute(attribute);
     }
@@ -137,6 +140,24 @@ public class AnzhelikaBaaTest extends BaseTest {
         String actualResult = text(H_2_TAG, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+    @Test
+    public void testVerifyIfNamesOfLanguagesStartWithZ_WhenChoosingZSubmenu_HappyPath() {
+        String expectedFirstLetter = "z";
+
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(LETTER_Z_SUBMENU, getDriver());
+
+        List<WebElement> elements = getDriver().findElements(LANGUAGES_Z_NAMES_LIST);
+        Assert.assertTrue(elements.size() > 0);
+
+        List<String> languageZNamesList = getElementsText(LANGUAGES_Z_NAMES_LIST, getDriver());
+
+        for (int i = 0; i < languageZNamesList.size(); i++) {
+            Assert.assertEquals(String.valueOf(languageZNamesList.get(i).toLowerCase().charAt(0)), expectedFirstLetter);
+        }
+        Assert.assertTrue(languageZNamesList.size() > 0);
     }
 }
 
