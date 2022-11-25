@@ -136,11 +136,11 @@ public class VictoriaLemaTest extends BaseTest {
 
     @Test
     public void testLanguageCategories_WhenSubmittingANewLanguage() {
-        final int expectedResultNumber = 3;
-        final String category1 = "real";
-        final String category2 = "esoteric";
-        final String category3 = "assembly";
-        final String expectedResultCategory = "esoteric language";
+        int expectedResultNumber = 3;
+        final String CATEGORY_1 = "real";
+        final String CATEGORY_2 = "esoteric";
+        final String CATEGORY_3 = "assembly";
+        String expectedResultCategory = "esoteric language";
 
         openBaseURL(getDriver());
         click(SUBMIT_NEW_LANGUAGE_REFERENCE,getDriver());
@@ -154,8 +154,8 @@ public class VictoriaLemaTest extends BaseTest {
         String actualResultCategory = getText(LANGUAGES_CATEGORIES_SELECTED,getDriver());
 
         Assert.assertEquals(languagesCategories.size(),expectedResultNumber);
-        Assert.assertTrue(categoryNames.contains(category1)&& categoryNames.contains(category2)
-                &&categoryNames.contains(category3));
+        Assert.assertTrue(categoryNames.contains(CATEGORY_1)&& categoryNames.contains(CATEGORY_2)
+                &&categoryNames.contains(CATEGORY_3));
         Assert.assertEquals(actualResultCategory,expectedResultCategory);
     }
 
