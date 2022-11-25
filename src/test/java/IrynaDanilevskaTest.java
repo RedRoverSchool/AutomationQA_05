@@ -132,5 +132,25 @@ public class IrynaDanilevskaTest extends BaseTest {
             Assert.assertTrue(webElement.getText().toLowerCase().startsWith(DEFAULT_LETTER));
         }
     }
+
+    @Test
+    public void testContainsClickableAlphabetLettersAndRangeOfNumbers_HappyPath() {
+        final List <String> listOfLetters = List.of("0","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+                "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+        final int quantityOfElementsExpectedResult = 27;
+        int quantityOfElementsActualResult = 0;
+
+        openBaseURL(getDriver());
+        clickOnElement(BROWSE_LANGUAGE_MENU, getDriver());
+
+        for (String letter: listOfLetters) {
+            WebElement submenuElement = getSubmenuElementLettersNumbers(letter.toLowerCase(), getDriver());
+            Assert.assertTrue(submenuElement.isDisplayed());
+            Assert.assertTrue(submenuElement.isEnabled());
+            clickOnElement(submenuElement);
+            quantityOfElementsActualResult ++;
+        }
+        Assert.assertEquals(quantityOfElementsExpectedResult, quantityOfElementsActualResult);
+    }
 }
 
