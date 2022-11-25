@@ -15,6 +15,10 @@ public class LarisaMokTest extends BaseTest {
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
 
+    final static By BROWSE_LANGUAGES_MENU = By.xpath("//ul[@id='menu']/li/a[@href='/abc.html']");
+    final static By ZERO_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='0.html']");
+    final static By HEADER2_ZERO = By.xpath("//div[@id='main']/h2");
+
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -72,3 +76,18 @@ public class LarisaMokTest extends BaseTest {
         }
     }
 }
+
+    @Test
+    public void testVerifyTextHeader2OnZeroPage_HappyPath() {
+        final String expectedTextHeader2 = "Category 0-9";
+
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(ZERO_SUBMENU, getDriver());
+
+        String actualTextHeader2 = getDriver().findElement(HEADER2_ZERO).getText();
+
+        Assert.assertEquals(actualTextHeader2, expectedTextHeader2);
+    }
+}
+

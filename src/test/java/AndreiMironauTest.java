@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,6 +8,22 @@ import runner.BaseTest;
 import java.util.List;
 
 public class AndreiMironauTest extends BaseTest {
+    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static By SUBLITLE_HEADER = By.xpath("//div[@id='header']/h2");
+
+    private void openBaseURL(WebDriver driver) {
+        driver.get(BASE_URL);
+    }
+
+    private WebElement getElement (By by, WebDriver driver) {
+
+        return driver.findElement(by);
+    }
+
+    private String getText(By by, WebDriver driver) {
+
+        return driver.findElement(by).getText();
+    }
 
     @Test
     public void testSearchForLanguageFieldByName_HappyPath() {
@@ -43,14 +60,13 @@ public class AndreiMironauTest extends BaseTest {
 
     @Test
     public void testH2TagTextHeaderMain_HappyPath() {
-        final String BASE_URL = "https://www.99-bottles-of-beer.net/";
         final String expectedResult = "one program in 1500 variations";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
 
-        WebElement subtitleHeader = getDriver().findElement(By.xpath("//div[@id='header']/h2"));
+        WebElement sublitleHeader = getElement(SUBLITLE_HEADER, getDriver());
 
-        String actualResult = subtitleHeader.getText();
+        String actualResult = getText(SUBLITLE_HEADER, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
     }
