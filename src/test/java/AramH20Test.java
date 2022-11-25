@@ -103,7 +103,7 @@ public class AramH20Test extends BaseTest {
         List<String> actualLetters = new ArrayList<>();
         submenuLetters.get(0).click();
         List<String> languages = getElementsText(LANGUAGE_COLUME, getDriver());
-        String expectedLetter = submenuLettersText.get(0);gi
+        String expectedLetter = submenuLettersText.get(0);
 
         for (String language : languages) {
              actualLetters.add(String.valueOf(language.charAt(0)));//
