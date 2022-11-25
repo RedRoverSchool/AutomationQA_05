@@ -14,7 +14,7 @@ public class Aidai001Test extends BaseTest {
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
-    final static By LANGUAGE_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a"));
+    final static By LANGUAGE_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
 
     private void openBaseURL(WebDriver driver){
         driver.get(BASE_URL);
