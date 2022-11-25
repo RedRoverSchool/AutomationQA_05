@@ -171,6 +171,7 @@ public class AnzhelikaBaaTest extends BaseTest {
         String expectedHexColor = "#1b651c";
 
         openBaseURL(getDriver());
+
         click(TOP_LISTS_MENU, getDriver());
         click(TOP_RATED_REAL, getDriver());
         isDisplayed(H_2_TOP_RATED_REAL_LANGUAGES, getDriver());
