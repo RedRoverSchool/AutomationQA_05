@@ -137,8 +137,7 @@ public class NstzyaTest extends BaseTest {
         String actualResult5 = getCurrentUrl(getDriver());
         Assert.assertEquals(actualResult5, expectedResult5);
     }
-
-
+    
     @Test
     public void testHeaderH2Text_WhenOpenBrowseLanguageMenu_PageBSubmenu_HappyPath() {
 

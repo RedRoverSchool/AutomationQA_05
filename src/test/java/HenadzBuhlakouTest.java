@@ -15,6 +15,10 @@ public class HenadzBuhlakouTest extends BaseTest {
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
     final static By SEARCH_START_IN_MENU = By.xpath("//div[@id='footer']//a[@href = '/']");
+    final static By TOP_LISTS_MENU = By.xpath("//ul[@id='menu']/li/a[@href='/toplist.html']");
+    final static By TOPLIST_REAL_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='./toplist_real.html']");
+    final static By HEADER_2_TOPLIST_REAL = By.xpath("//div[@id='main']/h2");
+
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -79,5 +83,18 @@ public class HenadzBuhlakouTest extends BaseTest {
         String actualResult = getDriver().getCurrentUrl();
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testTextHeader2OnToplistReal_HappyPath() {
+        final String expectedHeader2OnToplistReal = "Top Rated Real Languages";
+
+        openBaseURL(getDriver());
+        click(TOP_LISTS_MENU, getDriver());
+        click(TOPLIST_REAL_SUBMENU, getDriver());
+
+        String actualHeader2OnToplistReal = getDriver().findElement(HEADER_2_TOPLIST_REAL).getText();
+
+        Assert.assertEquals(actualHeader2OnToplistReal, expectedHeader2OnToplistReal);
     }
 }

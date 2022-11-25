@@ -18,9 +18,11 @@ public class TatyanaBelikovaTest extends BaseTest {
 
         final static By SUB_MENU_IMPRESSUM = By.xpath("//div[@id='navigation']/ul//li/a[@href='impressum.html']");
         final String expectedResult = "Privacy";
+        
         private void openBaseURL(WebDriver driver) {
             driver.get(BASE_URL);
         }
+
         private WebElement getElement(By by, WebDriver driver) {
 
             return driver.findElement(by);
@@ -55,9 +57,9 @@ public class TatyanaBelikovaTest extends BaseTest {
         }
 
     @Test
-    public void testSearchForLanguageFieldByName_HappyPath() {
-
-            openBaseURL(getDriver());
+    public void testSearchForLanguageFieldByName_HappyPath()
+   
+           openBaseURL(getDriver());
             click(SEARCH_LANGUAGES_MENU, getDriver());
             click(SEARCH_FOR_FIELD, getDriver());
             input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
@@ -74,8 +76,10 @@ public class TatyanaBelikovaTest extends BaseTest {
     @Test
     public void testSubmenuImpressumLabelText_Privacy() {
 
+
       openBaseURL(getDriver());
 
       Assert.assertEquals(getText(SUB_MENU_IMPRESSUM, getDriver()), expectedResult);
+
          }
     }
