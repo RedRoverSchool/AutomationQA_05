@@ -148,7 +148,7 @@ public class IrynaDanilevskaTest extends BaseTest {
             Assert.assertTrue(submenuElement.isDisplayed());
             Assert.assertTrue(submenuElement.isEnabled());
             clickOnElement(submenuElement);
-            quantityOfElementsActualResult ++;
+            quantityOfElementsActualResult++;
         }
         Assert.assertEquals(quantityOfElementsExpectedResult, quantityOfElementsActualResult);
     }
