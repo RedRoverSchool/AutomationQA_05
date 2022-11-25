@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,17 +22,14 @@ public class TatyanaBelikovaTest extends BaseTest {
     }
 
     private WebElement getElement(By by, WebDriver driver) {
-
         return driver.findElement(by);
     }
 
     private String getText(By by, WebDriver driver) {
-
         return driver.findElement(by).getText();
     }
 
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
-
         return driver.findElements(by);
     }
 
@@ -46,7 +42,6 @@ public class TatyanaBelikovaTest extends BaseTest {
     }
 
     private int getListSize(By by, WebDriver driver) {
-
         return getListOfElements(by, driver).size();
     }
 
