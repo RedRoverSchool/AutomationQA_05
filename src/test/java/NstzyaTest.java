@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
@@ -160,6 +162,8 @@ public class NstzyaTest extends BaseTest {
     @Test
     public void testRandomLinkIsClickable_whenOpenBrowseLanguageMenu_JSubmenu_HappyPath() {
 
+        char expectedResult = 'j';
+
         openBaseURL(getDriver());
         click(BROWSE_LANGUAGES_MENU, getDriver());
         click(J_SUBMENU, getDriver());
@@ -171,6 +175,9 @@ public class NstzyaTest extends BaseTest {
         List<WebElement> languageNamesStartWithJLinks = getListOfElements(LANGUAGES_NAMES_STARTED_WITH_J_LIST, getDriver());
 
         WebElement randomLink = languageNamesStartWithJLinks.get(r.nextInt(languageNamesStartWithJLinks.size()));
+
+        Assert.assertEquals(randomLink.getText().toLowerCase().charAt(0), expectedResult);
+
         randomLink.click();
     }
 }
