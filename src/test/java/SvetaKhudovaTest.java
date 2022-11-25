@@ -84,19 +84,10 @@ public class SvetaKhudovaTest extends BaseTest {
 
     @Test
     public void testClickStartFromSearchLanguagesMenu_HappyPath(){
-        getDriver().get(BASE_URL);
-
-        WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
-        );
-        searchLanguagesMenu.click();
-
-        WebElement searchStartMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href='/']")
-        );
-        searchStartMenu.click();
-
-        String currentUrl = getDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, BASE_URL);
+        openBaseURL(getDriver());
+        click(SEARCH_LANGUAGES_MENU, getDriver());
+        click(SEARCH_START_MENU, getDriver());
+        Assert.assertEquals(getDriver().getCurrentUrl(), BASE_URL);
     }
+
 }
