@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -6,31 +7,35 @@ import runner.BaseTest;
 
 public class MariyaSvetlovaTest extends BaseTest {
 
-    static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    final static String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
+    final static By HEADER_H_1 = By.xpath("//div[@id='header']/h1");
+    final static By HEADER_H_2 = By.xpath("//div[@id='header']/h2");
+
+    private void openBaseURL (WebDriver driver) {
+        driver.get(BASE_URL);
+    }
+
+    private WebElement getElement (By by, WebDriver driver) {
+
+        return driver.findElement(by);
+    }
 
     @Test
     public void testVerifyHeaderH1OnStartPage() {
-        final String HEADER_H1 = "99 Bottles of Beer";
+        final String HEADER_H1_TEXT = "99 Bottles of Beer";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
 
-        WebElement headerH1 = getDriver().findElement(
-                By.xpath("//div[@id='header']/h1")
-        );
-
-        Assert.assertEquals(headerH1.getText(),HEADER_H1);
+        Assert.assertEquals(getElement(HEADER_H_1, getDriver()).getText(),HEADER_H1_TEXT);
     }
 
     @Test
     public void testVerifyHeaderH2OnStartPage() {
-        final String HEADER_H2 = "one program in 1500 variations";
+        final String HEADER_H2_TEXT = "one program in 1500 variations";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
 
-        WebElement headerH1 = getDriver().findElement(
-                By.xpath("//div[@id='header']/h2")
-        );
-
-        Assert.assertEquals(headerH1.getText(),HEADER_H2);
+        Assert.assertEquals(getElement(HEADER_H_2, getDriver()).getText(),HEADER_H2_TEXT);
     }
 }
