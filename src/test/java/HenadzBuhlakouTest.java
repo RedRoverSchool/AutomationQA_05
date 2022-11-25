@@ -20,6 +20,8 @@ public class HenadzBuhlakouTest extends BaseTest {
     final static By HEADER_2_TOPLIST_REAL = By.xpath("//div[@id='main']/h2");
     final static By TOPLIST_ESOTERIC_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='./toplist_esoteric.html']");
     final static By HEADER_2_TOPLIST_ESOTERIC = By.xpath("//div[@id='main']/h2");
+    final static By TOPLIST_ASSEMBLY_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='./toplist_assembly.html']");
+    final static By HEADER_2_TOPLIST_ASSEMBLY = By.xpath("//div[@id='main']/h2");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -111,5 +113,18 @@ public class HenadzBuhlakouTest extends BaseTest {
         String actualHeader2OnToplistEsoteric = getDriver().findElement(HEADER_2_TOPLIST_ESOTERIC).getText();
 
         Assert.assertEquals(actualHeader2OnToplistEsoteric, expectedHeader2OnToplistEsoteric);
+    }
+
+    @Test
+    public void testTextHeader2OnToplistAssembly_HappyPath() {
+        final String expectedHeader2OnToplistAssembly = "Top Rated Assembly Languages";
+
+        openBaseURL(getDriver());
+        click(TOP_LISTS_MENU, getDriver());
+        click(TOPLIST_ASSEMBLY_SUBMENU, getDriver());
+
+        String actualHeader2OnToplistAssembly = getDriver().findElement(HEADER_2_TOPLIST_ASSEMBLY).getText();
+
+        Assert.assertEquals(actualHeader2OnToplistAssembly, expectedHeader2OnToplistAssembly);
     }
 }
