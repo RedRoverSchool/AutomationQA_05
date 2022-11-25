@@ -146,7 +146,7 @@ public class AnastasiaYYTest extends BaseTest {
         }
     }
 
-    @Test
+   @Test
     public void testVerifyNumberOfLanguagesOnPageY()  {
         final int expectedResult = 9;
         int count = 0;
