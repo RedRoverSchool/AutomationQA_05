@@ -46,8 +46,10 @@ public class Aidai001Test extends BaseTest {
         List<String> textList = new ArrayList<>();
 
         for (WebElement element : elementList) {
+
             textList.add(element.getText().toLowerCase());
         }
+
         return textList;
     }
 
