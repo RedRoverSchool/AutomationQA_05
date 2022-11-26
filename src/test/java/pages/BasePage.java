@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -22,34 +21,24 @@ public abstract class BasePage {
         return driver;
     }
 
-    private WebElement getElement(By by) {
-
-        return getDriver().findElement(by);
+    public void click(WebElement element) {
+        element.click();
     }
 
-    public void click(By by) {
-        getElement(by).click();
+    public void input(String text, WebElement element) {
+        element.sendKeys(text);
     }
 
-    public void input(String text, By by) {
-        getElement(by).sendKeys(text);
+    public int getListSize(List<WebElement> list) {
+
+        return list.size();
     }
 
-    private List<WebElement> getElements(By by) {
-
-        return getDriver().findElements(by);
-    }
-
-    public int getListSize(By by) {
-
-        return getElements(by).size();
-    }
-
-    public List<String> getListText(By by) {
-        if (getListSize(by) > 0) {
+    public List<String> getListText(List<WebElement> list) {
+        if (getListSize(list) > 0) {
             List<String> textList = new ArrayList<>();
 
-            for (WebElement element : getElements(by)) {
+            for (WebElement element : list) {
                 textList.add(element.getText());
             }
 
@@ -57,30 +46,6 @@ public abstract class BasePage {
         }
 
         return null;
-    }
-
-    public List<String> getListTextInLowerCase(By by) {
-        if (getListSize(by) > 0) {
-            List<String> textList = new ArrayList<>();
-
-            for (WebElement element : getElements(by)) {
-                textList.add(element.getText().toLowerCase());
-            }
-
-            return textList;
-        }
-
-        return null;
-    }
-
-
-    ///POM3
-    public void click(WebElement element) {
-        element.click();
-    }
-
-    public void input(String text, WebElement element) {
-        element.sendKeys(text);
     }
 
     public List<String> getListTextInLowerCase(List<WebElement> list) {
@@ -96,6 +61,4 @@ public abstract class BasePage {
 
         return null;
     }
-
-
 }

@@ -41,24 +41,19 @@ public abstract class BaseTest {
         return driver;
     }
 
-    public void openBaseURL() {
-
-        getDriver().get(BASE_URL);
-    }
-
-    public StartPage openBaseURLPOM2() {
+    public StartPage openBaseURL() {
         getDriver().get(BASE_URL);
 
         return new StartPage(getDriver());
     }
-//
-//    public String getExternalPageTitle() {
-//
-//        return getDriver().getTitle();
-//    }
-//
-//    public String getExternalPageURL() {
-//
-//        return getDriver().getCurrentUrl();
-//    }
+
+    public String getExternalPageTitle() {
+
+        return getDriver().getTitle();
+    }
+
+    public String getExternalPageURL() {
+
+        return getDriver().getCurrentUrl();
+    }
 }
