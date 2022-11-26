@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.List;
 public class Katy1313Test extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    static final String LETTER = "j";
+    static final String LANGUAGE_NAME = "Java";
 
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
@@ -19,6 +21,9 @@ public class Katy1313Test extends BaseTest {
     final static By H_2_CATEGORY = By.xpath("//div[@id ='main']/h2[contains(text(), 'A')]");
     final static By CATEGORY_LETTER = By.xpath("//ul[@id='submenu']//a[@href='p.html']");
     final static By LANGUAGES_NAMES_LIST_DISPLAYED = By.xpath("//table[@id='category']/tbody//a");
+    final static By CATEGORY_LETTER_2 = By.xpath("//ul[@id='submenu']//a[@href='"+ LETTER +".html']");
+    final static By LANGUAGE_NAME_2 = By.xpath("//table[@id='category']//td/a[text() = '"+ LANGUAGE_NAME +"']");
+    final static By H_2_HEADER_TITLE = By.xpath("//h2[text() = 'Language "+ LANGUAGE_NAME +"']");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -128,25 +133,14 @@ public class Katy1313Test extends BaseTest {
 
    @Test
     public void testBrowseLanguagesLanguageSelectionH2HeaderTitle_HappyPath() {
-       final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-       final String LETTER = "j";
-       final String LANGUAGE_NAME = "Java";
        final String EXPECTED_RESULT_H2_TITLE = "Language Java";
 
-       getDriver().get(BASE_URL);
-       WebElement browseLanguagesMenu = getDriver().findElement(By.xpath("//ul[@id = 'menu']//a[@href = '/abc.html']"));
-       browseLanguagesMenu.click();
+       openBaseURL(getDriver());
+       click(BROWSE_LANGUAGES_MENU, getDriver());
+       click(CATEGORY_LETTER_2, getDriver());
+       click(LANGUAGE_NAME_2, getDriver());
+       getElement(H_2_HEADER_TITLE, getDriver());
 
-       WebElement categoryLetter = getDriver().findElement(
-               By.xpath("//ul[@id='submenu']//a[@href='"+ LETTER +".html']"));
-       categoryLetter.click();
-
-       WebElement languageName = getDriver().findElement(
-               By.xpath("//table[@id='category']//td/a[text() = '"+ LANGUAGE_NAME +"']"));
-       languageName.click();
-
-       WebElement h2HeaderTitle = getDriver().findElement(By.xpath("//h2[text() = 'Language "+ LANGUAGE_NAME +"']"));
-
-       Assert.assertEquals(h2HeaderTitle.getText(), EXPECTED_RESULT_H2_TITLE);
+       Assert.assertEquals(getElementText(H_2_HEADER_TITLE, getDriver()), EXPECTED_RESULT_H2_TITLE);
    }
 }
