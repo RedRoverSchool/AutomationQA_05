@@ -5,13 +5,17 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
+import pages.StartPage;
 import utils.ReportUtils;
+import utils.TestUtils;
 
 import java.lang.reflect.Method;
 
 public abstract class BaseTest {
 
     private WebDriver driver;
+
+    private String BASE_URL = TestUtils.getBaseUrl();
 
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
@@ -37,11 +41,16 @@ public abstract class BaseTest {
         return driver;
     }
 
-//    public StartPage openBaseURL() {
-//        getDriver().get(BASE_URL);
-//
-//        return new StartPage(getDriver());
-//    }
+    public void openBaseURL() {
+
+        getDriver().get(BASE_URL);
+    }
+
+    public StartPage openBaseURLPOM2() {
+        getDriver().get(BASE_URL);
+
+        return new StartPage(getDriver());
+    }
 //
 //    public String getExternalPageTitle() {
 //

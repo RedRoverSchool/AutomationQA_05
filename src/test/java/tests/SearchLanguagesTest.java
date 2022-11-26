@@ -1,81 +1,73 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.SearchLanguagesPage;
+import pages.StartPage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchLanguagesTest extends BaseTest {
 
-    final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    @Test
+    public void testSearchForLanguageByNamePOM1() {
+        final String LANGUAGE_NAME = "python";
 
-    final static By SEARCH_LANGUAGES_MENU =  By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
-    final static By SEARCH_FOR_FIELD = By.name("search");
-    final static By GO_BUTTON = By.name("submitsearch");
-    final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+        openBaseURL();
+        StartPage startPage = new StartPage(getDriver());
 
-    private void openBaseURL(WebDriver driver) {
-        driver.get(BASE_URL);
-    }
+        startPage.clickSearchLanguagesMenu();
 
-    private WebElement getElement(By by, WebDriver driver) {
+        SearchLanguagesPage searchLanguagesPage = new SearchLanguagesPage(getDriver());
 
-        return driver.findElement(by);
-    }
+        searchLanguagesPage.clickSearchForField();
+        searchLanguagesPage.inputSearchCriteria(LANGUAGE_NAME);
+        searchLanguagesPage.clickGoButton();
 
-    private List<WebElement> getListOfElements(By by, WebDriver driver) {
+        List<String> languagesNames = searchLanguagesPage.getNamesInLowerCase();
 
-        return driver.findElements(by);
-    }
+        Assert.assertTrue(languagesNames.size() > 0);
 
-    private void click(By by, WebDriver driver) {
-        getElement(by, driver).click();
-    }
-
-    private void input(String text, By by, WebDriver driver) {
-        getElement(by, driver).sendKeys(text);
-    }
-
-    private int getListSize(By by, WebDriver driver) {
-
-        return getListOfElements(by, driver).size();
-    }
-
-    private List<String> getElementsText(By by, WebDriver driver) {
-        List<WebElement> elementsList = getListOfElements(by, driver);
-        List<String> textList = new ArrayList<>();
-
-//        for (int i = 0; i < elementsList.size(); i++) {
-//            textList.add(elementsList.get(i).getText().toLowerCase());
-//        }
-
-        for (WebElement element : elementsList) {
-            textList.add(element.getText().toLowerCase());
+        for (String languageName : languagesNames) {
+            Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
-
-        return textList;
     }
 
     @Test
-    public void testSearchForLanguageByName() {
+    public void testSearchForLanguageByNamePOM2() {
         final String LANGUAGE_NAME = "python";
 
-        openBaseURL(getDriver());
-        click(SEARCH_LANGUAGES_MENU, getDriver());
-        click(SEARCH_FOR_FIELD, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
-        click(GO_BUTTON, getDriver());
+        List<String> languagesNames =
+                openBaseURLPOM2()
+                        .clickSearchLanguagesMenuPOM2()
+                        .clickSearchForFieldPOM2()
+                        .inputSearchCriteriaPOM2(LANGUAGE_NAME)
+                        .clickGoButtonPOM2()
+                        .getNamesInLowerCase();
 
-        List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
+        Assert.assertTrue(languagesNames.size() > 0);
 
-        Assert.assertTrue(languageNames.size() > 0);
+        for (String languageName : languagesNames) {
+            Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
+        }
+    }
 
-        for (String languageName : languageNames) {
+    @Test
+    public void testSearchForLanguageByNamePOM3() {
+        final String LANGUAGE_NAME = "python";
+
+        List<String> languagesNames =
+                openBaseURLPOM2()
+                        .clickSearchLanguagesMenuPOM3()
+                        .clickSearchForFieldPOM3()
+                        .inputSearchCriteriaPOM3(LANGUAGE_NAME)
+                        .clickGoButtonPOM3()
+                        .getNamesInLowerCasePOM3();
+
+        Assert.assertTrue(languagesNames.size() > 0);
+
+        for (String languageName : languagesNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }

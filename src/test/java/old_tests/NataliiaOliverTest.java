@@ -21,11 +21,6 @@ public class NataliiaOliverTest extends BaseTest {
     final static By GREGOR_SCHEITHAUER_WEBSITE_LINK = By.xpath(CREATORS_BASE_WEBSITE_LINK + "[@href='http://www.e-taste.org']");
     final static By STEFAN_SCHELER_WEBSITE_LINK = By.xpath(CREATORS_BASE_WEBSITE_LINK + "[@href='http://sts.synflood.de/']");
 
-    private void openBaseURL() {
-
-        getDriver().get(BASE_URL);
-    }
-
     private WebElement getStartMenu() {
 
         return getDriver().findElement(START_MENU);
