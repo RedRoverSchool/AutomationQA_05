@@ -7,6 +7,13 @@ import java.util.List;
 
 public final class TestUtils {
 
+    private static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+
+    public static String getBaseUrl() {
+
+        return BASE_URL;
+    }
+
     private static void getBottles(StringBuilder lyrics, int number, String btl) {
         lyrics.append(number).append(btl);
     }

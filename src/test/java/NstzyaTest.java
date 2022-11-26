@@ -1,12 +1,15 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class NstzyaTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
@@ -27,6 +30,8 @@ public class NstzyaTest extends BaseTest {
     final static By B_SUBMENU = By.xpath("//ul[@id='submenu']/li/a[@href='b.html']");
     final static By HEADER_H2_ON_PAGE_B_SUBMENU = By.xpath("//div[@id='main']/h2[contains(text(), 'Category B')]");
 
+    final static By J_SUBMENU = By.xpath("//div[@id='navigation']/ul/li/a[@href='j.html']");
+    final static By LANGUAGES_NAMES_STARTED_WITH_J_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -151,5 +156,28 @@ public class NstzyaTest extends BaseTest {
         String actualResult = getTextOfWebElement(HEADER_H2_ON_PAGE_B_SUBMENU, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+
+    @Test
+    public void testRandomLinkIsClickable_whenOpenBrowseLanguageMenu_JSubmenu_HappyPath() {
+
+        char expectedResult = 'j';
+
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(J_SUBMENU, getDriver());
+
+        List<String> languagesNamesStartWIthJ = getElementsText(LANGUAGES_NAMES_STARTED_WITH_J_LIST, getDriver());
+        Assert.assertTrue(languagesNamesStartWIthJ.size() > 0);
+
+        Random r = new java.util.Random();
+        List<WebElement> languageNamesStartWithJLinks = getListOfElements(LANGUAGES_NAMES_STARTED_WITH_J_LIST, getDriver());
+
+        WebElement randomLink = languageNamesStartWithJLinks.get(r.nextInt(languageNamesStartWithJLinks.size()));
+
+        Assert.assertEquals(randomLink.getText().toLowerCase().charAt(0), expectedResult);
+
+        randomLink.click();
     }
 }

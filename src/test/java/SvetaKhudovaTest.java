@@ -16,6 +16,7 @@ public class SvetaKhudovaTest extends BaseTest {
     final static By SEARCH_FOR_FIELD = By.name("search");
     final static By GO_BUTTON = By.name("submitsearch");
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
+    final static By SEARCH_START_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href='/']");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -76,33 +77,18 @@ public class SvetaKhudovaTest extends BaseTest {
 
     @Test
     public void testClickStartFromHomepage_HappyPath(){
-        getDriver().get(BASE_URL);
-
-        WebElement searchStartMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href='/']")
-        );
-        Assert.assertTrue(searchStartMenu.getText().toLowerCase().contains("start"));
-        searchStartMenu.click();
-
-        String currentUrl = getDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, BASE_URL);
+        openBaseURL(getDriver());
+        click(SEARCH_START_MENU, getDriver());
+        Assert.assertEquals(getDriver().getCurrentUrl(), BASE_URL);
     }
 
     @Test
     public void testClickStartFromSearchLanguagesMenu_HappyPath(){
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
+        click(SEARCH_LANGUAGES_MENU, getDriver());
+        click(SEARCH_START_MENU, getDriver());
 
-        WebElement searchLanguagesMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']")
-        );
-        searchLanguagesMenu.click();
-
-        WebElement searchStartMenu = getDriver().findElement(
-                By.xpath("//ul[@id = 'menu']/li/a[@href='/']")
-        );
-        searchStartMenu.click();
-
-        String currentUrl = getDriver().getCurrentUrl();
-        Assert.assertEquals(currentUrl, BASE_URL);
+        Assert.assertEquals(getDriver().getCurrentUrl(), BASE_URL);
     }
+
 }

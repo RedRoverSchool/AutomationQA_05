@@ -36,6 +36,7 @@ public class EkaterinaLizinaTest extends BaseTest {
     private final By TOP_RATED_REAL_LANGUAGE_LIST = By.xpath("//table [@id = 'category']/tbody/tr/td[2]/a");
     private final By TOP_RATED_ESOTERIC_LANGUAGE = By.xpath("//table [@id = 'category']/tbody/tr/td[2]/a");
     private final By ALERT_URL_SIGNGUESTBOOK_SUBMENU_MESSAGE = By.xpath("//a/img[@src = '/images/bb/bburl.gif']");
+
     private void openBaseURL(WebDriver driver){
        driver.get(BASE_URL);
     }

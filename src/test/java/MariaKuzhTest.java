@@ -129,4 +129,38 @@ public class MariaKuzhTest extends BaseTest {
         Boolean expectedResultNewUrl = true;
         Assert.assertEquals(actualResultNewUrl,expectedResultNewUrl);
     }
+
+    @Test
+    public void testSortinglanguagesByNumber_AfterSelectingNumberInSubmenu() {
+        final String NUMBER = "0";
+        final String NUMBER_FOR_CATEGORY = "0-9";
+
+        getDriver().get(BASE_URL);
+
+        WebElement browseLanguageMenu = getDriver().findElement(
+                By.xpath("//div[@id='navigation']/ul//a[@href='/abc.html']")
+        );
+        browseLanguageMenu.click();
+
+        WebElement submenuElementLettersNumbers = getDriver().findElement(
+                By.xpath(String.format("//ul[@id='submenu']//a[@href='%s.html']", NUMBER))
+        );
+        submenuElementLettersNumbers.click();
+
+        WebElement categoryByLetterOrNumber = getDriver().findElement(
+                By.xpath(String.format("//h2[normalize-space()='Category %s']", NUMBER_FOR_CATEGORY.toUpperCase()))
+        );
+        Assert.assertTrue(categoryByLetterOrNumber.getText().toLowerCase().endsWith(NUMBER_FOR_CATEGORY));
+
+        WebElement textWithSelectedLetterOrNumber = getDriver().findElement(
+                By.xpath(String.format("//strong[normalize-space()='%s']", NUMBER_FOR_CATEGORY.toUpperCase()))
+        );
+        Assert.assertTrue(textWithSelectedLetterOrNumber.getText().toLowerCase().contains(NUMBER_FOR_CATEGORY));
+
+        List<WebElement> languageListByLetterOrNumber = getDriver().findElements(
+                By.xpath("//table[@id='category']/tbody/tr/td[1]/a")
+        );
+
+        Assert.assertFalse(languageListByLetterOrNumber.isEmpty());
+    }
 }

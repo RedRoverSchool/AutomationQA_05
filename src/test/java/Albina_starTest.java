@@ -15,6 +15,9 @@ public class Albina_starTest extends BaseTest {
     final static By FOOTER_SEARCH_LANGUAGE = By.xpath("//div[@id=\"footer\"]/p/a[3]");
     final static By SEARCH_LANGUAGES_HEADER = By.xpath("//div[@id=\"main\"]/h2");
     final static By SEARCH_FOR = By.xpath("//div/div[3]/form/p/input[1]");
+    final static By MAIN_SUBMIT_NEW_LANGUAGE = By.xpath("//ul[@id= 'menu']//li/a[@href='/submitnewlanguage.html']");
+    final static By PLEASE_NOTE = By.xpath("//div[@id=\"main\"]/h3");
+    final static By PLEASE_NOTE_LIST = By.xpath("//div[@id='main']/ul/li");
 
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
@@ -53,6 +56,11 @@ public class Albina_starTest extends BaseTest {
     public boolean isDisplayed(By by) {
 
         return getDriver().findElement(by).isDisplayed();
+    }
+
+    private int getListSize(By by, WebDriver driver) {
+
+        return getListOfElements(by, driver).size();
     }
 
     @Test
@@ -119,5 +127,22 @@ public class Albina_starTest extends BaseTest {
         Assert.assertTrue(elementsOfTopListSubmenu.size() > 0);
 
         Assert.assertEquals(elementsOfTopListSubmenu, expectedElementsOfTopListSubmenu);
+    }
+
+    @Test
+    public void testVerifyQuantityOfMainSubmitNewLanguagePleaseNoteList_HappyPath() {
+        int expectedQuantityOfPleaseNote = 10;
+
+        openBaseURL(getDriver());
+        click(MAIN_SUBMIT_NEW_LANGUAGE, getDriver());
+
+        Assert.assertTrue(isDisplayed(PLEASE_NOTE));
+
+        List<WebElement> elements = getDriver().findElements(PLEASE_NOTE_LIST);
+
+        Assert.assertTrue(elements.size() >0);
+
+        int actualQuantityOfPleaseNote = getListSize(PLEASE_NOTE_LIST, getDriver());
+        Assert.assertEquals(actualQuantityOfPleaseNote, expectedQuantityOfPleaseNote);
     }
 }
