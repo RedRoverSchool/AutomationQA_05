@@ -188,5 +188,4 @@ public class AleksandrAkimovChgTest extends BaseTest {
         Assert.assertEquals(actualdResultCurrentURL, expectedResultCurrentURL);
         Assert.assertEquals(actualdResultH2Text, expectedResultH2Text);
     }
-
 }
