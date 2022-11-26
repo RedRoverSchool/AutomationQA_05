@@ -105,4 +105,19 @@ public class ElenaStratTest extends BaseTest {
     }
 
 
+
+    @Test
+    public void testMainForVerifyTheHeaderH2OnTheStartPage_HappyPath() {
+        String expectedResult = "one program in 1500 variations";
+
+        openBaseURL(getDriver());
+
+        WebElement verifyHeaderH1 = getDriver().findElement(By.xpath("//div[@id = 'header']/h2"));
+
+        String actualResult = verifyHeaderH1.getText();
+
+        Assert.assertEquals(actualResult,expectedResult);
+    }
+
+
 }
