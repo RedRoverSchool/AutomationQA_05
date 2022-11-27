@@ -66,9 +66,4 @@ public abstract class BasePage {
 
         return element.getText();
     }
-
-    public String getCurrentUrl() {
-
-        return getDriver().getCurrentUrl();
-    }
 }
