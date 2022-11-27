@@ -9,7 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import base.BaseTest;
 
-import runner.BaseTest;
 import java.util.ArrayList;
 import java.util.List;
 
