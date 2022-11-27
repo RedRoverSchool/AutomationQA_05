@@ -61,4 +61,14 @@ public abstract class BasePage {
 
         return null;
     }
+
+    public String getText(WebElement element) {
+
+        return element.getText();
+    }
+
+    public String getCurrentUrl() {
+
+        return getDriver().getCurrentUrl();
+    }
 }

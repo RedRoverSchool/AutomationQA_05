@@ -28,14 +28,6 @@ public class AleksandrAkimovChgTest extends BaseTest {
     final static By SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU =
             By.xpath(XPATH_SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU);
 
-    final static By XPATH_HREF_TOPLIST_MENU = By.xpath(
-            "//div[@id = 'navigation']/ul[@id = 'menu']//li/a[@href = '/toplist.html']");
-
-    final static By XPATH_HREF_NEW_COMMENTS_ON_SUBMENU_NAVIGATION_BAR_TOPLIST_MENU = By.xpath(
-            "//div[@id = 'navigation']/ul[@id = 'submenu']//li/a[@href = './newcomments.html']");
-
-    final static By XPATH_MAIN_H2 = By.xpath("//div[@id = 'main']/h2");
-
     private void openBaseUrl(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -173,21 +165,5 @@ public class AleksandrAkimovChgTest extends BaseTest {
         Assert.assertEquals(actualResultSimbol, SIMBOl_OR_LETTER);
         Assert.assertEquals(actualResulHreftUrl, expectedResultHrefURL);
         Assert.assertEquals(actualResultH2Text, expectedResultH2Text);
-    }
-
-    @Test
-    public void testPagerNewComments_WhenClickNewCommentsOnSubmenuNavigationBarTopListMenu() {
-        final String expectedResultCurrentURL = "https://www.99-bottles-of-beer.net/newcomments.html";
-        final String expectedResultH2Text = "New Comments";
-
-        openBaseUrl(getDriver());
-        click(XPATH_HREF_TOPLIST_MENU, getDriver());
-        click(XPATH_HREF_NEW_COMMENTS_ON_SUBMENU_NAVIGATION_BAR_TOPLIST_MENU, getDriver());
-
-        String actualdResultH2Text = getText(XPATH_MAIN_H2, getDriver());
-        String actualdResultCurrentURL = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualdResultCurrentURL, expectedResultCurrentURL);
-        Assert.assertEquals(actualdResultH2Text, expectedResultH2Text);
     }
 }
