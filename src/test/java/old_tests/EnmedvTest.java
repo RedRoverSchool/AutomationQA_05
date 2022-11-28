@@ -112,16 +112,10 @@ public class EnmedvTest extends BaseTest {
     @Test
     public void testVerifyTextOnThePageImpressum() {
         String expectedResult = "os@ls-la.net";
-        String textOnThePage = "os@ls-la.net";
 
         openBaseURL(getDriver());
         click(PRIVACY, getDriver());
         click(TEXT_EMAIL_ADRESS_ON_THE_PAGE, getDriver());
-
-//        WebElement textEmailAdressOnThePage = getDriver().findElement(
-//                By.xpath("//div[@id = 'main']/p")
-//        );
-//        textEmailAdressOnThePage.click();
 
         String actualResult = getElementText(TEXT_EMAIL_ADRESS_ON_THE_PAGE, getDriver());
 
