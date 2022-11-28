@@ -33,6 +33,8 @@ public class NstzyaTest extends BaseTest {
     final static By J_SUBMENU = By.xpath("//div[@id='navigation']/ul/li/a[@href='j.html']");
     final static By LANGUAGES_NAMES_STARTED_WITH_J_LIST = By.xpath("//table[@id='category']/tbody/tr/td[1]/a");
 
+    final static By N_SUBMENU = By.xpath("//div[@id='navigation']/ul/li/a[@href='n.html']");
+
     private void openBaseURL(WebDriver driver) {
         driver.get(BASE_URL);
     }
@@ -179,5 +181,18 @@ public class NstzyaTest extends BaseTest {
         Assert.assertEquals(randomLink.getText().toLowerCase().charAt(0), expectedResult);
 
         randomLink.click();
+    }
+
+
+    @Test
+    public void testLinkText_WhenNavigatingFromStartToBrowseLanguageAndToLetterNLink_HappyPath() {
+
+        String expectedText = "N";
+
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(N_SUBMENU, getDriver());
+
+        Assert.assertEquals(getElement(N_SUBMENU, getDriver()).getText(), expectedText);
     }
 }
