@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class Y_SubmenuTest extends BaseTest {
+public class YTest extends BaseTest {
 
     @Test
     public void testAllLanguagesOnYPageStartWithLetterY()  {
