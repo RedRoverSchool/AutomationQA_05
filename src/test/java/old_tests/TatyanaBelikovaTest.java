@@ -77,11 +77,12 @@ public class TatyanaBelikovaTest extends BaseTest {
     }
 
     @Test
-    public void testSubmenuImpressumLabelText_Privacy() {
+    public void testSubmenuImpressumLabelText_Privacy1() {
 
         final String expectedResult = "Privacy";
 
         openBaseURL(getDriver());
+
         Assert.assertEquals(getText(SUB_MENU_IMPRESSUM, getDriver()), expectedResult);
     }
 }
