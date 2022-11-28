@@ -19,6 +19,7 @@ public class EnmedvTest extends BaseTest {
     final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
     final static By PRIVACY = By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']");
     final static By H_2_PRIVACY_HEADER = By.xpath("//div[@id = 'main']/h2");
+    final static By H_3_OLIVER_SCHADE_IN_HEADER = By.xpath("//div[@id = 'main']/h3");
     private void openBaseURL(WebDriver driver) {
 
         driver.get(BASE_URL);
@@ -98,18 +99,11 @@ public class EnmedvTest extends BaseTest {
     public void testVerifyTextInHeaderH3() {
         String expectedResult = "Oliver Schade";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
+        click(PRIVACY, getDriver());
+        click(H_3_OLIVER_SCHADE_IN_HEADER, getDriver());
 
-        WebElement privacy = getDriver().findElement(
-                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']")
-        );
-        privacy.click();
-
-        WebElement h3OliverSchadeInHeader = getDriver().findElement(
-                By.xpath("//div[@id = 'main']/h3")
-        );
-
-        String actualResult = h3OliverSchadeInHeader.getText();
+        String actualResult = getElementText(H_3_OLIVER_SCHADE_IN_HEADER, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
     }
