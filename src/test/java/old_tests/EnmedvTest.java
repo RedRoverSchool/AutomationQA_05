@@ -20,6 +20,7 @@ public class EnmedvTest extends BaseTest {
     final static By PRIVACY = By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']");
     final static By H_2_PRIVACY_HEADER = By.xpath("//div[@id = 'main']/h2");
     final static By H_3_OLIVER_SCHADE_IN_HEADER = By.xpath("//div[@id = 'main']/h3");
+    final static By TEXT_EMAIL_ADRESS_ON_THE_PAGE = By.xpath("//div[@id = 'main']/p");
     private void openBaseURL(WebDriver driver) {
 
         driver.get(BASE_URL);
@@ -113,21 +114,16 @@ public class EnmedvTest extends BaseTest {
         String expectedResult = "os@ls-la.net";
         String textOnThePage = "os@ls-la.net";
 
-        getDriver().get(BASE_URL);
+        openBaseURL(getDriver());
+        click(PRIVACY, getDriver());
+        click(TEXT_EMAIL_ADRESS_ON_THE_PAGE, getDriver());
 
-        WebElement privacy = getDriver().findElement(
-                By.xpath("//ul[@id = 'submenu']/li/a[@href = 'impressum.html']")
-        );
-        privacy.click();
+//        WebElement textEmailAdressOnThePage = getDriver().findElement(
+//                By.xpath("//div[@id = 'main']/p")
+//        );
+//        textEmailAdressOnThePage.click();
 
-        WebElement textEmailAdressOnThePage = getDriver().findElement(
-                By.xpath("//div[@id = 'main']/p")
-        );
-        textEmailAdressOnThePage.click();
-
-        String actualResult = textEmailAdressOnThePage.getText();
-
-        Assert.assertTrue(textEmailAdressOnThePage.getText().contains(textOnThePage));
+        String actualResult = getElementText(TEXT_EMAIL_ADRESS_ON_THE_PAGE, getDriver());
 
         Assert.assertEquals(actualResult, expectedResult);
 
