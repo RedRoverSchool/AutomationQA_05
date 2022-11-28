@@ -15,6 +15,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id = 'main']/h2")
     private WebElement h2;
 
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
+    private WebElement infoSubMenuButton;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -35,4 +38,16 @@ public abstract class MainPage extends BasePage {
 
         return getText(h2);
     }
+
+    public InfoSubmenuPage clickInfoSubmenuPage() {
+        click(infoSubMenuButton);
+
+        return new InfoSubmenuPage(getDriver());
+    }
+
+    public String getSubmenuInfoLink(String attribute)  {
+
+        return getAttribute(infoSubMenuButton, attribute);
+    }
+
 }
