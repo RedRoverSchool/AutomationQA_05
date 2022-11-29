@@ -12,10 +12,6 @@ import java.util.List;
 
 public class AleksandrAkimovChgTest extends BaseTest {
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
-    final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id = 'menu']/li/a[@href = '/search.html']");
-    final static By SEARCH_FOR_FIELD = By.name("search");
-    final static By GO_BUTTON = By.name("submitsearch");
-    final static By LANGUAGES_NAMES_LIST = By.xpath("//table[@id = 'category']/tbody/tr/td[1]/a");
 
     final static By SEARCH_BROWSE_LANGUAGE_MENU =
             By.xpath("//div[@id = 'navigation']/ul[@id = 'menu']/li/a[@href = '/abc.html']");
@@ -39,14 +35,6 @@ public class AleksandrAkimovChgTest extends BaseTest {
 
     private void click(By by, WebDriver driver) {
         getElement(by, driver).click();
-    }
-
-    private void input(String text, By by, WebDriver driver) {
-        getElement(by, driver).sendKeys(text);
-    }
-
-    private void clear(By by, WebDriver driver) {
-        getElement(by, driver).clear();
     }
 
     private List<WebElement> getListOfElements(By by, WebDriver driver) {
@@ -123,21 +111,6 @@ public class AleksandrAkimovChgTest extends BaseTest {
 
         return By.xpath(String.format("//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href = '%s.html']",
                 simbol.toLowerCase()));
-    }
-
-    @Test
-    public void testSearchForLanguageEmptyField_HappyPath() {
-        final String LANGUAGE_NAME = "Python";
-
-        openBaseUrl(getDriver());
-        click(SEARCH_LANGUAGES_MENU, getDriver());
-        click(SEARCH_FOR_FIELD, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
-        click(GO_BUTTON, getDriver());
-        clear(SEARCH_FOR_FIELD, getDriver());
-        click(GO_BUTTON, getDriver());
-
-        Assert.assertTrue(getListSize(LANGUAGES_NAMES_LIST, getDriver()) == 0);
     }
 
     @Test
