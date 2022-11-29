@@ -71,4 +71,8 @@ public abstract class BasePage {
 
         return element.getAttribute(attribute);
     }
+
+    public void clear(WebElement element) {
+        element.clear();
+    }
 }
