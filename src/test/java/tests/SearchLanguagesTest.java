@@ -27,7 +27,7 @@ public class SearchLanguagesTest extends BaseTest {
         }
     }
     @Test
-    public void testSearchForLanguageEmptyField_HappyPath() {
+    public void testSearchForLanguageEmptyField() {
         final String LANGUAGE_NAME = "Python";
 
         int languagesNamesSize =
@@ -42,6 +42,4 @@ public class SearchLanguagesTest extends BaseTest {
 
         Assert.assertTrue(languagesNamesSize == 0);
     }
-
-
 }
