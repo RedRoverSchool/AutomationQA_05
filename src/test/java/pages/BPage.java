@@ -13,7 +13,7 @@ public class BPage extends BrowseLanguagesSubmenuPage {
         super(driver);
     }
 
-    public BashLanguagePage clickBashLink() {
+    public BashLanguagePage clickBashLanguageLink() {
         click(bashLanguageLink);
 
         return new BashLanguagePage(getDriver());

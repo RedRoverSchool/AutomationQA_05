@@ -13,7 +13,7 @@ public class BashLanguageTest extends BaseTest {
         String actualLanguageName = openBaseURL()
                   .clickBrowseLanguagesFooterMenu()
                   .clickBSubmenu()
-                  .clickBashLink()
+                  .clickBashLanguageLink()
                   .getBashLanguageHeader();
 
         Assert.assertTrue(actualLanguageName.contains(LANGUAGE_NAME));
