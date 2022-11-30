@@ -25,4 +25,9 @@ public abstract class TablePage extends MainPage {
 
         return getListSize(namesList);
     }
+    
+    public List<String> getNamesInUpperCase() {
+
+        return getListTextInUpperCase(namesList);
+    }
 }

@@ -75,4 +75,18 @@ public abstract class BasePage {
     public void clear(WebElement element) {
         element.clear();
     }
+    
+    public List<String> getListTextInUpperCase(List<WebElement> list) {
+        if (list.size() > 0) {
+            List<String> textList = new ArrayList<>();
+
+            for (WebElement element : list) {
+                textList.add(element.getText().toUpperCase());
+            }
+
+            return textList;
+        }
+
+        return null;
+    }
 }
