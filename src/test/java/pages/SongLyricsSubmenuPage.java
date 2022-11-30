@@ -20,4 +20,3 @@ public class SongLyricsSubmenuPage extends MainPage {
         return getText(SongLyricsSubmenuPageTitle);
     }
 }
-
