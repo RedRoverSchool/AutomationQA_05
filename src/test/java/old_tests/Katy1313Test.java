@@ -33,7 +33,7 @@ public class Katy1313Test extends BaseTest {
 
     private WebElement getElement(By by, WebDriver driver) {
 
-       return driver.findElement(by);
+        return driver.findElement(by);
     }
 
     private List<WebElement> getListOfElements (By by, WebDriver driver) {
@@ -84,7 +84,7 @@ public class Katy1313Test extends BaseTest {
 
     private String getElementText(By by, WebDriver driver) {
 
-       return getElement(by, driver).getText();
+        return getElement(by, driver).getText();
     }
 
     @Test
@@ -107,42 +107,42 @@ public class Katy1313Test extends BaseTest {
         }
     }
 
-   @Test
+    @Test
     public void testBrowseLanguagesDefaultValue_HappyPath() {
-       final String BROWSE_LANGUAGES_DEFAULT_VALUE = "Category A";
+        final String BROWSE_LANGUAGES_DEFAULT_VALUE = "Category A";
 
-       openBaseURL(getDriver());
-       click(BROWSE_LANGUAGES_MENU, getDriver());
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
 
-       Assert.assertEquals(getElementText(H_2_CATEGORY,getDriver()), BROWSE_LANGUAGES_DEFAULT_VALUE);
-   }
+        Assert.assertEquals(getElementText(H_2_CATEGORY,getDriver()), BROWSE_LANGUAGES_DEFAULT_VALUE);
+    }
 
-   @Test
+    @Test
     public void testBrowseLanguagesLanguagesSortedAscending_HappyPath()  {
 
-       openBaseURL(getDriver());
-       click(BROWSE_LANGUAGES_MENU, getDriver());
-       click(CATEGORY_LETTER, getDriver());
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(CATEGORY_LETTER, getDriver());
 
-       List<String> displayed = new ArrayList<String>();
-       List<String> sorted = new ArrayList<String>();
+        List<String> displayed = new ArrayList<String>();
+        List<String> sorted = new ArrayList<String>();
 
-       Assert.assertTrue(getListSize(LANGUAGES_NAMES_LIST_DISPLAYED, getDriver()) > 0);
+        Assert.assertTrue(getListSize(LANGUAGES_NAMES_LIST_DISPLAYED, getDriver()) > 0);
 
-       sortElementsText(LANGUAGES_NAMES_LIST_DISPLAYED,getDriver());
-       Assert.assertEquals(displayed,sorted);
-   }
+        sortElementsText(LANGUAGES_NAMES_LIST_DISPLAYED,getDriver());
+        Assert.assertEquals(displayed,sorted);
+    }
 
-   @Test
+    @Test
     public void testBrowseLanguagesLanguageSelectionH2HeaderTitle_HappyPath() {
-       final String EXPECTED_RESULT_H2_TITLE = "Language Java";
+        final String EXPECTED_RESULT_H2_TITLE = "Language Java";
 
-       openBaseURL(getDriver());
-       click(BROWSE_LANGUAGES_MENU, getDriver());
-       click(CATEGORY_LETTER_2, getDriver());
-       click(LANGUAGE_NAME_2, getDriver());
-       getElement(H_2_HEADER_TITLE, getDriver());
+        openBaseURL(getDriver());
+        click(BROWSE_LANGUAGES_MENU, getDriver());
+        click(CATEGORY_LETTER_2, getDriver());
+        click(LANGUAGE_NAME_2, getDriver());
+        getElement(H_2_HEADER_TITLE, getDriver());
 
-       Assert.assertEquals(getElementText(H_2_HEADER_TITLE, getDriver()), EXPECTED_RESULT_H2_TITLE);
-   }
+        Assert.assertEquals(getElementText(H_2_HEADER_TITLE, getDriver()), EXPECTED_RESULT_H2_TITLE);
+    }
 }
