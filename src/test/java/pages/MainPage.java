@@ -30,6 +30,9 @@ public abstract class MainPage extends BasePage {
     private WebElement submitNewLanguageMenu;
 >>>>>>> 6991228aeaaa27d1e18b52d0b14d2d17838956e9
 
+    @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
+    private WebElement startMenu;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -79,5 +82,11 @@ public abstract class MainPage extends BasePage {
 
         return new SubmitNewLanguagePage(getDriver());
 >>>>>>> 6991228aeaaa27d1e18b52d0b14d2d17838956e9
+    }
+
+    public StartPage clickStartMenu() {
+        click(startMenu);
+
+        return new StartPage(getDriver());
     }
 }
