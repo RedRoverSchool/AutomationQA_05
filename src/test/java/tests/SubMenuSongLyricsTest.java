@@ -32,8 +32,7 @@ public class SubMenuSongLyricsTest extends BaseTest {
 
         String actualSubmenuSongLyricsTitle = songLyricsSubmenuPage.getSongLyricsSubmenuLabelText();
 
-        String actualURL = songLyricsSubmenuPage
-                .getExternalPageURL();
+        String actualURL = songLyricsSubmenuPage. getExternalPageURL();
 
         Assert.assertEquals(actualSubmenuSongLyricsTitle, expectedSubmenuSongLyricsTitle);
         Assert.assertEquals(actualURL, expectedURL);
