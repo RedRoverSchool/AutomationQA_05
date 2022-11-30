@@ -21,7 +21,7 @@ public class Yuliya14Test extends BaseTest {
         return  driver.findElement(by);
     }
 
-   public void click(By by, WebDriver driver){
+    public void click(By by, WebDriver driver) {
         getElement(by, driver).click();
     }
 
