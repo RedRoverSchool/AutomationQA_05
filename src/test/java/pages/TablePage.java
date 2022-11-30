@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class TablePage extends MainPage {
@@ -18,5 +19,15 @@ public abstract class TablePage extends MainPage {
     public List<String> getNamesInLowerCase() {
 
         return getListTextInLowerCase(namesList);
+    }
+
+    public int getListSizeFromTable() {
+
+        return getListSize(namesList);
+    }
+    
+    public List<String> getNamesInUpperCase() {
+
+        return getListTextInUpperCase(namesList);
     }
 }

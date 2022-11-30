@@ -26,4 +26,21 @@ public class SearchLanguagesTest extends BaseTest {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
+
+    @Test
+    public void testSearchForLanguageEmptyField() {
+        final String LANGUAGE_NAME = "Python";
+
+        int languagesNamesSize =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickSearchForField()
+                        .inputSearchCriteria(LANGUAGE_NAME)
+                        .clickGoButton()
+                        .clearSearchForField()
+                        .clickGoButton()
+                        .getListSizeFromTable();
+
+        Assert.assertTrue(languagesNamesSize == 0);
+    }
 }

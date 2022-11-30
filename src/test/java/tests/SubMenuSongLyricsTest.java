@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SubMenuSongLyricsTest extends BaseTest {
-
     @Test
     public void testSongLyricsSubmenu() {
         final String expectedSubmenuSongLyricsTitle = "Song Lyrics";

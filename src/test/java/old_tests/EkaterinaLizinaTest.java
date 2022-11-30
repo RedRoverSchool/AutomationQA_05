@@ -120,16 +120,16 @@ public class EkaterinaLizinaTest extends BaseTest {
         }
     }
     @Test
-    public void testABCNavigationSubmenuClickLetterC() {
+    public void testLanguagesOnCPageStartWithLetterC() {
         openBaseURL(getDriver());
         click(BROWSE_LANGUAGES, getDriver());
         String expectedResult = "C";
 
-        String old_default_category = getText(DEFAULT_CATEGORY, getDriver());
+      //  String old_default_category = getText(DEFAULT_CATEGORY, getDriver());
 
         click(LETTER_C, getDriver());
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
-        waitTextToBeChanged(DEFAULT_CATEGORY, old_default_category, getDriver(), wait);
+//        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+//        waitTextToBeChanged(DEFAULT_CATEGORY, old_default_category, getDriver(), wait);
 
         List<WebElement> languagesNamesList = getDriver().findElements(LANGUAGES_NAMES_LIST);
 
