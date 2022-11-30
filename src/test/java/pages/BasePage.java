@@ -89,4 +89,9 @@ public abstract class BasePage {
 
         return null;
     }
+
+    public String getExternalPageURL() {
+
+        return getDriver().getCurrentUrl();
+    }
 }
