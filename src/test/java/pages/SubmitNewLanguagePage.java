@@ -12,8 +12,7 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
     @FindBy(xpath = "//div[@id='main']/p[@style]")
     private WebElement errorMessage;
 
-    public SubmitNewLanguagePage(WebDriver driver)
-    {
+    public SubmitNewLanguagePage(WebDriver driver) {
         super(driver);
     }
 
