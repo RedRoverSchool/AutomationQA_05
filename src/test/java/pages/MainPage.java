@@ -27,6 +27,13 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
     private WebElement startMenu;
 
+    @FindBy(xpath = "//div[@id='header']/h1")
+    private WebElement headerH1;
+
+    @FindBy(xpath = "//div[@id='header']/h2")
+    private WebElement headerH2;
+
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -75,5 +82,15 @@ public abstract class MainPage extends BasePage {
         click(startMenu);
 
         return new StartPage(getDriver());
+    }
+
+    public String getTextHeaderH1() {
+
+        return getText(headerH1);
+    }
+
+    public String getTextHeaderH2() {
+
+        return getText(headerH2);
     }
 }
