@@ -18,6 +18,5 @@ public class SubmitNewLanguageTest extends BaseTest {
                         .getTextErrorMessage();
 
         Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
-
     }
 }
