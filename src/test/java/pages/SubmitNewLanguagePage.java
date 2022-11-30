@@ -12,6 +12,9 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
     @FindBy(xpath = "//div[@id='main']/p[@style]")
     private WebElement errorMessage;
 
+    @FindBy(xpath = "//div[@id='main']/h2")
+    private WebElement H2Header;
+
     public SubmitNewLanguagePage(WebDriver driver) {
         super(driver);
     }
@@ -25,5 +28,10 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
     public String getTextErrorMessage() {
 
         return getText(errorMessage);
+    }
+
+    public String getTextH2Header() {
+
+        return getText(H2Header);
     }
 }
