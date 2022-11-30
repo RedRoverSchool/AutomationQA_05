@@ -21,6 +21,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/abc.html']")
     private WebElement browseLanguagesMenu;
 
+    @FindBy(xpath = "//ul[@id= 'menu']//li/a[@href='/submitnewlanguage.html']")
+    private WebElement submitNewLanguageMenu;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -57,5 +60,11 @@ public abstract class MainPage extends BasePage {
         click(browseLanguagesMenu);
 
         return new ABCPage(getDriver());
+    }
+
+    public SubmitNewLanguagePage clickSubmitNewLanguageMenu() {
+        click(submitNewLanguageMenu);
+
+        return new SubmitNewLanguagePage(getDriver());
     }
 }
