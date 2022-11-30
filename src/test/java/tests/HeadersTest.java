@@ -19,5 +19,4 @@ public class HeadersTest extends BaseTest {
 
         Assert.assertEquals(openBaseURL().getTextHeaderH2(),HEADER_H2_TEXT);
     }
-
 }
