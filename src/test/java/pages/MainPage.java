@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,6 +21,9 @@ public abstract class MainPage extends BasePage {
 
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/abc.html']")
     private WebElement browseLanguagesMenu;
+
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='lyrics.html']")
+    private WebElement songLyricsSubmenuButton;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -57,5 +61,11 @@ public abstract class MainPage extends BasePage {
         click(browseLanguagesMenu);
 
         return new ABCPage(getDriver());
+    }
+
+    public SongLyricsSubmenuPage clickSongLyricsSubmenuPage() {
+        click(songLyricsSubmenuButton);
+
+        return new SongLyricsSubmenuPage(getDriver());
     }
 }

@@ -85,20 +85,38 @@ public class AnzhelikaBaaTest extends BaseTest {
         return getDriver().findElement(by).getAttribute(attribute);
     }
 
+//    @Test
+//    public void testSearchForLanguageByName_HappyPath() {
+//        final String LANGUAGE_NAME = "python";
+//
+//        openBaseURL(getDriver());
+//        click(SEARCH_LANGUAGES_MENU, getDriver());
+//        click(SEARCH_FOR_FIELD, getDriver());
+//        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
+//        click(GO_BUTTON, getDriver());
+//        List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
+//
+//        Assert.assertTrue(languageNames.size() > 0);
+//
+//        for (String languageName : languageNames) {
+//            Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
+//        }
+//    }
     @Test
-    public void testSearchForLanguageByName_HappyPath() {
+    public void testSearchForLanguageByName() {
         final String LANGUAGE_NAME = "python";
 
-        openBaseURL(getDriver());
-        click(SEARCH_LANGUAGES_MENU, getDriver());
-        click(SEARCH_FOR_FIELD, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
-        click(GO_BUTTON, getDriver());
-        List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
+        List<String> languagesNames =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickSearchForField()
+                        .inputSearchCriteria(LANGUAGE_NAME)
+                        .clickGoButton()
+                        .getNamesInLowerCase();
 
-        Assert.assertTrue(languageNames.size() > 0);
+        Assert.assertTrue(languagesNames.size() > 0);
 
-        for (String languageName : languageNames) {
+        for (String languageName : languagesNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
@@ -108,7 +126,7 @@ public class AnzhelikaBaaTest extends BaseTest {
     public void testSongLyricsSubmenu_WhenSearchingForLyricsOfSong_HappyPath() {
         String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
 
-        openBaseURL(getDriver());
+        openBaseURL();
         click(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
         text(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
         isDisplayed(PAGE_WITH_LYRICS, getDriver());
