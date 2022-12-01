@@ -33,4 +33,10 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
 
         return this;
     }
+
+    public SearchLanguagesPage clearSearchForField() {
+        clear(searchForField);
+
+        return this;
+    }
 }

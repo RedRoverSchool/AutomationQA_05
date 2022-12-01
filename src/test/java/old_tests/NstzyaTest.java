@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import base.BaseTest;
 
@@ -183,7 +184,7 @@ public class NstzyaTest extends BaseTest {
         randomLink.click();
     }
 
-
+    @Ignore
     @Test
     public void testLinkText_WhenNavigatingFromStartToBrowseLanguageAndToLetterNLink_HappyPath() {
 
