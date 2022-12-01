@@ -15,5 +15,6 @@ public class SongLyricsSubmenuPage extends MainPage {
     public String getSongLyricsSubmenuLabelText() {
 
         return getText(SongLyricsSubmenuPageTitle);
+        
     }
 }
