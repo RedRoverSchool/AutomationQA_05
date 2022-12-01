@@ -12,6 +12,9 @@ public abstract class TopListsSubmenuPage extends TablePage {
     @FindBy(xpath = "//ul[@id = 'submenu']//a[@href = './toplist_real.html']")
     private WebElement topRatedRealSubMenu;
 
+    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href ='./toplist_esoteric.html']")
+    private WebElement topRatedEsotericSubMenu;
+
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -25,5 +28,11 @@ public abstract class TopListsSubmenuPage extends TablePage {
         click(topRatedRealSubMenu);
 
         return new TopListRealPage(getDriver());
+    }
+
+    public TopListEsotericPage clickTopRatedEsotericSubmenuMenu() {
+        click(topRatedEsotericSubMenu);
+
+        return new TopListEsotericPage(getDriver());
     }
 }
