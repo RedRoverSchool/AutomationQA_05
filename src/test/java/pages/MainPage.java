@@ -21,6 +21,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/abc.html']")
     private WebElement browseLanguagesMenu;
 
+    @FindBy(xpath = "//div[@id = 'navigation']//a[@href = '/guestbookv2.html']")
+    private WebElement guestbook;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -57,5 +60,10 @@ public abstract class MainPage extends BasePage {
         click(browseLanguagesMenu);
 
         return new ABCPage(getDriver());
+    }
+    public GuestBookV2Page clickGuestbook() {
+        click(guestbook);
+
+        return new GuestBookV2Page(getDriver());
     }
 }
