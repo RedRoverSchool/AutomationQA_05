@@ -1,8 +1,14 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TeamTest extends BaseTest {
 
@@ -40,5 +46,19 @@ public class TeamTest extends BaseTest {
                 .clickStefanSchelerWebsiteLink();
 
         Assert.assertEquals(getExternalPageURL(), expectedStsSynfloodDe_StefanScheler);
+    }
+
+    @Test
+    public void testTeamNames() {
+        List<String> expectedTeamNames = new ArrayList<>(
+                Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));
+
+        List<String> actualTeamNames =
+        openBaseURL()
+                .clickStartMenu()
+                .clickTeamSubmenu()
+                .getTeamNames();
+
+        Assert.assertEquals(actualTeamNames, expectedTeamNames);
     }
 }

@@ -21,10 +21,10 @@ public class TeamPage extends StartSubmenuPage {
     private WebElement StefanSchelerWebsiteLink;
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH)
-    private WebElement AllTeamLinks;
+    private List<WebElement> AllTeamLinks;
 
     @FindBy(xpath = "//div[@id='main']/h3")
-    private WebElement AllTeamNames;
+    private List<WebElement> AllTeamNames;
 
     public TeamPage(WebDriver driver) {
         super(driver);
@@ -40,5 +40,10 @@ public class TeamPage extends StartSubmenuPage {
 
     public void clickStefanSchelerWebsiteLink() {
         click(StefanSchelerWebsiteLink);
+    }
+
+    public List<String> getTeamNames() {
+
+        return getListText(AllTeamNames);
     }
 }
