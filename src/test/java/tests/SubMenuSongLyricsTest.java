@@ -7,7 +7,7 @@ import pages.SongLyricsSubmenuPage;
 public class SubMenuSongLyricsTest extends BaseTest {
 
     @Test
-    public void testSongLyricsSubmenu() {
+    public void testSongLyricsSubmenuText() {
         final String expectedSubmenuSongLyricsTitle = "Song Lyrics";
         final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
 
