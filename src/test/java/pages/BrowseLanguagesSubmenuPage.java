@@ -21,9 +21,6 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='b.html']")
     private WebElement bSubmenu;
 
-    @FindBy(xpath = "//div[@id='main']/h2[contains(text(), 'Category B')]")
-    private WebElement headerH2BSubmenu;
-
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -55,10 +52,5 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         click(bSubmenu);
 
         return new BPage(getDriver());
-    }
-
-    public String getHeaderH2BSubmenuText() {
-
-        return getText(headerH2BSubmenu);
     }
 }

@@ -18,17 +18,4 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
         Assert.assertEquals(actualText, expectedText);
     }
-
-    @Test
-    public void testHeaderH2Text_WhenOpenBrowseLanguageMenu_BSubmenu() {
-
-        final String expectedHeader = "Category B";
-
-        String actualHeader = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickBSubmenu()
-                .getHeaderH2BSubmenuText();
-
-        Assert.assertEquals(actualHeader, expectedHeader);
-    }
 }
