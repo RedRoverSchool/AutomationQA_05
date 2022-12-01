@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class SongLyricsSubmenuPage extends MainPage {
     
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='lyrics.html']")
-    private WebElement SongLyricsSubmenuPageTitle;
     public SongLyricsSubmenuPage(WebDriver driver) { super(driver); }
 
     public static String getSongLyricsSubmenuUrl() {
