@@ -8,7 +8,7 @@ public class SubMenuSongLyricsTest extends BaseTest {
 
     @Test
     public void testSongLyricsSubmenuText() {
-        final String expectedSubmenuSongLyricsTitle = "Song Lyrics";
+        final String expectedSongLyricsSubmenuText = "Song Lyrics";
         final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
 
         SongLyricsSubmenuPage songLyricsSubmenuPage = openBaseURL().clickSongLyricsSubmenuPage();
