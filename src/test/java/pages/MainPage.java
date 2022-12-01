@@ -80,7 +80,7 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public SongLyricsSubmenuPage clickSongLyricsSubmenuPage() {
+    public SongLyricsSubmenuPage clickSongLyricsSubmenuButton() {
         click(songLyricsSubmenuButton);
 
         return new SongLyricsSubmenuPage(getDriver());
@@ -102,5 +102,10 @@ public abstract class MainPage extends BasePage {
         click(guestbook);
 
         return new GuestBookV2Page(getDriver());
+    }
+
+    public String getSongLyricsSubmenuText() {
+
+        return getText(songLyricsSubmenuButton);
     }
 }
