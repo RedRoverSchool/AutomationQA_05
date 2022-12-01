@@ -23,7 +23,7 @@ public class SubmitNewLanguageTest extends BaseTest {
     }
 
     @Test
-    public void testH2HeaderTest_SubmitNewLanguage() {
+    public void testH2Header_SubmitNewLanguage() {
         final String expectedResult = "Submit New Language";
 
         String actualResult = openBaseURL()
