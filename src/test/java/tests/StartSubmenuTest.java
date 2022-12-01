@@ -8,7 +8,7 @@ import pages.SongLyricsSubmenuPage;
 public class StartSubmenuTest extends BaseTest {
 
     @Test
-    public void  testSongLyricsSubmenuNavigatesToSongLyricsPage() {
+    public void  testSongLyricsSubMenuNavigatesToSongLyricsPage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
 
         SongLyricsSubmenuPage songLyricsSubmenuPage = openBaseURL().clickSongLyricsSubmenuButton();
