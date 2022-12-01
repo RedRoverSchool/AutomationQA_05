@@ -19,6 +19,7 @@ public class GuestBookV2Page extends GuestBookSubmenuPage {
         click(goButtonGuestbookV2);
 
         return new GuestBookV2Page(getDriver());
+    }
         
         public SignV2Page clickSignGuestbook() {
         click(sign_Guestbook);
