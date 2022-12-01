@@ -15,8 +15,17 @@ public class BPage extends BrowseLanguagesSubmenuPage {
     private List<WebElement> bList;
 
 
+    @FindBy(xpath = "//a[@href ='language-bash-98.html']")
+    private WebElement bashLanguageLink;
+
     public BPage(WebDriver driver) {
         super(driver);
+    }
+
+    public BashLanguagePage clickBashLanguageLink() {
+        click(bashLanguageLink);
+
+        return new BashLanguagePage(getDriver());
     }
 
     public WebElement getbCatagoryTitle() {
