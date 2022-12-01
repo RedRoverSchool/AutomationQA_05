@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class NataliiaOliverTest extends BaseTest {
