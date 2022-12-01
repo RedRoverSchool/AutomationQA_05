@@ -9,22 +9,22 @@ import java.util.List;
 public class LyricsPage extends StartSubmenuPage {
 
     @FindBy(xpath = "//div[@id = 'main']/h2")
-    private WebElement h2TagText;
+    private WebElement h2Header;
 
     @FindBy(xpath = "//div[@id = 'main']/p")
-    private List<WebElement> pTagText;
+    private List<WebElement> pTags;
 
     public LyricsPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getH2TagText() {
+    public String getH2HeaderText() {
 
-        return getText(h2TagText);
+        return getText(h2Header);
     }
 
-    public int getAmountPTagText() {
+    public int getAmountOfPTags() {
 
-        return getListSize(pTagText);
+        return getListSize(pTags);
     }
 }
