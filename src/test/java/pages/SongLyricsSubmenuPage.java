@@ -12,7 +12,7 @@ public class SongLyricsSubmenuPage extends MainPage {
 
         return getDriver.getCurrentUrl();
     }
-    public String getSongLyricsSubmenuLabelText() {
+    public String getSongLyricsSubmenuText() {
 
         return getText(SongLyricsSubmenuPageTitle);
         
