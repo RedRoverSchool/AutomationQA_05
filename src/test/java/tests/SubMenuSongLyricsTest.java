@@ -13,7 +13,7 @@ public class SubMenuSongLyricsTest extends BaseTest {
 
         SongLyricsSubmenuPage songLyricsSubmenuPage = openBaseURL().clickSongLyricsSubmenuPage();
 
-        String actualSubmenuSongLyricsTitle = songLyricsSubmenuPage.getSongLyricsSubmenuLabelText();
+        String songLyricsSubmenuText = openBaseUrl().getSongLyricsSubmenuText();
 
         String actualURL = songLyricsSubmenuPage. getExternalPageURL();
 
