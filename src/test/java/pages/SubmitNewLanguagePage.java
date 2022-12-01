@@ -6,6 +6,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
 
+    @FindBy(xpath = "//p/input[@name='language']")
+    private WebElement fieldLanguageName;
+
+    @FindBy(xpath = "//p/input[@name='descriptor']")
+    private WebElement fieldDescription;
+
     @FindBy(xpath = "//p/input[@name='submitlanguage']")
     private WebElement goButton;
 
@@ -25,5 +31,23 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
     public String getTextErrorMessage() {
 
         return getText(errorMessage);
+    }
+
+    public SubmitNewLanguagePage clickFieldLanguageName() {
+        click(fieldLanguageName);
+
+        return new SubmitNewLanguagePage(getDriver());
+    }
+
+    public SubmitNewLanguagePage inputFieldLanguageName(String text) {
+        input(text, fieldLanguageName);
+
+        return this;
+    }
+
+    public SubmitNewLanguagePage clickFieldDescription() {
+        click(fieldDescription);
+
+        return new SubmitNewLanguagePage(getDriver());
     }
 }
