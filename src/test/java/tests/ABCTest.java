@@ -8,12 +8,12 @@ public class ABCTest extends BaseTest {
 
     @Test
     public void testDefaultHeaderForABCPage() {
-        final String EXPECTED_H2_HEADER = "Category A";
+        String expectedH2Header = "Category A";
 
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .getH2Header();
 
-        Assert.assertEquals(actualH2Header, EXPECTED_H2_HEADER);
+        Assert.assertEquals(actualH2Header, expectedH2Header);
     }
 }
