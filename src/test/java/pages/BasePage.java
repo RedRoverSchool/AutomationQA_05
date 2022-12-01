@@ -94,4 +94,25 @@ public abstract class BasePage {
 
         return getDriver().getCurrentUrl();
     }
+
+    public String getFirstTextFromElementsListToLowerCase(List<WebElement> elementList){
+        getListTextInLowerCase(elementList);
+        String textResult;
+        if(getListTextInLowerCase(elementList).size() > 0){
+            for (textResult : getListTextInLowerCase(elementList)) {
+                textResult = getListTextInLowerCase(elementList).get(0);
+            }
+
+            return textResult;
+        }
+        return "";
+    }
+    String languageTopRatedReal = "";
+    List<String> textListTopRatedReal = getElementsText(TOP_RATED_REAL_LANGUAGE_LIST, getDriver());
+
+        if(textListTopRatedReal.size() > 0) {
+        for (String text : textListTopRatedReal) {
+            languageTopRatedReal = textListTopRatedReal.get(0).toLowerCase();
+        }
+    }
 }

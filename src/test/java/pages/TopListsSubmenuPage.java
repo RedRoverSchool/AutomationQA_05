@@ -9,6 +9,9 @@ public abstract class TopListsSubmenuPage extends TablePage {
     @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']//li/a[@href = './newcomments.html']")
     private WebElement newCommentsSubmenu;
 
+    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href = './toplist_real.html']")
+    private WebElement topRatedRealSubMenu;
+
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -17,5 +20,10 @@ public abstract class TopListsSubmenuPage extends TablePage {
         click(newCommentsSubmenu);
 
         return new NewCommentsPage(getDriver());
+    }
+    public TopListRealPage clickTopRatedRealSubmenuMenu() {
+        click(topRatedRealSubMenu);
+
+        return new TopListRealPage(getDriver());
     }
 }
