@@ -53,4 +53,5 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
         return new BPage(getDriver());
     }
+
 }
