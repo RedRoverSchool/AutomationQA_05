@@ -24,7 +24,7 @@ public abstract class TopListsSubmenuPage extends TablePage {
         return new NewCommentsPage(getDriver());
     }
 
-    public List<String> getText() {
+    public List<String> getSubmenusTexts() {
 
         return getListText(topListSubmenuList);
     }
