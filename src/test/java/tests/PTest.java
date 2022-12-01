@@ -11,15 +11,15 @@ import java.util.List;
 public class PTest extends BaseTest {
 
     @Test
-    public void testBrowseLanguagesLanguagesSortedAscending_HappyPath() {
+    public void testPLanguagesSortedAssending() {
 
         List<String> pLanguagesNames = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickPSubmenu()
                 .getPLanguagesNames();
 
-        List<String> displayed = new ArrayList<String>();
-        List<String> sorted = new ArrayList<String>();
+        List<String> displayedLanguages = new ArrayList<String>();
+        List<String> sortedLanguages = new ArrayList<String>();
 
         Assert.assertTrue(pLanguagesNames.size() > 0);
         List<String> textList = new ArrayList<>();
@@ -31,6 +31,6 @@ public class PTest extends BaseTest {
         }
         Collections.sort(textList1);
 
-        Assert.assertEquals(displayed, sorted);
+        Assert.assertEquals(displayedLanguages, sortedLanguages);
     }
 }

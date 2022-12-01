@@ -13,10 +13,10 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     private WebElement ySubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']//a[@href='p.html']")
-    private WebElement letterP;
+    private WebElement pSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']//a[@href='j.html']")
-    private WebElement letterJ;
+    private WebElement jSubmenu;
 
     @FindBy(xpath = "//div[@id='navigation']/ul/li/a[@href='n.html']")
     private WebElement nSubmenu;
@@ -38,13 +38,13 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     }
 
     public PPage clickPSubmenu() {
-        click(letterP);
+        click(pSubmenu);
 
         return new PPage(getDriver());
     }
 
     public JPage clickJSubmenu() {
-        click(letterJ);
+        click(jSubmenu);
 
         return new JPage(getDriver());
     }

@@ -4,15 +4,17 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ABCTest extends BaseTest {
+public class JavaLanguageTest extends BaseTest {
 
     @Test
-    public void testDefaultHeaderForABCPage() {
-        final String EXPECTED_H2_HEADER = "Category A";
+    public void testJavaLanguagePageHeader() {
+        String EXPECTED_H2_HEADER = "Language Java";
 
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getH2Header();
+                .clickJSubmenu()
+                .clickJavaLanguage()
+                .getJavaLanguagePageHeader();
 
         Assert.assertEquals(actualH2Header, EXPECTED_H2_HEADER);
     }
