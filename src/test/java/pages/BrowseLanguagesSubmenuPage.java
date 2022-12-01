@@ -1,10 +1,10 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BrowseLanguagesSubmenuPage extends TablePage {
@@ -20,6 +20,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
     @FindBy(xpath = "//a[@href ='b.html']")
     private WebElement bSubmenu;
+
+    @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href]")
+    private List<WebElement> symbolInSubmenu;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
@@ -52,5 +55,25 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         click(bSubmenu);
 
         return new BPage(getDriver());
+    }
+
+    public List<String> getListSymbolsInSubmenu() {
+
+        return getListText(symbolInSubmenu);
+    }
+
+    public String getLinkBySymbol(String symbol) {
+        int indexOfSymbol = getListSymbolsInSubmenu().indexOf(symbol);
+        if (getListSize(symbolInSubmenu) > 0) {
+            List<String> textList = new ArrayList<>();
+
+            for (WebElement element : symbolInSubmenu) {
+                textList.add(element.getAttribute("href"));
+            }
+
+            return textList.get(indexOfSymbol);
+        }
+
+        return null;
     }
 }
