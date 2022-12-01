@@ -97,9 +97,9 @@ public abstract class BasePage {
 
     public String getFirstTextFromElementsListToLowerCase(List<WebElement> elementList){
         getListTextInLowerCase(elementList);
-        String textResult;
+        String textResult = "";
         if(getListTextInLowerCase(elementList).size() > 0){
-            for (textResult : getListTextInLowerCase(elementList)) {
+            for (String textResult1 : getListTextInLowerCase(elementList)) {
                 textResult = getListTextInLowerCase(elementList).get(0);
             }
 
@@ -107,12 +107,18 @@ public abstract class BasePage {
         }
         return "";
     }
-    String languageTopRatedReal = "";
-    List<String> textListTopRatedReal = getElementsText(TOP_RATED_REAL_LANGUAGE_LIST, getDriver());
 
-        if(textListTopRatedReal.size() > 0) {
-        for (String text : textListTopRatedReal) {
-            languageTopRatedReal = textListTopRatedReal.get(0).toLowerCase();
+    public String getFirstTextFromElementsListToUpperCase(List<WebElement> elementList){
+        getListTextInUpperCase(elementList);
+        String textResult = "";
+        if(getListTextInUpperCase(elementList).size() > 0){
+            for (String textResult1 : getListTextInUpperCase(elementList)) {
+                textResult = getListTextInUpperCase(elementList).get(0);
+            }
+
+            return textResult;
         }
+        return "";
     }
+
 }

@@ -10,21 +10,12 @@ public class TopListEsotericTest extends BaseTest {
 
     @Test
     public void testVerifyThe1stTopRatedRealLanguageIsDifferFromTopEsotericLanguage(){
-        openBaseURL().clickTopListMenu().clickTopRatedRealSubmenuMenu().getFirstTextFromTopRatedRealListToLowerCase()
+        String topRatedRealLanguagesFirstLanguage = openBaseURL()
+                .clickTopListMenu()
+                .clickTopRatedRealSubmenuMenu()
+                .getFirstTextFromTopRatedRealListToLowerCase();
 
-        click(TOP_RATED_REAL_SUBMENU, getDriver());
-
-      //  Assert.assertNotEquals(BASE_URL, getDriver().getCurrentUrl());
-
-      //  String oldUrl = getDriver().getCurrentUrl();
-        String languageTopRatedReal = "";
-        List<String> textListTopRatedReal = getElementsText(TOP_RATED_REAL_LANGUAGE_LIST, getDriver());
-
-        if(textListTopRatedReal.size() > 0) {
-            for (String text : textListTopRatedReal) {
-                languageTopRatedReal = textListTopRatedReal.get(0).toLowerCase();
-            }
-        }
+        Assert.assertNotEquals(BASE_URL, getDriver().getCurrentUrl());
 
         click(TOP_ESOTERIC_SUBMENU, getDriver());
 
