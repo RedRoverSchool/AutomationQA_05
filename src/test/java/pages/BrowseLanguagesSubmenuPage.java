@@ -18,6 +18,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//a[@href='c.html']")
     private WebElement cSubmenu;
 
+    @FindBy(xpath = "//a[@href ='b.html']")
+    private WebElement bSubmenu;
+
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='b.html']")
     private WebElement bSubmenu;
 
