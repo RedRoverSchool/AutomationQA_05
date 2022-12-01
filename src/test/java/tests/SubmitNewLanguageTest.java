@@ -23,12 +23,12 @@ public class SubmitNewLanguageTest extends BaseTest {
     }
 
     @Test
-    public void testVerifyH2HeaderTest_SubmitNewLanguage() {
+    public void testH2HeaderTest_SubmitNewLanguage() {
         final String expectedResult = "Submit New Language";
 
         String actualResult = openBaseURL()
                 .clickSubmitNewLanguageMenu()
-                .getTextH2Header();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualResult, expectedResult);
     }

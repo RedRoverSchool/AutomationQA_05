@@ -30,7 +30,7 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
         return getText(errorMessage);
     }
 
-    public String getTextH2Header() {
+    public String getH2HeaderText() {
 
         return getText(H2Header);
     }
