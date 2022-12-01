@@ -72,6 +72,10 @@ public abstract class BasePage {
         return element.getAttribute(attribute);
     }
 
+    public void clear(WebElement element) {
+        element.clear();
+    }
+    
     public List<String> getListTextInUpperCase(List<WebElement> list) {
         if (list.size() > 0) {
             List<String> textList = new ArrayList<>();
@@ -86,4 +90,8 @@ public abstract class BasePage {
         return null;
     }
 
+    public String getExternalPageURL() {
+
+        return getDriver().getCurrentUrl();
+    }
 }
