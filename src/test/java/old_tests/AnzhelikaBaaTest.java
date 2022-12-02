@@ -104,22 +104,7 @@ public class AnzhelikaBaaTest extends BaseTest {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
-
-    @Test
-    public void testSongLyricsSubmenu_WhenSearchingForLyricsOfSong_HappyPath() {
-        String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
-
-        openBaseURL();
-        click(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
-        text(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
-        isDisplayed(PAGE_WITH_LYRICS, getDriver());
-
-        String actualResult = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-    @Test
+       @Test
     public void testImages_WhenChooseTeamSubmenu_HappyPath() {
     String attribute1 = "Picture of Gregor Scheithauer";
     String attribute2 = "Picture of Stefan Scheler";
