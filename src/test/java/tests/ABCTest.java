@@ -15,8 +15,7 @@ public class ABCTest extends BaseTest {
         String actualResult = abcPage.getTextH2();
 
         Assert.assertEquals(actualResult, expectedResult);
-
-public class ABCTest extends BaseTest {
+    }
 
     @Test
     public void testDefaultHeaderForABCPage() {
