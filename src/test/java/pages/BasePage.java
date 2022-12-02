@@ -94,4 +94,9 @@ public abstract class BasePage {
 
         return getDriver().getCurrentUrl();
     }
+
+    public String getPageURL() {
+
+        return getDriver().getCurrentUrl();
+    }
 }
