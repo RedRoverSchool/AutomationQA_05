@@ -13,8 +13,8 @@ public class TopListRealPage extends TopListsSubmenuPage {
         super(driver);
     }
 
-    public String getFirstTextFromTopRatedRealListToLowerCase() {
+    public String getMostRatedRealLanguage() {
 
-        return getFirstTextFromElementsListToLowerCase(topRatedRealLanguesList);
+        return getFirstLanguageFromTheList_NameInLowerCase(topRatedRealLanguesList);
     }
 }

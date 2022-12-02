@@ -95,29 +95,31 @@ public abstract class BasePage {
         return getDriver().getCurrentUrl();
     }
 
-    public String getFirstTextFromElementsListToLowerCase(List<WebElement> elementList){
-        getListTextInLowerCase(elementList);
+    public String getFirstLanguageFromTheList_NameInLowerCase(List<WebElement> elementList){
+        List <String> texts = getListTextInLowerCase(elementList);
         String textResult = "";
-        if(getListTextInLowerCase(elementList).size() > 0){
-            for (String textResult1 : getListTextInLowerCase(elementList)) {
-                textResult = getListTextInLowerCase(elementList).get(0);
+        if(texts.size() > 0){
+            for (String textResult1 : texts) {
+                textResult = texts.get(0);
             }
 
             return textResult;
         }
+
         return "";
     }
 
-    public String getFirstTextFromElementsListToUpperCase(List<WebElement> elementList){
-        getListTextInUpperCase(elementList);
+    public String getFirstLanguageFromTheList_NameInUpperCase(List<WebElement> elementList){
+        List <String> texts = getListTextInUpperCase(elementList);
         String textResult = "";
-        if(getListTextInUpperCase(elementList).size() > 0){
-            for (String textResult1 : getListTextInUpperCase(elementList)) {
-                textResult = getListTextInUpperCase(elementList).get(0);
+        if(texts.size() > 0){
+            for (String textResult1 : texts) {
+                textResult = texts.get(0);
             }
 
             return textResult;
         }
+
         return "";
     }
 

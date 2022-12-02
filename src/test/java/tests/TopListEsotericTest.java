@@ -3,23 +3,24 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.TopListEsotericPage;
 
 import java.util.List;
 
 public class TopListEsotericTest extends BaseTest {
 
     @Test
-    public void testVerifyThe1stTopRatedRealLanguageIsDifferFromTopEsotericLanguage(){
+    public void testTheMostRatedRealLanguageIsDifferFromMostRatedEsotericLanguage() {
         String topRatedRealLanguagesFirstLanguage = openBaseURL()
                 .clickTopListMenu()
-                .clickTopRatedRealSubmenuMenu()
-                .getFirstTextFromTopRatedRealListToLowerCase();
+                .clickTopRatedRealSubmenu()
+                .getMostRatedRealLanguage();
+        TopListEsotericPage topListEsotericPage = new TopListEsotericPage(getDriver());
 
-        String topRatedEsotericLanguagesFirstLanguage = openBaseURL()
-                .clickTopListMenu()
-                .clickTopRatedEsotericSubmenuMenu()
-                .getFirstTextFromTopRatedEsotericListToLowerCase();
+        String theMostRatedEsotericLanguage = topListEsotericPage
+                .clickTopRatedEsotericSubmenu()
+                .getMostRatedEsotericLanguage();
 
-        Assert.assertNotEquals(topRatedRealLanguagesFirstLanguage, topRatedEsotericLanguagesFirstLanguage);
+        Assert.assertNotEquals(topRatedRealLanguagesFirstLanguage, theMostRatedEsotericLanguage );
     }
 }

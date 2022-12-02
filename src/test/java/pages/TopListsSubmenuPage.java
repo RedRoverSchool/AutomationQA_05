@@ -30,13 +30,13 @@ public abstract class TopListsSubmenuPage extends TablePage {
         return new NewCommentsPage(getDriver());
     }
 
-    public TopListRealPage clickTopRatedRealSubmenuMenu() {
+    public TopListRealPage clickTopRatedRealSubmenu() {
         click(topRatedRealSubMenu);
 
         return new TopListRealPage(getDriver());
     }
 
-    public TopListEsotericPage clickTopRatedEsotericSubmenuMenu() {
+    public TopListEsotericPage clickTopRatedEsotericSubmenu() {
         click(topRatedEsotericSubMenu);
 
         return new TopListEsotericPage(getDriver());

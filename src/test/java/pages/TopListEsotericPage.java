@@ -14,8 +14,8 @@ public class TopListEsotericPage extends TopListsSubmenuPage {
         super(driver);
     }
 
-    public String getFirstTextFromTopRatedEsotericListToLowerCase() {
+    public String getMostRatedEsotericLanguage() {
 
-        return getFirstTextFromElementsListToLowerCase(topRatedEsotericLanguagesList);
+        return getFirstLanguageFromTheList_NameInLowerCase(topRatedEsotericLanguagesList);
     }
 }
