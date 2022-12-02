@@ -41,4 +41,16 @@ public class TeamTest extends BaseTest {
 
         Assert.assertEquals(getExternalPageURL(), expectedStsSynfloodDe_StefanScheler);
     }
+
+    @Test
+    public void testH2Header() {
+        final String expectedHeader = "The Team";
+
+        String actualHeader =
+                openBaseURL()
+                        .clickTeamSubmenu()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualHeader, expectedHeader);
+    }
 }

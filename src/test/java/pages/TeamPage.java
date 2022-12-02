@@ -26,6 +26,9 @@ public class TeamPage extends StartSubmenuPage {
     @FindBy(xpath = "//div[@id='main']/h3")
     private WebElement AllTeamNames;
 
+    @FindBy(xpath = "//div[@id ='main']/h2")
+    private  WebElement H2Header;
+
     public TeamPage(WebDriver driver) {
         super(driver);
     }
@@ -40,5 +43,10 @@ public class TeamPage extends StartSubmenuPage {
 
     public void clickStefanSchelerWebsiteLink() {
         click(StefanSchelerWebsiteLink);
+    }
+
+    public String getH2HeaderText() {
+
+        return getText(H2Header);
     }
 }
