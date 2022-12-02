@@ -1,21 +1,51 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class BTest extends BaseTest {
 
+    private final String letter = "b";
+
     @Test
-    public void testH2Header() {
+    public void testSortingLanguagesByLetterB() {
+        List<String> listBLanguages =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickBSubmenu()
+                        .getBLanguagesNames();
 
-        final String expectedHeader = "Category B";
+        Assert.assertTrue(listBLanguages.size() > 0);
 
-        String actualHeader = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickBSubmenu()
-                .getH2Header();
+        for (String languageName : listBLanguages) {
+            Assert.assertTrue(languageName.startsWith(letter));
+        }
+    }
 
-        Assert.assertEquals(actualHeader, expectedHeader);
+    @Test
+    public void testCatagoryWithLetterB() {
+
+        WebElement categoryBTitle =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickBSubmenu()
+                        .getbCatagoryTitle();
+        Assert.assertTrue(categoryBTitle.getText().toLowerCase().endsWith(letter));
+    }
+
+    @Test
+    public void testCatagoryBDescription() {
+        String expectedDescriptionText = "All languages starting with the letter B are shown, sorted by Language.";
+
+        WebElement categoryDescriptionB =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickBSubmenu()
+                        .getbCatagoryDescription();
+        Assert.assertEquals(expectedDescriptionText, categoryDescriptionB.getText());
     }
 }
