@@ -13,11 +13,19 @@ public class ImpressumPage extends StartSubmenuPage {
     @FindBy(xpath="//div[@id = 'main']/h2")
     private WebElement h2PrivacyHeader;
 
+    @FindBy(xpath="//div[@id = 'main']/p")
+    private WebElement textEmailAdressOnThePage;
+
     public ImpressumPage(WebDriver driver) {
         super(driver);
     }
 
     public String getPrivacySubmenuText(){
         return getText(h2PrivacyHeader);
+    }
+
+    public String getTextEmailAdressOnThePage() {
+
+        return getText(textEmailAdressOnThePage);
     }
 }

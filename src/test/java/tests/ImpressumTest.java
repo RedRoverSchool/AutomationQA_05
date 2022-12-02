@@ -17,4 +17,17 @@ public class ImpressumTest extends BaseTest {
 
         Assert.assertEquals(actualTextInHeaderH2, expectedTextInHeaderH2);
     }
+
+    @Test
+    public void testTextOnThePageImpressum() {
+        String expectedTextEmailAdressOnThePage = "os@ls-la.net";
+
+        String actualTextEmailAdressOnThePage =
+                openBaseURL()
+                        .clickPrivacySubmenu()
+                        .getTextEmailAdressOnThePage();
+
+        Assert.assertEquals(actualTextEmailAdressOnThePage, expectedTextEmailAdressOnThePage);
+
+    }
 }
