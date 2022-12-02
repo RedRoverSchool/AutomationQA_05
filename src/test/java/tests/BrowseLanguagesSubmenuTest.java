@@ -20,19 +20,22 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
     }
 
     @Test
-    public void testVerifyTextAndLink() {
+    public void testSymbolAndLink() {
         final String symbol = "0-9";
-        final String expectedResultHrefURL = "https://www.99-bottles-of-beer.net/0.html";
+        final String expectedResultURL = "https://www.99-bottles-of-beer.net/0.html";
 
-        Assert.assertTrue(
-                openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .getListSymbolsInSubmenu()
-                        .contains(symbol));
-
-        Assert.assertEquals(
+        Boolean actualResultTrue =
                 openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getLinkBySymbol(symbol), expectedResultHrefURL);
+                .getListSymbolsInSubmenu()
+                .contains(symbol);
+
+        String actualResultURL =
+                openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .getLinkBySymbol(symbol);
+
+        Assert.assertTrue(actualResultTrue);
+        Assert.assertEquals(actualResultURL, expectedResultURL);
     }
 }
