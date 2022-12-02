@@ -18,6 +18,18 @@ public class SubmitNewLanguageTest extends BaseTest {
                         .getTextErrorMessage();
 
         Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
+    }
 
+    @Test
+    public void testPleaseNoteItemsQuantity() {
+        final int expectedItemsQuantity = 10;
+
+        int actualItemsQuantity =
+                openBaseURL()
+                       .clickSubmitNewLanguageMenu()
+                       .countPleaseNoteItems();
+
+        Assert.assertEquals(actualItemsQuantity,expectedItemsQuantity);
     }
 }
+
