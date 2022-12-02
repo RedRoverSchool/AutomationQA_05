@@ -146,7 +146,7 @@ public class NstzyaTest extends BaseTest {
         Assert.assertEquals(actualResult5, expectedResult5);
     }
 
-
+    @Ignore
     @Test
     public void testHeaderH2Text_WhenOpenBrowseLanguageMenu_PageBSubmenu_HappyPath() {
 

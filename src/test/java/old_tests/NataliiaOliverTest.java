@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import base.BaseTest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class NataliiaOliverTest extends BaseTest {
@@ -35,15 +34,6 @@ public class NataliiaOliverTest extends BaseTest {
         getSubmenuTeam().click();
     }
 
-    private List<String> WebElementToString(List<WebElement> elementList) {
-        List<String> stringList = new ArrayList<>();
-        for (WebElement element : elementList) {
-            stringList.add(element.getText());
-        }
-
-        return stringList;
-    }
-
     private List<WebElement> getTeamLinks() {
 
         return getDriver().findElements(By.xpath("//div[@id='main']/p/a"));
@@ -56,22 +46,6 @@ public class NataliiaOliverTest extends BaseTest {
         }
 
         return linksText;
-    }
-
-    @Test
-    public void testTeamNames() {
-        List<String> expectedTeamNames = new ArrayList<>(
-                Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));
-
-        openBaseURL();
-        clickStartMenu();
-        clickSubmenuTeam();
-
-        List<WebElement> creatorsNames = getDriver().findElements(
-                By.xpath("//div[@id='main']/h3"));
-        List<String> actualTeamNames = WebElementToString(creatorsNames);
-
-        Assert.assertEquals(actualTeamNames, expectedTeamNames);
     }
 
     @Test
