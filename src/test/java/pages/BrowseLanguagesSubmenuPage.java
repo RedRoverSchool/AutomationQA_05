@@ -28,7 +28,7 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     private WebElement cSubmenu;
 
     @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href]")
-    private List<WebElement> symbolInSubmenu;
+    private List<WebElement> symbolsInSubmenu;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
@@ -77,15 +77,15 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
     public List<String> getListSymbolsInSubmenu() {
 
-        return getListText(symbolInSubmenu);
+        return getListText(symbolsInSubmenu);
     }
 
     public String getLinkBySymbol(String symbol) {
         int indexOfSymbol = getListSymbolsInSubmenu().indexOf(symbol);
-        if (getListSize(symbolInSubmenu) > 0) {
+        if (getListSize(symbolsInSubmenu) > 0) {
             List<String> textList = new ArrayList<>();
 
-            for (WebElement element : symbolInSubmenu) {
+            for (WebElement element : symbolsInSubmenu) {
                 textList.add(element.getAttribute("href"));
             }
 
