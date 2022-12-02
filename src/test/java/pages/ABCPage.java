@@ -19,6 +19,7 @@ public class ABCPage extends BrowseLanguagesSubmenuPage {
     public String getTextH2() {
 
         return textCategoryA.getText();
+    }
 
     public String getH2Header() {
 
