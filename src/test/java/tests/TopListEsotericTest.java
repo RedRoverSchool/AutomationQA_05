@@ -22,5 +22,4 @@ public class TopListEsotericTest extends BaseTest {
 
         Assert.assertNotEquals(topRatedRealLanguagesFirstLanguage, topRatedEsotericLanguagesFirstLanguage);
     }
-
 }
