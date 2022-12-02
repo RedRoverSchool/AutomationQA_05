@@ -33,6 +33,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id = 'footer']/p/a[@href='/abc.html']")
     private WebElement browseLanguagesFooterMenu;
 
+    @FindBy(xpath = "//ul[@id='submenu']/li//a[contains(text(), 'Z')]")
+    private WebElement ZSubmenuButton;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -93,5 +96,11 @@ public abstract class MainPage extends BasePage {
         click(guestbook);
 
         return new GuestBookV2Page(getDriver());
+    }
+
+    public ZPage clickZSubmenuButton() {
+        click(ZSubmenuButton);
+
+        return new ZPage(getDriver());
     }
 }
