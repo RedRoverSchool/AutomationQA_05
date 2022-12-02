@@ -24,21 +24,33 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//ul[@id= 'menu']//li/a[@href='/submitnewlanguage.html']")
     private WebElement submitNewLanguageMenu;
 
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='lyrics.html']")
+    private WebElement songLyricsSubmenuButton;
+
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
     private WebElement startMenu;
-    
+
      @FindBy(xpath = "//div[@id = 'navigation']//a[@href = '/guestbookv2.html']")
     private WebElement guestbook;
 
     @FindBy(xpath = "//div[@id = 'footer']/p/a[@href='/abc.html']")
     private WebElement browseLanguagesFooterMenu;
 
-
     @FindBy(xpath = "//ul[@id='menu']/li[5]/a")
     private WebElement menuGuestBook;
 
     @FindBy(xpath = "//ul[@id='menu']/li[2]/a")
     private WebElement menuBrowseLanguages;
+
+    @FindBy(xpath = "//ul[@id= 'menu']//li/a[@href='/toplist.html']")
+    private WebElement topListsMenu;
+
+    @FindBy(xpath = "//div[@id='header']/h1")
+    private WebElement h1Header;
+
+    @FindBy(xpath = "//div[@id='header']/h2")
+    private WebElement h2Header;
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -84,17 +96,29 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
+    public SongLyricsSubmenuPage clickSongLyricsSubmenuButton() {
+        click(songLyricsSubmenuButton);
+
+        return new SongLyricsSubmenuPage(getDriver());
+    }
+
     public StartPage clickStartMenu() {
         click(startMenu);
 
         return new StartPage(getDriver());
     }
 
+    public TopListsPage clickTopListsMenu() {
+        click(topListsMenu);
+
+        return new TopListsPage(getDriver());
+    }
+    
     public ABCPage clickBrowseLanguagesFooterMenu() {
         click(browseLanguagesFooterMenu);
 
         return new ABCPage(getDriver());
-    }    
+    }
 
     public GuestBookV2Page clickGuestbook() {
         click(guestbook);
@@ -108,10 +132,20 @@ public abstract class MainPage extends BasePage {
         return new GuestBookV2Page(getDriver());
     }
 
-//    public ABCPage clickBrowseLanguagesMenu(){
-//        click(menuBrowseLanguages);
-//
-//        return new ABCPage(getDriver());
-//    }
+
+    public String getSongLyricsSubmenuText() {
+
+        return getText(songLyricsSubmenuButton);
+    }
+
+    public String getH1HeaderText() {
+
+        return getText(h1Header);
+    }
+
+    public String getH2HeaderText() {
+
+        return getText(h2Header);
+    }
 
 }

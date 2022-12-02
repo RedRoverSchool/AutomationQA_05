@@ -1,6 +1,8 @@
 package tests;
 
 import base.BaseTest;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +15,7 @@ import java.util.List;
 
 
 public class ABCTest extends BaseTest {
+
     @Test
     public void test_ABCVerifyByLetterCategoryInformation() throws InterruptedException {
 
@@ -37,6 +40,28 @@ public class ABCTest extends BaseTest {
             }
         }
     }
-
-
 }
+
+    @Test
+    public void testABCPageURL() {
+        String expectedURL = "https://www.99-bottles-of-beer.net/abc.html";
+
+        String actualPageURL =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .getExternalPageURL();
+        Assert.assertEquals(actualPageURL, expectedURL);
+    } 
+    
+    @Test
+    public void testDefaultHeaderForABCPage() {
+        String expectedH2Header = "Category A";
+
+        String actualH2Header = openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .getH2Header();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
+}
+
