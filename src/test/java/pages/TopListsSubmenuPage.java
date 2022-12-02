@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public abstract class TopListsSubmenuPage extends TablePage {
 
     @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']//li/a[@href = './newcomments.html']")
@@ -15,6 +17,9 @@ public abstract class TopListsSubmenuPage extends TablePage {
     @FindBy(xpath = "//ul[@id = 'submenu']//a[@href ='./toplist_esoteric.html']")
     private WebElement topRatedEsotericSubMenu;
 
+    @FindBy(xpath = "//ul[@id=\"submenu\"]/li/a")
+    private List<WebElement> topListSubmenuList;
+
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -24,6 +29,7 @@ public abstract class TopListsSubmenuPage extends TablePage {
 
         return new NewCommentsPage(getDriver());
     }
+
     public TopListRealPage clickTopRatedRealSubmenuMenu() {
         click(topRatedRealSubMenu);
 
@@ -34,5 +40,10 @@ public abstract class TopListsSubmenuPage extends TablePage {
         click(topRatedEsotericSubMenu);
 
         return new TopListEsotericPage(getDriver());
+    }
+
+    public List<String> getSubmenusTexts() {
+
+        return getListText(topListSubmenuList);
     }
 }
