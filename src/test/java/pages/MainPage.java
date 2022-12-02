@@ -26,12 +26,19 @@ public abstract class MainPage extends BasePage {
 
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
     private WebElement startMenu;
-    
+
      @FindBy(xpath = "//div[@id = 'navigation']//a[@href = '/guestbookv2.html']")
     private WebElement guestbook;
 
     @FindBy(xpath = "//div[@id = 'footer']/p/a[@href='/abc.html']")
     private WebElement browseLanguagesFooterMenu;
+
+    @FindBy(xpath = "//div[@id='header']/h1")
+    private WebElement h1Header;
+
+    @FindBy(xpath = "//div[@id='header']/h2")
+    private WebElement h2Header;
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -87,11 +94,21 @@ public abstract class MainPage extends BasePage {
         click(browseLanguagesFooterMenu);
 
         return new ABCPage(getDriver());
-    }    
+    }
 
     public GuestBookV2Page clickGuestbook() {
         click(guestbook);
 
         return new GuestBookV2Page(getDriver());
+    }
+
+    public String getH1HeaderText() {
+
+        return getText(h1Header);
+    }
+
+    public String getH2HeaderText() {
+
+        return getText(h2Header);
     }
 }

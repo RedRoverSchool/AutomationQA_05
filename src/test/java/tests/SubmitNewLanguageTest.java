@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,5 +20,16 @@ public class SubmitNewLanguageTest extends BaseTest {
 
         Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
 
+    }
+
+    @Test
+    public void testH2Header_SubmitNewLanguage() {
+        final String expectedResult = "Submit New Language";
+
+        String actualResult = openBaseURL()
+                .clickSubmitNewLanguageMenu()
+                .getH2HeaderText();
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
