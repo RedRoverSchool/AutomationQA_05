@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BrowseLanguagesSubmenuPage extends TablePage {
+
     @FindBy(xpath = "//a[@href='b.html']")
     private WebElement bSubmenu;
 
