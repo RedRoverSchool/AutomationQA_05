@@ -15,7 +15,7 @@ public class MainTest extends BaseTest {
 
         String actualResultH1Header = openBaseURL().getH1HeaderText();
 
-        Assert.assertEquals(actualResultH1Header,EXPECTED_H1_HEADER);
+        Assert.assertEquals(actualResultH1Header, EXPECTED_H1_HEADER);
     }
 
     @Test
@@ -24,7 +24,7 @@ public class MainTest extends BaseTest {
 
         String actualResultH2Header = openBaseURL().getH2HeaderText();
 
-        Assert.assertEquals(actualResultH2Header,EXPECTED_H2_HEADER);
+        Assert.assertEquals(actualResultH2Header, EXPECTED_H2_HEADER);
     }
 
     @Test
@@ -73,7 +73,8 @@ public class MainTest extends BaseTest {
 
         mainMenuFooterURLList
                 .add(openBaseURL()
-                        .clickSearchLanguagesFooterMenu().getPageURL());
+                        .clickSearchLanguagesFooterMenu()
+                        .getPageURL());
 
         mainMenuFooterURLList
                 .add(openBaseURL()
