@@ -1,11 +1,8 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
@@ -20,6 +17,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
     @FindBy(xpath = "//a[@href ='b.html']")
     private WebElement bSubmenu;
+
+    @FindBy(xpath = "//a[@href ='d.html']")
+    private WebElement dSubmenu;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
@@ -52,5 +52,11 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         click(bSubmenu);
 
         return new BPage(getDriver());
+    }
+
+    public DPage clickDSubmenu() {
+        click(dSubmenu);
+
+        return new DPage(getDriver());
     }
 }
