@@ -9,6 +9,9 @@ public class ABCPage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//div[@id='main']/h2")
     private WebElement textCategoryA;
 
+    @FindBy(xpath = "//div[@id ='main']/h2[contains(text(), 'A')]")
+    private WebElement h2Header;
+
     public ABCPage(WebDriver driver) {
         super(driver);
     }
@@ -16,5 +19,9 @@ public class ABCPage extends BrowseLanguagesSubmenuPage {
     public String getTextH2() {
 
         return textCategoryA.getText();
+
+    public String getH2Header() {
+
+        return getText(h2Header);
     }
 }
