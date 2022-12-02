@@ -94,4 +94,20 @@ public abstract class BasePage {
 
         return getDriver().getCurrentUrl();
     }
+
+    public List<WebElement> getListIfActive(List<WebElement> list) {
+        if (list.size() > 0) {
+            List<WebElement> bookmarkList = new ArrayList<>();
+
+            for (WebElement element : list) {
+                if (element.isEnabled() && element.isDisplayed()) {
+                    bookmarkList.add(element);
+                }
+            }
+
+            return bookmarkList;
+        }
+
+        return null;
+    }
 }
