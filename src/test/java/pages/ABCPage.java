@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ABCPage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//ul[@id='submenu']/li")
     private List<WebElement> letters;

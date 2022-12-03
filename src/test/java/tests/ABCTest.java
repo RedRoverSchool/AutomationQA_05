@@ -58,7 +58,7 @@ public class ABCTest extends BaseTest {
 
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getH2Header();
+                .getTextH2();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
