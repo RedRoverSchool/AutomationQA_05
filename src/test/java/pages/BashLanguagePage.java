@@ -6,25 +6,25 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class BashLanguagePage extends BasePage {
+public class BashLanguagePage extends BrowseLanguagesSubmenuPage {
 
     @FindBy(xpath = "//div[@id='main']/h2")
-    private WebElement bashLanguageHeader;
+    private WebElement h2Header;
 
     @FindBy(xpath = "//div[@id='voting']/p[2]/a")
-    private List<WebElement> bashLanguageBookmarkingList;
+    private List<WebElement> externalLinksList;
 
     public BashLanguagePage(WebDriver driver) {
         super(driver);
     }
 
-    public String getBashLanguageHeader() {
+    public String getH2HeaderText() {
 
-        return getText(bashLanguageHeader);
+        return getText(h2Header);
     }
 
-    public List<WebElement> getBashLanguageBookmarking() {
+    public List<WebElement> getExternalLinksList() {
 
-        return getListIfActive(bashLanguageBookmarkingList);
+        return getListIfVisible(externalLinksList);
     }
 }

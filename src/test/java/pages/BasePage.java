@@ -25,41 +25,12 @@ public abstract class BasePage {
         element.click();
     }
 
+    public void clear(WebElement element) {
+        element.clear();
+    }
+
     public void input(String text, WebElement element) {
         element.sendKeys(text);
-    }
-
-    public int getListSize(List<WebElement> list) {
-
-        return list.size();
-    }
-
-    public List<String> getListText(List<WebElement> list) {
-        if (getListSize(list) > 0) {
-            List<String> textList = new ArrayList<>();
-
-            for (WebElement element : list) {
-                textList.add(element.getText());
-            }
-
-            return textList;
-        }
-
-        return null;
-    }
-
-    public List<String> getListTextInLowerCase(List<WebElement> list) {
-        if (list.size() > 0) {
-            List<String> textList = new ArrayList<>();
-
-            for (WebElement element : list) {
-                textList.add(element.getText().toLowerCase());
-            }
-
-            return textList;
-        }
-
-        return null;
     }
 
     public String getText(WebElement element) {
@@ -72,75 +43,86 @@ public abstract class BasePage {
         return element.getAttribute(attribute);
     }
 
-    public void clear(WebElement element) {
-        element.clear();
+    public void clickClearInput(String text, WebElement element) {
+        click(element);
+
+        if (!getText(element).isEmpty()) {
+            clear(element);
+        }
+
+        input(text, element);
     }
-    
+
+    public List<String> getListText(List<WebElement> list) {
+        List<String> textList = new ArrayList<>();
+
+        if (getListSize(list) > 0) {
+
+            for (WebElement element : list) {
+                textList.add(element.getText());
+            }
+        }
+
+        return textList;
+    }
+
+    public List<String> getListTextInLowerCase(List<WebElement> list) {
+        List<String> textList = new ArrayList<>();
+
+        if (getListSize(list) > 0) {
+
+            for (WebElement element : list) {
+                textList.add(element.getText().toLowerCase());
+            }
+        }
+
+        return textList;
+    }
+
     public List<String> getListTextInUpperCase(List<WebElement> list) {
-        if (list.size() > 0) {
-            List<String> textList = new ArrayList<>();
+        List<String> textList = new ArrayList<>();
+
+        if (getListSize(list) > 0) {
 
             for (WebElement element : list) {
                 textList.add(element.getText().toUpperCase());
             }
-
-            return textList;
         }
 
-        return null;
+        return textList;
     }
 
-    public String getExternalPageURL() {
+    public List<WebElement> getListIfVisible(List<WebElement> list) {
+        List<WebElement> visibleList = new ArrayList<>();
 
-        return getDriver().getCurrentUrl();
-    }
-
-    public List<WebElement> getListIfActive(List<WebElement> list) {
         if (list.size() > 0) {
-            List<WebElement> bookmarkList = new ArrayList<>();
-
             for (WebElement element : list) {
                 if (element.isEnabled() && element.isDisplayed()) {
-                    bookmarkList.add(element);
+                    visibleList.add(element);
                 }
             }
-
-            return bookmarkList;
         }
 
-        return null;
+        if (list.size() != visibleList.size()) {
+
+            return new ArrayList<>();
+        }
+
+        return visibleList;
+    }
+
+    public int getListSize(List<WebElement> list) {
+
+        return list.size();
     }
     
-    public String getPageURL() {
+    public String getURL() {
 
         return getDriver().getCurrentUrl();
     }
 
-    public String getFirstLanguageFromTheList_NameInLowerCase(List<WebElement> elementList){
-        List <String> texts = getListTextInLowerCase(elementList);
-        String textResult = "";
-        if(texts.size() > 0){
-            for (String textResult1 : texts) {
-                textResult = texts.get(0);
-            }
+    public String getTitle() {
 
-            return textResult;
-        }
-
-        return "";
-    }
-
-    public String getFirstLanguageFromTheList_NameInUpperCase(List<WebElement> elementList){
-        List <String> texts = getListTextInUpperCase(elementList);
-        String textResult = "";
-        if(texts.size() > 0){
-            for (String textResult1 : texts) {
-                textResult = texts.get(0);
-            }
-
-            return textResult;
-        }
-
-        return "";
+        return getDriver().getTitle();
     }
 }

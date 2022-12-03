@@ -34,62 +34,62 @@ public class MainTest extends BaseTest {
 
         mainMenuURLList
                 .add(openBaseURL()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuURLList
                 .add(openBaseURL()
                         .clickBrowseLanguagesMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuURLList
                 .add(openBaseURL()
                         .clickSearchLanguagesMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuURLList
                 .add(openBaseURL()
                         .clickTopListMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuURLList
                 .add(openBaseURL()
                         .clickGuestbook()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuURLList
                 .add(openBaseURL()
                         .clickSubmitNewLanguageMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuFooterURLList
                 .add(openBaseURL()
                         .clickStartFooterMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuFooterURLList
                 .add(openBaseURL()
                         .clickBrowseLanguagesMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuFooterURLList
                 .add(openBaseURL()
                         .clickSearchLanguagesFooterMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuFooterURLList
                 .add(openBaseURL()
                         .clickTopListFooterMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuFooterURLList
                 .add(openBaseURL()
                         .clickGuestbookFooterMenu()
-                        .getPageURL());
+                        .getURL());
 
         mainMenuFooterURLList
                 .add(openBaseURL()
                         .clickSubmitNewLanguageFooterMenu()
-                        .getPageURL());
+                        .getURL());
 
         Assert.assertEquals(mainMenuURLList, mainMenuFooterURLList);
     }

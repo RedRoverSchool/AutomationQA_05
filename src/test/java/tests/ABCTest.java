@@ -14,7 +14,7 @@ public class ABCTest extends BaseTest {
         String actualPageURL =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
-                        .getExternalPageURL();
+                        .getURL();
         Assert.assertEquals(actualPageURL, expectedURL);
     } 
     
@@ -24,7 +24,7 @@ public class ABCTest extends BaseTest {
 
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getH2Header();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
@@ -34,7 +34,7 @@ public class ABCTest extends BaseTest {
 
         openBaseURL().clickBrowseLanguagesMenu();
         ABCPage abcPage = new ABCPage(getDriver());
-        String actualResult = abcPage.getH2Header();
+        String actualResult = abcPage.getH2HeaderText();
 
         Assert.assertEquals(actualResult, expectedResult);
     }

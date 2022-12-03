@@ -14,7 +14,7 @@ public class BashLanguageTest extends BaseTest {
                 .clickBrowseLanguagesFooterMenu()
                 .clickBSubmenu()
                 .clickBashLanguageLink()
-                .getBashLanguageHeader();
+                .getH2HeaderText();
 
         Assert.assertTrue(actualLanguageName.contains(LANGUAGE_NAME));
     }
@@ -27,7 +27,7 @@ public class BashLanguageTest extends BaseTest {
                 .clickBrowseLanguagesFooterMenu()
                 .clickBSubmenu()
                 .clickBashLanguageLink()
-                .getBashLanguageBookmarking()
+                .getExternalLinksList()
                 .size();
 
         Assert.assertEquals(activeBookmark, expectedActiveBookmark);
