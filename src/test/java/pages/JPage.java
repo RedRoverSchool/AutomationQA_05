@@ -12,6 +12,9 @@ public class JPage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//table[@id='category']//a[@href='language-javascript-1948.html']")
     private WebElement javaScriptLanguage;
 
+    @FindBy(xpath = "//a[@href='language-jquery-1361.html']")
+    private WebElement jQueryLink;
+
     public JPage(WebDriver driver) {
         super(driver);
     }
@@ -26,5 +29,16 @@ public class JPage extends BrowseLanguagesSubmenuPage {
         click(javaScriptLanguage);
 
         return new JavaScriptLanguagePage(getDriver());
+    }
+
+    public JQueryLanguagePage clickJQueryLink() {
+        click(jQueryLink);
+
+        return new JQueryLanguagePage(getDriver());
+    }
+
+    public String getJPageURL() {
+
+        return getURL();
     }
 }

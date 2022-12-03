@@ -115,7 +115,7 @@ public abstract class BasePage {
 
         return list.size();
     }
-    
+
     public String getURL() {
 
         return getDriver().getCurrentUrl();
