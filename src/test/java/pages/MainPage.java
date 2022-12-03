@@ -30,7 +30,7 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
     private WebElement startMenu;
 
-     @FindBy(xpath = "//div[@id = 'navigation']//a[@href = '/guestbookv2.html']")
+    @FindBy(xpath = "//div[@id = 'navigation']//a[@href = '/guestbookv2.html']")
     private WebElement guestbook;
 
     @FindBy(xpath = "//div[@id = 'footer']/p/a[@href='/abc.html']")
@@ -45,8 +45,24 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='header']/h2")
     private WebElement h2Header;
 
+    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/']")
+    private WebElement startFooterMenu;
+
+    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/search.html']")
+    private WebElement searchLanguagesFooterMenu;
+
+    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/toplist.html']")
+    private WebElement topListFooterMenu;
+
+    @FindBy(xpath = "//div[@id ='footer']/p/a[@href = '/guestbookv2.html']")
+    private WebElement guestbookFooterMenu;
+
+    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/submitnewlanguage.html']")
+    private WebElement submitNewLanguageFooterMenu;
+
     @FindBy(xpath = "//ul[@id='submenu']/li//a[contains(text(), 'Z')]")
     private WebElement ZSubmenuButton;
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -75,7 +91,7 @@ public abstract class MainPage extends BasePage {
         return new InfoSubmenuPage(getDriver());
     }
 
-    public String getSubmenuInfoLink(String attribute)  {
+    public String getSubmenuInfoLink(String attribute) {
 
         return getAttribute(infoSubMenuButton, attribute);
     }
@@ -109,7 +125,7 @@ public abstract class MainPage extends BasePage {
 
         return new TopListsPage(getDriver());
     }
-    
+
     public ABCPage clickBrowseLanguagesFooterMenu() {
         click(browseLanguagesFooterMenu);
 
@@ -122,24 +138,54 @@ public abstract class MainPage extends BasePage {
         return new GuestBookV2Page(getDriver());
     }
 
-        public String getSongLyricsSubmenuText () {
+    public String getSongLyricsSubmenuText() {
 
-            return getText(songLyricsSubmenuButton);
-        }
-
-        public String getH1HeaderText () {
-
-            return getText(h1Header);
-        }
-
-        public String getH2HeaderText () {
-
-            return getText(h2Header);
-        }
-
-        public ZPage clickZSubmenuButton () {
-            click(ZSubmenuButton);
-
-            return new ZPage(getDriver());
-        }
+        return getText(songLyricsSubmenuButton);
     }
+
+    public String getH1HeaderText() {
+
+        return getText(h1Header);
+    }
+
+    public String getH2HeaderText() {
+
+        return getText(h2Header);
+    }
+
+    public StartPage clickStartFooterMenu() {
+        click(startFooterMenu);
+
+        return new StartPage(getDriver());
+    }
+
+    public SearchLanguagesPage clickSearchLanguagesFooterMenu() {
+        click(searchLanguagesFooterMenu);
+
+        return new SearchLanguagesPage(getDriver());
+    }
+
+    public TopListsPage clickTopListFooterMenu() {
+        click(topListFooterMenu);
+
+        return new TopListsPage(getDriver());
+    }
+
+    public GuestBookV2Page clickGuestbookFooterMenu() {
+        click(guestbookFooterMenu);
+
+        return new GuestBookV2Page(getDriver());
+    }
+
+    public SubmitNewLanguagePage clickSubmitNewLanguageFooterMenu() {
+        click(submitNewLanguageFooterMenu);
+
+        return new SubmitNewLanguagePage(getDriver());
+    }
+
+    public ZPage clickZSubmenuButton() {
+        click(ZSubmenuButton);
+
+        return new ZPage(getDriver());
+    }
+}
