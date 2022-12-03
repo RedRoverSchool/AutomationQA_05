@@ -24,6 +24,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//ul[@id= 'menu']//li/a[@href='/submitnewlanguage.html']")
     private WebElement submitNewLanguageMenu;
 
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='lyrics.html']")
+    private WebElement songLyricsSubmenuButton;
+
     @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
     private WebElement startMenu;
 
@@ -86,6 +89,12 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
+    public SongLyricsSubmenuPage clickSongLyricsSubmenuButton() {
+        click(songLyricsSubmenuButton);
+
+        return new SongLyricsSubmenuPage(getDriver());
+    }
+
     public StartPage clickStartMenu() {
         click(startMenu);
 
@@ -108,6 +117,11 @@ public abstract class MainPage extends BasePage {
         click(guestbook);
 
         return new GuestBookV2Page(getDriver());
+    }
+
+    public String getSongLyricsSubmenuText() {
+
+        return getText(songLyricsSubmenuButton);
     }
 
     public String getH1HeaderText() {
