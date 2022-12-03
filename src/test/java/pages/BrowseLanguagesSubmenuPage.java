@@ -1,13 +1,17 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class BrowseLanguagesSubmenuPage extends TablePage {
+
     @FindBy(xpath = "//a[@href='b.html']")
     private WebElement bSubmenu;
+
     @FindBy(xpath = "//a[@href='y.html']")
     private WebElement ySubmenu;
 
@@ -23,6 +27,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//a[@href='c.html']")
     private WebElement cSubmenu;
 
+    @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href]")
+    private List<WebElement> symbolsInSubmenu;
+    
     @FindBy(xpath = "//ul[@id = 'submenu']//a[@href = 'k.html']")
     private WebElement kSubmenu;
 
@@ -71,7 +78,26 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new CPage(getDriver());
     }
 
-    public KPage clickKSubmenu() {
+    public List<String> getListSymbolsInSubmenu() {
+
+        return getListText(symbolsInSubmenu);
+    }
+
+    public String getLinkBySymbol(String symbol) {
+        int indexOfSymbol = getListSymbolsInSubmenu().indexOf(symbol);
+        if (getListSize(symbolsInSubmenu) > 0) {
+            List<String> textList = new ArrayList<>();
+
+            for (WebElement element : symbolsInSubmenu) {
+                textList.add(element.getAttribute("href"));
+            }
+
+            return textList.get(indexOfSymbol);
+        }
+
+        return null;
+
+      public KPage clickKSubmenu() {
         click(kSubmenu);
 
         return new KPage(getDriver());
