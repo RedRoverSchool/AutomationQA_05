@@ -27,11 +27,17 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//a[@href='c.html']")
     private WebElement cSubmenu;
 
+    @FindBy(xpath = "//a[@href ='d.html']")
+    private WebElement dSubmenu;
+
     @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href]")
     private List<WebElement> symbolsInSubmenu;
     
     @FindBy(xpath = "//ul[@id = 'submenu']//a[@href = 'k.html']")
     private WebElement kSubmenu;
+
+    @FindBy(xpath = "//a[@href='m.html']")
+    private WebElement mSubmenu;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
@@ -78,6 +84,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new CPage(getDriver());
     }
 
+    public DPage clickDSubmenu() {
+        click(dSubmenu);
+
+        return new DPage(getDriver());
+    }
+    
     public List<String> getListSymbolsInSubmenu() {
 
         return getListText(symbolsInSubmenu);
@@ -98,9 +110,15 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return null;
     }
 
-    public KPage clickKSubmenu() {
+    public MPage clickMSubmenu() {
+        click(mSubmenu);
+
+        return new MPage(getDriver());
+    }
+
+   public KPage clickKSubmenu() {
         click(cSubmenu);
 
         return new KPage(getDriver());
-    }
+   }
 }
