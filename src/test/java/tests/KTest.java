@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+
 public class KTest extends BaseTest {
 
     @Test
@@ -22,5 +23,17 @@ public class KTest extends BaseTest {
         for (String languageName : languagesNamesInUpperCase) {
             Assert.assertEquals(languageName.toUpperCase().substring(0, 1), FIRST_LETTER);
         }
+        
+    public void testVerifyNavigationSymbolK() {
+        final String symbol = "K";
+        final String expectedResultTitle = "99 Bottles of Beer | Browse category K";
+        final String expectedResultCurrentUrl = "https://www.99-bottles-of-beer.net/k.html";
+
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickOnSymdolOnSubmenu(symbol);
+
+        Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
+        Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
     }
 }
