@@ -111,9 +111,14 @@ public abstract class BasePage {
         return null;
     }
     
-    public String getPageURL() {
+    public String getURL() {
 
         return getDriver().getCurrentUrl();
+    }
+
+    public String getTitle() {
+
+        return getDriver().getTitle();
     }
 
     public String getFirstLanguageFromTheList_NameInLowerCase(List<WebElement> elementList){
@@ -143,4 +148,6 @@ public abstract class BasePage {
 
         return "";
     }
+
+
 }
