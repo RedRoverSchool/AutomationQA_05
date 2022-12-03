@@ -22,6 +22,7 @@ public class MTest extends BaseTest {
         Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
     }
 
+    @Test
     public void testSortLanguagesByLetterM() {
         final String letterM = "m";
 
