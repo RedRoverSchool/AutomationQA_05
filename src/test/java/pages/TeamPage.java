@@ -47,6 +47,7 @@ public class TeamPage extends StartSubmenuPage {
     public String getH2HeaderText() {
 
         return getText(H2Header);
+    }
 
     public List<String> getTeamNames() {
 
