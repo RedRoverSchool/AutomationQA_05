@@ -17,4 +17,18 @@ public class StartTest extends BaseTest {
         Assert.assertEquals(urlAfterClickingStartFromHomepage, TestUtils.getBaseUrl());
     }
 
+
+
+    @Test
+    public void testWishesFromTheTeamFirstParagraph () {
+        final String WISHES_FROM_THE_TEAM = "This Website holds a collection of the Song 99 Bottles of Beer programmed in different programming languages. " +
+                "Actually the song is represented in 1500 different programming languages and variations. " +
+                "For more detailed information refer to historic information.";
+
+        String TeamWishes = openBaseURL()
+                .getTeamWishes();
+
+        Assert.assertEquals(TeamWishes, WISHES_FROM_THE_TEAM);
+    }
+
 }
