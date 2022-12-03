@@ -32,7 +32,27 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
         Assert.assertEquals(
                 openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .getLinkBySymbol(symbol), expectedResultHrefURL);
+    }
+
+    @Test
+    public void testSymbolAndLink() {
+        final String symbol = "0-9";
+        final String expectedResultURL = "https://www.99-bottles-of-beer.net/0.html";
+
+        Boolean actualResultTrue =
+                openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getLinkBySymbol(symbol), expectedResultHrefURL);
+                .getListSymbolsInSubmenu()
+                .contains(symbol);
+
+        String actualResultURL =
+                openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .getLinkBySymbol(symbol);
+
+        Assert.assertTrue(actualResultTrue);
+        Assert.assertEquals(actualResultURL, expectedResultURL);
     }
 }
