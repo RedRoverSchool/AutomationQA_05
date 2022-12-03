@@ -93,4 +93,13 @@ public class MainTest extends BaseTest {
 
         Assert.assertEquals(mainMenuURLList, mainMenuFooterURLList);
     }
+
+    @Test
+    public void testH2TagTextHeaderMain() {
+        final String expectedResult = "one program in 1500 variations";
+
+        String actualResult = openBaseURL().getTextHeaderH2();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
