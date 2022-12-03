@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TeamPage extends StartSubmenuPage {
@@ -21,10 +20,10 @@ public class TeamPage extends StartSubmenuPage {
     private WebElement StefanSchelerWebsiteLink;
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH)
-    private WebElement AllTeamLinks;
+    private List<WebElement> AllTeamLinks;
 
     @FindBy(xpath = "//div[@id='main']/h3")
-    private WebElement AllTeamNames;
+    private List<WebElement> AllTeamNames;
 
     @FindBy(xpath = "//div[@id ='main']/h2")
     private  WebElement H2Header;
@@ -48,5 +47,9 @@ public class TeamPage extends StartSubmenuPage {
     public String getH2HeaderText() {
 
         return getText(H2Header);
+
+    public List<String> getTeamNames() {
+
+        return getListText(AllTeamNames);
     }
 }

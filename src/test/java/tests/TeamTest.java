@@ -4,6 +4,10 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TeamTest extends BaseTest {
 
     @Test
@@ -52,5 +56,18 @@ public class TeamTest extends BaseTest {
                         .getH2HeaderText();
 
         Assert.assertEquals(actualHeader, expectedHeader);
+    }
+    
+    public void testTeamNames() {
+        List<String> expectedTeamNames = new ArrayList<>(
+                Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));
+
+        List<String> actualTeamNames =
+        openBaseURL()
+                .clickStartMenu()
+                .clickTeamSubmenu()
+                .getTeamNames();
+
+        Assert.assertEquals(actualTeamNames, expectedTeamNames);
     }
 }
