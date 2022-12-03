@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.ABCPage;
 
 public class ABCTest extends BaseTest {
 
@@ -27,4 +28,16 @@ public class ABCTest extends BaseTest {
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
+    @Test
+    public void testTextABC() {
+        final String expectedResult = "Category A";
+
+        openBaseURL().clickBrowseLanguagesMenu();
+        ABCPage abcPage = new ABCPage(getDriver());
+        String actualResult = abcPage.getH2Header();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
+
 }

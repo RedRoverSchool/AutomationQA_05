@@ -28,6 +28,16 @@ public class ImpressumTest extends BaseTest {
                         .getTextEmailAdressOnThePage();
 
         Assert.assertEquals(actualTextEmailAdressOnThePage, expectedTextEmailAdressOnThePage);
+    }
+    
+    public void testTextInHeaderH3() {
+        String expectedTextInHeaderH3 = "Oliver Schade";
 
+        String actualTextInHeaderH3 =
+                openBaseURL()
+                        .clickPrivacySubmenu()
+                        .getOliverSchadeSubmenuText();
+
+        Assert.assertEquals(actualTextInHeaderH3, expectedTextInHeaderH3);
     }
 }

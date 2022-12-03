@@ -94,4 +94,53 @@ public abstract class BasePage {
 
         return getDriver().getCurrentUrl();
     }
+
+    public List<WebElement> getListIfActive(List<WebElement> list) {
+        if (list.size() > 0) {
+            List<WebElement> bookmarkList = new ArrayList<>();
+
+            for (WebElement element : list) {
+                if (element.isEnabled() && element.isDisplayed()) {
+                    bookmarkList.add(element);
+                }
+            }
+
+            return bookmarkList;
+        }
+
+        return null;
+    }
+    
+    public String getPageURL() {
+
+        return getDriver().getCurrentUrl();
+    }
+
+    public String getFirstLanguageFromTheList_NameInLowerCase(List<WebElement> elementList){
+        List <String> texts = getListTextInLowerCase(elementList);
+        String textResult = "";
+        if(texts.size() > 0){
+            for (String textResult1 : texts) {
+                textResult = texts.get(0);
+            }
+
+            return textResult;
+        }
+
+        return "";
+    }
+
+    public String getFirstLanguageFromTheList_NameInUpperCase(List<WebElement> elementList){
+        List <String> texts = getListTextInUpperCase(elementList);
+        String textResult = "";
+        if(texts.size() > 0){
+            for (String textResult1 : texts) {
+                textResult = texts.get(0);
+            }
+
+            return textResult;
+        }
+
+        return "";
+    }
 }

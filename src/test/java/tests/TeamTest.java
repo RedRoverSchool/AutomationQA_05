@@ -47,6 +47,17 @@ public class TeamTest extends BaseTest {
     }
 
     @Test
+    public void testH2Header() {
+        final String expectedHeader = "The Team";
+
+        String actualHeader =
+                openBaseURL()
+                        .clickTeamSubmenu()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualHeader, expectedHeader);
+    }
+    
     public void testTeamNames() {
         List<String> expectedTeamNames = new ArrayList<>(
                 Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));

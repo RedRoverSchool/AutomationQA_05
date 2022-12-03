@@ -18,4 +18,18 @@ public class BashLanguageTest extends BaseTest {
 
         Assert.assertTrue(actualLanguageName.contains(LANGUAGE_NAME));
     }
+
+    @Test
+    public void testBookmarkActive() {
+        final int expectedActiveBookmark = 14;
+
+        int activeBookmark = openBaseURL()
+                .clickBrowseLanguagesFooterMenu()
+                .clickBSubmenu()
+                .clickBashLanguageLink()
+                .getBashLanguageBookmarking()
+                .size();
+
+        Assert.assertEquals(activeBookmark, expectedActiveBookmark);
+    }
 }
