@@ -22,8 +22,6 @@ public class DTest extends BaseTest {
         Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
 }
 
-
-public class DTest extends BaseTest {
     @Test
     public void testABCNavigationSubmenuLetterD_languagesNamesStartFromLetterD(){
         String expectedLetter = "D";
