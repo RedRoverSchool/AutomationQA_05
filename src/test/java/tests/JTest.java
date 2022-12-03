@@ -20,3 +20,4 @@ public class JTest extends BaseTest {
         Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
     }
 }
+
