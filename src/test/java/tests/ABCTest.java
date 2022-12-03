@@ -40,7 +40,6 @@ public class ABCTest extends BaseTest {
             }
         }
     }
-}
 
     @Test
     public void testABCPageURL() {
