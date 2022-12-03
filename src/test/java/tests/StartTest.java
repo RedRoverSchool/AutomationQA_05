@@ -17,4 +17,14 @@ public class StartTest extends BaseTest {
         Assert.assertEquals(urlAfterClickingStartFromHomepage, TestUtils.getBaseUrl());
     }
 
+    @Test
+    public void testClickStartFromSearchLanguagesMenu(){
+        String urlAfterClickingStartFromSearchLanguagesMenu =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickStartMenu()
+                        .getExternalPageURL();
+
+        Assert.assertEquals(urlAfterClickingStartFromSearchLanguagesMenu, TestUtils.getBaseUrl());
+    }
 }
