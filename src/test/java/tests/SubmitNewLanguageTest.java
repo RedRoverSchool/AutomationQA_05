@@ -22,6 +22,18 @@ public class SubmitNewLanguageTest extends BaseTest {
     }
 
     @Test
+    public void testPleaseNoteItemsQuantity() {
+        final int expectedItemsQuantity = 10;
+
+        int actualItemsQuantity =
+                openBaseURL()
+                       .clickSubmitNewLanguageMenu()
+                       .countPleaseNoteItems();
+
+        Assert.assertEquals(actualItemsQuantity,expectedItemsQuantity);
+    }
+  
+    @Test
     public void testH2Header_SubmitNewLanguage() {
         final String expectedResult = "Submit New Language";
 
@@ -32,3 +44,4 @@ public class SubmitNewLanguageTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 }
+
