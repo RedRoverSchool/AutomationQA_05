@@ -96,9 +96,10 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         }
 
         return null;
+    }
 
-      public KPage clickKSubmenu() {
-        click(kSubmenu);
+    public KPage clickKSubmenu() {
+        click(cSubmenu);
 
         return new KPage(getDriver());
     }
