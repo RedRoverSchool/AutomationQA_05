@@ -46,4 +46,18 @@ public class YTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    @Test
+    public void testVerifyNavigationSymbolY() {
+        final String symbol = "Y";
+        final String expectedResultTitle = "99 Bottles of Beer | Browse category Y";
+        final String expectedResultCurrentUrl = "https://www.99-bottles-of-beer.net/y.html";
+
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickOnSymdolOnSubmenu(symbol);
+
+        Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
+        Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
+    }
 }

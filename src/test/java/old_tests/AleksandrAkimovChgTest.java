@@ -19,7 +19,7 @@ public class AleksandrAkimovChgTest extends BaseTest {
     final static By TEXT_PAGE_CATEGORY_SIMBOL = By.xpath("//div[@id = 'main']/h2");
 
     final static String XPATH_SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU =
-            "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a";
+            "//div[@id = 'navigation']/ul[@id = 'submenu']/li/a[@href]";
 
     final static By SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU =
             By.xpath(XPATH_SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU);
@@ -52,56 +52,6 @@ public class AleksandrAkimovChgTest extends BaseTest {
         return driver.findElement(by).getText();
     }
 
-    private List<String> getElementsText(By by, WebDriver driver) {
-        List<WebElement> elementsList = getListOfElements(by, driver);
-        List<String> textList = new ArrayList<>();
-
-        for (WebElement element : elementsList) {
-            textList.add(element.getText());
-        }
-
-        return textList;
-    }
-
-    private String getSimbol(By by, WebDriver driver, String simbol) {
-        List<String> listOfElements = getElementsText(by, driver);
-        int indexOfElementSimbol = listOfElements.indexOf(simbol);
-        String simbolFromIndexOfElementSimbol = listOfElements.get(indexOfElementSimbol);
-
-        return simbolFromIndexOfElementSimbol;
-    }
-
-    private List<String> getElementsTextHref(By by, WebDriver driver) {
-        List<WebElement> elementsList = getListOfElements(by, driver);
-        List<String> textList = new ArrayList<>();
-
-        for (WebElement element : elementsList) {
-            textList.add(element.getAttribute("href"));
-        }
-
-        return textList;
-    }
-
-    private int getIndexOfSimbol(By by, WebDriver driver, String simbol) {
-        List<String> listOfElements = getElementsText(by, driver);
-        int indexOfElementSimbol = listOfElements.indexOf(simbol);
-
-        return indexOfElementSimbol;
-    }
-
-    private String getElementFromListByIndexFromSimbol(By by, WebDriver driver, String simbol) {
-        int indexOftheSimbol = getIndexOfSimbol(by, driver, simbol);
-        List<String> urlsByIndexWithLetter = getElementsTextHref(by, driver);
-        String hreftUrl = urlsByIndexWithLetter.get(indexOftheSimbol);
-
-        return hreftUrl;
-    }
-
-    private String getUrlByLetterOnSuvmenuABS(String simbol) {
-
-        return String.format("https://www.99-bottles-of-beer.net/%s.html", simbol.toLowerCase());
-    }
-
     private String getCategorySimbol(String simbol) {
 
         return String.format("Category %s", simbol);
@@ -116,7 +66,6 @@ public class AleksandrAkimovChgTest extends BaseTest {
     @Test
     public void testLetterZ_WhenFindAndClickZOnSubmenuNavigationBarABCMenu() {
         final String SIMBOl_OR_LETTER = "Z";
-        String expectedResultHrefURL = getUrlByLetterOnSuvmenuABS(SIMBOl_OR_LETTER);
         String expectedResultH2Text = getCategorySimbol(SIMBOl_OR_LETTER);
 
         openBaseUrl(getDriver());
@@ -125,18 +74,10 @@ public class AleksandrAkimovChgTest extends BaseTest {
         Assert.assertTrue(
                     getListSize(SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU, getDriver()) > 0);
 
-        String actualResultSimbol = getSimbol(
-                    SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU, getDriver(), SIMBOl_OR_LETTER);
-
-        String actualResulHreftUrl = getElementFromListByIndexFromSimbol(
-                    SEARCH_SIMBOL_OR_LETTER_ON_SUBMENU_NAVIGATION_BAR_ABC_MENU, getDriver(), SIMBOl_OR_LETTER);
-
         click(getXpathByLetterInHferonSubmenuABS(SIMBOl_OR_LETTER), getDriver());
 
         String actualResultH2Text = getText(TEXT_PAGE_CATEGORY_SIMBOL, getDriver());
 
-        Assert.assertEquals(actualResultSimbol, SIMBOl_OR_LETTER);
-        Assert.assertEquals(actualResulHreftUrl, expectedResultHrefURL);
         Assert.assertEquals(actualResultH2Text, expectedResultH2Text);
     }
 }

@@ -17,4 +17,16 @@ public class ImpressumTest extends BaseTest {
 
         Assert.assertEquals(actualTextInHeaderH2, expectedTextInHeaderH2);
     }
+
+    @Test
+    public void testTextInHeaderH3() {
+        String expectedTextInHeaderH3 = "Oliver Schade";
+
+        String actualTextInHeaderH3 =
+                openBaseURL()
+                        .clickPrivacySubmenu()
+                        .getOliverSchadeSubmenuText();
+
+        Assert.assertEquals(actualTextInHeaderH3, expectedTextInHeaderH3);
+    }
 }
