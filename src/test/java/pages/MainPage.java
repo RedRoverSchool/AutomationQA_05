@@ -45,6 +45,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='header']/h2")
     private WebElement h2Header;
 
+    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/submitnewlanguage.html']")
+    private WebElement submitNewLanguageFooterMenu;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -132,5 +135,11 @@ public abstract class MainPage extends BasePage {
     public String getH2HeaderText() {
 
         return getText(h2Header);
+    }
+
+    public SubmitNewLanguagePage clickSubmitNewLanguageFooterMenu () {
+        click(submitNewLanguageFooterMenu);
+
+        return new SubmitNewLanguagePage(getDriver());
     }
 }
