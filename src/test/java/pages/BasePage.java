@@ -110,6 +110,11 @@ public abstract class BasePage {
 
         return null;
     }
+    
+    public String getPageURL() {
+
+        return getDriver().getCurrentUrl();
+    }
 
     public String getFirstLanguageFromTheList_NameInLowerCase(List<WebElement> elementList){
         List <String> texts = getListTextInLowerCase(elementList);
