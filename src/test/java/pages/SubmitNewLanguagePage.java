@@ -16,6 +16,9 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
 
     @FindBy(xpath ="//div[@id='main']/ul/li")
     private List<WebElement> pleaseNoteItems;
+ 
+    @FindBy(xpath = "//div[@id='main']/h2")
+    private WebElement H2Header;
 
     public SubmitNewLanguagePage(WebDriver driver) {
         super(driver);
@@ -32,9 +35,15 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage{
         return getText(errorMessage);
     }
 
+
     public int countPleaseNoteItems() {
 
         return getListSize(pleaseNoteItems);
+    }
+  
+    public String getH2HeaderText() {
+
+        return getText(H2Header);
     }
 }
 
