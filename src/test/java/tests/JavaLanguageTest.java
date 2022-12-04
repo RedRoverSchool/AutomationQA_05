@@ -13,7 +13,7 @@ public class JavaLanguageTest extends BaseTest {
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickJSubmenu()
-                .clickJavaLanguage()
+                .clickJavaLink()
                 .getJavaLanguagePageHeader();
 
         Assert.assertEquals(actualH2Header, EXPECTED_H2_HEADER);

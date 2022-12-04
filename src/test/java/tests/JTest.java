@@ -3,8 +3,8 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.JPage;
-import pages.JQueryLanguagePage;
+import pages.browse_languages.letters.JPage;
+import pages.browse_languages.languages.JQueryLanguagePage;
 
 public class JTest extends BaseTest {
 

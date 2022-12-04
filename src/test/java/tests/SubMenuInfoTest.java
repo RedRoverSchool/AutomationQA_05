@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.InfoSubmenuPage;
+import pages.start.HistoryPage;
 
 public class SubMenuInfoTest extends BaseTest {
     @Test
@@ -11,9 +11,9 @@ public class SubMenuInfoTest extends BaseTest {
         final String expectedSubmenuInfoTitle = "History";
 
         openBaseURL();
-        InfoSubmenuPage infoSubmenuPage = new InfoSubmenuPage(getDriver());
+        HistoryPage historyPage = new HistoryPage(getDriver());
 
-        String actualSubmenuTitle = infoSubmenuPage.getInfoSubMenuLabelText();
+        String actualSubmenuTitle = historyPage.getInfoSubMenuLabelText();
 
         Assert.assertEquals(actualSubmenuTitle, expectedSubmenuInfoTitle);
     }
@@ -25,16 +25,16 @@ public class SubMenuInfoTest extends BaseTest {
 
         openBaseURL();
 
-        InfoSubmenuPage infoSubmenuPage = new InfoSubmenuPage(getDriver());
+        HistoryPage historyPage = new HistoryPage(getDriver());
 
-        String actualSubmenuInfoLink = infoSubmenuPage.getSubmenuInfoLink(attribute);
+        String actualSubmenuInfoLink = historyPage.getSubmenuInfoLink(attribute);
 
         Assert.assertTrue(actualSubmenuInfoLink.contains(expectedSubmenuInfoLink));
     }
 
     @Test
     public void testClickOnSubmenuInfo(){
-        final String expectedSubmenuInfoURL = InfoSubmenuPage.getInfoSubmenuUrl();
+        final String expectedSubmenuInfoURL = HistoryPage.getInfoSubmenuUrl();
         final String expectedSubmenuInfoTitle = "History";
 
         openBaseURL();

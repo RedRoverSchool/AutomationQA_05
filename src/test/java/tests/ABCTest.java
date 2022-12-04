@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ABCPage;
+import pages.browse_languages.letters.ABCPage;
 
 public class ABCTest extends BaseTest {
 

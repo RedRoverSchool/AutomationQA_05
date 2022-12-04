@@ -48,7 +48,7 @@ public class MainTest extends BaseTest {
 
         mainMenuURLList
                 .add(openBaseURL()
-                        .clickTopListMenu()
+                        .clickTopListsMenu()
                         .getURL());
 
         mainMenuURLList

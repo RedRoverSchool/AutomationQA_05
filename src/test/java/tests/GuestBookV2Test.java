@@ -2,7 +2,7 @@ package tests;
 
 import base.BaseTest;
 import org.testng.annotations.Test;
-import pages.GuestBookV2Page;
+import pages.guest_book.GuestBookV2Page;
 
 public class GuestBookV2Test extends BaseTest {
 
