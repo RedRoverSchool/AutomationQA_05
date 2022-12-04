@@ -14,7 +14,7 @@ public abstract class StartSubmenuPage extends MainPage {
     private WebElement songLyricsSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
-    private WebElement historySubMenu;
+    private WebElement historySubmenu;
 
     @FindBy(xpath = "//ul[@id ='submenu']/li/a[@href = 'impressum.html']")
     private WebElement privacySubmenu;
@@ -35,9 +35,20 @@ public abstract class StartSubmenuPage extends MainPage {
         return new LyricsPage(getDriver());
     }
 
+    public HistoryPage clickHistorySubmenu() {
+        click(historySubmenu);
+
+        return new HistoryPage(getDriver());
+    }
+
     public PrivacyPage clickPrivacySubmenu() {
         click(privacySubmenu);
 
         return new PrivacyPage(getDriver());
+    }
+
+    public String getSongLyricsSubmenuText() {
+
+        return getText(songLyricsSubmenu);
     }
 }

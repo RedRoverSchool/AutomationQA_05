@@ -38,6 +38,4 @@ public class ABCTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
-
-
 }

@@ -13,7 +13,7 @@ public class MainTest extends BaseTest {
     public void testH1Header() {
         final String EXPECTED_H1_HEADER = "99 Bottles of Beer";
 
-        String actualResultH1Header = openBaseURL().getH1HeaderText();
+        String actualResultH1Header = openBaseURL().getH1LogoHeaderText();
 
         Assert.assertEquals(actualResultH1Header, EXPECTED_H1_HEADER);
     }
@@ -22,7 +22,7 @@ public class MainTest extends BaseTest {
     public void testH2Header() {
         final String EXPECTED_H2_HEADER = "one program in 1500 variations";
 
-        String actualResultH2Header = openBaseURL().getH2HeaderText();
+        String actualResultH2Header = openBaseURL().getH2LogoHeaderText();
 
         Assert.assertEquals(actualResultH2Header, EXPECTED_H2_HEADER);
     }
@@ -83,7 +83,7 @@ public class MainTest extends BaseTest {
 
         mainMenuFooterURLList
                 .add(openBaseURL()
-                        .clickGuestbookFooterMenu()
+                        .clickGuestBookFooterMenu()
                         .getURL());
 
         mainMenuFooterURLList

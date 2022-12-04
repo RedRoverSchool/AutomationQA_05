@@ -4,18 +4,18 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ImpressumTest extends BaseTest {
+public class PrivacyTest extends BaseTest {
 
     @Test
     public void testTextInHeaderH2() {
-        String expectedTextInHeaderH2 = "Privacy";
+        String expectedH2Header = "Privacy";
 
         String actualTextInHeaderH2 =
                 openBaseURL()
                         .clickPrivacySubmenu()
-                        .getPrivacySubmenuText();
+                        .getH2HeaderText();
 
-        Assert.assertEquals(actualTextInHeaderH2, expectedTextInHeaderH2);
+        Assert.assertEquals(actualTextInHeaderH2, expectedH2Header);
     }
 
     @Test

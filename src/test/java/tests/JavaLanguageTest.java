@@ -14,7 +14,7 @@ public class JavaLanguageTest extends BaseTest {
                 .clickBrowseLanguagesMenu()
                 .clickJSubmenu()
                 .clickJavaLink()
-                .getJavaLanguagePageHeader();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, EXPECTED_H2_HEADER);
     }

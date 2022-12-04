@@ -14,7 +14,7 @@ public class JavaScriptLanguageTest extends BaseTest {
                 .clickBrowseLanguagesMenu()
                 .clickJSubmenu()
                 .clickJavaScriptLink()
-                .getJavaScriptLanguagePageHeader();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualJSH2Header, EXPECTED_JS_H2_HEADER);
     }

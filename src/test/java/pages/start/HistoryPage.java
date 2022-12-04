@@ -7,22 +7,15 @@ import pages.base_abstract.MainPage;
 
 public class HistoryPage extends MainPage {
 
-    private static final String INFO_URL = "https://www.99-bottles-of-beer.net/info.html";
-
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
-    private WebElement InfoSubMenuPageTitle;
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[text() = 'History']")
+    private WebElement historySubmenu;
 
     public HistoryPage(WebDriver driver) {
         super(driver);
     }
 
-    public static String getInfoSubmenuUrl() {
+    public String getHref(String attribute) {
 
-        return INFO_URL;
-    }
-
-    public String getInfoSubMenuLabelText() {
-
-        return getText(InfoSubMenuPageTitle);
+        return getAttribute(historySubmenu, "href");
     }
 }
