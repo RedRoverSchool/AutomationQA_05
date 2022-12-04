@@ -43,4 +43,36 @@ public class SearchLanguagesTest extends BaseTest {
 
         Assert.assertTrue(languagesNamesSize == 0);
     }
+
+    @Test
+    public void testMenuSearchSearchForLanguagesByNameJava() {
+
+        final String LANGUAGE_NAME = "java";
+
+        List<String> languagesNames =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickSearchForField()
+                        .inputSearchCriteria(LANGUAGE_NAME)
+                        .clickGoButton()
+                        .getNamesInLowerCase();
+
+        Assert.assertTrue(languagesNames.size() > 0);
+
+        for (String languagesName : languagesNames){
+            Assert.assertTrue(languagesName.contains(LANGUAGE_NAME));
+        }
+    }
+
+    @Test
+    public void testSearchForLanguagesNameEmpty() {
+
+        int languagesNames =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickGoButton()
+                        .getListSizeFromTable();
+
+        Assert.assertTrue(languagesNames == 0);
+    }
 }
