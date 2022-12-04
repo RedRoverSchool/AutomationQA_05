@@ -17,7 +17,7 @@ public class BTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickBSubmenu()
-                        .getNames();
+                        .getNamesInLowerCase();
 
         Assert.assertTrue(listBLanguages.size() > 0);
 
@@ -43,12 +43,12 @@ public class BTest extends BaseTest {
     @Test
     public void testCatagoryWithLetterB() {
 
-        WebElement categoryBTitle =
+        String categoryBHeader =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickBSubmenu()
-                        .getPageDescription();
-        Assert.assertTrue(categoryBTitle.getText().toLowerCase().endsWith(letter));
+                        .getH2HeaderText();
+        Assert.assertTrue(categoryBHeader.toLowerCase().endsWith(letter));
     }
 
     @Test

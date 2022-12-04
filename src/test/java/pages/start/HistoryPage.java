@@ -7,7 +7,7 @@ import pages.base_abstract.MainPage;
 
 public class HistoryPage extends MainPage {
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[text() = 'History']")
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
     private WebElement historySubmenu;
 
     public HistoryPage(WebDriver driver) {

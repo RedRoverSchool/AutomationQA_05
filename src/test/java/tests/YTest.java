@@ -34,7 +34,7 @@ public class YTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickYSubmenu()
-                        .getNames();
+                        .getNamesInLowerCase();
 
         for (String languageName : listYLanguages) {
            if ((listYLanguages.size() > 0 && languageName.charAt(0) == 'y')) {

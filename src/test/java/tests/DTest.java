@@ -28,7 +28,7 @@ public class DTest extends BaseTest {
         List<String> languagesNamesList = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickDSubmenu()
-                .getNames();
+                .getNamesInUpperCase();
         Assert.assertTrue(languagesNamesList.size() > 0);
         for(String languageName:languagesNamesList){
             Assert.assertEquals(languageName.substring(0, 1),expectedLetter);
