@@ -16,7 +16,7 @@ public class YTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickYSubmenu()
-                        .getNames();
+                        .getNamesInLowerCase();
 
         Assert.assertTrue(listYLanguages.size() > 0);
 
