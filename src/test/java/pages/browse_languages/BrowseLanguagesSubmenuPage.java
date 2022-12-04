@@ -134,8 +134,6 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
             switch (text) {
                 case "0-9":
                     return new ZeroPage(getDriver());
-                case "ABC":
-                    return new ABCPage(getDriver());
                 case "A":
                     return new APage(getDriver());
                 case "B":
