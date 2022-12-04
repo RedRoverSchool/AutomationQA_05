@@ -1,9 +1,10 @@
 package tests;
 
 import base.BaseTest;
+
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import pages.start.HistoryPage;
 
 public class HistoryTest extends BaseTest {
@@ -20,7 +21,6 @@ public class HistoryTest extends BaseTest {
 //        Assert.assertEquals(actualSubmenuTitle, expectedSubmenuInfoTitle);
     }
 
-    @Ignore
     @Test
     public void testLinkTextSubmenuInfo(){
         final String attribute = "href";
@@ -32,7 +32,7 @@ public class HistoryTest extends BaseTest {
 
         String actualHrefValue = historyPage.getHref(attribute);
 
-        Assert.assertEquals(actualHrefValue, expectedSubmenuInfoLink);
+        Assert.assertTrue(actualHrefValue.contains(expectedSubmenuInfoLink));
     }
 
     @Test
