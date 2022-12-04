@@ -6,7 +6,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.start.HistoryPage;
 
-public class SubMenuHistoryTest extends BaseTest {
+public class HistoryTest extends BaseTest {
 
     @Test
     public void testLabelTextSubmenuInfo(){
