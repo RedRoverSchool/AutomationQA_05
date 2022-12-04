@@ -1,11 +1,13 @@
 package tests;
 
 import base.BaseTest;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.guest_book.GuestBookV2Page;
 
 public class GuestBookV2Test extends BaseTest {
 
+    @Ignore
     @Test
     public void testMainNavigationButtonGuestbook() {
 
