@@ -20,14 +20,14 @@ public class PrivacyTest extends BaseTest {
 
     @Test
     public void testEmail() {
-        String expectedTextEmailAddressOnThePage = "os@ls-la.net";
+        String expectedEmail = "os@ls-la.net";
 
-        String actualTextEmailAddressOnThePage =
+        String actualEmail =
                 openBaseURL()
                         .clickPrivacySubmenu()
-                        .getTextEmailAddressOnThePage();
+                        .getEmailAddress();
 
-        Assert.assertEquals(actualTextEmailAddressOnThePage, expectedTextEmailAddressOnThePage);
+        Assert.assertEquals(actualEmail, expectedEmail);
     }
     
     public void testTextInHeaderH3() {

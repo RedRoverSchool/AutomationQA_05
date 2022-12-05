@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 public class PrivacyPage extends StartSubmenuPage {
 
     @FindBy(xpath="//div[@id = 'main']/p")
-    private WebElement textEmailAdressOnThePage;
+    private WebElement emailAddress;
 
     @FindBy(xpath="//div[@id = 'main']/h3")
     private WebElement h3OliverSchadeHeader;
@@ -21,8 +21,8 @@ public class PrivacyPage extends StartSubmenuPage {
         return getText(h3OliverSchadeHeader);
     }
 
-    public String getTextEmailAddressOnThePage() {
+    public String getEmailAddress() {
 
-        return getText(textEmailAdressOnThePage);
+        return getText(emailAddress);
     }
 }
