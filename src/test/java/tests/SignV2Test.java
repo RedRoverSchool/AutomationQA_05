@@ -14,7 +14,7 @@ public class SignV2Test extends BaseTest {
     @Test
     public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert(){
         final String urlAlertText = "http://my_text";
-        openBaseURL().clickGuestbook().clickSignGuestbook().clickUrlIcon();
+        openBaseURL().clickGuestbookMenu().clickSignGuestbook().clickUrlIcon();
         SignV2Page signV2Page = new SignV2Page(getDriver());
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
