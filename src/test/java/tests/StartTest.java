@@ -39,9 +39,9 @@ public class StartTest extends BaseTest {
                 "Actually the song is represented in 1500 different programming languages and variations. " +
                 "For more detailed information refer to historic information.";
 
-        String TeamWishes = openBaseURL()
-                .getTeamWishes();
+        String teamWishes = openBaseURL()
+                .getteamWishes();
 
-        Assert.assertEquals(TeamWishes, WISHES_FROM_THE_TEAM);
+        Assert.assertEquals(teamWishes, WISHES_FROM_THE_TEAM);
     }
 }
