@@ -17,7 +17,7 @@ public class MaxIasko99Test extends BaseTest {
 
     final static By SEARCH_ABC_LINK_FOOTER = By.xpath("//a[@href='/abc.html']");
     final static By SEARCH_B_LINK = By.xpath("//a[@href ='b.html']");
-    final static By SEARCH_BASH_LINK = By.xpath("//a[@href ='language-bash-98.html']");
+    final static By SEARCH_BASH_LINK = By.xpath("//a[@href='language-bash-1815.html']");
     final static By SEARCH_BASH_TEXT = By.xpath("//div[@id='main']/h2");
 
     private void click(By by) {

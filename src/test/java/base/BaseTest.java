@@ -5,7 +5,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
-import pages.StartPage;
+import pages.start.StartPage;
 import utils.ReportUtils;
 import utils.TestUtils;
 
