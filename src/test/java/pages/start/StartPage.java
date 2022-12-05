@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class StartPage extends StartSubmenuPage  {
 
-    @FindBy(xpath = "//div[@id = 'main']/descendant-or-self::p")
+    @FindBy(xpath = "//div[@id = 'main']/p[1]")
     private WebElement verifyText;
 
 
