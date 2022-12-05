@@ -3,14 +3,9 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import pages.browse_languages.letters.ABCPage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -48,7 +43,7 @@ public class ABCTest extends BaseTest {
         String actualPageURL =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
-                        .getExternalPageURL();
+                        .getURL();
         Assert.assertEquals(actualPageURL, expectedURL);
     } 
     
@@ -58,9 +53,19 @@ public class ABCTest extends BaseTest {
 
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getTextH2();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
-}
 
+    @Test
+    public void testTextABC() {
+        final String expectedResult = "Category A";
+
+        openBaseURL().clickBrowseLanguagesMenu();
+        ABCPage abcPage = new ABCPage(getDriver());
+        String actualResult = abcPage.getH2HeaderText();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+}

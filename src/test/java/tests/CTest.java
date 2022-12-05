@@ -24,7 +24,17 @@ public class CTest extends BaseTest {
         }
     }
 
+    @Test
+    public void testVerifyNavigationSymbolC() {
+        final String symbol = "C";
+        final String expectedResultTitle = "99 Bottles of Beer | Browse category C";
+        final String expectedResultCurrentUrl = "https://www.99-bottles-of-beer.net/c.html";
 
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickOnSymdolOnSubmenu(symbol);
 
-
+        Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
+        Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
+    }
 }

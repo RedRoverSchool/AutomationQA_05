@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.SongLyricsSubmenuPage;
+import pages.start.LyricsPage;
 
 public class StartSubmenuTest extends BaseTest {
 
@@ -11,7 +11,7 @@ public class StartSubmenuTest extends BaseTest {
     public void  testSongLyricsSubMenuNavigatesToSongLyricsPage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
 
-        SongLyricsSubmenuPage songLyricsSubmenuPage = openBaseURL().clickSongLyricsSubmenuButton();
+        LyricsPage songLyricsSubmenuPage = openBaseURL().clickSongLyricsSubmenu();
 
         String actualURL = songLyricsSubmenuPage. getDriver().getCurrentUrl();
 

@@ -11,12 +11,26 @@ import java.util.List;
 public class PTest extends BaseTest {
 
     @Test
+    public void testVerifyNavigationSymbolP() {
+        final String symbol = "P";
+        final String expectedResultTitle = "99 Bottles of Beer | Browse category P";
+        final String expectedResultCurrentUrl = "https://www.99-bottles-of-beer.net/p.html";
+
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickOnSymdolOnSubmenu(symbol);
+
+        Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
+        Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
+    }
+
+    @Test
     public void testPLanguagesSortedAssending() {
 
         List<String> pLanguagesNames = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickPSubmenu()
-                .getPLanguagesNames();
+                .getNames();
 
         List<String> displayedLanguages = new ArrayList<String>();
         List<String> sortedLanguages = new ArrayList<String>();

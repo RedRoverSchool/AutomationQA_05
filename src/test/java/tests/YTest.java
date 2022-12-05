@@ -16,7 +16,7 @@ public class YTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickYSubmenu()
-                        .getYLanguagesNames();
+                        .getNamesInLowerCase();
 
         Assert.assertTrue(listYLanguages.size() > 0);
 
@@ -34,7 +34,7 @@ public class YTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickYSubmenu()
-                        .getYLanguagesNames();
+                        .getNamesInLowerCase();
 
         for (String languageName : listYLanguages) {
            if ((listYLanguages.size() > 0 && languageName.charAt(0) == 'y')) {
@@ -45,5 +45,19 @@ public class YTest extends BaseTest {
         int actualResult = count;
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testVerifyNavigationSymbolY() {
+        final String symbol = "Y";
+        final String expectedResultTitle = "99 Bottles of Beer | Browse category Y";
+        final String expectedResultCurrentUrl = "https://www.99-bottles-of-beer.net/y.html";
+
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickOnSymdolOnSubmenu(symbol);
+
+        Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
+        Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
     }
 }
