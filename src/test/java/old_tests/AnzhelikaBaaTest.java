@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnzhelikaBaaTest extends BaseTest {
+
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
     final static By SEARCH_LANGUAGES_MENU = By.xpath("//ul[@id='menu']/li/a[@href='/search.html']");
     final static By SEARCH_FOR_FIELD = By.name("search");
@@ -86,39 +87,24 @@ public class AnzhelikaBaaTest extends BaseTest {
     }
 
     @Test
-    public void testSearchForLanguageByName_HappyPath() {
+    public void testSearchForLanguageByName() {
         final String LANGUAGE_NAME = "python";
 
-        openBaseURL(getDriver());
-        click(SEARCH_LANGUAGES_MENU, getDriver());
-        click(SEARCH_FOR_FIELD, getDriver());
-        input(LANGUAGE_NAME, SEARCH_FOR_FIELD, getDriver());
-        click(GO_BUTTON, getDriver());
-        List<String> languageNames = getElementsText(LANGUAGES_NAMES_LIST, getDriver());
+        List<String> languagesNames =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickSearchForField()
+                        .inputSearchCriteria(LANGUAGE_NAME)
+                        .clickGoButton()
+                        .getNamesInLowerCase();
 
-        Assert.assertTrue(languageNames.size() > 0);
+        Assert.assertTrue(languagesNames.size() > 0);
 
-        for (String languageName : languageNames) {
+        for (String languageName : languagesNames) {
             Assert.assertTrue(languageName.contains(LANGUAGE_NAME));
         }
     }
-
-
-    @Test
-    public void testSongLyricsSubmenu_WhenSearchingForLyricsOfSong_HappyPath() {
-        String expectedResult = "https://www.99-bottles-of-beer.net/lyrics.html";
-
-        openBaseURL(getDriver());
-        click(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
-        text(SEARCH_SONG_LYRICS_SUBMENU, getDriver());
-        isDisplayed(PAGE_WITH_LYRICS, getDriver());
-
-        String actualResult = getDriver().getCurrentUrl();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-@Test
+       @Test
     public void testImages_WhenChooseTeamSubmenu_HappyPath() {
     String attribute1 = "Picture of Gregor Scheithauer";
     String attribute2 = "Picture of Stefan Scheler";
@@ -133,7 +119,8 @@ public class AnzhelikaBaaTest extends BaseTest {
     int actualResult = getListSize(IMAGES_LIST, getDriver());
 
     Assert.assertEquals(actualResult, expectedResult);
-}
+    }
+
     @Test
     public void testH2TagText_WhenSearchingLanguagesStartWithLetterA_HappyPath() {
         final String expectedResult = "Category A";
@@ -148,6 +135,7 @@ public class AnzhelikaBaaTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
     @Test
     public void testVerifyIfNamesOfLanguagesStartWithZ_WhenChoosingZSubmenu_HappyPath() {
         String expectedFirstLetter = "z";
@@ -184,7 +172,3 @@ public class AnzhelikaBaaTest extends BaseTest {
         Assert.assertEquals(hexColor, expectedHexColor);
     }
 }
-
-
-
-

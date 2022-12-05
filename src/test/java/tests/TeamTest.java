@@ -15,7 +15,6 @@ public class TeamTest extends BaseTest {
         String expectedLsLaNetLink_OliverSchade = "http://www.ls-la.net/";
 
         openBaseURL()
-                .clickStartMenu()
                 .clickTeamSubmenu()
                 .clickOliverSchadeWebsiteLink();
 
@@ -27,7 +26,6 @@ public class TeamTest extends BaseTest {
         String expectedETasteOrgLink_GregorScheithauer = "http://www.e-taste.org/";
 
         openBaseURL()
-                .clickStartMenu()
                 .clickTeamSubmenu()
                 .clickGregorScheithauerWebsiteLink();
 
@@ -39,11 +37,22 @@ public class TeamTest extends BaseTest {
         String expectedStsSynfloodDe_StefanScheler = "http://sts.synflood.de/";
 
         openBaseURL()
-                .clickStartMenu()
                 .clickTeamSubmenu()
                 .clickStefanSchelerWebsiteLink();
 
         Assert.assertEquals(getExternalPageURL(), expectedStsSynfloodDe_StefanScheler);
+    }
+
+    @Test
+    public void testH2Header() {
+        final String expectedHeader = "The Team";
+
+        String actualHeader =
+                openBaseURL()
+                        .clickTeamSubmenu()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualHeader, expectedHeader);
     }
 
     @Test
@@ -53,7 +62,6 @@ public class TeamTest extends BaseTest {
 
         List<String> actualTeamNames =
         openBaseURL()
-                .clickStartMenu()
                 .clickTeamSubmenu()
                 .getTeamNames();
 
