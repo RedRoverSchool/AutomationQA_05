@@ -1,7 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,7 +15,7 @@ public class SubmitNewLanguageTest extends BaseTest {
                 openBaseURL()
                         .clickSubmitNewLanguageMenu()
                         .clickGoButton()
-                        .getTextErrorMessage();
+                        .getErrorMessage();
 
         Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
     }
@@ -28,7 +27,7 @@ public class SubmitNewLanguageTest extends BaseTest {
         int actualItemsQuantity =
                 openBaseURL()
                        .clickSubmitNewLanguageMenu()
-                       .countPleaseNoteItems();
+                       .countBullets();
 
         Assert.assertEquals(actualItemsQuantity,expectedItemsQuantity);
     }
@@ -42,6 +41,20 @@ public class SubmitNewLanguageTest extends BaseTest {
                 .getH2HeaderText();
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testLanguageCategories_WhenSubmittingANewLanguage() {
+        String expectedResultCategory = "esoteric language";
+
+        String actualResultCategory = openBaseURL()
+                .clickSubmitNewLanguageFooterMenu()
+                .clickCategoryField()
+                .clickEsotericLanguageOption()
+                .clickGoButton()
+                .getSelectedLanguageCategory();
+
+        Assert.assertEquals(actualResultCategory,expectedResultCategory);
     }
 }
 

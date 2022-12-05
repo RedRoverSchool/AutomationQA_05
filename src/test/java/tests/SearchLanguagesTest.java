@@ -39,7 +39,7 @@ public class SearchLanguagesTest extends BaseTest {
                         .clickGoButton()
                         .clearSearchForField()
                         .clickGoButton()
-                        .getListSizeFromTable();
+                        .getNamesListSize();
 
         Assert.assertTrue(languagesNamesSize == 0);
     }
