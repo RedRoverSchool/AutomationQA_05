@@ -64,7 +64,7 @@ public class YTest extends BaseTest {
     }
 
     @Test
-    public void testTableHeaderNamesOnYPage() {
+    public void testTableHeaderNames() {
 
         List<String> expectedHeaderNames = new ArrayList<>(
                 Arrays.asList("Language", "Author", "Date", "Comments", "Rate"));
