@@ -7,16 +7,20 @@ import org.testng.annotations.Test;
 public class BrowseLanguagesSubmenuTest extends BaseTest {
 
     @Test
-    public void testLinkText_WhenNavigatingFromStartToBrowseLanguageAndLetterNLink() {
+    public void testTextAndLinkN() {
+        final String symbol = "N";
+        final String expectedHrefUrl = "https://www.99-bottles-of-beer.net/n.html";
 
-        final String expectedText = "N";
+        Assert.assertTrue(
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .getListSymbolsInSubmenu()
+                        .contains(symbol));
 
-        String actualText = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickNSubmenu().
-                        getNSubmenu();
-
-        Assert.assertEquals(actualText, expectedText);
+        Assert.assertEquals(
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .getLinkBySymbol(symbol), expectedHrefUrl);
     }
 
     @Test
