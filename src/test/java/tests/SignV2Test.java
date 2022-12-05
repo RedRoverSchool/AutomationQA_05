@@ -32,7 +32,7 @@ public class SignV2Test extends BaseTest {
 
         String actualErrorMessage =
                 openBaseURL()
-                        .clickGuestbook()
+                        .clickGuestbookMenu()
                         .clickSignGuestbook()
                         .inputName(name)
                         .inputMessage(message)
