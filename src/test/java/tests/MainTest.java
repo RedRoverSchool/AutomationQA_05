@@ -53,7 +53,7 @@ public class MainTest extends BaseTest {
 
         mainMenuURLList
                 .add(openBaseURL()
-                        .clickGuestbook()
+                        .clickGuestbookMenu()
                         .getURL());
 
         mainMenuURLList

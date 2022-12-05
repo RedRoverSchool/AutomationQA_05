@@ -104,7 +104,7 @@ public abstract class MainPage extends BasePage {
         return new TopListsPage(getDriver());
     }
 
-    public GuestBookV2Page clickGuestbook() {
+    public GuestBookV2Page clickGuestbookMenu() {
         click(guestBookMenu);
 
         return new GuestBookV2Page(getDriver());
