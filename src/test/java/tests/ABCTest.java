@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ABCPage;
+import pages.browse_languages.letters.ABCPage;
 
 public class ABCTest extends BaseTest {
 
@@ -14,7 +14,7 @@ public class ABCTest extends BaseTest {
         String actualPageURL =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
-                        .getExternalPageURL();
+                        .getURL();
         Assert.assertEquals(actualPageURL, expectedURL);
     } 
     
@@ -24,7 +24,7 @@ public class ABCTest extends BaseTest {
 
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getH2Header();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
@@ -34,10 +34,8 @@ public class ABCTest extends BaseTest {
 
         openBaseURL().clickBrowseLanguagesMenu();
         ABCPage abcPage = new ABCPage(getDriver());
-        String actualResult = abcPage.getH2Header();
+        String actualResult = abcPage.getH2HeaderText();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
-
-
 }

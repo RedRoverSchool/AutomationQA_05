@@ -30,7 +30,7 @@ public class MTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickMSubmenu()
-                        .getMLanguagesNames();
+                        .getNamesInLowerCase();
 
         Assert.assertTrue(listMLanguages.size() > 0);
 

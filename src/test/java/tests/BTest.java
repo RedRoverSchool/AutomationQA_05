@@ -4,8 +4,6 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -19,7 +17,7 @@ public class BTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickBSubmenu()
-                        .getBLanguagesNames();
+                        .getNamesInLowerCase();
 
         Assert.assertTrue(listBLanguages.size() > 0);
 
@@ -45,12 +43,12 @@ public class BTest extends BaseTest {
     @Test
     public void testCatagoryWithLetterB() {
 
-        WebElement categoryBTitle =
+        String categoryBHeader =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickBSubmenu()
-                        .getbCatagoryTitle();
-        Assert.assertTrue(categoryBTitle.getText().toLowerCase().endsWith(letter));
+                        .getH2HeaderText();
+        Assert.assertTrue(categoryBHeader.toLowerCase().endsWith(letter));
     }
 
     @Test
@@ -61,7 +59,7 @@ public class BTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickBSubmenu()
-                        .getbCatagoryDescription();
+                        .getPageDescription();
         Assert.assertEquals(expectedDescriptionText, categoryDescriptionB.getText());
     }
 }

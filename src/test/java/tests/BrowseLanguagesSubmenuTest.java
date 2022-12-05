@@ -14,7 +14,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
         String actualText = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickNSubmenu().
-                getNSubmenuLinkText();
+                        getNSubmenu();
 
         Assert.assertEquals(actualText, expectedText);
     }

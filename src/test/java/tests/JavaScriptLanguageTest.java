@@ -13,8 +13,8 @@ public class JavaScriptLanguageTest extends BaseTest {
         String actualJSH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickJSubmenu()
-                .clickJavaScriptLanguage()
-                .getJavaScriptLanguagePageHeader();
+                .clickJavaScriptLink()
+                .getH2HeaderText();
 
         Assert.assertEquals(actualJSH2Header, EXPECTED_JS_H2_HEADER);
     }

@@ -3,16 +3,14 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.TopListEsotericPage;
-
-import java.util.List;
+import pages.top_lists.TopListEsotericPage;
 
 public class TopListEsotericTest extends BaseTest {
 
     @Test
     public void testTheMostRatedRealLanguageIsDifferFromMostRatedEsotericLanguage() {
         String topRatedRealLanguagesFirstLanguage = openBaseURL()
-                .clickTopListMenu()
+                .clickTopListsMenu()
                 .clickTopRatedRealSubmenu()
                 .getMostRatedRealLanguage();
         TopListEsotericPage topListEsotericPage = new TopListEsotericPage(getDriver());

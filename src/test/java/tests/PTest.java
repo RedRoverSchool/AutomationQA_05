@@ -30,7 +30,7 @@ public class PTest extends BaseTest {
         List<String> pLanguagesNames = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickPSubmenu()
-                .getPLanguagesNames();
+                .getNames();
 
         List<String> displayedLanguages = new ArrayList<String>();
         List<String> sortedLanguages = new ArrayList<String>();
