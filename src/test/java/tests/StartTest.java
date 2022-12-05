@@ -5,19 +5,33 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.TestUtils;
 
+import static utils.TestUtils.getBaseUrl;
+
 public class StartTest extends BaseTest {
 
     @Test
     public void testClickStartFromHomepage(){
+
         String urlAfterClickingStartFromHomepage =
                 openBaseURL()
                         .clickStartMenu()
-                        .getExternalPageURL();
+                        .getURL();
 
-        Assert.assertEquals(urlAfterClickingStartFromHomepage, TestUtils.getBaseUrl());
+        Assert.assertEquals(urlAfterClickingStartFromHomepage, getBaseUrl());
     }
 
+    @Test
+    public void testBaseURLShown_WhenLandingToStartPage(){
+        final String expectedUrl = getBaseUrl();
 
+        String actualUrl =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickStartMenu()
+                        .getURL();
+
+        Assert.assertEquals(actualUrl, expectedUrl);
+    }
 
     @Test
     public void testWishesFromTheTeamFirstParagraph () {
@@ -30,5 +44,4 @@ public class StartTest extends BaseTest {
 
         Assert.assertEquals(TeamWishes, WISHES_FROM_THE_TEAM);
     }
-
 }

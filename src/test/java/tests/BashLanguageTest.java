@@ -14,8 +14,22 @@ public class BashLanguageTest extends BaseTest {
                 .clickBrowseLanguagesFooterMenu()
                 .clickBSubmenu()
                 .clickBashLanguageLink()
-                .getBashLanguageHeader();
+                .getH2HeaderText();
 
         Assert.assertTrue(actualLanguageName.contains(LANGUAGE_NAME));
+    }
+
+    @Test
+    public void testBookmarkActive() {
+        final int expectedActiveBookmark = 14;
+
+        int activeBookmark = openBaseURL()
+                .clickBrowseLanguagesFooterMenu()
+                .clickBSubmenu()
+                .clickBashLanguageLink()
+                .getExternalLinksList()
+                .size();
+
+        Assert.assertEquals(activeBookmark, expectedActiveBookmark);
     }
 }
