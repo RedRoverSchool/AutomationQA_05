@@ -20,6 +20,9 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = "//div[@id='main']//tbody/tr/td[1]/a")
     private List<WebElement> languageColum;
 
+    @FindBy(xpath = "//table[@id = 'category']/tbody/tr/th")
+    private List<WebElement> tableHeaderNames;
+
     public TablePage(WebDriver driver) {
         super(driver);
     }
@@ -87,5 +90,10 @@ public abstract class TablePage extends MainPage {
     public List<String> getColumLanguageList(WebElement element){
         click(element);
         return getListTextInLowerCase(languageColum);
+    }
+
+    public List<String> getTableHeaderNames(){
+
+        return getListText(tableHeaderNames);
     }
 }

@@ -4,6 +4,8 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class YTest extends BaseTest {
@@ -59,5 +61,20 @@ public class YTest extends BaseTest {
 
         Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
         Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
+    }
+
+    @Test
+    public void testTableHeaderNamesOnYPage() {
+
+        List<String> expectedHeaderNames = new ArrayList<>(
+                Arrays.asList("Language", "Author", "Date", "Comments", "Rate"));
+
+        List<String> actualHeaderNames =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickYSubmenu()
+                        .getTableHeaderNames();
+
+        Assert.assertEquals(actualHeaderNames, expectedHeaderNames);
     }
 }
