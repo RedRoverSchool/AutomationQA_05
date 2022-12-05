@@ -57,8 +57,7 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testTeamNames() {
-        List<String> expectedTeamNames = new ArrayList<>(
-                Arrays.asList("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"));
+        List<String> expectedTeamNames = List.of("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler");
 
         List<String> actualTeamNames =
         openBaseURL()
@@ -66,5 +65,17 @@ public class TeamTest extends BaseTest {
                 .getTeamNames();
 
         Assert.assertEquals(actualTeamNames, expectedTeamNames);
+    }
+
+    @Test
+    public void testTeamLinks() {
+        List<String> expectedTeamLinks = List.of("ls-la.net", "E-Taste.org", "sts.synflood.de");
+
+        List<String> actualTeamLinks =
+                openBaseURL()
+                        .clickTeamSubmenu()
+                        .getTeamLinks();
+
+        Assert.assertEquals(actualTeamLinks, expectedTeamLinks);
     }
 }

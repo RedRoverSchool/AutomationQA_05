@@ -53,4 +53,9 @@ public class TeamPage extends StartSubmenuPage {
 
         return getListText(AllTeamNames);
     }
+
+    public List<String> getTeamLinks() {
+
+        return getListText(AllTeamLinks);
+    }
 }
