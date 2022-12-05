@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class TopListsTest extends BaseTest {
 
     @Test
-    public void testVerifyH2HeaderTextOnTopListsPage()  {
+    public void testH2HeaderText() {
 
         final String expectedResult = "Top Rated";
 
