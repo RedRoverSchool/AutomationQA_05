@@ -14,6 +14,9 @@ public class LyricsPage extends StartSubmenuPage {
     @FindBy(xpath = "//div[@id = 'main']/p")
     private List<WebElement> pTags;
 
+    @FindBy(xpath = "//a[@href='lyrics.html']")
+    private WebElement lyricsLink;
+
     public LyricsPage(WebDriver driver) {
         super(driver);
     }
@@ -26,5 +29,14 @@ public class LyricsPage extends StartSubmenuPage {
     public int getAmountOfPTags() {
 
         return getListSize(pTags);
+    }
+
+    public void clickLyricsLink() {
+        click(lyricsLink);
+    }
+
+    public String getLyricsPageURL() {
+
+        return getURL();
     }
 }
