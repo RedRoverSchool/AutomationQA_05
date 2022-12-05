@@ -22,4 +22,23 @@ public class SignV2Test extends BaseTest {
         Assert.assertEquals(signV2Page.getAlertText(alert), "Enter the URL for the link you want to add.");
         signV2Page.acceptAlert(alert, urlAlertText);
     }
+
+    @Test
+    public void testErrorMessageIfSubmitWithoutCaptcha(){
+        final String name = "Guest";
+        final String email = "guest@gmail.com";
+        final String message = "it is a message";
+        final String expectedErrorMessage = "Error: Please enter at least a message, your email address and the security code.";
+
+        String actualErrorMessage =
+                openBaseURL()
+                        .clickGuestbook()
+                        .clickSignGuestbook()
+                        .inputName(name)
+                        .inputMessage(message)
+                        .inputEmail(email)
+                        .clickSubmitButton().getErrorMessageText();
+
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+    }
 }
