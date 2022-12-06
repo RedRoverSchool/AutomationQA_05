@@ -81,8 +81,11 @@ public class TeamTest extends BaseTest {
     public void testTwoImagesOfTeamCreators() {
         int expectedTwoImagesOfTeamCreators = 2;
 
-        Assert.assertEquals(openBaseURL()
+        int actualTwoImagesOfTeamCreators =
+                openBaseURL()
                 .clickTeamSubmenu()
-                .countTeamImages(), expectedTwoImagesOfTeamCreators);
+                .countTeamImages();
+
+        Assert.assertEquals(actualTwoImagesOfTeamCreators, expectedTwoImagesOfTeamCreators);
     }
 }
