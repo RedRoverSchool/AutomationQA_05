@@ -210,4 +210,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
         return new LPage(getDriver());
     }
+
+    public String getHrefN(String attribute) {
+
+        return getAttribute(nSubmenu, "href");
+    }
 }
