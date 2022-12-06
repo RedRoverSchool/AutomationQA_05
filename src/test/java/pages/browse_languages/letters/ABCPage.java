@@ -6,4 +6,9 @@ public class ABCPage extends LetterPage {
     public ABCPage(WebDriver driver) {
         super(driver);
     }
+
+    public String getABCPageURL() {
+
+        return getURL();
+    }
 }
