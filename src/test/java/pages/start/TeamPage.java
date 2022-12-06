@@ -11,59 +11,59 @@ public class TeamPage extends StartSubmenuPage {
     private final String WEBSITE_LINKS_BASE_PATH = "//div[@id='main']/p/a";
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href='http://www.ls-la.net/']")
-    private WebElement OliverSchadeWebsiteLink;
+    private WebElement oliverSchadeWebsiteLink;
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href='http://www.e-taste.org']")
-    private WebElement GregorScheithauerWebsiteLink;
+    private WebElement gregorScheithauerWebsiteLink;
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href='http://sts.synflood.de/']")
-    private WebElement StefanSchelerWebsiteLink;
+    private WebElement stefanSchelerWebsiteLink;
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH)
-    private List<WebElement> AllTeamLinks;
+    private List<WebElement> allTeamLinks;
 
     @FindBy(xpath = "//div[@id='main']/h3")
-    private List<WebElement> AllTeamNames;
+    private List<WebElement> allTeamNames;
 
     @FindBy(xpath = "//div[@id ='main']/h2")
-    private  WebElement H2Header;
+    private  WebElement h2Header;
 
     @FindBy(xpath = "//div[@id='main']/p/img[@src]")
-    private List<WebElement> AllTeamImages;
+    private List<WebElement> allTeamImages;
 
     public TeamPage(WebDriver driver) {
         super(driver);
     }
 
     public void clickOliverSchadeWebsiteLink() {
-        click(OliverSchadeWebsiteLink);
+        click(oliverSchadeWebsiteLink);
     }
 
     public void clickGregorScheithauerWebsiteLink() {
-        click(GregorScheithauerWebsiteLink);
+        click(gregorScheithauerWebsiteLink);
     }
 
     public void clickStefanSchelerWebsiteLink() {
-        click(StefanSchelerWebsiteLink);
+        click(stefanSchelerWebsiteLink);
     }
 
     public String getH2HeaderText() {
 
-        return getText(H2Header);
+        return getText(h2Header);
     }
 
     public List<String> getTeamNames() {
 
-        return getListText(AllTeamNames);
+        return getListText(allTeamNames);
     }
 
     public List<String> getTeamLinks() {
 
-        return getListText(AllTeamLinks);
+        return getListText(allTeamLinks);
     }
 
     public int countTeamImages() {
 
-        return getListSize(AllTeamImages);
+        return getListSize(allTeamImages);
     }
 }
