@@ -13,7 +13,6 @@ public class LuaLanguagePage extends LanguagePage {
         super(driver);
     }
 
-
     public void clickRedditLink() {
         click(redditLink);
     }
