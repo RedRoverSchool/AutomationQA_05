@@ -23,7 +23,7 @@ public class TeamPage extends StartSubmenuPage {
     private List<WebElement> allTeamLinks;
 
     @FindBy(xpath = "//div[@id='main']/h3")
-    private List<WebElement> allTeamNames;
+    private List<WebElement> h3Header;
 
     @FindBy(xpath = "//div[@id ='main']/h2")
     private  WebElement h2Header;
@@ -54,7 +54,7 @@ public class TeamPage extends StartSubmenuPage {
 
     public List<String> getTeamNames() {
 
-        return getListText(allTeamNames);
+        return getListText(h3Header);
     }
 
     public List<String> getTeamLinks() {
