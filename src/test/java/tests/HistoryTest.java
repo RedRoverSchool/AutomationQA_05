@@ -51,4 +51,16 @@ public class HistoryTest extends BaseTest {
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
+
+    @Test
+    public void testRegularTextOnSubmenuInfo(){
+        final String expectedRegularText = "This site bases on work done by Tim Robinson during 1994 - 1998.";
+
+        String actualRegularText =
+                openBaseURL()
+                        .clickHistorySubmenu()
+                        .getRegularText();
+
+        Assert.assertEquals(actualRegularText, expectedRegularText);
+    }
 }
