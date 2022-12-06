@@ -28,6 +28,9 @@ public class TeamPage extends StartSubmenuPage {
     @FindBy(xpath = "//div[@id ='main']/h2")
     private  WebElement H2Header;
 
+    @FindBy(xpath = "//div[@id='main']/p/img[@src]")
+    private List<WebElement> AllTeamImages;
+
     public TeamPage(WebDriver driver) {
         super(driver);
     }
@@ -57,5 +60,10 @@ public class TeamPage extends StartSubmenuPage {
     public List<String> getTeamLinks() {
 
         return getListText(AllTeamLinks);
+    }
+
+    public int countTeamImages() {
+
+        return getListSize(AllTeamImages);
     }
 }

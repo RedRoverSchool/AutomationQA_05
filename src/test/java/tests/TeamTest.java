@@ -76,4 +76,13 @@ public class TeamTest extends BaseTest {
 
         Assert.assertEquals(actualTeamLinks, expectedTeamLinks);
     }
+
+    @Test
+    public void testTwoImagesOfTeamCreators() {
+        int expectedTwoImagesOfTeamCreators = 2;
+
+        Assert.assertEquals(openBaseURL()
+                .clickTeamSubmenu()
+                .countTeamImages(), expectedTwoImagesOfTeamCreators);
+    }
 }
