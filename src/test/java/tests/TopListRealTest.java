@@ -1,7 +1,28 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.support.Color;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class TopListRealTest extends BaseTest {
 
+    @Test
+    public void testH2Text_WhenChoosingTopRatedRealSubmenu() {
+        String expectedH2HeaderText = "Top Rated Real Languages";
+
+        String actualH2HeaderText = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu().getH2TopRatedRealLanguagesText();
+
+        Assert.assertEquals(actualH2HeaderText, expectedH2HeaderText);
+    }
+
+    @Test
+    public void testH2Color_WhenChoosingTopRatedRealSubmenu() {
+        String expectedHexColor = "#1b651c";
+
+        String headerTextCssValue = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu().getH2TopRatedRealLanguages().getCssValue("color");
+        String actualHexColor = Color.fromString(headerTextCssValue).asHex();
+
+        Assert.assertEquals(actualHexColor, expectedHexColor);
+    }
 }

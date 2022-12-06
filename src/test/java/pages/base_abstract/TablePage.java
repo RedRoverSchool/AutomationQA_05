@@ -23,7 +23,7 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = "//table[@id = 'category']/tbody/tr/th")
     private List<WebElement> tableHeaderNames;
 
-    public TablePage(WebDriver driver) {
+       public TablePage(WebDriver driver) {
         super(driver);
     }
 
