@@ -19,11 +19,10 @@ public class StartPage extends StartSubmenuPage {
     }
 
     @FindBy(xpath = "//div[@id='main']/h2")
-    private WebElement verifyText1;
+    private WebElement h2Header1;
 
-    public String getH2 () {
+    public String getH2() {
 
-        return getText(verifyText1);
+        return getText(h2Header1);
     }
-
 }
