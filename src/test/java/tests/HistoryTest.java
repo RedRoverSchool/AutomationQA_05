@@ -10,7 +10,7 @@ import pages.start.HistoryPage;
 public class HistoryTest extends BaseTest {
 
     @Test
-    public void testLinkText_HistorySubmenu(){
+    public void testLinkText_HistorySubmenu() {
         final String expectedText = "History";
         final String attribute = "href";
         final String expectedSubmenuInfoLink = "info.html";
@@ -27,7 +27,7 @@ public class HistoryTest extends BaseTest {
     }
 
     @Test
-    public void testHistorySubmenu_NavigatesTo_HistorySubmenuPage(){
+    public void testHistorySubmenu_NavigatesTo_HistorySubmenuPage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/info.html";
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
 
@@ -44,7 +44,7 @@ public class HistoryTest extends BaseTest {
     }
 
     @Test
-    public void testRegularTextOnSubmenuInfo(){
+    public void testRegularTextOnSubmenuInfo() {
         final String expectedRegularText = "This site bases on work done by Tim Robinson during 1994 - 1998.";
 
         String actualRegularText =

@@ -10,7 +10,7 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testClickabilityLsLaNetLink_OliverSchade() {
-        String expectedLsLaNetLink_OliverSchade = "http://www.ls-la.net/";
+        final String expectedLsLaNetLink_OliverSchade = "http://www.ls-la.net/";
 
         openBaseURL()
                 .clickTeamSubmenu()
@@ -21,7 +21,7 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testClickabilityETasteOrgLink_GregorScheithauer() {
-        String expectedETasteOrgLink_GregorScheithauer = "http://www.e-taste.org/";
+        final String expectedETasteOrgLink_GregorScheithauer = "http://www.e-taste.org/";
 
         openBaseURL()
                 .clickTeamSubmenu()
@@ -32,7 +32,7 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testClickabilityStsSynfloodDe_StefanScheler() {
-        String expectedStsSynfloodDe_StefanScheler = "http://sts.synflood.de/";
+        final String expectedStsSynfloodDe_StefanScheler = "http://sts.synflood.de/";
 
         openBaseURL()
                 .clickTeamSubmenu()
@@ -75,5 +75,17 @@ public class TeamTest extends BaseTest {
                         .getTeamLinks();
 
         Assert.assertEquals(actualTeamLinks, expectedTeamLinks);
+    }
+
+    @Test
+    public void testTwoImagesOfTeamCreators() {
+        final int expectedTwoImagesOfTeamCreators = 2;
+
+        int actualTwoImagesOfTeamCreators =
+                openBaseURL()
+                .clickTeamSubmenu()
+                .countTeamImages();
+
+        Assert.assertEquals(actualTwoImagesOfTeamCreators, expectedTwoImagesOfTeamCreators);
     }
 }

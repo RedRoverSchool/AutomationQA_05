@@ -7,8 +7,10 @@ import org.testng.annotations.Test;
 public class BashLanguageTest extends BaseTest {
 
     @Test
-    public void testVerifyingFooterChoosingLanguage() {
-        final String LANGUAGE_NAME = "BASH";
+    public void testFooterChoosingLanguageBASH() {
+        final String expectedLanguageName = "Language BASH";
+        final String expectedLanguageURL = "https://www.99-bottles-of-beer.net/language-bash-1815.html";
+        final String expectedLanguageTitle = "99 Bottles of Beer | Language BASH";
 
         String actualLanguageName = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
@@ -16,7 +18,10 @@ public class BashLanguageTest extends BaseTest {
                 .clickBashLanguageLink()
                 .getH2HeaderText();
 
-        Assert.assertTrue(actualLanguageName.contains(LANGUAGE_NAME));
+
+        Assert.assertEquals(getDriver().getCurrentUrl(), expectedLanguageURL);
+        Assert.assertEquals(getDriver().getTitle(), expectedLanguageTitle);
+        Assert.assertEquals(actualLanguageName, expectedLanguageName);
     }
 
     @Test
