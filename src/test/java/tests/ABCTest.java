@@ -12,28 +12,30 @@ import java.util.List;
 public class ABCTest extends BaseTest {
 
     @Test
-    public void test_ABCVerifyByLetterCategoryInformation() throws InterruptedException {
+    public void test_ABCLetterCategoryLanguagesColumInformation() throws InterruptedException {
 
         List<WebElement> submenuLetters =
-                openBaseURL()
+                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .getSubmenuLettersElement();
 
-        List<String> culumlanguagesNames =
+        ABCPage abcPage = openBaseURL().clickBrowseLanguagesFooterMenu();
+
+        List<String> expectedLanguagesNames =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .getSubmenuLettersLowerCase();
 
-        for(int i = 1; i < submenuLetters.size(); i++) {
-            List<String> languages =
-                    openBaseURL()
-                            .clickBrowseLanguagesMenu()
-                            .getColumLanguageList(submenuLetters.get(i));
+        for(int i = 1; i < expectedLanguagesNames.size(); i++) {
+            submenuLetters.get(i).click();
+            List<String> languages = abcPage.getColumLanguageList();
 
             for (String language : languages) {
-                Assert.assertEquals(String.valueOf(language.charAt(0)), culumlanguagesNames.get(i));
+                String actualLanguagesNames = String.valueOf(language.charAt(0));
+                Assert.assertEquals(actualLanguagesNames, expectedLanguagesNames.get(i));
             }
         }
+
     }
 
     @Test
