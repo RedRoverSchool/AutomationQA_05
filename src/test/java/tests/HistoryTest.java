@@ -10,19 +10,8 @@ import pages.start.HistoryPage;
 public class HistoryTest extends BaseTest {
 
     @Test
-    public void testLabelTextSubmenuInfo(){
-//        final String expectedLinkText = "History";
-//
-//        openBaseURL();
-//        HistoryPage historyPage = new HistoryPage(getDriver());
-//
-//        String actualSubmenuTitle = historyPage.getInfoSubMenuLabelText();
-//
-//        Assert.assertEquals(actualSubmenuTitle, expectedSubmenuInfoTitle);
-    }
-
-    @Test
-    public void testLinkTextSubmenuInfo(){
+    public void testLinkText_HistorySubmenu(){
+        final String expectedText = "History";
         final String attribute = "href";
         final String expectedSubmenuInfoLink = "info.html";
 
@@ -30,23 +19,25 @@ public class HistoryTest extends BaseTest {
 
         HistoryPage historyPage = new HistoryPage(getDriver());
 
+        String actualText = historyPage.getHistorySubmenuText();
         String actualHrefValue = historyPage.getHref(attribute);
 
+        Assert.assertEquals(expectedText, actualText);
         Assert.assertTrue(actualHrefValue.contains(expectedSubmenuInfoLink));
     }
 
     @Test
-    public void testClickOnSubmenuInfo(){
+    public void testHistorySubmenu_NavigatesTo_HistorySubmenuPage(){
         final String expectedURL = "https://www.99-bottles-of-beer.net/info.html";
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
 
         HistoryPage historyPage = new HistoryPage(getDriver());
 
-        openBaseURL()
-                .clickHistorySubmenu();
-
-        String actualURL = historyPage.getURL();
+        String actualURL = openBaseURL()
+                .clickHistorySubmenu().getURL();
         String actualTitle = historyPage.getTitle();
+
+        Assert.assertNotEquals(openBaseURL().getURL(), actualURL);
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);

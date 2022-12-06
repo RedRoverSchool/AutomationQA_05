@@ -25,4 +25,9 @@ public class HistoryPage extends StartSubmenuPage {
 
         return getText(regularText);
     }
+
+    public String getHistorySubmenuText() {
+
+        return historySubmenu.getText();
+    }
 }
