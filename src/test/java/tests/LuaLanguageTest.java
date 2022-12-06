@@ -14,7 +14,7 @@ public class LuaLanguageTest extends BaseTest {
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-lua-365.html";
         final String expectedTitle = "99 Bottles of Beer | Language LUA";
 
-        LuaLanguagePage LuaLanguagePage = new LuaLanguagePage(getDriver());
+        LuaLanguagePage luaLanguagePage = new LuaLanguagePage(getDriver());
 
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
@@ -25,13 +25,13 @@ public class LuaLanguageTest extends BaseTest {
 
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
 
-        String actualUrl = LuaLanguagePage.getURL();
-        String actualTitle = LuaLanguagePage.getTitle();
+        String actualUrl = luaLanguagePage.getURL();
+        String actualTitle = luaLanguagePage.getTitle();
 
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
 
-        LuaLanguagePage.clickRedditLink();
+        luaLanguagePage.clickRedditLink();
 
         Assert.assertNotEquals(actualUrl, getDriver().getCurrentUrl());
     }
