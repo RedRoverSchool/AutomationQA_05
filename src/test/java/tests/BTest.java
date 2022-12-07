@@ -62,4 +62,17 @@ public class BTest extends BaseTest {
                         .getPageDescription();
         Assert.assertEquals(expectedDescriptionText, categoryDescriptionB.getText());
     }
+
+    @Test
+    public void testH2Header() {
+
+        final String expectedH2Header = "Category B";
+
+        String actualH2Header = openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickBSubmenu()
+                .getH2HeaderText();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
 }
