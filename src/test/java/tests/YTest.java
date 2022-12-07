@@ -3,6 +3,8 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.languages.YabasicLanguagePage;
+import pages.browse_languages.letters.YPage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,5 +78,27 @@ public class YTest extends BaseTest {
                         .getTableHeaderNames();
 
         Assert.assertEquals(actualHeaderNames, expectedHeaderNames);
+    }
+
+    @Test
+    public void testYabasicLink_NavigatesTo_YabasicLanguagePage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/language-yabasic-64.html";
+        final String expectedTitle = "99 Bottles of Beer | Language Yabasic";
+
+        YabasicLanguagePage yabasicLanguagePage = new YabasicLanguagePage(getDriver());
+
+        String oldURL = openBaseURL()
+                .clickBrowseLanguagesFooterMenu()
+                .clickYSubmenu()
+                .getYPageURL();
+
+        new YPage(getDriver()).clickYabasicLink();
+
+        String actualUrl = yabasicLanguagePage.getURL();
+        String actualTitle = yabasicLanguagePage.getTitle();
+
+        Assert.assertEquals(actualUrl, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }
