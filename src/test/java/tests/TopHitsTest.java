@@ -22,7 +22,6 @@ public class TopHitsTest extends BaseTest {
                 .getTopHitsPageURL();
 
         new TopHitsPage(getDriver()).clickShakespeareLink();
-
         Assert.assertNotEquals(oldUrl, getDriver().getCurrentUrl());
 
         String actualUrl = shakespeareLanguagePage.getURL();
