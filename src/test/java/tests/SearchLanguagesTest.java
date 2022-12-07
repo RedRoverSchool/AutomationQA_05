@@ -45,7 +45,7 @@ public class SearchLanguagesTest extends BaseTest {
     }
 
     @Test
-    public void testMenuSearchSearchForLanguagesByNameJava() {
+    public void testSearchForLanguagesByNameJava() {
 
         final String LANGUAGE_NAME = "java";
 
