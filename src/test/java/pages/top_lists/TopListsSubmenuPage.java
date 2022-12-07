@@ -56,5 +56,4 @@ public abstract class TopListsSubmenuPage extends TablePage {
 
         return new TopHitsPage(getDriver());
     }
-
 }

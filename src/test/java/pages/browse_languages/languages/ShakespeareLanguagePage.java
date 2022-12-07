@@ -8,5 +8,4 @@ public class ShakespeareLanguagePage extends LanguagePage {
     public ShakespeareLanguagePage(WebDriver driver) {
         super(driver);
     }
-
 }

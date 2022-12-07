@@ -31,6 +31,4 @@ public class TopHitsTest extends BaseTest {
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
-
 }
