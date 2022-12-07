@@ -19,10 +19,6 @@ public abstract class StartSubmenuPage extends MainPage {
     @FindBy(xpath = "//ul[@id ='submenu']/li/a[@href = 'impressum.html']")
     private WebElement privacySubmenu;
 
-    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = './search.html']")
-    private WebElement searchSubmenu;
-
-
     public StartSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -55,11 +51,4 @@ public abstract class StartSubmenuPage extends MainPage {
 
         return getText(songLyricsSubmenu);
     }
-
-    public SearchPage clickSearchSubmenu() {
-        click(searchSubmenu);
-
-        return new SearchPage(getDriver());
-    }
-
 }
