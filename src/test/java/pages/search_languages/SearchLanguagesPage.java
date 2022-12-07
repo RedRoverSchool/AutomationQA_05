@@ -12,6 +12,10 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
     @FindBy(name = "submitsearch")
     private WebElement goButton;
 
+    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = './search.html']")
+    private WebElement searchSubmenu;
+
+
     public SearchLanguagesPage(WebDriver driver) {
         super(driver);
     }
@@ -39,4 +43,11 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
 
         return this;
     }
+
+    public SearchLanguagesPage clickSearchSubmenu() {
+        click(searchSubmenu);
+
+        return this;
+    }
+
 }

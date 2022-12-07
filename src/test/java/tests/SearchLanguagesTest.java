@@ -75,4 +75,21 @@ public class SearchLanguagesTest extends BaseTest {
 
         Assert.assertTrue(languagesNames == 0);
     }
+
+    @Test
+    public void testSearchForLanguageNameSubmenuNewSearch() {
+        final String LANGUAGE_NAME = "Java";
+
+        int languagesNamesSize =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickSearchForField()
+                        .inputSearchCriteria(LANGUAGE_NAME)
+                        .clickGoButton()
+                        .clickSearchSubmenu()
+                        .getNamesListSize();
+
+        Assert.assertTrue(languagesNamesSize == 0);
+    }
+
 }
