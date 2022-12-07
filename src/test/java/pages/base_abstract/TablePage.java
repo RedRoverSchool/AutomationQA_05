@@ -81,7 +81,7 @@ public abstract class TablePage extends MainPage {
     }
 
     public List<String> getSubmenuLettersLowerCase(){
-//        return getListTextInLowerCase(letters);
+
         return getListText(letters);
     }
 
