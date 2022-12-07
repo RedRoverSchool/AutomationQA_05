@@ -28,7 +28,7 @@ public abstract class TopListsSubmenuPage extends TablePage {
         super(driver);
     }
 
-    public void clickTopRatedRealSubmenu() {
+    public TopListRealPage clickTopRatedRealSubmenu() {
         click(topRatedRealSubmenu);
 
         return new TopListRealPage(getDriver());
