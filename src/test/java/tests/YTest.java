@@ -95,6 +95,8 @@ public class YTest extends BaseTest {
 
         new YPage(getDriver()).clickYabasicLink();
 
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
         String actualUrl = yabasicLanguagePage.getURL();
         String actualTitle = yabasicLanguagePage.getTitle();
 
