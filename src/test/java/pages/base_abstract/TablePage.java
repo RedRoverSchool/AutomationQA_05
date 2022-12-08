@@ -23,6 +23,9 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = "//table[@id = 'category']/tbody/tr/th")
     private List<WebElement> tableHeaderNames;
 
+    @FindBy(xpath = "//*[@id='main']/table/tbody//strong")
+    private List<WebElement> tableListNames;
+
     public TablePage(WebDriver driver) {
         super(driver);
     }
@@ -95,5 +98,10 @@ public abstract class TablePage extends MainPage {
     public List<String> getTableHeaderNames(){
 
         return getListText(tableHeaderNames);
+    }
+
+    public List<String> getTableListNames(){
+
+        return getListText(tableListNames);
     }
 }
