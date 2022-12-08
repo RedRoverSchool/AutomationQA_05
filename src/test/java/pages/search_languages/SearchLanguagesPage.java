@@ -49,5 +49,4 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
 
         return this;
     }
-
 }
