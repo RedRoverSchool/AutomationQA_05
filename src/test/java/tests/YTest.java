@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.YabasicLanguagePage;
+import pages.browse_languages.languages.YacasLanguagePage;
 import pages.browse_languages.letters.YPage;
 
 import java.util.ArrayList;
@@ -101,6 +102,30 @@ public class YTest extends BaseTest {
         String actualTitle = yabasicLanguagePage.getTitle();
 
         Assert.assertEquals(actualUrl, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testYacasLink_NavigatesTo_YacasLanguagePage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/language-yacas-65.html";
+        final String expectedTitle = "99 Bottles of Beer | Language Yacas";
+
+        YacasLanguagePage yacasLanguagePage = new YacasLanguagePage(getDriver());
+
+        String oldURL = openBaseURL()
+                .clickBrowseLanguagesFooterMenu()
+                .clickYSubmenu()
+                .getYPageURL();
+
+        new YPage(getDriver()).clickYacasLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = yacasLanguagePage.getURL();
+        String actualTitle = yacasLanguagePage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 }
