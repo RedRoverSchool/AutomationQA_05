@@ -11,6 +11,9 @@ import java.util.List;
 
 public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
+    @FindBy(xpath = "//a[@href = 'a.html']")
+    private WebElement aSubmenu;
+
     @FindBy(xpath = "//a[@href='b.html']")
     private WebElement bSubmenu;
 
@@ -49,6 +52,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
+    }
+
+    public APage clickASubmenu() {
+        click(aSubmenu);
+
+        return new APage(getDriver());
     }
 
     public BPage clickBSubmenu() {
@@ -115,7 +124,7 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
         return new ZPage(getDriver());
     }
-    
+
     public List<String> getListSymbolsInSubmenu() {
 
         return getListText(symbolsInSubmenu);
@@ -138,8 +147,8 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
     public BrowseLanguagesSubmenuPage clickOnSymdolOnSubmenu(String text) {
         if (getListSize(symbolsInSubmenu) > 0) {
-            for(WebElement element : symbolsInSubmenu)
-                if(element.getAttribute("innerText").contains(text)) {
+            for (WebElement element : symbolsInSubmenu)
+                if (element.getAttribute("innerText").contains(text)) {
                     click(element);
                     break;
                 }
