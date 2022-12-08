@@ -35,7 +35,6 @@ public class ABCTest extends BaseTest {
                 Assert.assertEquals(actualLanguagesNames, expectedLanguagesNames.get(i));
             }
         }
-
     }
 
     @Test
