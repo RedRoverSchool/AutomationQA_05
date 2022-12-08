@@ -91,5 +91,4 @@ public class SearchLanguagesTest extends BaseTest {
 
         Assert.assertTrue(languagesNamesSize == 0);
     }
-
 }
