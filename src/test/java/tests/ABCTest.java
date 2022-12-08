@@ -26,7 +26,7 @@ public class ABCTest extends BaseTest {
                         .clickBrowseLanguagesMenu()
                         .getSubmenuLettersLowerCase();
 
-        for(int i = 1; i < expectedLanguagesNames.size(); i++) {
+        for (int i = 1; i < expectedLanguagesNames.size(); i++) {
             submenuLetters.get(i).click();
             List<String> languages = abcPage.getColumLanguageList();
 
