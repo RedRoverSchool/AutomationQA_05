@@ -101,6 +101,11 @@ public abstract class TablePage extends MainPage {
         return getListTextInLowerCase(letters);
     }
 
+    public List<String> getSubmenuLettersLowerCase(){
+
+        return getListText(letters);
+    }
+
     public List<WebElement> getSubmenuLettersElement() {
         return letters;
     }
@@ -109,13 +114,26 @@ public abstract class TablePage extends MainPage {
         click(element);
         return getListTextInLowerCase(languageColum);
     }
+    
+    public List<String> getColumLanguageList(){
+
+        return getListTextInUpperCase(languageColum);
+    }
 
     public List<String> getTableHeaderNames() {
 
         return getListText(tableHeaderNames);
     }
 
-    public List<String> getTableListNames() {
+    public List<String> getFirstsLetterFromLanguagesNames(){
+        List<String> firstLetters = new ArrayList<>();
+        for (String languageName: getNamesInUpperCase()){
+            firstLetters.add(languageName.substring(0,1));
+        }
+        return firstLetters;
+    }
+
+    public List<String> getTableListNames(){
 
         return getListText(tableListNames);
     }

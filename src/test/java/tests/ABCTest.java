@@ -12,26 +12,31 @@ import java.util.List;
 public class ABCTest extends BaseTest {
 
     @Test
-    public void test_ABCVerifyByLetterCategoryInformation() throws InterruptedException {
+    public void test_ABCLetterCategoryLanguagesColumInformation() throws InterruptedException {
 
         List<WebElement> submenuLetters =
-                openBaseURL()
+                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .getSubmenuLettersElement();
 
-        List<String> culumlanguagesNames =
-                openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .getSubmenuLettersLowerCase();
+        ABCPage abcPage = new ABCPage(getDriver());
 
-        for(int i = 1; i < submenuLetters.size(); i++) {
-            List<String> languages =
-                    openBaseURL()
-                            .clickBrowseLanguagesMenu()
-                            .getColumLanguageList(submenuLetters.get(i));
+        List<String> availableLetters =
+                abcPage.getSubmenuLettersLowerCase();
 
-            for (String language : languages) {
-                Assert.assertEquals(String.valueOf(language.charAt(0)), culumlanguagesNames.get(i));
+        for(int i = 0; i < availableLetters.size(); i++) {
+            submenuLetters.get(i).click();
+            List<String> firstLetters = abcPage.getFirstsLetterFromLanguagesNames();
+            if (i == 0) {
+                for (String letter : firstLetters) {
+                    char symbol = letter.charAt(0);
+                    Assert.assertTrue(symbol >= 48 && symbol <= 57);
+                }
+            }
+            else {
+                for (String letter : firstLetters) {
+                    Assert.assertEquals(letter, availableLetters.get(i));
+                }
             }
         }
     }
