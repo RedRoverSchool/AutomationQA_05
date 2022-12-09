@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.YabasicLanguagePage;
 import pages.browse_languages.languages.YacasLanguagePage;
@@ -132,6 +133,7 @@ public class YTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
+    @Ignore
     @Test
     public void testRandomLinkNavigatesToCorrespondingPage() {
 
