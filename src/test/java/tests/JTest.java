@@ -1,11 +1,15 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
 import pages.browse_languages.letters.JPage;
 import pages.browse_languages.languages.JQueryLanguagePage;
+
+import java.util.List;
+import java.util.Random;
 
 public class JTest extends BaseTest {
 
@@ -70,6 +74,5 @@ public class JTest extends BaseTest {
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
 }
 
