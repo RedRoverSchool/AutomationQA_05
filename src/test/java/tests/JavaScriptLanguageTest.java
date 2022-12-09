@@ -39,4 +39,22 @@ public class JavaScriptLanguageTest extends BaseTest {
 
         Assert.assertEquals(actualListNames, expectedListNames);
     }
+
+    @Test
+    public void testTableListValues() {
+
+        List<String> expectedListValues = new ArrayList<>(
+                Arrays.asList("01/09/09", "JavaScribe", "n/a", "4",
+                        "http://en.wikipedia.org/wiki/Javascript", "(3.04 in 373 votes)"));
+
+        List<String> actualListValues =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickJSubmenu()
+                        .clickJavaScriptLink()
+                        .getTableListValues();
+
+        Assert.assertEquals(actualListValues, expectedListValues);
+    }
+
 }
