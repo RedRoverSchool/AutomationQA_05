@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class TablePage extends MainPage {
@@ -96,5 +97,13 @@ public abstract class TablePage extends MainPage {
     public List<String> getTableHeaderNames(){
 
         return getListText(tableHeaderNames);
+    }
+
+    public List<String> getFirstsLetterFromLanguagesNames(){
+        List<String> firstLetters = new ArrayList<>();
+        for (String languageName: getNamesInUpperCase()){
+            firstLetters.add(languageName.substring(0,1));
+        }
+        return firstLetters;
     }
 }

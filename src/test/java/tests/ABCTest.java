@@ -19,20 +19,24 @@ public class ABCTest extends BaseTest {
                         .clickBrowseLanguagesMenu()
                         .getSubmenuLettersElement();
 
-        ABCPage abcPage = openBaseURL().clickBrowseLanguagesFooterMenu();
+        ABCPage abcPage = new ABCPage(getDriver());
 
-        List<String> expectedLanguagesNames =
-                openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .getSubmenuLettersLowerCase();
+        List<String> availableLetters =
+                abcPage.getSubmenuLettersLowerCase();
 
-        for(int i = 1; i < expectedLanguagesNames.size(); i++) {
+        for(int i = 0; i < availableLetters.size(); i++) {
             submenuLetters.get(i).click();
-            List<String> languages = abcPage.getColumLanguageList();
-
-            for (String language : languages) {
-                String actualLanguagesNames = String.valueOf(language.charAt(0));
-                Assert.assertEquals(actualLanguagesNames, expectedLanguagesNames.get(i));
+            List<String> firstLetters = abcPage.getFirstsLetterFromLanguagesNames();
+            if (i == 0) {
+                for (String letter : firstLetters) {
+                    char symbol = letter.charAt(0);
+                    Assert.assertTrue(symbol >= 48 && symbol <= 57);
+                }
+            }
+            else {
+                for (String letter : firstLetters) {
+                    Assert.assertEquals(letter, availableLetters.get(i));
+                }
             }
         }
 
