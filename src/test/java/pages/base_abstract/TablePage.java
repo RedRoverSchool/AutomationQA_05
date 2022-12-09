@@ -97,10 +97,6 @@ public abstract class TablePage extends MainPage {
         return getFirstLanguageFromTheList_NameInLowerCase(topRatedLanguagesList);
     }
 
-    public List<String> getSubmenuLettersLowerCase() {
-        return getListTextInLowerCase(letters);
-    }
-
     public List<String> getSubmenuLettersLowerCase(){
 
         return getListText(letters);
