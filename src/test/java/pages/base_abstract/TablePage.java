@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class TablePage extends MainPage {
@@ -93,20 +94,31 @@ public abstract class TablePage extends MainPage {
     }
 
     public List<String> getSubmenuLettersLowerCase(){
-        return getListTextInLowerCase(letters);
+
+        return getListText(letters);
     }
 
     public List<WebElement> getSubmenuLettersElement(){
         return letters;
     }
-    public List<String> getColumLanguageList(WebElement element){
-        click(element);
-        return getListTextInLowerCase(languageColum);
+
+    public List<String> getColumLanguageList(){
+
+        return getListTextInUpperCase(languageColum);
     }
 
     public List<String> getTableHeaderNames(){
 
         return getListText(tableHeaderNames);
+    }
+
+
+    public List<String> getFirstsLetterFromLanguagesNames(){
+        List<String> firstLetters = new ArrayList<>();
+        for (String languageName: getNamesInUpperCase()){
+            firstLetters.add(languageName.substring(0,1));
+        }
+        return firstLetters;
     }
 
     public List<String> getTableListNames(){

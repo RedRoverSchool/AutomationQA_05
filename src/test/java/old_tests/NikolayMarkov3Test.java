@@ -4,12 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import base.BaseTest;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Ignore
 public class NikolayMarkov3Test extends BaseTest {
 
     final String BASE_URL = "https://www.99-bottles-of-beer.net/";
@@ -59,7 +60,7 @@ public class NikolayMarkov3Test extends BaseTest {
 
         return textList;
     }
-
+    @Ignore
     @Test
     public void testSearchForLanguagesByName_HappyPath() {
 
@@ -79,7 +80,7 @@ public class NikolayMarkov3Test extends BaseTest {
             Assert.assertTrue(languagesName.contains(LANGUAGE_NAME));
         }
     }
-
+    @Ignore
     @Test
     public void testSearchForLanguagesNameEmpty_HappyPath() {
 
@@ -91,7 +92,7 @@ public class NikolayMarkov3Test extends BaseTest {
 
         Assert.assertTrue(languagesNames.size() == 0);
     }
-
+    @Ignore
     @Test
     public void testMenuSearchSearchForLanguagesByNameJava_HappyPath() {
 
