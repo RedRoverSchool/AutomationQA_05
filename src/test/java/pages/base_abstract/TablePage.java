@@ -32,6 +32,9 @@ public abstract class TablePage extends MainPage {
     @FindBy(tagName = "a")
     private List<String> tableLinksList;
 
+    @FindBy(xpath = "//*[@id='main']//a[contains(text(),'http://en.wikipedia.org/wiki/Javascript')]")
+    private WebElement tableDeepLink;
+
     public TablePage(WebDriver driver) {
         super(driver);
     }
@@ -129,5 +132,10 @@ public abstract class TablePage extends MainPage {
     public void clickRandomLink(int r, List<WebElement> elementsList) {
 
         click(elementsList.get(r - 1));
+    }
+
+    public String getHrefDeepLink(String attribute) {
+
+        return getAttribute(tableDeepLink, "href");
     }
 }
