@@ -82,13 +82,14 @@ public abstract class TablePage extends MainPage {
     }
 
     public List<String> getSubmenuLettersLowerCase(){
-//        return getListTextInLowerCase(letters);
+
         return getListText(letters);
     }
 
     public List<WebElement> getSubmenuLettersElement(){
         return letters;
     }
+
     public List<String> getColumLanguageList(){
 
         return getListTextInUpperCase(languageColum);
