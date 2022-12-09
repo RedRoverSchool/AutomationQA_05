@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.start.StartPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,64 +33,21 @@ public class MainTest extends BaseTest {
         List<String> mainMenuURLList = new ArrayList<>();
         List<String> mainMenuFooterURLList = new ArrayList<>();
 
-        mainMenuURLList
-                .add(openBaseURL()
-                        .getURL());
+        StartPage startPage = new StartPage(getDriver());
 
-        mainMenuURLList
-                .add(openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .getURL());
+        mainMenuURLList.add(openBaseURL().getURL());
+        mainMenuURLList.add(startPage.clickBrowseLanguagesMenu().getURL());
+        mainMenuURLList.add(startPage.clickSearchLanguagesMenu().getURL());
+        mainMenuURLList.add(startPage.clickTopListsMenu().getURL());
+        mainMenuURLList.add(startPage.clickGuestbookMenu().getURL());
+        mainMenuURLList.add(startPage.clickSubmitNewLanguageMenu().getURL());
 
-        mainMenuURLList
-                .add(openBaseURL()
-                        .clickSearchLanguagesMenu()
-                        .getURL());
-
-        mainMenuURLList
-                .add(openBaseURL()
-                        .clickTopListsMenu()
-                        .getURL());
-
-        mainMenuURLList
-                .add(openBaseURL()
-                        .clickGuestbookMenu()
-                        .getURL());
-
-        mainMenuURLList
-                .add(openBaseURL()
-                        .clickSubmitNewLanguageMenu()
-                        .getURL());
-
-        mainMenuFooterURLList
-                .add(openBaseURL()
-                        .clickStartFooterMenu()
-                        .getURL());
-
-        mainMenuFooterURLList
-                .add(openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .getURL());
-
-        mainMenuFooterURLList
-                .add(openBaseURL()
-                        .clickSearchLanguagesFooterMenu()
-                        .getURL());
-
-        mainMenuFooterURLList
-                .add(openBaseURL()
-                        .clickTopListFooterMenu()
-                        .getURL());
-
-        mainMenuFooterURLList
-                .add(openBaseURL()
-                        .clickGuestBookFooterMenu()
-                        .getURL());
-
-        mainMenuFooterURLList
-                .add(openBaseURL()
-                        .clickSubmitNewLanguageFooterMenu()
-                        .getURL());
+        mainMenuFooterURLList.add(openBaseURL().getURL());
+        mainMenuFooterURLList.add(startPage.clickBrowseLanguagesMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickSearchLanguagesMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickTopListsMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickGuestbookMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickSubmitNewLanguageMenu().getURL());
 
         Assert.assertEquals(mainMenuURLList, mainMenuFooterURLList);
     }

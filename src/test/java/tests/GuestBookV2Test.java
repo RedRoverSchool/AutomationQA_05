@@ -2,22 +2,24 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.guest_book.GuestBookV2Page;
 
 public class GuestBookV2Test extends BaseTest {
     final static String URL_KEY_VALUE = "guest";
 
-    @Ignore
     @Test
-    public void testMainNavigationButtonGuestbook() {
+    public void testMainNavigationToButtonGuestbook() {
+        String expectedResultGuestbookUrl = "https://www.99-bottles-of-beer.net/guestbookv2.html";
 
-        openBaseURL();
         GuestBookV2Page GuestBookV2Page = new GuestBookV2Page(getDriver());
-        GuestBookV2Page.clickButtonGuestbookV2();
-    }
 
+        String actualResultGuestbookUrl = openBaseURL()
+                .clickGuestbookMenu()
+                .getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualResultGuestbookUrl, expectedResultGuestbookUrl);
+    }
 
     @Test
     public void test_MainFooterGuestBookv2_AramH20() {

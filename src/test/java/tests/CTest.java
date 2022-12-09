@@ -3,6 +3,9 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.languages.CheetahLanguagePage;
+import pages.browse_languages.letters.CPage;
+
 import java.util.List;
 
 public class CTest extends BaseTest {
@@ -36,5 +39,29 @@ public class CTest extends BaseTest {
 
         Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
         Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
+    }
+
+    @Test
+    public void testCheetahLink_NavigatesTo_CheetahLanguagePage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/language-cheetah-1179.html";
+        final String expectedTitle = "99 Bottles of Beer | Language Cheetah";
+
+        CheetahLanguagePage cheetahLanguagePage = new CheetahLanguagePage(getDriver());
+
+        String oldURL = openBaseURL()
+                .clickBrowseLanguagesFooterMenu()
+                .clickCSubmenu()
+                .getCPageURL();
+
+        new CPage(getDriver()).clickCheetahLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = cheetahLanguagePage.getURL();
+        String actualTitle = cheetahLanguagePage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

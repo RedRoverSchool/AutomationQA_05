@@ -45,7 +45,7 @@ public class SearchLanguagesTest extends BaseTest {
     }
 
     @Test
-    public void testMenuSearchSearchForLanguagesByNameJava() {
+    public void testSearchForLanguagesByNameJava() {
 
         final String LANGUAGE_NAME = "java";
 
@@ -74,5 +74,21 @@ public class SearchLanguagesTest extends BaseTest {
                         .getNamesListSize();
 
         Assert.assertTrue(languagesNames == 0);
+    }
+
+    @Test
+    public void testSearchForLanguageNameSubmenuNewSearch() {
+        final String LANGUAGE_NAME = "Java";
+
+        int languagesNamesSize =
+                openBaseURL()
+                        .clickSearchLanguagesMenu()
+                        .clickSearchForField()
+                        .inputSearchCriteria(LANGUAGE_NAME)
+                        .clickGoButton()
+                        .clickSearchSubmenu()
+                        .getNamesListSize();
+
+        Assert.assertTrue(languagesNamesSize == 0);
     }
 }

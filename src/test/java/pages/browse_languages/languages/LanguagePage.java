@@ -12,6 +12,9 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//div[@id='voting']/p[2]/a")
     private List<WebElement> externalLinksList;
 
+    @FindBy(xpath = "//div[@id = 'voting']//option[5]")
+    private WebElement niceCodingRate;
+
     public LanguagePage(WebDriver driver) {
         super(driver);
     }
@@ -19,5 +22,16 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     public List<WebElement> getExternalLinksList() {
 
         return getListIfVisible(externalLinksList);
+    }
+
+    public LanguagePage clickNiceCoding() {
+        click(niceCodingRate);
+
+        return this;
+    }
+
+    public String getVotingFieldText() {
+
+        return clickNiceCoding().getText(niceCodingRate);
     }
 }

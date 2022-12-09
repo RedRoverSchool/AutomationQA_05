@@ -19,6 +19,17 @@ public class PrivacyTest extends BaseTest {
     }
 
     @Test
+    public void testEmail() {
+        String expectedEmail = "os@ls-la.net";
+
+        String actualEmail =
+                openBaseURL()
+                        .clickPrivacySubmenu()
+                        .getEmailAddress();
+
+        Assert.assertEquals(actualEmail, expectedEmail);
+    }
+    
     public void testTextInHeaderH3() {
         String expectedTextInHeaderH3 = "Oliver Schade";
 

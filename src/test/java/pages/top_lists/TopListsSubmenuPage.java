@@ -21,6 +21,9 @@ public abstract class TopListsSubmenuPage extends TablePage {
     @FindBy(xpath = "//ul[@id='submenu']/li/a")
     private List<WebElement> topListSubmenus;
 
+    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href ='./toplist.html']")
+    private WebElement topHitsSubmenu;
+
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -46,5 +49,11 @@ public abstract class TopListsSubmenuPage extends TablePage {
     public List<String> getSubmenusTexts() {
 
         return getListText(topListSubmenus);
+    }
+
+    public TopHitsPage clickTopHitsSubmenu() {
+        click(topHitsSubmenu);
+
+        return new TopHitsPage(getDriver());
     }
 }

@@ -59,6 +59,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='footer']/p/a[@href='/submitnewlanguage.html']")
     private WebElement submitNewLanguageFooterMenu;
 
+    @FindBy(xpath = "//div[@id='main']/h2['Top Rated Real Languages']")
+    private WebElement h2TopRatedRealLanguages;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -148,5 +151,15 @@ public abstract class MainPage extends BasePage {
         click(submitNewLanguageFooterMenu);
 
         return new SubmitNewLanguagePage(getDriver());
+    }
+
+    public String getH2TopRatedRealLanguagesText() {
+
+        return getText(h2TopRatedRealLanguages);
+    }
+
+    public WebElement getH2TopRatedRealLanguages() {
+
+        return h2TopRatedRealLanguages;
     }
 }

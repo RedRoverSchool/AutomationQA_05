@@ -10,19 +10,8 @@ import pages.start.HistoryPage;
 public class HistoryTest extends BaseTest {
 
     @Test
-    public void testLabelTextSubmenuInfo(){
-//        final String expectedLinkText = "History";
-//
-//        openBaseURL();
-//        HistoryPage historyPage = new HistoryPage(getDriver());
-//
-//        String actualSubmenuTitle = historyPage.getInfoSubMenuLabelText();
-//
-//        Assert.assertEquals(actualSubmenuTitle, expectedSubmenuInfoTitle);
-    }
-
-    @Test
-    public void testLinkTextSubmenuInfo(){
+    public void testLinkText_HistorySubmenu() {
+        final String expectedText = "History";
         final String attribute = "href";
         final String expectedSubmenuInfoLink = "info.html";
 
@@ -30,30 +19,32 @@ public class HistoryTest extends BaseTest {
 
         HistoryPage historyPage = new HistoryPage(getDriver());
 
+        String actualText = historyPage.getHistorySubmenuText();
         String actualHrefValue = historyPage.getHref(attribute);
 
+        Assert.assertEquals(expectedText, actualText);
         Assert.assertTrue(actualHrefValue.contains(expectedSubmenuInfoLink));
     }
 
     @Test
-    public void testClickOnSubmenuInfo(){
+    public void testHistorySubmenu_NavigatesTo_HistorySubmenuPage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/info.html";
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
 
         HistoryPage historyPage = new HistoryPage(getDriver());
 
-        openBaseURL()
-                .clickHistorySubmenu();
-
-        String actualURL = historyPage.getURL();
+        String actualURL = openBaseURL()
+                .clickHistorySubmenu().getURL();
         String actualTitle = historyPage.getTitle();
+
+        Assert.assertNotEquals(openBaseURL().getURL(), actualURL);
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @Test
-    public void testRegularTextOnSubmenuInfo(){
+    public void testRegularTextOnSubmenuInfo() {
         final String expectedRegularText = "This site bases on work done by Tim Robinson during 1994 - 1998.";
 
         String actualRegularText =
@@ -62,5 +53,16 @@ public class HistoryTest extends BaseTest {
                         .getRegularText();
 
         Assert.assertEquals(actualRegularText, expectedRegularText);
+    }
+
+    @Test
+    public void testNumberOfImages(){
+        final int expectedNumberOfImages = 2;
+
+        int actualNumberOfImages = openBaseURL()
+                .clickHistorySubmenu()
+                .countHistoryPageImages();
+
+        Assert.assertEquals(actualNumberOfImages,expectedNumberOfImages);
     }
 }

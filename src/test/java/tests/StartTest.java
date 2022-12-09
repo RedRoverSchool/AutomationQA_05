@@ -44,4 +44,13 @@ public class StartTest extends BaseTest {
         Assert.assertEquals(teamWishes, WISHES_FROM_THE_TEAM);
     }
 
+    @Test
+    public void testHeaderTextH2 () {
+        final String expectedHeaderH2 = "Welcome to 99 Bottles of Beer";
+
+        String actualHeader = openBaseURL()
+                .getH2();
+
+        Assert.assertEquals(actualHeader, expectedHeaderH2);
+    }
 }

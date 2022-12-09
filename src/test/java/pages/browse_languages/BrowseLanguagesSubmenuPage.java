@@ -11,6 +11,9 @@ import java.util.List;
 
 public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
+    @FindBy(xpath = "//a[@href = 'a.html']")
+    private WebElement aSubmenu;
+
     @FindBy(xpath = "//a[@href='b.html']")
     private WebElement bSubmenu;
 
@@ -44,8 +47,20 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//ul[@id='submenu']/li//a[contains(text(), 'Z')]")
     private WebElement ZSubmenu;
 
+    @FindBy(xpath = "//a[@href = 'l.html']")
+    private WebElement lSubmenu;
+
+    @FindBy(xpath = "//a[@href = 'e.html']")
+    private WebElement eSubmenu;
+
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
+    }
+
+    public APage clickASubmenu() {
+        click(aSubmenu);
+
+        return new APage(getDriver());
     }
 
     public BPage clickBSubmenu() {
@@ -107,12 +122,18 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new KPage(getDriver());
     }
 
+    public EPage clickESubmenu() {
+        click(eSubmenu);
+
+        return new EPage(getDriver());
+    }
+
     public ZPage clickZSubmenuButton() {
         click(ZSubmenu);
 
         return new ZPage(getDriver());
     }
-    
+
     public List<String> getListSymbolsInSubmenu() {
 
         return getListText(symbolsInSubmenu);
@@ -135,8 +156,8 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
     public BrowseLanguagesSubmenuPage clickOnSymdolOnSubmenu(String text) {
         if (getListSize(symbolsInSubmenu) > 0) {
-            for(WebElement element : symbolsInSubmenu)
-                if(element.getAttribute("innerText").contains(text)) {
+            for (WebElement element : symbolsInSubmenu)
+                if (element.getAttribute("innerText").contains(text)) {
                     click(element);
                     break;
                 }
@@ -200,5 +221,16 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
             }
         }
         return null;
+    }
+
+    public LPage clickLSubmenu() {
+        click(lSubmenu);
+
+        return new LPage(getDriver());
+    }
+
+    public String getHrefN(String attribute) {
+
+        return getAttribute(nSubmenu, "href");
     }
 }
