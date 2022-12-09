@@ -10,6 +10,8 @@ import pages.start.StartPage;
 import pages.submit_new_language.SubmitNewLanguagePage;
 import pages.top_lists.TopListsPage;
 
+import java.util.List;
+
 public abstract class MainPage extends BasePage {
 
     @FindBy(xpath = "//div[@id='header']/h1")
@@ -61,6 +63,9 @@ public abstract class MainPage extends BasePage {
 
     @FindBy(xpath = "//div[@id='main']/h2['Top Rated Real Languages']")
     private WebElement h2TopRatedRealLanguages;
+
+    @FindBy (xpath = "//ul[@id='menu']//li")
+    private List<WebElement> menuLinks;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -161,5 +166,13 @@ public abstract class MainPage extends BasePage {
     public WebElement getH2TopRatedRealLanguages() {
 
         return h2TopRatedRealLanguages;
+    }
+
+    public List<String> getMenuLinksTextInLowerCase() {
+        return getListTextInLowerCase(menuLinks);
+    }
+
+    public int getMenuLinksSize() {
+        return getListSize(menuLinks);
     }
 }
