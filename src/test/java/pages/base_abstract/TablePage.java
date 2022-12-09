@@ -137,4 +137,5 @@ public abstract class TablePage extends MainPage {
     public String getHrefDeepLink(String attribute) {
 
         return getAttribute(tableDeepLink, "href");
+    }
 }
