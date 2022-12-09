@@ -12,7 +12,7 @@ import java.util.List;
 public class JavaScriptLanguageTest extends BaseTest {
 
     @Test
-    public void testJavaLanguagePageHeader() {
+    public void testJavaScriptLanguagePageHeader() {
         String EXPECTED_JS_H2_HEADER = "Language JavaScript";
 
         String actualJSH2Header = openBaseURL()
@@ -57,4 +57,19 @@ public class JavaScriptLanguageTest extends BaseTest {
         Assert.assertEquals(actualListValues, expectedListValues);
     }
 
+    @Test
+    public void testJSDeepLinkText() {
+
+        final String attribute = "href";
+        final String expectedDeepLink = "http://en.wikipedia.org/wiki/Javascript";
+
+        String actualDeepLink =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickJSubmenu()
+                        .clickJavaScriptLink()
+                        .getHrefDeepLink(attribute);
+
+        Assert.assertEquals(actualDeepLink, expectedDeepLink);
+    }
 }

@@ -29,6 +29,9 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = "//*[@id='main']/table/tbody//td[2]")
     private List<WebElement> tableListValues;
 
+    @FindBy(xpath = "//*[@id='main']//a[contains(text(),'http://en.wikipedia.org/wiki/Javascript')]")
+    private WebElement tableDeepLink;
+
     public TablePage(WebDriver driver) {
         super(driver);
     }
@@ -111,5 +114,10 @@ public abstract class TablePage extends MainPage {
     public List<String> getTableListValues(){
 
         return getListText(tableListValues);
+    }
+
+    public String getHrefDeepLink(String attribute) {
+
+        return getAttribute(tableDeepLink, "href");
     }
 }
