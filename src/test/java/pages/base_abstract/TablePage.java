@@ -26,6 +26,9 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = "//*[@id='main']/table/tbody//strong")
     private List<WebElement> tableListNames;
 
+    @FindBy(tagName = "a")
+    private List<String> tableLinksList;
+
     public TablePage(WebDriver driver) {
         super(driver);
     }
@@ -103,5 +106,20 @@ public abstract class TablePage extends MainPage {
     public List<String> getTableListNames(){
 
         return getListText(tableListNames);
+    }
+
+    public List<WebElement> getLanguagesLinks() {
+
+        return namesList;
+    }
+
+    public String getTextFromRandomLink(int r, List<WebElement> elementsList) {
+
+        return getText(elementsList.get(r - 1));
+    }
+
+    public void clickRandomLink(int r, List<WebElement> elementsList) {
+
+        click(elementsList.get(r - 1));
     }
 }

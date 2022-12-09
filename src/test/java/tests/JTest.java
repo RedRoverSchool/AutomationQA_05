@@ -1,11 +1,15 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
 import pages.browse_languages.letters.JPage;
 import pages.browse_languages.languages.JQueryLanguagePage;
+
+import java.util.List;
+import java.util.Random;
 
 public class JTest extends BaseTest {
 
@@ -71,5 +75,25 @@ public class JTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
+    @Test
+    public void testRandomLinkNavigatesToCorrespondingPage() {
+
+        List<WebElement> languageNames = openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickJSubmenu()
+                .getLanguagesLinks();
+
+        Assert.assertTrue(languageNames.size() > 0, "listSize <= 0");
+
+        int r = new Random().nextInt(languageNames.size());
+
+        JPage jPage = new JPage(getDriver());
+
+        String languageName = jPage.getTextFromRandomLink(r, languageNames).toLowerCase();
+
+        jPage.clickRandomLink(r, languageNames);
+
+        Assert.assertTrue(getExternalPageURL().contains("language-" + languageName + "-"), getExternalPageTitle() + "doesn't contain" + languageName);
+    }
 }
 
