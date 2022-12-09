@@ -24,6 +24,9 @@ public abstract class TopListsSubmenuPage extends TablePage {
     @FindBy(xpath = "//ul[@id = 'submenu']//a[@href ='./toplist.html']")
     private WebElement topHitsSubmenu;
 
+    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href='./toplist_assembly.html']")
+    private WebElement topRatedAssembly;
+
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -55,5 +58,16 @@ public abstract class TopListsSubmenuPage extends TablePage {
         click(topHitsSubmenu);
 
         return new TopHitsPage(getDriver());
+    }
+
+    public TopListAssemblyPage clickTopListAssemblyPageSubmenu() {
+        click(topRatedAssembly);
+
+        return new TopListAssemblyPage(getDriver());
+    }
+
+    public String getTopListAssemblyPageURL() {
+
+        return getURL();
     }
 }
