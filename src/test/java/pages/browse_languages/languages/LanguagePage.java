@@ -29,4 +29,9 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
         return this;
     }
+
+    public String getVotingFieldText() {
+
+        return clickNiceCoding().getText(niceCodingRate);
+    }
 }
