@@ -40,6 +40,9 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = "//div[@id='main']//tbody//td[4]")
     private List<WebElement> commentColumn;
 
+    @FindBy(xpath = "//div[@id='main']//tbody//td[2]")
+    private List<WebElement> authorColumn;
+
     public TablePage(WebDriver driver) {
         super(driver);
     }
@@ -186,5 +189,10 @@ public abstract class TablePage extends MainPage {
     public List<Integer> getColumnCommentList() {
 
         return getIntegerList(commentColumn);
+    }
+
+    public List<String> getColumnAuthorList() {
+
+        return getListText(authorColumn);
     }
 }

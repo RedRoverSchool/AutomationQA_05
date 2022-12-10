@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebElement;
+import pages.browse_languages.letters.BPage;
 
 import java.util.List;
 
@@ -60,5 +61,37 @@ public class BTest extends BaseTest {
                 .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
+
+    @Test
+    public void testBPageAuthorMostCommentedLanguage() {
+        final int expectedMaxComment = 12;
+        final String expectedAuthor = "M. Eric Carr";
+
+        BPage bPage = openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickBSubmenu();
+
+        List<Integer> commentList = bPage
+                .getColumnCommentList();
+
+        int maxComment = bPage
+                .getMaxList(commentList);
+
+        Assert.assertEquals(maxComment, expectedMaxComment);
+
+        int maxCommentIndex = bPage
+                .clickBSubmenu()
+                .getColumnCommentList()
+                .indexOf(bPage
+                        .getSortedList(commentList)
+                        .get(commentList.size() - 1));
+
+        String authorName = bPage
+                .clickBSubmenu()
+                .getColumnAuthorList()
+                .get(maxCommentIndex);
+
+        Assert.assertEquals(authorName, expectedAuthor);
     }
 }
