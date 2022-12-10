@@ -12,7 +12,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
     @Test
     public void testLinkAndSymbolA() {
         final String symbol = "A";
-        final String expectedLinktURL = "https://www.99-bottles-of-beer.net/a.html";
+        final String expectedLinkURL = "https://www.99-bottles-of-beer.net/a.html";
 
         BrowseLanguagesSubmenuPage browseLanguagesSubmenuPage = openBaseURL()
                 .clickBrowseLanguagesMenu();
@@ -23,15 +23,16 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
                 .getListSymbolsInSubmenu()
                 .contains(symbol);
 
+        Assert.assertTrue(actualResultContainsSymbol);
+
         String actualLinktURL = browseLanguagesSubmenuPage
                 .getLinkBySymbol(symbol);
 
-        Assert.assertTrue(actualResultContainsSymbol);
-        Assert.assertEquals(actualLinktURL, expectedLinktURL);
+        Assert.assertEquals(actualLinktURL, expectedLinkURL);
 
         browseLanguagesSubmenuPage.clickASubmenu();
 
-        Assert.assertNotEquals(actualResultCurrentURL, expectedLinktURL);
+        Assert.assertNotEquals(actualResultCurrentURL, expectedLinkURL);
     }
 
     @Test
