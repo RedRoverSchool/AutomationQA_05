@@ -3,46 +3,35 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.BrowseLanguagesSubmenuPage;
 import pages.browse_languages.letters.ABCPage;
 import pages.browse_languages.letters.NPage;
 
 public class BrowseLanguagesSubmenuTest extends BaseTest {
 
     @Test
-    public void testVerifyTextAndLink() {
-        final String symbol = "0-9";
-        final String expectedResultHrefURL = "https://www.99-bottles-of-beer.net/0.html";
+    public void testLinkAndSymbolA() {
+        final String symbol = "A";
+        final String expectedLinktURL = "https://www.99-bottles-of-beer.net/a.html";
 
-        Assert.assertTrue(
-                openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .getListSymbolsInSubmenu()
-                        .contains(symbol));
+        BrowseLanguagesSubmenuPage browseLanguagesSubmenuPage = openBaseURL()
+                .clickBrowseLanguagesMenu();
 
-        Assert.assertEquals(
-                openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .getLinkBySymbol(symbol), expectedResultHrefURL);
-    }
+        String actualResultCurrentURL = browseLanguagesSubmenuPage.getURL();
 
-    @Test
-    public void testSymbolAndLink() {
-        final String symbol = "0-9";
-        final String expectedResultURL = "https://www.99-bottles-of-beer.net/0.html";
-
-        Boolean actualResultTrue =
-                openBaseURL()
-                .clickBrowseLanguagesMenu()
+        Boolean actualResultContainsSymbol = browseLanguagesSubmenuPage
                 .getListSymbolsInSubmenu()
                 .contains(symbol);
 
-        String actualResultURL =
-                openBaseURL()
-                .clickBrowseLanguagesMenu()
+        String actualLinktURL = browseLanguagesSubmenuPage
                 .getLinkBySymbol(symbol);
 
-        Assert.assertTrue(actualResultTrue);
-        Assert.assertEquals(actualResultURL, expectedResultURL);
+        Assert.assertTrue(actualResultContainsSymbol);
+        Assert.assertEquals(actualLinktURL, expectedLinktURL);
+
+        browseLanguagesSubmenuPage.clickASubmenu();
+
+        Assert.assertNotEquals(actualResultCurrentURL, expectedLinktURL);
     }
 
     @Test
