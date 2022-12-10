@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.BrowseLanguagesSubmenuPage;
 import pages.browse_languages.letters.ABCPage;
 import pages.browse_languages.letters.NPage;
 
