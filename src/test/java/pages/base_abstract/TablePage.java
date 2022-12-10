@@ -34,7 +34,7 @@ public abstract class TablePage extends MainPage {
     @FindBy(tagName = "a")
     private List<String> tableLinksList;
 
-    @FindBy(xpath = "//*[@id='main']//a[contains(text(),'http://en.wikipedia.org/wiki/Javascript')]")
+    @FindBy(xpath = "//*[@id='main']/table/tbody/tr[5]/td[2]/a")
     private WebElement tableDeepLink;
 
     @FindBy(xpath = "//div[@id='main']//tbody//td[4]")

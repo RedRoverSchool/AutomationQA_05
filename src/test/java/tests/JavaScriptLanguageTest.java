@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.languages.JavaScriptLanguagePage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,5 +72,25 @@ public class JavaScriptLanguageTest extends BaseTest {
                         .getHrefDeepLink(attribute);
 
         Assert.assertEquals(actualDeepLink, expectedDeepLink);
+    }
+
+    @Test
+    public void testJavaScriptDeeLink_NavigatesTo_CorrespondingPage() {
+        final String expectedExternalURL = "https://en.wikipedia.org/wiki/JavaScript";
+        final String expectedExternalTitle = "JavaScript - Wikipedia";
+
+        String oldJSLanguagePageURL = openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickJSubmenu()
+                .clickJavaScriptLink()
+                .getURL();
+
+        JavaScriptLanguagePage javaScriptLanguagePage = new JavaScriptLanguagePage(getDriver());
+
+        javaScriptLanguagePage.clickJavaScriptDeepLink();
+
+        Assert.assertNotEquals(oldJSLanguagePageURL, getExternalPageURL());
+        Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
+        Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
     }
 }
