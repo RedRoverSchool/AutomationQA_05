@@ -25,10 +25,10 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
         Assert.assertTrue(actualResultContainsSymbol);
 
-        String actualLinktURL = browseLanguagesSubmenuPage
+        String actualLinkURL = browseLanguagesSubmenuPage
                 .getLinkBySymbol(symbol);
 
-        Assert.assertEquals(actualLinktURL, expectedLinkURL);
+        Assert.assertEquals(actualLinkURL, expectedLinkURL);
 
         browseLanguagesSubmenuPage.clickASubmenu();
 
