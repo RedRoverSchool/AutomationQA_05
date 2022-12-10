@@ -14,20 +14,6 @@ import java.util.Random;
 public class JTest extends BaseTest {
 
     @Test
-    public void testVerifyNavigationSymbolJ() {
-        final String symbol = "J";
-        final String expectedResultTitle = "99 Bottles of Beer | Browse category J";
-        final String expectedResultCurrentUrl = "https://www.99-bottles-of-beer.net/j.html";
-
-        openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickOnSymdolOnSubmenu(symbol);
-
-        Assert.assertEquals(getExternalPageTitle(), expectedResultTitle);
-        Assert.assertEquals(getExternalPageURL(), expectedResultCurrentUrl);
-    }
-
-    @Test
     public void testJQueryLink_NavigatesTo_JQueryLanguagePage() {
 
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-jquery-1361.html";

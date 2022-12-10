@@ -23,6 +23,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .getLinkBySymbol(symbol), expectedResultHrefURL);
+
     }
 
     @Test
