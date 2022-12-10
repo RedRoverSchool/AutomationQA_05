@@ -45,4 +45,5 @@ public class TopListsTest extends BaseTest {
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
+
 }
