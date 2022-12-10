@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.start.LyricsPage;
 
+import java.util.List;
+
 public class StartSubmenuTest extends BaseTest {
 
     @Test
@@ -25,5 +27,16 @@ public class StartSubmenuTest extends BaseTest {
         String actualSongLyricsSubmenuText = openBaseURL().getSongLyricsSubmenuText();
 
         Assert.assertEquals(actualSongLyricsSubmenuText, expectedSongLyricsSubmenuText);
+    }
+
+    @Test
+    public void testStartSubmenuButtonsNames() {
+        List<String> expectedStartSubmenuButtonsNames = List.of("Team", "Song Lyrics", "History", "Privacy");
+
+        List<String> actualStartSubmenuButtonsNames =
+                openBaseURL()
+                        .getStartSubmenuButtonsText();
+
+        Assert.assertEquals(actualStartSubmenuButtonsNames, expectedStartSubmenuButtonsNames);
     }
 }

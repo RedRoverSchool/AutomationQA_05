@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.MainPage;
 
+import java.util.List;
+
 public abstract class StartSubmenuPage extends MainPage {
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='team.html']")
@@ -18,6 +20,9 @@ public abstract class StartSubmenuPage extends MainPage {
 
     @FindBy(xpath = "//ul[@id ='submenu']/li/a[@href = 'impressum.html']")
     private WebElement privacySubmenu;
+
+    @FindBy(xpath = "//ul[@id='submenu']/li/a")
+    private List<WebElement> startSubmenuButtons;
 
     public StartSubmenuPage(WebDriver driver) {
         super(driver);
@@ -50,5 +55,10 @@ public abstract class StartSubmenuPage extends MainPage {
     public String getSongLyricsSubmenuText() {
 
         return getText(songLyricsSubmenu);
+    }
+
+    public List<String> getStartSubmenuButtonsText() {
+
+        return getListText(startSubmenuButtons);
     }
 }
