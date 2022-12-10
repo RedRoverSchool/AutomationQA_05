@@ -30,7 +30,6 @@ public class KotlinLanguagePage extends LanguagePage{
     @FindBy(xpath = "//div[@id = 'voting']//h2")
     private List<WebElement> h2HeaderVoting;
 
-
     public KotlinLanguagePage(WebDriver driver) {
         super(driver);
     }
@@ -54,7 +53,6 @@ public class KotlinLanguagePage extends LanguagePage{
 
         return getListText(linksAddComment);
     }
-
 
     public String getH2HeaderTextAlternativeVersions() {
 
