@@ -165,21 +165,28 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return getAttribute(nSubmenu, "href");
     }
 
-    public Boolean clickSymdolSubmenuTrue() {
-        String beforURL = getURL();
+    public List<String> getListSymbolsSubmenuWhenClickTrue() {
+        List<String> hrefLetter = new ArrayList<>();
+        List<String> currentURL = new ArrayList<>();
+
         if (getListSize(symbolsInSubmenu) > 0) {
-            for (int i = 0; i < symbolsInSubmenu.size(); i++)
+
+            for (WebElement element : symbolsInSubmenu) {
+                hrefLetter.add(element.getAttribute("href"));
+            }
+
+            for (int i = 0; i < symbolsInSubmenu.size(); i++) {
                 symbolsInSubmenu.get(i).click();
-                String afterURL = getURL();
-                if (!beforURL.equals(afterURL)) {
+                currentURL.add(getURL());
+            }
 
-                    return true;
-                } else {
+            if (hrefLetter.equals(currentURL)) {
 
-                    return false;
-                }
+                return getListSymbolsInSubmenu();
+            }
+
         }
 
-        return false;
+        return currentURL;
     }
 }
