@@ -17,6 +17,12 @@ public class JPage extends LetterPage {
     @FindBy(xpath = "//a[@href='language-jquery-1361.html']")
     private WebElement jQueryLink;
 
+    final static String ACTION = "j.html";
+    final static String METHOD = "post";
+
+    @FindBy(id = "main")
+    private WebElement mainBody;
+
     public JPage(WebDriver driver) {
         super(driver);
     }
@@ -40,5 +46,10 @@ public class JPage extends LetterPage {
     public String getJPageURL() {
 
         return getURL();
+    }
+
+    public String getPageContext() {
+
+        return mainBody.getText();
     }
 }
