@@ -43,11 +43,11 @@ public class MainTest extends BaseTest {
         mainMenuURLList.add(startPage.clickSubmitNewLanguageMenu().getURL());
 
         mainMenuFooterURLList.add(openBaseURL().getURL());
-        mainMenuFooterURLList.add(startPage.clickBrowseLanguagesMenu().getURL());
-        mainMenuFooterURLList.add(startPage.clickSearchLanguagesMenu().getURL());
-        mainMenuFooterURLList.add(startPage.clickTopListsMenu().getURL());
-        mainMenuFooterURLList.add(startPage.clickGuestbookMenu().getURL());
-        mainMenuFooterURLList.add(startPage.clickSubmitNewLanguageMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickBrowseLanguagesFooterMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickSearchLanguagesFooterMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickTopListFooterMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickGuestBookFooterMenu().getURL());
+        mainMenuFooterURLList.add(startPage.clickSubmitNewLanguageFooterMenu().getURL());
 
         Assert.assertEquals(mainMenuURLList, mainMenuFooterURLList);
     }
