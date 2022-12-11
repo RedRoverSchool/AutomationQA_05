@@ -165,8 +165,8 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return getAttribute(nSubmenu, "href");
     }
 
-    public String getHrefL(String attribute) {
+    public String getHrefJ(String attribute) {
 
-        return getAttribute(lSubmenu, "href");
+        return getAttribute(jSubmenu, "href");
     }
 }
