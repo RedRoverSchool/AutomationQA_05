@@ -9,14 +9,17 @@ import java.util.List;
 public class TeamTest extends BaseTest {
 
     @Test
-    public void testClickabilityLsLaNetLink_OliverSchade() {
-        final String expectedLsLaNetLink_OliverSchade = "http://www.ls-la.net/";
+    public void testLsLaNetLink_NavigatesTo_ExternalOliverSchadePage() {
+
+        final String expectedExternalURL = "http://www.ls-la.net/";
+        final String expectedExternalTitle = "Index of /";
 
         openBaseURL()
                 .clickTeamSubmenu()
                 .clickOliverSchadeWebsiteLink();
 
-        Assert.assertEquals(getExternalPageURL(), expectedLsLaNetLink_OliverSchade);
+        Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
+        Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
     }
 
     @Test
