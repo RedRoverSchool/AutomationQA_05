@@ -3,6 +3,10 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.languages.CheetahLanguagePage;
+import pages.browse_languages.letters.CPage;
+import pages.start.HistoryPage;
+import pages.start.StartPage;
 
 import java.util.List;
 
@@ -66,5 +70,27 @@ public class StartTest extends BaseTest {
                         .getTextsWithLinks();
 
         Assert.assertEquals(actualTextsWithLinks, expectedTextsWithLinks);
+    }
+
+    @Test
+    public void testHistoricInformationLink_NavigatesTo_HistoryPage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/info.html";
+        final String expectedTitle = "99 Bottles of Beer | Background and historic information";
+
+        HistoryPage historyPage = new HistoryPage(getDriver());
+
+        String oldURL = openBaseURL()
+                .getStartPageURL();
+
+        new StartPage(getDriver()).clickHistoricInformationLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = historyPage.getURL();
+        String actualTitle = historyPage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 }
