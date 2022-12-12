@@ -23,14 +23,17 @@ public class TeamTest extends BaseTest {
     }
 
     @Test
-    public void testClickabilityETasteOrgLink_GregorScheithauer() {
-        final String expectedETasteOrgLink_GregorScheithauer = "http://www.e-taste.org/";
+    public void testETasteOrgLink_NavigatesTo_ExternalGregorScheithauer() {
+
+        final String expectedExternalURL = "http://www.e-taste.org/";
+        final String expectedExternalTitle = "Ce domaine a été enregistré par Youdot.io";
 
         openBaseURL()
                 .clickTeamSubmenu()
                 .clickGregorScheithauerWebsiteLink();
 
-        Assert.assertEquals(getExternalPageURL(), expectedETasteOrgLink_GregorScheithauer);
+        Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
+        Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
     }
 
     @Test
