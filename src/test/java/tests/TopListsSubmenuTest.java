@@ -28,4 +28,25 @@ public class TopListsSubmenuTest extends BaseTest {
         Assert.assertTrue(actualSubmenuTexts.size() > 0);
         Assert.assertEquals(actualSubmenuTexts, expectedSubmenuTexts);
     }
+
+    @Test
+    public void testTopListsSubMenuIsVisibleAndClickable() {
+        int expectedCountSubMenuLinks = 7;
+        List<String> topListsSubMenuLinkTexts = List.of("Top Rated", "Top Rated Real"
+                , "Top Rated Esoteric", "Top Rated Assembly", "Top Hits"
+                , "New Languages this month", "New Comments");
+
+        int actualCountSubMenuLinks = openBaseURL()
+                .clickTopListsMenu()
+                .getSubmenusTexts().size();
+
+        List <String>  actualTopListSubMenuLinkTexts = openBaseURL()
+                .clickTopListsMenu()
+                .getSubmenusTexts();
+        ///
+        openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinks();
+
+        Assert.assertEquals(actualCountSubMenuLinks, expectedCountSubMenuLinks);
+        Assert.assertEquals(actualTopListSubMenuLinkTexts, topListsSubMenuLinkTexts);
+    }
 }
