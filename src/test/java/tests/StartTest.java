@@ -3,8 +3,6 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.browse_languages.languages.CheetahLanguagePage;
-import pages.browse_languages.letters.CPage;
 import pages.start.HistoryPage;
 import pages.start.LyricsPage;
 import pages.start.StartPage;
