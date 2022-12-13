@@ -30,7 +30,7 @@ public class TopListsSubmenuTest extends BaseTest {
     }
 
     @Test
-    public void testTopListsSubMenuLinksAreVisibleAndClickable() {
+    public void testTopListsSubMenuLinksAreClickableAndNavigateToCorrectPages() {
         int expectedCountSubMenuLinks = 7;
 
         ArrayList<String> expectedSubmenuH2HeaderTexts = new ArrayList<>();
@@ -48,7 +48,7 @@ public class TopListsSubmenuTest extends BaseTest {
 
         Assert.assertEquals(actualCountSubMenuLinks, expectedCountSubMenuLinks);
 
-        ArrayList<String> actualSubmenuH2HeaderTexts = openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinks();
+        ArrayList<String> actualSubmenuH2HeaderTexts = openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinksAndGetH2Header();
 
         Assert.assertEquals(expectedSubmenuH2HeaderTexts, actualSubmenuH2HeaderTexts);
     }

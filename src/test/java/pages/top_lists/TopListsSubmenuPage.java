@@ -59,7 +59,7 @@ public abstract class TopListsSubmenuPage extends TablePage {
         return new TopHitsPage(getDriver());
     }
 
-    public ArrayList<String> clickTopListsSubmenuLinks(){
+    public ArrayList<String> clickTopListsSubmenuLinksAndGetH2Header(){
 
         ArrayList<String> subMenuListLinks = new ArrayList<String>();
         
