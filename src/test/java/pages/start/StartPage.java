@@ -3,6 +3,7 @@ package pages.start;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.guest_book.GuestBookV2Page;
 import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
@@ -28,6 +29,9 @@ public class StartPage extends StartSubmenuPage {
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./submitnewlanguage.html']")
     private WebElement submitYourOwnPieceOfCodeLink;
+
+    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./guestbookv2.html']")
+    private WebElement guestbookLink;
 
     public StartPage(WebDriver driver) {
         super(driver);
@@ -69,5 +73,11 @@ public class StartPage extends StartSubmenuPage {
         click(submitYourOwnPieceOfCodeLink);
 
         return new SubmitNewLanguagePage(getDriver());
+    }
+
+    public GuestBookV2Page clickGuestbookLink () {
+        click(guestbookLink);
+
+        return new GuestBookV2Page(getDriver());
     }
 }

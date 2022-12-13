@@ -3,6 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.guest_book.GuestBookV2Page;
 import pages.start.HistoryPage;
 import pages.start.LyricsPage;
 import pages.start.StartPage;
@@ -136,6 +137,29 @@ public class StartTest extends BaseTest {
 
         String actualURL = submitNewLanguagePage.getURL();
         String actualTitle = submitNewLanguagePage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testGuestbookLink_NavigatesTo_GuestbookV2Page() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/guestbookv2.html";
+        final String expectedTitle = "99 Bottles of Beer | Guestbook";
+
+        GuestBookV2Page guestBookV2Page = new GuestBookV2Page(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickGuestbookLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = guestBookV2Page.getURL();
+        String actualTitle = guestBookV2Page.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
