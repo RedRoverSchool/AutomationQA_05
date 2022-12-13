@@ -30,7 +30,7 @@ public class TopListsSubmenuTest extends BaseTest {
     }
 
     @Test
-    public void testTopListsSubMenuLinksAreClickableAndNavigateToCorrectPages() {
+    public void testTopListsSubMenuLinksNavigateToCorrectPages() {
         int expectedCountSubMenuLinks = 7;
 
         ArrayList<String> expectedSubmenuH2HeaderTexts = new ArrayList<>();
