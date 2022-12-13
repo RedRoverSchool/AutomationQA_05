@@ -3,8 +3,12 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.guest_book.GuestBookV2Page;
 import pages.start.HistoryPage;
+import pages.start.LyricsPage;
 import pages.start.StartPage;
+import pages.start.TeamPage;
+import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
 
@@ -78,8 +82,9 @@ public class StartTest extends BaseTest {
 
         HistoryPage historyPage = new HistoryPage(getDriver());
 
-        String oldURL = openBaseURL()
-                .getStartPageURL();
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
 
         new StartPage(getDriver()).clickHistoricInformationLink();
 
@@ -87,6 +92,98 @@ public class StartTest extends BaseTest {
 
         String actualURL = historyPage.getURL();
         String actualTitle = historyPage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testHereLink_NavigatesTo_LyricsPage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
+        final String expectedTitle = "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer";
+
+        LyricsPage lyricsPage = new LyricsPage(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickHereLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = lyricsPage.getURL();
+        String actualTitle = lyricsPage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testSubmitYourOwnPieceofCodeLink_NavigatesTo_SubmitNewLanguagePage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+        final String expectedTitle = "99 Bottles of Beer | Submit new Language";
+
+        SubmitNewLanguagePage submitNewLanguagePage = new SubmitNewLanguagePage(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickSubmitYourOwnPieceOfCodeLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = submitNewLanguagePage.getURL();
+        String actualTitle = submitNewLanguagePage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testGuestbookLink_NavigatesTo_GuestbookV2Page() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/guestbookv2.html";
+        final String expectedTitle = "99 Bottles of Beer | Guestbook";
+
+        GuestBookV2Page guestBookV2Page = new GuestBookV2Page(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickGuestbookLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = guestBookV2Page.getURL();
+        String actualTitle = guestBookV2Page.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testTeamMembersLink_NavigatesTo_TeamPage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/team.html";
+        final String expectedTitle = "99 Bottles of Beer | The Team";
+
+        TeamPage teamPage = new TeamPage(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickTeamMembersLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = teamPage.getURL();
+        String actualTitle = teamPage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
