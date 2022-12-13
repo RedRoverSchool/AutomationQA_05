@@ -33,6 +33,9 @@ public class StartPage extends StartSubmenuPage {
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./guestbookv2.html']")
     private WebElement guestbookLink;
 
+    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./team.html']")
+    private WebElement teamMembersLink;
+
     public StartPage(WebDriver driver) {
         super(driver);
     }
@@ -79,5 +82,11 @@ public class StartPage extends StartSubmenuPage {
         click(guestbookLink);
 
         return new GuestBookV2Page(getDriver());
+    }
+
+    public TeamPage clickTeamMembersLink () {
+        click(teamMembersLink);
+
+        return new TeamPage(getDriver());
     }
 }

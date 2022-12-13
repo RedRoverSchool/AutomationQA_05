@@ -7,6 +7,7 @@ import pages.guest_book.GuestBookV2Page;
 import pages.start.HistoryPage;
 import pages.start.LyricsPage;
 import pages.start.StartPage;
+import pages.start.TeamPage;
 import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
@@ -160,6 +161,29 @@ public class StartTest extends BaseTest {
 
         String actualURL = guestBookV2Page.getURL();
         String actualTitle = guestBookV2Page.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testTeamMembersLink_NavigatesTo_TeamPage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/team.html";
+        final String expectedTitle = "99 Bottles of Beer | The Team";
+
+        TeamPage teamPage = new TeamPage(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickTeamMembersLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = teamPage.getURL();
+        String actualTitle = teamPage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
