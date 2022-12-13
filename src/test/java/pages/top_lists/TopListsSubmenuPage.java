@@ -59,40 +59,22 @@ public abstract class TopListsSubmenuPage extends TablePage {
         return new TopHitsPage(getDriver());
     }
 
-    public TopListsSubmenuPage clickTopListsSubmenuLinks(){
-        ArrayList<String> subMenuListLinks = new ArrayList<String>();
+    public ArrayList<String> clickTopListsSubmenuLinks(){
 
-        List<String> expectedSubmenuH2HeaderTexts = new ArrayList<>();
-        expectedSubmenuH2HeaderTexts.add("Top Rated");
-        expectedSubmenuH2HeaderTexts.add("Top Rated Real Languages");
-        expectedSubmenuH2HeaderTexts.add("Top Rated Esoteric Languages");
-        expectedSubmenuH2HeaderTexts.add("Top Rated Assembly Languages");
-        expectedSubmenuH2HeaderTexts.add("Top Hits");
-        expectedSubmenuH2HeaderTexts.add("New Languages this month");
-        expectedSubmenuH2HeaderTexts.add("New Comments");
-        
-        
+        ArrayList<String> subMenuListLinks = new ArrayList<String>();
         
         TopListsPage topListsPage = new TopListsPage(getDriver());
 
         for (WebElement topSubMenu : topListSubmenus) {
-
-            System.out.println(topSubMenu.getText()); // used to get text present between the anchor tags
-            System.out.println(topSubMenu.getAttribute("href"));
             subMenuListLinks.add(topSubMenu.getAttribute("href"));
-            System.out.println("*************************************");
         }
 
+        ArrayList<String> actualSubmenuH2HeaderTexts = new ArrayList<>();
         for (String subMenuLink : subMenuListLinks) {
             getDriver().navigate().to(subMenuLink);
-            String actualSubmenuText = topListsPage.getH2HeaderText();
-            for (int i = 0; i < expectedSubmenuH2HeaderTexts.size(); i++) {
-                Assert.assertEquals(expectedSubmenuH2HeaderTexts.get(i),actualSubmenuText );
+            actualSubmenuH2HeaderTexts.add(topListsPage.getH2HeaderText());
             }
-          //  Assert
-        //    System.out.println((++i)+": navigated to URL with subMenuLink: "+subMenuLink);
-        }
 
-        return this;
+        return actualSubmenuH2HeaderTexts;
     }
 }

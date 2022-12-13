@@ -30,23 +30,26 @@ public class TopListsSubmenuTest extends BaseTest {
     }
 
     @Test
-    public void testTopListsSubMenuIsVisibleAndClickable() {
+    public void testTopListsSubMenuLinksAreVisibleAndClickable() {
         int expectedCountSubMenuLinks = 7;
-        List<String> topListsSubMenuLinkTexts = List.of("Top Rated", "Top Rated Real"
-                , "Top Rated Esoteric", "Top Rated Assembly", "Top Hits"
-                , "New Languages this month", "New Comments");
+
+        ArrayList<String> expectedSubmenuH2HeaderTexts = new ArrayList<>();
+        expectedSubmenuH2HeaderTexts.add("Top Rated");
+        expectedSubmenuH2HeaderTexts.add("Top Rated Real Languages");
+        expectedSubmenuH2HeaderTexts.add("Top Rated Esoteric Languages");
+        expectedSubmenuH2HeaderTexts.add("Top Rated Assembly Languages");
+        expectedSubmenuH2HeaderTexts.add("Top Hits");
+        expectedSubmenuH2HeaderTexts.add("New Languages this month");
+        expectedSubmenuH2HeaderTexts.add("New Comments");
 
         int actualCountSubMenuLinks = openBaseURL()
                 .clickTopListsMenu()
                 .getSubmenusTexts().size();
 
-        List <String>  actualTopListSubMenuLinkTexts = openBaseURL()
-                .clickTopListsMenu()
-                .getSubmenusTexts();
-        ///
-        openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinks();
-
         Assert.assertEquals(actualCountSubMenuLinks, expectedCountSubMenuLinks);
-        Assert.assertEquals(actualTopListSubMenuLinkTexts, topListsSubMenuLinkTexts);
+
+        ArrayList<String> actualSubmenuH2HeaderTexts = openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinks();
+
+        Assert.assertEquals(expectedSubmenuH2HeaderTexts, actualSubmenuH2HeaderTexts);
     }
 }
