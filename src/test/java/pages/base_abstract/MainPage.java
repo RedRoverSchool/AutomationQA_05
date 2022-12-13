@@ -23,49 +23,48 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='main']/h2")
     private WebElement h2Header;
 
+    final static String TOP_MENU_PATH = "//ul[@id='menu']/li/a[@href=";
 
-    @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/']")
     private WebElement startMenu;
 
-    @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/abc.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/abc.html']")
     private WebElement browseLanguagesMenu;
 
-    @FindBy(xpath = "//ul[@id = 'menu']/li/a[@href = '/search.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/search.html']")
     private WebElement searchLanguagesMenu;
 
-    @FindBy(xpath = "//ul[@id = 'menu']/li/a[@href = '/toplist.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/toplist.html']")
     private WebElement topListsMenu;
 
-    @FindBy(xpath = "//ul[@id = 'menu']/li/a[@href = '/guestbookv2.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/guestbookv2.html']")
     private WebElement guestBookMenu;
 
-    @FindBy(xpath = "//ul[@id= 'menu']/li/a[@href='/submitnewlanguage.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/submitnewlanguage.html']")
     private WebElement submitNewLanguageMenu;
-
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/']")
-    private WebElement startFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/abc.html']")
-    private WebElement browseLanguagesFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/search.html']")
-    private WebElement searchLanguagesFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/toplist.html']")
-    private WebElement topListFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/guestbookv2.html']")
-    private WebElement guestBookFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/submitnewlanguage.html']")
-    private WebElement submitNewLanguageFooterMenu;
-
-    @FindBy(xpath = "//div[@id='main']/h2['Top Rated Real Languages']")
-    private WebElement h2TopRatedRealLanguages;
 
     @FindBy (xpath = "//ul[@id='menu']//li")
     private List<WebElement> menuLinks;
+
+    final static String FOOTER_MENU_PATH = "//div[@id='footer']/p/a[@href=";
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/']")
+    private WebElement startFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/abc.html']")
+    private WebElement browseLanguagesFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/search.html']")
+    private WebElement searchLanguagesFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/toplist.html']")
+    private WebElement topListFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/guestbookv2.html']")
+    private WebElement guestBookFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/submitnewlanguage.html']")
+    private WebElement submitNewLanguageFooterMenu;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -158,21 +157,13 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public String getH2TopRatedRealLanguagesText() {
-
-        return getText(h2TopRatedRealLanguages);
-    }
-
-    public WebElement getH2TopRatedRealLanguages() {
-
-        return h2TopRatedRealLanguages;
-    }
-
     public List<String> getMenuLinksTextInLowerCase() {
+
         return getListTextInLowerCase(menuLinks);
     }
 
     public int getMenuLinksSize() {
+
         return getListSize(menuLinks);
     }
 }

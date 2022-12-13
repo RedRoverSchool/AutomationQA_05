@@ -26,7 +26,9 @@ public abstract class BasePage {
     }
 
     public void clear(WebElement element) {
-        element.clear();
+        if (!getText(element).isEmpty()) {
+            clear(element);
+        }
     }
 
     public void input(String text, WebElement element) {
@@ -41,16 +43,6 @@ public abstract class BasePage {
     public String getAttribute(WebElement element, String attribute) {
 
         return element.getAttribute(attribute);
-    }
-
-    public void clickClearInput(String text, WebElement element) {
-        click(element);
-
-        if (!getText(element).isEmpty()) {
-            clear(element);
-        }
-
-        input(text, element);
     }
 
     public List<String> getListText(List<WebElement> list) {
