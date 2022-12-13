@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.browse_languages.languages.CheetahLanguagePage;
 import pages.browse_languages.letters.CPage;
 import pages.start.HistoryPage;
+import pages.start.LyricsPage;
 import pages.start.StartPage;
 
 import java.util.List;
@@ -80,8 +81,9 @@ public class StartTest extends BaseTest {
 
         HistoryPage historyPage = new HistoryPage(getDriver());
 
-        String oldURL = openBaseURL()
-                .getStartPageURL();
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
 
         new StartPage(getDriver()).clickHistoricInformationLink();
 
@@ -89,6 +91,29 @@ public class StartTest extends BaseTest {
 
         String actualURL = historyPage.getURL();
         String actualTitle = historyPage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testHereLink_NavigatesTo_LyricsPage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
+        final String expectedTitle = "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer";
+
+        LyricsPage lyricsPage = new LyricsPage(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickHereLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = lyricsPage.getURL();
+        String actualTitle = lyricsPage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);

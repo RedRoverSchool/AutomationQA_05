@@ -16,11 +16,14 @@ public class StartPage extends StartSubmenuPage {
     @FindBy(xpath = "//div[@id='main']/h2")
     private WebElement h2Header1;
 
-    @FindBy(xpath = "//div[@id='main']//a[@href]")
+    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href]")
     private List<WebElement> textsWithLinks;
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./info.html']")
     private WebElement historicInformationLink;
+
+    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./lyrics.html']")
+    private WebElement hereLink;
 
     public StartPage(WebDriver driver) {
         super(driver);
@@ -50,5 +53,11 @@ public class StartPage extends StartSubmenuPage {
         click(historicInformationLink);
 
         return new HistoryPage(getDriver());
+    }
+
+    public LyricsPage clickHereLink() {
+        click(hereLink);
+
+        return new LyricsPage(getDriver());
     }
 }
