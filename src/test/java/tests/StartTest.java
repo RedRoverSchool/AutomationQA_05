@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.start.HistoryPage;
 import pages.start.LyricsPage;
 import pages.start.StartPage;
+import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
 
@@ -112,6 +113,29 @@ public class StartTest extends BaseTest {
 
         String actualURL = lyricsPage.getURL();
         String actualTitle = lyricsPage.getTitle();
+
+        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testSubmitYourOwnPieceofCodeLink_NavigatesTo_SubmitNewLanguagePage() {
+
+        final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
+        final String expectedTitle = "99 Bottles of Beer | Submit new Language";
+
+        SubmitNewLanguagePage submitNewLanguagePage = new SubmitNewLanguagePage(getDriver());
+
+        String oldURL =
+                openBaseURL()
+                        .getStartPageURL();
+
+        new StartPage(getDriver()).clickSubmitYourOwnPieceOfCodeLink();
+
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
+
+        String actualURL = submitNewLanguagePage.getURL();
+        String actualTitle = submitNewLanguagePage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);

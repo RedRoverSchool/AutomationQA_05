@@ -3,6 +3,7 @@ package pages.start;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class StartPage extends StartSubmenuPage {
 
     @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./lyrics.html']")
     private WebElement hereLink;
+
+    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href ='./submitnewlanguage.html']")
+    private WebElement submitYourOwnPieceOfCodeLink;
 
     public StartPage(WebDriver driver) {
         super(driver);
@@ -59,5 +63,11 @@ public class StartPage extends StartSubmenuPage {
         click(hereLink);
 
         return new LyricsPage(getDriver());
+    }
+
+    public SubmitNewLanguagePage clickSubmitYourOwnPieceOfCodeLink () {
+        click(submitYourOwnPieceOfCodeLink);
+
+        return new SubmitNewLanguagePage(getDriver());
     }
 }
