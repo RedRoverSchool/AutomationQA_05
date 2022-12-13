@@ -85,6 +85,11 @@ public abstract class MainPage extends BasePage {
         return getText(h2Header);
     }
 
+    public WebElement getH2Header() {
+
+        return h2Header;
+    }
+
     public StartPage clickStartMenu() {
         click(startMenu);
 

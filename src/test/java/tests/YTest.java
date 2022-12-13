@@ -66,7 +66,7 @@ public class YTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickYSubmenu()
-                        .getTableHeaderNames();
+                        .getHeaders();
 
         Assert.assertEquals(actualHeaderNames, expectedHeaderNames);
     }

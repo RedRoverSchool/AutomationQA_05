@@ -53,6 +53,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//a[@href = 'e.html']")
     private WebElement eSubmenu;
 
+    @FindBy(xpath = "//ul[@id='submenu']/li")
+    private List<WebElement> letters;
+
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -134,6 +137,8 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new ZPage(getDriver());
     }
 
+
+
     public List<String> getListSymbolsInSubmenu() {
 
         return getListText(symbolsInSubmenu);
@@ -192,5 +197,14 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     public String getHrefJ(String attribute) {
 
         return getAttribute(jSubmenu, "href");
+    }
+
+    public List<String> getSubmenuLettersLowerCase(){
+
+        return getListText(letters);
+    }
+
+    public List<WebElement> getSubmenuLettersElement() {
+        return letters;
     }
 }

@@ -1,7 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
@@ -36,7 +35,7 @@ public class JavaScriptLanguageTest extends BaseTest {
                         .clickBrowseLanguagesMenu()
                         .clickJSubmenu()
                         .clickJavaScriptLink()
-                        .getTableListNames();
+                        .getLanguageInfoFields();
 
         Assert.assertEquals(actualListNames, expectedListNames);
     }
@@ -53,7 +52,7 @@ public class JavaScriptLanguageTest extends BaseTest {
                         .clickBrowseLanguagesMenu()
                         .clickJSubmenu()
                         .clickJavaScriptLink()
-                        .getTableListValues();
+                        .getLanguageInfoValues();
 
         Assert.assertEquals(actualListValues, expectedListValues);
     }
@@ -61,7 +60,6 @@ public class JavaScriptLanguageTest extends BaseTest {
     @Test
     public void testJSDeepLinkText() {
 
-        final String attribute = "href";
         final String expectedDeepLink = "http://en.wikipedia.org/wiki/Javascript";
 
         String actualDeepLink =
@@ -69,7 +67,7 @@ public class JavaScriptLanguageTest extends BaseTest {
                         .clickBrowseLanguagesMenu()
                         .clickJSubmenu()
                         .clickJavaScriptLink()
-                        .getHrefDeepLink(attribute);
+                        .getHrefDeepLink();
 
         Assert.assertEquals(actualDeepLink, expectedDeepLink);
     }

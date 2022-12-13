@@ -10,38 +10,38 @@ import java.util.List;
 
 public abstract class TablePage extends MainPage {
 
-    @FindBy(xpath = "//table[@id='category']/tbody/tr/td[1]/a")
-    private List<WebElement> namesList;
+    final static String TABLE_CATEGORY_PATH = "//table[@id='category']/tbody/tr/";
 
-    @FindBy(xpath = "//table [@id = 'category']/tbody/tr/td[2]/a")
-    List<WebElement> topRatedLanguagesList;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[1]/a")
+    private List<WebElement> namesLinks;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li")
-    private List<WebElement> letters;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[2]/a")
+    List<WebElement> topRatedLanguagesLinks;
 
-    @FindBy(xpath = "//div[@id='main']//tbody/tr/td[1]/a")
-    private List<WebElement> languageColum;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/th")
+    private List<WebElement> tableHeaders;
 
-    @FindBy(xpath = "//table[@id = 'category']/tbody/tr/th")
-    private List<WebElement> tableHeaderNames;
-
-    @FindBy(xpath = "//*[@id='main']/table/tbody//strong")
-    private List<WebElement> tableListNames;
-
-    @FindBy(xpath = "//*[@id='main']/table/tbody//td[2]")
-    private List<WebElement> tableListValues;
-
-    @FindBy(tagName = "a")
-    private List<String> tableLinksList;
-
-    @FindBy(xpath = "//*[@id='main']/table/tbody/tr[5]/td[2]/a")
-    private WebElement tableDeepLink;
-
-    @FindBy(xpath = "//div[@id='main']//tbody//td[4]")
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/td[4]")
     private List<WebElement> commentColumn;
 
-    @FindBy(xpath = "//div[@id='main']//tbody//td[2]")
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/td[2]")
     private List<WebElement> authorColumn;
+
+
+    final static String TABLE_MAIN_PATH = "//div[@id='main']/table/tbody/tr";
+
+    @FindBy(xpath = TABLE_MAIN_PATH + "/td/strong")
+    private List<WebElement> languageInfoFields;
+
+    @FindBy(xpath = TABLE_MAIN_PATH + "/td[2]")
+    private List<WebElement> languageInfoValues;
+
+    @FindBy(xpath = TABLE_MAIN_PATH + "[5]/td[2]/a")
+    private WebElement infoLink;
+
+    @FindBy(tagName = "a")
+    private List<String> links;
+
 
     public TablePage(WebDriver driver) {
         super(driver);
@@ -49,102 +49,62 @@ public abstract class TablePage extends MainPage {
 
     public List<String> getNames() {
 
-        return getListText(namesList);
+        return getListText(namesLinks);
     }
 
     public List<String> getNamesInLowerCase() {
 
-        return getListTextInLowerCase(namesList);
+        return getListTextInLowerCase(namesLinks);
     }
 
     public List<String> getNamesInUpperCase() {
 
-        return getListTextInUpperCase(namesList);
+        return getListTextInUpperCase(namesLinks);
     }
 
     public int getNamesListSize() {
 
-        return getListSize(namesList);
-    }
-
-    public String getFirstLanguageFromTheList_NameInLowerCase(List<WebElement> elementList) {
-        List<String> texts = getListTextInLowerCase(elementList);
-        String textResult = "";
-        if (texts.size() > 0) {
-            for (String textResult1 : texts) {
-                textResult = texts.get(0);
-            }
-
-            return textResult;
-        }
-
-        return "";
-    }
-
-    public String getFirstLanguageFromTheList_NameInUpperCase(List<WebElement> elementList) {
-        List<String> texts = getListTextInUpperCase(elementList);
-        String textResult = "";
-        if (texts.size() > 0) {
-            for (String textResult1 : texts) {
-                textResult = texts.get(0);
-            }
-
-            return textResult;
-        }
-
-        return "";
+        return getListSize(namesLinks);
     }
 
     public String getMostRatedLanguage() {
 
-        return getFirstLanguageFromTheList_NameInLowerCase(topRatedLanguagesList);
+        return getListTextInLowerCase(topRatedLanguagesLinks).get(0);
     }
 
-    public List<String> getSubmenuLettersLowerCase(){
-
-        return getListText(letters);
-    }
-
-    public List<WebElement> getSubmenuLettersElement() {
-        return letters;
-    }
-
-    public List<String> getColumLanguageList(WebElement element) {
+    public List<String> getVersionsList(WebElement element) {
         click(element);
-        return getListTextInLowerCase(languageColum);
-    }
-    
-    public List<String> getColumLanguageList(){
 
-        return getListTextInUpperCase(languageColum);
+        return getListTextInLowerCase(namesLinks);
     }
 
-    public List<String> getTableHeaderNames() {
+    public List<String> getHeaders() {
 
-        return getListText(tableHeaderNames);
+        return getListText(tableHeaders);
     }
 
     public List<String> getFirstsLetterFromLanguagesNames(){
         List<String> firstLetters = new ArrayList<>();
         for (String languageName: getNamesInUpperCase()){
-            firstLetters.add(languageName.substring(0,1));
+            firstLetters.add(languageName.substring(0, 1));
         }
+
         return firstLetters;
     }
 
-    public List<String> getTableListNames(){
+    public List<String> getLanguageInfoFields(){
 
-        return getListText(tableListNames);
+        return getListText(languageInfoFields);
     }
 
-    public List<String> getTableListValues() {
+    public List<String> getLanguageInfoValues() {
 
-        return getListText(tableListValues);
+        return getListText(languageInfoValues);
     }
 
     public List<WebElement> getLanguagesLinks() {
 
-        return namesList;
+        return namesLinks;
     }
 
     public String getTextFromRandomLink(int r, List<WebElement> elementsList) {
@@ -157,16 +117,15 @@ public abstract class TablePage extends MainPage {
         click(elementsList.get(r - 1));
     }
 
-    public String getHrefDeepLink(String attribute) {
+    public String getHrefDeepLink() {
 
-        return getAttribute(tableDeepLink, "href");
+        return getAttribute(infoLink, "href");
     }
 
     public List<Integer> getIntegerList(List<WebElement> list) {
         List<Integer> integerList = new ArrayList<>();
 
         if (getListSize(list) > 0) {
-
             for (WebElement element : list) {
                 integerList.add(Integer.valueOf(element.getText()));
             }
@@ -186,12 +145,12 @@ public abstract class TablePage extends MainPage {
         return getSortedList(list).get(list.size() - 1);
     }
 
-    public List<Integer> getColumnCommentList() {
+    public List<Integer> getComments() {
 
         return getIntegerList(commentColumn);
     }
 
-    public List<String> getColumnAuthorList() {
+    public List<String> getAuthors() {
 
         return getListText(authorColumn);
     }

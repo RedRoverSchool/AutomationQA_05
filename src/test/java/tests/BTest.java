@@ -72,24 +72,24 @@ public class BTest extends BaseTest {
                 .clickBrowseLanguagesMenu()
                 .clickBSubmenu();
 
-        List<Integer> commentList = bPage
-                .getColumnCommentList();
+        List<Integer> commentsList = bPage
+                .getComments();
 
         int maxComment = bPage
-                .getMaxList(commentList);
+                .getMaxList(commentsList);
 
         Assert.assertEquals(maxComment, expectedMaxComment);
 
         int maxCommentIndex = bPage
                 .clickBSubmenu()
-                .getColumnCommentList()
+                .getComments()
                 .indexOf(bPage
-                        .getSortedList(commentList)
-                        .get(commentList.size() - 1));
+                        .getSortedList(commentsList)
+                        .get(commentsList.size() - 1));
 
         String authorName = bPage
                 .clickBSubmenu()
-                .getColumnAuthorList()
+                .getAuthors()
                 .get(maxCommentIndex);
 
         Assert.assertEquals(authorName, expectedAuthor);

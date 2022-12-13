@@ -19,7 +19,7 @@ public class ATest extends BaseTest {
                 .clickASubmenu();
 
         List<Integer> commentList = aPage
-                .getColumnCommentList();
+                .getComments();
 
         int maxComment = aPage
                 .getMaxList(commentList);
@@ -28,7 +28,7 @@ public class ATest extends BaseTest {
 
         int maxCommentIndex = aPage
                 .clickASubmenu()
-                .getColumnCommentList()
+                .getComments()
                 .indexOf(aPage
                         .getSortedList(commentList)
                         .get(commentList.size() - 1));
