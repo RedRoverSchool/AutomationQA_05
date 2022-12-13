@@ -37,14 +37,17 @@ public class TeamTest extends BaseTest {
     }
 
     @Test
-    public void testClickabilityStsSynfloodDe_StefanScheler() {
-        final String expectedStsSynfloodDe_StefanScheler = "http://sts.synflood.de/";
+    public void testStsSynfloodDe_NavigatesTo_ExternalStefanScheler() {
+
+        final String expectedExternalURL = "http://sts.synflood.de/";
+        final String expectedExternalTitle = "sts.synflood.de";
 
         openBaseURL()
                 .clickTeamSubmenu()
                 .clickStefanSchelerWebsiteLink();
 
-        Assert.assertEquals(getExternalPageURL(), expectedStsSynfloodDe_StefanScheler);
+        Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
+        Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
     }
 
     @Test
