@@ -1,4 +1,4 @@
-package tests;
+package tests.api;
 
 import base.BaseTest;
 import network.CaptureNetworkTraffic;
@@ -46,7 +46,7 @@ public class API_JTest  extends BaseTest  {
 
         JPage jPage = openBaseURL().clickBrowseLanguagesMenu().clickJSubmenu();
 
-        Assert.assertEquals(jPage.getHrefJ(attribute), getBaseUrl() + ACTION);
+        Assert.assertEquals(jPage.getHrefJ(), getBaseUrl() + ACTION);
         Assert.assertEquals(jPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 
