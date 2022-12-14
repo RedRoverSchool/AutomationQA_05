@@ -11,8 +11,8 @@ import java.util.List;
 public class KTest extends BaseTest {
 
     @Test
-    public void testAllLanguagesNamesOnKPageStartWithLetterK() {
-        final String FIRST_LETTER = "K";
+    public void testAllLanguagesNamesStartWithLetterK() {
+        final String letterK = "K";
 
         List<String> languagesNamesInUpperCase = openBaseURL()
                 .clickBrowseLanguagesMenu()
@@ -22,7 +22,7 @@ public class KTest extends BaseTest {
         Assert.assertTrue(languagesNamesInUpperCase.size() > 0);
 
         for (String languageName : languagesNamesInUpperCase) {
-            Assert.assertEquals(languageName.toUpperCase().substring(0, 1), FIRST_LETTER);
+            Assert.assertEquals(languageName.toUpperCase().substring(0, 1), letterK);
         }
     }
 
@@ -31,6 +31,7 @@ public class KTest extends BaseTest {
 
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-kotlin-2901.html";
         final String expectedTitle = "99 Bottles of Beer | Language Kotlin";
+
 
         KotlinLanguagePage kotlinLanguagePage = new KotlinLanguagePage(getDriver());
 
