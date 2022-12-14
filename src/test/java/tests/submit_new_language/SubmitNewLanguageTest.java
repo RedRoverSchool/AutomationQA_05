@@ -1,4 +1,4 @@
-package tests;
+package tests.submit_new_language;
 
 import base.BaseTest;
 import org.testng.Assert;

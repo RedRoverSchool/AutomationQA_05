@@ -1,4 +1,4 @@
-package tests;
+package tests.top_lists;
 
 import base.BaseTest;
 
