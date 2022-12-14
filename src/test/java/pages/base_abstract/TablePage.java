@@ -129,4 +129,8 @@ public abstract class TablePage extends MainPage {
 
         return getListText(authorsColumn);
     }
+
+    public int getElementIndex(WebElement element) {
+
+    }
 }

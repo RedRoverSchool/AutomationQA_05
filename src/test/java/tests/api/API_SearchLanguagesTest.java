@@ -1,4 +1,4 @@
-package tests;
+package tests.api;
 
 import base.BaseTest;
 import network.CaptureNetworkTraffic;

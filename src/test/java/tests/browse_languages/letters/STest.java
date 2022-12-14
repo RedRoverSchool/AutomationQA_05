@@ -1,9 +1,9 @@
-package tests;
+package tests.browse_languages.letters;
 
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FTest extends BaseTest {
+public class STest extends BaseTest {
 
 }

@@ -1,4 +1,4 @@
-package tests;
+package tests.browse_languages.letters;
 
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
