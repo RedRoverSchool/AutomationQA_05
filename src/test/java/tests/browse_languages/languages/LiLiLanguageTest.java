@@ -22,7 +22,7 @@ public class LiLiLanguageTest extends BaseTest {
     }
 
     @Test
-    public void testInfoLink_NavigatesTo_ExternalLiLiLanguagePage() {
+    public void testLittlispSourceforgeNetLink_NavigatesTo_ExternalLiLiLanguagePage() {
         final String expectedExternalURL = "https://littlisp.sourceforge.net/";
         final String expectedExternalTitle = "The Lili Lisp Dialect Interpreter";
 
