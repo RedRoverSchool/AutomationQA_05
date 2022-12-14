@@ -12,13 +12,13 @@ public abstract class StartSubmenuPage extends MainPage {
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='team.html']")
     private WebElement teamSubmenu;
 
-    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']")
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='lyrics.html']")
     private WebElement songLyricsSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
     private WebElement historySubmenu;
 
-    @FindBy(xpath = "//ul[@id ='submenu']/li/a[@href = 'impressum.html']")
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='impressum.html']")
     private WebElement privacySubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a")

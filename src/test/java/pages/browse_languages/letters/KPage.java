@@ -7,7 +7,7 @@ import pages.browse_languages.languages.KotlinLanguagePage;
 
 public class KPage extends LetterPage {
 
-    @FindBy(xpath = "//a[@href = 'language-kotlin-2901.html']")
+    @FindBy(xpath = "//a[@href='language-kotlin-2901.html']")
     private WebElement kotlinLanguage;
 
     public KPage(WebDriver driver) {

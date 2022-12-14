@@ -81,7 +81,7 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='main']//p[1]")
     private WebElement firstParagraph;
 
-    @FindBy(xpath = "//div[@id = 'main']/p")
+    @FindBy(xpath = "//div[@id='main']/p")
     private List<WebElement> pTags;
 
     public MainPage(WebDriver driver) {

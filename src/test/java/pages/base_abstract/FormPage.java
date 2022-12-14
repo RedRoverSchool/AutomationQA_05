@@ -4,7 +4,6 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.guest_book.SignGuestbookPage;
 
 public abstract class FormPage extends MainPage {
     @FindBy(name = "name")
@@ -16,7 +15,7 @@ public abstract class FormPage extends MainPage {
     @FindBy(xpath = "//div[@id='main']/p")
     private WebElement errorMessage;
 
-    @FindBy(xpath = "//a/img[@src = '/images/bb/bburl.gif']")
+    @FindBy(xpath = "//a/img[@src='/images/bb/bburl.gif']")
     WebElement urlIcon;
 
     public FormPage(WebDriver driver) {
@@ -50,6 +49,4 @@ public abstract class FormPage extends MainPage {
 
         return getText(errorMessage);
     }
-
 }
-

@@ -104,7 +104,6 @@ public abstract class TablePage extends MainPage {
     }
 
     public void clickRandomLink(int r, List<WebElement> elementsList) {
-
         click(elementsList.get(r - 1));
     }
 
@@ -142,5 +141,9 @@ public abstract class TablePage extends MainPage {
         }
 
         return -1;
+    }
+
+    public int getElementIndex(WebElement element) {
+
     }
 }
