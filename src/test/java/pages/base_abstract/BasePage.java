@@ -105,14 +105,15 @@ public abstract class BasePage {
         return visibleList;
     }
 
-    public List<Integer> getListIntegersFromTexts(List<WebElement> list) {
-        List<Integer> numbers = new ArrayList<>();
+    public int[] getIntegersFromTexts(List<String> list) {
+        int[] numbers;
 
         if (list.size() > 0) {
-            List<String> texts = getListText(list);
-            for (String text : texts) {
+             numbers = new int[list.size()];
+
+            for (int i = 0; i < numbers.length; i++) {
                 try {
-                    numbers.add(Integer.parseInt(text));
+                    numbers[i] = Integer.parseInt(list.get(i));
                 }
                 catch (Exception e){
                     Reporter.log("String is not parsable");
@@ -122,7 +123,7 @@ public abstract class BasePage {
             return numbers;
         }
 
-        return numbers;
+        return new int[0];
     }
 
     protected boolean isImageDisplayed(WebElement image) {

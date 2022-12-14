@@ -17,22 +17,16 @@ public class ATest extends BaseTest {
 
         APage aPage = new APage(getDriver());
 
-        List<WebElement> comments = openBaseURL()
+        List<String> comments = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickASubmenu()
-                .getComments();
+                .getCommentsTexts();
 
-        int maxCount = aPage.getCommentWithMaxCount();
+        int maxCount = aPage.getMaxCount(comments);
+        int maxCountIndex = aPage.getIndexForMaxCount(comments, maxCount);
+        String languageName = aPage.getNames().get(maxCountIndex);
 
         Assert.assertEquals(maxCount, expectedMaxCount);
-
-        int maxCountIndex = comments.indexOf(maxCount);
-
-        String languageName = aPage
-                .clickASubmenu()
-                .getNames()
-                .get(maxCommentIndex);
-
         Assert.assertEquals(languageName, expectedLanguage);
     }
 }

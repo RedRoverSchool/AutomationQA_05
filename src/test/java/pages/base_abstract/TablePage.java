@@ -113,24 +113,34 @@ public abstract class TablePage extends MainPage {
         return getAttribute(infoLink, "href");
     }
 
-    public Integer getCommentWithMaxCount() {
-        Integer[] commentsCount = (Integer[]) getListIntegersFromTexts(commentsColumn).toArray();
-        Arrays.sort(commentsCount);
-
-        return commentsCount[commentsCount.length - 1];
-    }
-
-    public List<WebElement> getComments() {
-
-        return commentsColumn;
-    }
-
     public List<String> getAuthors() {
 
         return getListText(authorsColumn);
     }
 
-    public int getElementIndex(WebElement element) {
+    public List<String> getCommentsTexts() {
 
+        return getListText(commentsColumn);
+    }
+
+    public int getMaxCount(List<String> list) {
+        int[] counts = getIntegersFromTexts(list);
+
+        Arrays.sort(counts);
+
+        return counts[counts.length - 1];
+    }
+
+    public int getIndexForMaxCount(List<String> list, int number) {
+        if (list.size() > 0) {
+            for (int i = 0; i < list.size(); i ++) {
+                if (list.get(i).equals(String.valueOf(number))) {
+
+                    return i;
+                }
+            }
+        }
+
+        return -1;
     }
 }

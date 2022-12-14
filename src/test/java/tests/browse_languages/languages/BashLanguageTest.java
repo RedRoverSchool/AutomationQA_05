@@ -16,7 +16,7 @@ public class BashLanguageTest extends BaseTest {
         BashLanguagePage bashLanguagePage = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickBSubmenu()
-                .clickBashLanguageLink();
+                .clickBashLanguage();
 
         Assert.assertEquals(bashLanguagePage.getURL(), expectedLanguageURL);
         Assert.assertEquals(bashLanguagePage.getTitle(), expectedLanguageTitle);
@@ -30,7 +30,7 @@ public class BashLanguageTest extends BaseTest {
         int activeBookmark = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickBSubmenu()
-                .clickBashLanguageLink()
+                .clickBashLanguage()
                 .getExternalLinks()
                 .size();
 
