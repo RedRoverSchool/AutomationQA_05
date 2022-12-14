@@ -36,25 +36,4 @@ public class TopHitsTest extends BaseTest {
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
-
-    @Test
-    public void testTopListsSubMenuIsVisible() {
-        int expectedCountSubMenuLinks = 7;
-        List<String> topListsSubMenuLinkTexts = List.of("Top Rated", "Top Rated Real"
-                , "Top Rated Esoteric", "Top Rated Assembly", "Top Hits"
-                , "New Languages this month", "New Comments");
-
-        int actualCountSubMenuLinks = openBaseURL()
-                .clickTopListsMenu()
-                .getSubmenusTexts().size();
-
-        List <String>  actualTopListSubMenuLinkTexts = openBaseURL()
-                .clickTopListsMenu()
-                .getSubmenusTexts();
-
-        openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinksAndGetH2Header();
-
-        Assert.assertEquals(actualCountSubMenuLinks, expectedCountSubMenuLinks);
-        Assert.assertEquals(actualTopListSubMenuLinkTexts, topListsSubMenuLinkTexts);
-    }
 }
