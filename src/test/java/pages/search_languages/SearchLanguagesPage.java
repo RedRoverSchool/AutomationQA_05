@@ -1,6 +1,5 @@
 package pages.search_languages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,26 +50,32 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
     }
 
     public String getAction() {
+
         return getAttribute(searchForm, "action");
     }
 
     public String getMethod() {
+
         return getAttribute(searchForm, "method");
     }
 
     public String getInput1Value() {
+
         return getAttribute(input1SearchForm, "value");
     }
 
     public String getInput2Value() {
+
         return getAttribute(input2SearchForm, "value");
     }
 
     public String getInput1Name() {
+
         return getAttribute(input1SearchForm, "name");
     }
 
     public String getInput2Name() {
+
         return getAttribute(input2SearchForm, "name");
     }
 }

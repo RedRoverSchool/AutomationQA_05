@@ -27,10 +27,10 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//a[contains(@href,'/download/')]")
     private List<WebElement> downloadSourceLinks;
 
-    @FindBy(xpath = "//a[@href = '#addcomment']")
+    @FindBy(xpath = "//a[@href='#addcomment']")
     private List<WebElement> writeCommentLinks;
 
-    @FindBy(xpath = "//a[@title= 'reddit' and @href]")
+    @FindBy(xpath = "//a[@title='reddit' and @href]")
     private WebElement redditLink;
 
     public LanguagePage(WebDriver driver) {

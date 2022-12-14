@@ -7,7 +7,7 @@ import pages.base_abstract.TablePage;
 
 public abstract class SearchLanguagesSubmenuPage extends TablePage {
 
-    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = './search.html']")
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='./search.html']")
     private WebElement searchSubmenu;
 
     public SearchLanguagesSubmenuPage(WebDriver driver) {
