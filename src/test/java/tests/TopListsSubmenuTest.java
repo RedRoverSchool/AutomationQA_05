@@ -48,7 +48,9 @@ public class TopListsSubmenuTest extends BaseTest {
 
         Assert.assertEquals(actualCountSubMenuLinks, expectedCountSubMenuLinks);
 
-        ArrayList<String> actualSubmenuH2HeaderTexts = openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinksAndGetH2Header();
+        ArrayList<String> actualSubmenuH2HeaderTexts = openBaseURL()
+                .clickTopListsMenu()
+                .clickTopListsSubmenuLinksAndGetH2Header();
 
         Assert.assertEquals(expectedSubmenuH2HeaderTexts, actualSubmenuH2HeaderTexts);
     }
