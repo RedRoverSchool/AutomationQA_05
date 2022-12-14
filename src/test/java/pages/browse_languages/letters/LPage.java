@@ -15,6 +15,7 @@ public class LPage extends LetterPage {
     }
 
     public LuaLanguagePage clickLuaLanguage() {
+        scrollByVisibleElement(luaLanguage);
         click(luaLanguage);
 
         return new LuaLanguagePage(getDriver());

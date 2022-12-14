@@ -23,7 +23,7 @@ public class JQueryLanguageTest extends BaseTest {
 
     @Test
     public void testJQueryComLink_NavigatesTo_ExternalJQueryLanguagePage() {
-        final String expectedExternalURL = "http://jquery.com";
+        final String expectedExternalURL = "https://jquery.com/";
         final String expectedExternalTitle = "jQuery";
 
         String oldJQueryLanguagePageURL =

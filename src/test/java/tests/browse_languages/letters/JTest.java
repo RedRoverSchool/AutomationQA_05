@@ -22,7 +22,7 @@ public class JTest extends BaseTest {
                 .clickJSubmenu()
                 .getURL();
 
-        String actualURL = jPage.clickJavaLanguage().getURL();
+        String actualURL = jPage.clickJQueryLanguage().getURL();
         String actualTitle = jQueryLanguagePage.getTitle();
 
         Assert.assertNotEquals(oldURL, actualURL);

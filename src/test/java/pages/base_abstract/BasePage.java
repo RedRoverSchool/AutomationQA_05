@@ -47,6 +47,11 @@ public abstract class BasePage {
         return element.getAttribute(attribute);
     }
 
+    public int getListSize(List<WebElement> list) {
+
+        return list.size();
+    }
+
     public List<String> getListText(List<WebElement> list) {
         List<String> textList = new ArrayList<>();
 
@@ -146,9 +151,9 @@ public abstract class BasePage {
         return false;
     }
 
-    public int getListSize(List<WebElement> list) {
-
-        return list.size();
+    protected void scrollByVisibleElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
     public String getURL() {

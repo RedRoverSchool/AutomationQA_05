@@ -12,14 +12,14 @@ public class FTest extends BaseTest {
 
     @Test
     public void testLanguageAndAuthorName_ForMostCommentedLanguage() {
-        final String expectedLanguage = "Falcon";
-        final String expectedAuthor = "Jessie Finley";
+        final String expectedLanguage = "Forth";
+        final String expectedAuthor = "Ian Osgood";
 
         FPage fPage = new FPage(getDriver());
 
         List<String> comments = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickBSubmenu()
+                .clickFSubmenu()
                 .getComments();
 
         int maxCount = fPage.getMaxCount(comments);

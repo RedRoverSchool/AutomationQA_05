@@ -14,16 +14,16 @@ import java.util.List;
 public class ABCTest extends BaseTest {
 
     @Test
-    public void test_ABCLetterCategoryLanguagesColumnInformation() {
+    public void test_LanguagesNamesStartWithCorrespondingLetter() {
+
+        ABCPage abcPage = new ABCPage(getDriver());
 
         List<WebElement> lettersSubmenus =
                  openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .getSubmenus();
 
-        ABCPage abcPage = new ABCPage(getDriver());
-
-        List<String> namesInLowerCases = abcPage.getSubmenusNamesInLowerCase();
+        List<String> submenusNames = abcPage.getSubmenusNames();
 
         for(int i = 0; i < lettersSubmenus.size(); i++) {
             lettersSubmenus.get(i).click();
@@ -36,7 +36,7 @@ public class ABCTest extends BaseTest {
             }
             else {
                 for (String letter : firstLetters) {
-                    Assert.assertEquals(letter, namesInLowerCases.get(i));
+                    Assert.assertEquals(letter, submenusNames.get(i));
                 }
             }
         }

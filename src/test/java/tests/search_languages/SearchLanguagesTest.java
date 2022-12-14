@@ -29,19 +29,17 @@ public class SearchLanguagesTest extends BaseTest {
 
     @Test
     public void testSearchForLanguageEmptyField() {
-        final String LANGUAGE_NAME = "Python";
+        final String LANGUAGE_NAME = "";
 
-        int languagesNamesSize =
+        String actualPageContext =
                 openBaseURL()
                         .clickSearchLanguagesMenu()
                         .clickSearchForField()
                         .inputSearchCriteria(LANGUAGE_NAME)
                         .clickGoButton()
-                        .clearSearchForField()
-                        .clickGoButton()
-                        .getNamesListSize();
+                        .getPageContext();
 
-        Assert.assertTrue(languagesNamesSize == 0);
+        Assert.assertFalse(actualPageContext.contains("Language Author Date Comments Rate"));
     }
 
     @Test

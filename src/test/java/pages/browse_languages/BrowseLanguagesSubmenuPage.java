@@ -25,6 +25,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//a[@href='e.html']")
     private WebElement eSubmenu;
 
+    @FindBy(xpath = "//a[@href='f.html']")
+    private WebElement fSubmenu;
+
     @FindBy(xpath = "//a[@href='g.html']")
     private WebElement gSubmenu;
 
@@ -151,9 +154,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return submenus;
     }
 
-    public List<String> getSubmenusNamesInLowerCase() {
+    public List<String> getSubmenusNames() {
 
-        return getListTextInLowerCase(submenus);
+        return getListText(submenus);
     }
 
     public String getHrefN() {
@@ -169,5 +172,11 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     public String getSubmenuAText() {
 
         return getText(aSubmenu);
+    }
+
+    public FPage clickFSubmenu() {
+        click(fSubmenu);
+
+        return new FPage(getDriver());
     }
 }

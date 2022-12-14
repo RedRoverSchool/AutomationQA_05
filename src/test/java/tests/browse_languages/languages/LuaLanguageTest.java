@@ -30,6 +30,7 @@ public class LuaLanguageTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickLSubmenu()
+                        .clickLuaLanguage()
                         .getURL();
 
         LuaLanguagePage luaLanguagePage = new LuaLanguagePage(getDriver());

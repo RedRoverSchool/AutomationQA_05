@@ -23,7 +23,7 @@ public class BashLanguageTest extends BaseTest {
 
     @Test
     public void testFrLangFreeFrCoursLink_NavigatesTo_ExternalBashLanguagePage() {
-        final String expectedExternalURL = "http://fr.lang.free.fr/cours";
+        final String expectedExternalURL = "http://fr.lang.free.fr/cours/";
         final String expectedExternalTitle = "Frédéric Lang - Site Personnel";
 
         String oldBashLanguagePageURL =
