@@ -15,19 +15,19 @@ public class StartPage extends StartSubmenuPage {
     @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href]")
     private List<WebElement> textsWithLinks;
 
-    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href ='./info.html']")
+    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href='./info.html']")
     private WebElement historicInformationLink;
 
-    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href ='./lyrics.html']")
+    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href='./lyrics.html']")
     private WebElement hereLink;
 
-    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href ='./submitnewlanguage.html']")
+    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href='./submitnewlanguage.html']")
     private WebElement submitYourOwnPieceOfCodeLink;
 
-    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href ='./guestbookv2.html']")
+    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href='./guestbookv2.html']")
     private WebElement guestbookLink;
 
-    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href ='./team.html']")
+    @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href='./team.html']")
     private WebElement teamMembersLink;
 
     public StartPage(WebDriver driver) {

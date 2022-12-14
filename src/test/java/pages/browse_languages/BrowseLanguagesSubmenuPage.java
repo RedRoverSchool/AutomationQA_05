@@ -52,7 +52,7 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     @FindBy(xpath = "//ul[@id='submenu']/li")
     private List<WebElement> letters;
 
-    @FindBy(xpath = "//ul[@id ='submenu']/li/a[@href]")
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href]")
     private List<WebElement> submenu;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {

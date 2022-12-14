@@ -96,6 +96,3 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
         return captcha.getAttribute("style");
     }
 }
-
-
-

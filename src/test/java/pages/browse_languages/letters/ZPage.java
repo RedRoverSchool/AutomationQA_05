@@ -7,7 +7,7 @@ import pages.browse_languages.languages.ZimLanguagePage;
 
 public class ZPage extends LetterPage {
 
-    @FindBy(xpath = "//a[@href = 'language-zim-718.html']")
+    @FindBy(xpath = "//a[@href='language-zim-718.html']")
     private WebElement zimLanguage;
 
     public ZPage(WebDriver driver) {
