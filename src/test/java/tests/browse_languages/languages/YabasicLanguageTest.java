@@ -1,4 +1,4 @@
-package tests;
+package tests.browse_languages.languages;
 
 import base.BaseTest;
 
