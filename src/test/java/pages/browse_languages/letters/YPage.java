@@ -29,9 +29,4 @@ public class YPage extends LetterPage {
 
         return new YacasLanguagePage(getDriver());
     }
-
-    public String getYPageURL() {
-
-        return getURL();
-    }
 }

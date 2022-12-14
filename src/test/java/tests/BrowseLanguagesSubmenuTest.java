@@ -47,7 +47,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .getABCPageURL();
+                .getURL();
 
         new ABCPage(getDriver()).clickNSubmenu();
 

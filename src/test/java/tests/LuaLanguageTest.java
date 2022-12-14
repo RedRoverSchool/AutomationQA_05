@@ -19,7 +19,7 @@ public class LuaLanguageTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickLSubmenu()
-                .getLPageURL();
+                .getURL();
 
         new LPage(getDriver()).clickLuaLink();
 

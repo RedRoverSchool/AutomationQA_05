@@ -14,7 +14,7 @@ public class ZTest extends BaseTest {
     public void testNamesOfLanguagesOnPageZStartWithZ() {
         String expectedFirstLetter = "z";
 
-        List<String> listZLanguages = openBaseURL().clickBrowseLanguagesMenu().clickZSubmenuButton().getZLanguagesNames();
+        List<String> listZLanguages = openBaseURL().clickBrowseLanguagesMenu().clickZSubmenuButton().getNames();
 
         Assert.assertTrue(listZLanguages.size() > 0);
 
@@ -37,7 +37,7 @@ public class ZTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickZSubmenuButton()
-                .getZPageURL();
+                .getURL();
 
         new ZPage(getDriver()).clickZimLink();
 

@@ -34,7 +34,7 @@ public class DTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickDSubmenu()
-                .getDPageUPL();
+                .getURL();
 
         new DPage(getDriver()).clickDelphiLink();
 

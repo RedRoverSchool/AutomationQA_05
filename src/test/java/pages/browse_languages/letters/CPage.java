@@ -19,9 +19,4 @@ public class CPage extends LetterPage {
 
         return new CheetahLanguagePage(getDriver());
     }
-
-    public String getCPageURL() {
-
-        return getURL();
-    }
 }

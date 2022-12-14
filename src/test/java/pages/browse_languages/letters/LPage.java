@@ -14,11 +14,6 @@ public class LPage extends LetterPage {
         super(driver);
     }
 
-    public String getLPageURL() {
-
-        return getURL();
-    }
-
     public LuaLanguagePage clickLuaLink() {
         click(luaLink);
 

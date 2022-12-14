@@ -19,14 +19,4 @@ public class EPage extends LetterPage {
 
         return new EnglishLanguagePage(getDriver());
     }
-
-    public String getEPageURL() {
-
-        return getURL();
-    }
-
-    public String getEPageTitle() {
-
-        return getTitle();
-    }
 }

@@ -39,7 +39,7 @@ public class BTest extends BaseTest {
     }
 
     @Test
-    public void testCatagoryBDescription() {
+    public void testCategoryBDescription() {
         String expectedDescriptionText = "All languages starting with the letter B are shown, sorted by Language.";
 
         WebElement categoryDescriptionB =

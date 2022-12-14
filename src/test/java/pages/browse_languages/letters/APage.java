@@ -8,7 +8,6 @@ import pages.browse_languages.languages.AdaLanguagePage;
 public class APage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-ada-19.html']")
-
     private WebElement adaLanguageLink;
 
     public APage(WebDriver driver) {

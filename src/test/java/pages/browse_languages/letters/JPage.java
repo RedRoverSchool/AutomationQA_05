@@ -3,6 +3,7 @@ package pages.browse_languages.letters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.browse_languages.languages.JQueryLanguagePage;
 import pages.browse_languages.languages.JavaLanguagePage;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
 
@@ -39,13 +40,10 @@ public class JPage extends LetterPage {
         return new JavaScriptLanguagePage(getDriver());
     }
 
-    public void clickJQueryLink() {
+    public JQueryLanguagePage clickJQueryLink() {
         click(jQueryLink);
-    }
 
-    public String getJPageURL() {
-
-        return getURL();
+        return new JQueryLanguagePage(getDriver());
     }
 
     public String getPageContext() {

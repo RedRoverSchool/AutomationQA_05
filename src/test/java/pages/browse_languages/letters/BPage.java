@@ -8,7 +8,6 @@ import pages.browse_languages.languages.BashLanguagePage;
 public class BPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-bash-1815.html']")
-
     private WebElement bashLanguageLink;
 
     public BPage(WebDriver driver) {

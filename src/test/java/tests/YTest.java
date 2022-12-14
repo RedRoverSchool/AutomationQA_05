@@ -82,7 +82,7 @@ public class YTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickYSubmenu()
-                .getYPageURL();
+                .getURL();
 
         new YPage(getDriver()).clickYabasicLink();
 
@@ -106,7 +106,7 @@ public class YTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickYSubmenu()
-                .getYPageURL();
+                .getURL();
 
         new YPage(getDriver()).clickYacasLink();
 
