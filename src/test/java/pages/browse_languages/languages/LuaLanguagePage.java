@@ -6,14 +6,14 @@ import org.openqa.selenium.support.FindBy;
 
 public class LuaLanguagePage extends LanguagePage {
 
-    @FindBy(xpath = "//a[@title= 'reddit' and @href]")
-    private WebElement redditLink;
+    @FindBy(xpath = "//a[@href='http://jove.prohosting.com/~philho/']")
+    private WebElement luaLanguageInfoLink;
 
     public LuaLanguagePage(WebDriver driver) {
         super(driver);
     }
 
-    public void clickRedditLink() {
-        click(redditLink);
+    public void clickLuaLanguageInfoLink() {
+        click(luaLanguageInfoLink);
     }
 }

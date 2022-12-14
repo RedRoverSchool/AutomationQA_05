@@ -9,19 +9,13 @@ import java.util.List;
 public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
     @FindBy(xpath = "//p/input[@name='submitlanguage']")
-    private WebElement goButton;
-
-    @FindBy(xpath = "//div[@id='main']/p[@style]")
-    private WebElement errorMessage;
+    private WebElement submitLanguageButton;
 
     @FindBy(xpath = "//div[@id='main']/ul/li")
     private List<WebElement> bullets;
 
     @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']")
     private WebElement category;
-
-    @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']/option")
-    private WebElement categoriesOptions;
 
     @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']/option[text()='esoteric language']")
     private WebElement esotericLanguageOption;
@@ -35,30 +29,20 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     @FindBy(name = "author")
     private WebElement author;
 
-    @FindBy(name = "email")
-    private WebElement email;
-
     @FindBy(name = "captcha")
     private WebElement captcha;
 
     @FindBy(name = "code")
     private WebElement code;
 
-    final String STYLE = "style";
-
     public SubmitNewLanguagePage(WebDriver driver) {
         super(driver);
     }
 
-    public SubmitNewLanguagePage clickGoButton() {
-        click(goButton);
+    public SubmitNewLanguagePage clickSubmitLanguageButton() {
+        click(submitLanguageButton);
 
         return this;
-    }
-
-    public String getErrorMessage() {
-
-        return getText(errorMessage);
     }
 
     public int countBullets() {
@@ -95,12 +79,6 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
         return this;
     }
 
-    public SubmitNewLanguagePage inputEmail(String text) {
-        input(text, email);
-
-        return this;
-    }
-
     public SubmitNewLanguagePage inputCaptcha(String text) {
         input(text, captcha);
 
@@ -115,9 +93,6 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
     public String getCaptchaStyle() {
 
-        return captcha.getAttribute(STYLE);
+        return captcha.getAttribute("style");
     }
 }
-
-
-

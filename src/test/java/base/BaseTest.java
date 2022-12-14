@@ -19,13 +19,13 @@ public abstract class BaseTest {
 
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
-
         Reporter.log(ReportUtils.getReportHeader(context), true);
     }
 
     @BeforeMethod
     protected void beforeMethod(Method method, ITestResult result) {
         driver = BaseUtils.createDriver();
+
         Reporter.log(ReportUtils.END_LINE, true);
         Reporter.log("TEST RUN", true);
         Reporter.log(ReportUtils.getClassNameTestName(method, result), true);
@@ -34,6 +34,7 @@ public abstract class BaseTest {
     @AfterMethod
     protected void afterMethod(Method method, ITestResult result) {
         Reporter.log(ReportUtils.getTestStatistics(method, result), true);
+
         driver.quit();
     }
 

@@ -4,25 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.browse_languages.languages.KotlinLanguagePage;
-import pages.search_languages.SearchLanguagesPage;
 
 public class KPage extends LetterPage {
 
-    @FindBy(xpath = "//a[@href = 'language-kotlin-2901.html']")
-    private WebElement kotlinLink;
+    @FindBy(xpath = "//a[@href='language-kotlin-2901.html']")
+    private WebElement kotlinLanguage;
 
     public KPage(WebDriver driver) {
         super(driver);
     }
 
-    public KotlinLanguagePage clickKotlinLink() {
-        click(kotlinLink);
+    public KotlinLanguagePage clickKotlinLanguage() {
+        click(kotlinLanguage);
 
         return new KotlinLanguagePage(getDriver());
-    }
-
-    public String getKPageURL() {
-
-        return getURL();
     }
 }

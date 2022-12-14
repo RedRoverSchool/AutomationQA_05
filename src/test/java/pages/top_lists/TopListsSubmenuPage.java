@@ -9,35 +9,37 @@ import java.util.List;
 
 public abstract class TopListsSubmenuPage extends TablePage {
 
-    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href = './toplist_real.html']")
+    final static String TOP_LISTS_PATH = "//ul[@id='submenu']//a[@href=";
+
+    @FindBy(xpath = TOP_LISTS_PATH + "'./toplist_real.html']")
     private WebElement topRatedRealSubmenu;
 
-    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href ='./toplist_esoteric.html']")
+    @FindBy(xpath = TOP_LISTS_PATH + "'./toplist_esoteric.html']")
     private WebElement topRatedEsotericSubmenu;
 
-    @FindBy(xpath = "//div[@id = 'navigation']/ul[@id = 'submenu']//li/a[@href = './newcomments.html']")
+    @FindBy(xpath = TOP_LISTS_PATH + "'./newcomments.html']")
     private WebElement newCommentsSubmenu;
+
+    @FindBy(xpath = TOP_LISTS_PATH + "'./toplist.html']")
+    private WebElement topHitsSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a")
     private List<WebElement> topListSubmenus;
-
-    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href ='./toplist.html']")
-    private WebElement topHitsSubmenu;
 
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
     }
 
-    public TopListRealPage clickTopRatedRealSubmenu() {
+    public TopRatedRealPage clickTopRatedRealSubmenu() {
         click(topRatedRealSubmenu);
 
-        return new TopListRealPage(getDriver());
+        return new TopRatedRealPage(getDriver());
     }
 
-    public TopListEsotericPage clickTopRatedEsotericSubmenu() {
+    public TopRatedEsotericPage clickTopRatedEsotericSubmenu() {
         click(topRatedEsotericSubmenu);
 
-        return new TopListEsotericPage(getDriver());
+        return new TopRatedEsotericPage(getDriver());
     }
 
     public NewCommentsPage clickNewCommentsSubmenu() {

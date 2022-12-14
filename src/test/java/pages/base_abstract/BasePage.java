@@ -1,8 +1,10 @@
 package pages.base_abstract;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,9 @@ public abstract class BasePage {
     }
 
     public void clear(WebElement element) {
-        element.clear();
+        if (!getText(element).isEmpty()) {
+            clear(element);
+        }
     }
 
     public void input(String text, WebElement element) {
@@ -41,16 +45,6 @@ public abstract class BasePage {
     public String getAttribute(WebElement element, String attribute) {
 
         return element.getAttribute(attribute);
-    }
-
-    public void clickClearInput(String text, WebElement element) {
-        click(element);
-
-        if (!getText(element).isEmpty()) {
-            clear(element);
-        }
-
-        input(text, element);
     }
 
     public List<String> getListText(List<WebElement> list) {
@@ -109,6 +103,47 @@ public abstract class BasePage {
         }
 
         return visibleList;
+    }
+
+    public int[] getIntegersFromTexts(List<String> list) {
+        int[] numbers;
+
+        if (list.size() > 0) {
+             numbers = new int[list.size()];
+
+            for (int i = 0; i < numbers.length; i++) {
+                try {
+                    numbers[i] = Integer.parseInt(list.get(i));
+                }
+                catch (Exception e){
+                    Reporter.log("String is not parsable");
+                }
+            }
+
+            return numbers;
+        }
+
+        return new int[0];
+    }
+
+    protected boolean isImageDisplayed(WebElement image) {
+        try {
+            boolean imageDisplayed = (Boolean) ((JavascriptExecutor) getDriver())
+                    .executeScript(
+                            "return (typeof arguments[0].naturalWidth !=\"undefined\" " +
+                                    "&& arguments[0].naturalWidth > 0);", image
+                    );
+            if (imageDisplayed) {
+
+                return true;
+            } else {
+                Reporter.log(image + "image is broken ", true);
+            }
+        } catch (Exception e) {
+            System.out.println("Image not loading");
+        }
+
+        return false;
     }
 
     public int getListSize(List<WebElement> list) {

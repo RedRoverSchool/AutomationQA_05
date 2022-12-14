@@ -13,11 +13,6 @@ public class PythonLanguagePage extends LanguagePage {
         super(driver);
     }
 
-    public String getPythonLanguagePageURL() {
-
-        return getURL();
-    }
-
     public void clickPythonLanguageInfoLink() {
         click(PythonLanguageInfoLink);
     }

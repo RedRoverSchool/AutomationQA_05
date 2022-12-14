@@ -10,21 +10,39 @@ import java.util.List;
 public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
     @FindBy(xpath = "//div[@id='voting']/p[2]/a")
-    private List<WebElement> externalLinksList;
+    private List<WebElement> externalLinks;
 
-    @FindBy(xpath = "//div[@id = 'voting']//option[5]")
+    @FindBy(xpath = "//div[@id='voting']//option[5]")
     private WebElement niceCodingRate;
+
+    @FindBy(xpath = "//div[@id='alternatives']/h2")
+    private WebElement alternativeVersionsHeader;
+
+    @FindBy(xpath = "//div[@id='comments']/h2")
+    private WebElement commentsHeader;
+
+    @FindBy(xpath = "//div[@id='voting']/h2")
+    private List<WebElement> votingHeader;
+
+    @FindBy(xpath = "//a[contains(@href,'/download/')]")
+    private List<WebElement> downloadSourceLinks;
+
+    @FindBy(xpath = "//a[@href='#addcomment']")
+    private List<WebElement> writeCommentLinks;
+
+    @FindBy(xpath = "//a[@title='reddit' and @href]")
+    private WebElement redditLink;
 
     public LanguagePage(WebDriver driver) {
         super(driver);
     }
 
-    public List<WebElement> getExternalLinksList() {
+    public List<WebElement> getExternalLinks() {
 
-        return getListIfVisible(externalLinksList);
+        return getListIfVisible(externalLinks);
     }
 
-    public LanguagePage clickNiceCoding() {
+    public LanguagePage clickNiceCodingOption() {
         click(niceCodingRate);
 
         return this;
@@ -32,6 +50,35 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
     public String getVotingFieldText() {
 
-        return clickNiceCoding().getText(niceCodingRate);
+        return getText(niceCodingRate);
+    }
+
+    public String getAlternativeVersionsHeader() {
+
+        return getText(alternativeVersionsHeader);
+    }
+
+    public String getCommentsHeader() {
+
+        return getText(commentsHeader);
+    }
+
+    public List<String> getVotingHeader() {
+
+        return getListText(votingHeader);
+    }
+
+    public List<String> getDownloadSourceLinks() {
+
+        return getListText(downloadSourceLinks);
+    }
+
+    public List<String> getWriteCommentLinks() {
+
+        return getListText(writeCommentLinks);
+    }
+
+    public void clickRedditLink() {
+        click(redditLink);
     }
 }

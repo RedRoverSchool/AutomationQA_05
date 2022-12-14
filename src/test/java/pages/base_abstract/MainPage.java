@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.browse_languages.letters.ABCPage;
-import pages.guest_book.GuestBookV2Page;
+import pages.guest_book.ReadGuestbookPage;
 import pages.search_languages.SearchLanguagesPage;
 import pages.start.StartPage;
 import pages.submit_new_language.SubmitNewLanguagePage;
-import pages.top_lists.TopListsPage;
+import pages.top_lists.TopRatedPage;
 
 import java.util.List;
 
@@ -23,49 +23,66 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='main']/h2")
     private WebElement h2Header;
 
+    @FindBy(xpath = "//div[@id='main']/h3")
+    private List<WebElement> h3Header;
 
-    @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/']")
+    final static String TOP_MENU_PATH = "//ul[@id='menu']/li/a[@href=";
+
+    @FindBy(xpath = TOP_MENU_PATH + "'/']")
     private WebElement startMenu;
 
-    @FindBy(xpath = "//ul[@id='menu']/li/a[@href='/abc.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/abc.html']")
     private WebElement browseLanguagesMenu;
 
-    @FindBy(xpath = "//ul[@id = 'menu']/li/a[@href = '/search.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/search.html']")
     private WebElement searchLanguagesMenu;
 
-    @FindBy(xpath = "//ul[@id = 'menu']/li/a[@href = '/toplist.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/toplist.html']")
     private WebElement topListsMenu;
 
-    @FindBy(xpath = "//ul[@id = 'menu']/li/a[@href = '/guestbookv2.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/guestbookv2.html']")
     private WebElement guestBookMenu;
 
-    @FindBy(xpath = "//ul[@id= 'menu']/li/a[@href='/submitnewlanguage.html']")
+    @FindBy(xpath = TOP_MENU_PATH + "'/submitnewlanguage.html']")
     private WebElement submitNewLanguageMenu;
-
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/']")
-    private WebElement startFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/abc.html']")
-    private WebElement browseLanguagesFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/search.html']")
-    private WebElement searchLanguagesFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/toplist.html']")
-    private WebElement topListFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/guestbookv2.html']")
-    private WebElement guestBookFooterMenu;
-
-    @FindBy(xpath = "//div[@id='footer']/p/a[@href='/submitnewlanguage.html']")
-    private WebElement submitNewLanguageFooterMenu;
-
-    @FindBy(xpath = "//div[@id='main']/h2['Top Rated Real Languages']")
-    private WebElement h2TopRatedRealLanguages;
 
     @FindBy (xpath = "//ul[@id='menu']//li")
     private List<WebElement> menuLinks;
+
+    final static String FOOTER_MENU_PATH = "//div[@id='footer']/p/a[@href=";
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/']")
+    private WebElement startFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/abc.html']")
+    private WebElement browseLanguagesFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/search.html']")
+    private WebElement searchLanguagesFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/toplist.html']")
+    private WebElement topListFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/guestbookv2.html']")
+    private WebElement guestBookFooterMenu;
+
+    @FindBy(xpath = FOOTER_MENU_PATH + "'/submitnewlanguage.html']")
+    private WebElement submitNewLanguageFooterMenu;
+
+    @FindBy(tagName = "a")
+    private List<WebElement> links;
+
+    @FindBy(tagName = "img")
+    private List<WebElement> images;
+
+    @FindBy(id = "main")
+    private WebElement mainBody;
+
+    @FindBy(xpath = "//div[@id='main']//p[1]")
+    private WebElement firstParagraph;
+
+    @FindBy(xpath = "//div[@id='main']/p")
+    private List<WebElement> pTags;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -86,6 +103,16 @@ public abstract class MainPage extends BasePage {
         return getText(h2Header);
     }
 
+    public List<String> getH3HeadersTexts() {
+
+        return getListText(h3Header);
+    }
+
+    public WebElement getH2Header() {
+
+        return h2Header;
+    }
+
     public StartPage clickStartMenu() {
         click(startMenu);
 
@@ -104,16 +131,16 @@ public abstract class MainPage extends BasePage {
         return new SearchLanguagesPage(getDriver());
     }
 
-    public TopListsPage clickTopListsMenu() {
+    public TopRatedPage clickTopListsMenu() {
         click(topListsMenu);
 
-        return new TopListsPage(getDriver());
+        return new TopRatedPage(getDriver());
     }
 
-    public GuestBookV2Page clickGuestbookMenu() {
+    public ReadGuestbookPage clickGuestbookMenu() {
         click(guestBookMenu);
 
-        return new GuestBookV2Page(getDriver());
+        return new ReadGuestbookPage(getDriver());
     }
 
     public SubmitNewLanguagePage clickSubmitNewLanguageMenu() {
@@ -140,16 +167,16 @@ public abstract class MainPage extends BasePage {
         return new SearchLanguagesPage(getDriver());
     }
 
-    public TopListsPage clickTopListFooterMenu() {
+    public TopRatedPage clickTopListFooterMenu() {
         click(topListFooterMenu);
 
-        return new TopListsPage(getDriver());
+        return new TopRatedPage(getDriver());
     }
 
-    public GuestBookV2Page clickGuestBookFooterMenu() {
+    public ReadGuestbookPage clickGuestBookFooterMenu() {
         click(guestBookFooterMenu);
 
-        return new GuestBookV2Page(getDriver());
+        return new ReadGuestbookPage(getDriver());
     }
 
     public SubmitNewLanguagePage clickSubmitNewLanguageFooterMenu() {
@@ -158,21 +185,48 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public String getH2TopRatedRealLanguagesText() {
-
-        return getText(h2TopRatedRealLanguages);
-    }
-
-    public WebElement getH2TopRatedRealLanguages() {
-
-        return h2TopRatedRealLanguages;
-    }
-
     public List<String> getMenuLinksTextInLowerCase() {
+
         return getListTextInLowerCase(menuLinks);
     }
 
     public int getMenuLinksSize() {
+
         return getListSize(menuLinks);
+    }
+
+    public List<WebElement> getLinks() {
+
+        return links;
+    }
+
+    public String getPageContext() {
+
+        return mainBody.getText();
+    }
+
+    public List<WebElement> getImages() {
+
+        return images;
+    }
+
+    public String getFirstParagraphText(){
+
+        return getText(firstParagraph);
+    }
+
+    public String getHref(WebElement element) {
+
+        return getAttribute(element, "href");
+    }
+
+    public int countParagraphs() {
+
+        return getListSize(pTags);
+    }
+
+    public String getColor(WebElement element) {
+
+        return element.getCssValue("color");
     }
 }
