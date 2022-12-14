@@ -12,7 +12,7 @@ public class LTest extends BaseTest {
     public void testLuaLanguageLink_NavigatesTo_LuaLanguagePage() {
 
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-lili-1603.html";
-        final String expectedTitle = "99 Bottles of Beer | Language LUA";
+        final String expectedTitle = "99 Bottles of Beer | Language LiLi";
 
         LiLiLanguagePage liLiLanguagePage = new LiLiLanguagePage(getDriver());
 

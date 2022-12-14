@@ -46,7 +46,7 @@ public class JavaScriptLanguageTest extends BaseTest {
 
         List<String> expectedListValues = new ArrayList<>(
                 Arrays.asList("01/09/09", "JavaScribe", "n/a", "4",
-                        "http://en.wikipedia.org/wiki/Javascript", "(3.04 in 373 votes)"));
+                        "http://en.wikipedia.org/wiki/Javascript", "(3.04 in 374 votes)"));
 
         List<String> actualListValues =
                 openBaseURL()
