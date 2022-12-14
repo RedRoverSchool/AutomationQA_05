@@ -49,7 +49,7 @@ public class HistoryTest extends BaseTest {
         String actualRegularText =
                 openBaseURL()
                         .clickHistorySubmenu()
-                        .getRegularText();
+                        .getFirstParagraphText();
 
         Assert.assertEquals(actualRegularText, expectedRegularText);
     }
