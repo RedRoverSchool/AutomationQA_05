@@ -26,7 +26,7 @@ public class LyricsTest extends BaseTest {
         int actualResult =
                 openBaseURL()
                         .clickSongLyricsSubmenu()
-                        .getAmountOfPTags();
+                        .countParagraphs();
 
         Assert.assertEquals(actualResult, expectedResult);
     }
@@ -43,7 +43,7 @@ public class LyricsTest extends BaseTest {
                 .clickSongLyricsSubmenu()
                 .getURL();
 
-        new LyricsPage(getDriver()).clickLyricsLink();
+        new LyricsPage(getDriver()).clickSongLyricsSubmenu();
 
         String actualTitle = LyricsPage.getTitle();
 

@@ -10,23 +10,6 @@ import pages.start.HistoryPage;
 public class HistoryTest extends BaseTest {
 
     @Test
-    public void testLinkText_HistorySubmenu() {
-        final String expectedText = "History";
-        final String attribute = "href";
-        final String expectedSubmenuInfoLink = "info.html";
-
-        openBaseURL();
-
-        HistoryPage historyPage = new HistoryPage(getDriver());
-
-        String actualText = historyPage.getHistorySubmenuText();
-        String actualHrefValue = historyPage.getHref(attribute);
-
-        Assert.assertEquals(expectedText, actualText);
-        Assert.assertTrue(actualHrefValue.contains(expectedSubmenuInfoLink));
-    }
-
-    @Test
     public void testHistorySubmenu_NavigatesTo_HistorySubmenuPage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/info.html";
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
@@ -50,7 +33,7 @@ public class HistoryTest extends BaseTest {
         String actualRegularText =
                 openBaseURL()
                         .clickHistorySubmenu()
-                        .getRegularText();
+                        .getFirstParagraphText();
 
         Assert.assertEquals(actualRegularText, expectedRegularText);
     }
