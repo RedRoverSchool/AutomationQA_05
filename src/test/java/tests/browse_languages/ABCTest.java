@@ -27,7 +27,7 @@ public class ABCTest extends BaseTest {
 
         for(int i = 0; i < lettersSubmenus.size(); i++) {
             lettersSubmenus.get(i).click();
-            List<String> firstLetters = abcPage.getFirstsLetterFromLanguagesNames();
+            List<String> firstLetters = abcPage.getFirstLettersFromLanguagesNames();
             if (i == 0) {
                 for (String letter : firstLetters) {
                     char symbol = letter.charAt(0);

@@ -3,39 +3,39 @@ package tests.browse_languages.languages;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.browse_languages.languages.LuaLanguagePage;
+import pages.browse_languages.languages.LiLiLanguagePage;
 
-public class LuaLanguageTest extends BaseTest {
+public class LiLiLanguageTest extends BaseTest {
 
     @Test
     public void testLuaLanguagePageHeader() {
-        final String expectedH2Header = "Language LUA";
+        final String expectedH2Header = "Language LiLi";
 
         String actualH2Header =
                 openBaseURL()
                         .clickBrowseLanguagesFooterMenu()
                         .clickLSubmenu()
-                        .clickLuaLanguage()
+                        .clickLiLiLanguage()
                         .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }
 
     @Test
-    public void testJoveProhostingComLink_NavigatesTo_ExternalLuaLanguagePage() {
-        final String expectedExternalURL = "http://jove.prohosting.com/~philho/";
-        final String expectedExternalTitle = "jove.prohosting.com";
+    public void testInfoLink_NavigatesTo_ExternalLiLiLanguagePage() {
+        final String expectedExternalURL = "https://littlisp.sourceforge.net/";
+        final String expectedExternalTitle = "The Lili Lisp Dialect Interpreter";
 
         String oldLuaLanguagePageURL =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickLSubmenu()
-                        .clickLuaLanguage()
+                        .clickLiLiLanguage()
                         .getURL();
 
-        LuaLanguagePage luaLanguagePage = new LuaLanguagePage(getDriver());
+        LiLiLanguagePage liLiLanguagePage = new LiLiLanguagePage(getDriver());
 
-        luaLanguagePage.clickLuaLanguageInfoLink();
+        liLiLanguagePage.clickLiLiLanguageInfoLink();
 
         Assert.assertNotEquals(oldLuaLanguagePageURL, getExternalPageURL());
         Assert.assertEquals(getExternalPageURL(), expectedExternalURL);

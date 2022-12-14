@@ -93,19 +93,20 @@ public class YTest extends BaseTest {
     public void testRandomLinkNavigatesToCorrespondingPage() {
         List<WebElement> languageNames = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickJSubmenu()
+                .clickYSubmenu()
                 .getLanguagesLinks();
 
         Assert.assertTrue(languageNames.size() > 0);
 
         int r = new Random().nextInt(languageNames.size());
 
-        JPage jPage = new JPage(getDriver());
+        YPage yPage = new YPage(getDriver());
 
-        String languageName = jPage.getTextFromRandomLink(r, languageNames).toLowerCase();
+        String languageName = yPage.getTextFromRandomLink(r, languageNames).toLowerCase();
 
-        jPage.clickRandomLink(r, languageNames);
+        yPage.clickRandomLink(r, languageNames);
 
-        Assert.assertTrue(getExternalPageURL().contains("language-" + languageName + "-"), getExternalPageTitle() + "doesn't contain" + languageName);
+        Assert.assertTrue(getExternalPageURL().contains("language-" + languageName + "-")
+                , getExternalPageTitle() + " doesn't contain " + languageName);
     }
 }

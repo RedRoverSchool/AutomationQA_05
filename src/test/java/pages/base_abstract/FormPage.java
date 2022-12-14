@@ -22,6 +22,19 @@ public abstract class FormPage extends MainPage {
         super(driver);
     }
 
+    public void inputName(String text){
+        input(text, name);
+    }
+
+    public void inputEmail(String text){
+        input(text, email);
+    }
+
+    public String getErrorMessageText() {
+
+        return getText(errorMessage);
+    }
+
     public void clickUrlIcon() {
         click(urlIcon);
     }
@@ -35,18 +48,5 @@ public abstract class FormPage extends MainPage {
         alert.sendKeys(text);
         alert.accept();
         alert.accept();
-    }
-
-    public void inputName(String text){
-        input(text, name);
-    }
-
-    public void inputEmail(String text){
-        input(text, email);
-    }
-
-    public String getErrorMessageText() {
-
-        return getText(errorMessage);
     }
 }

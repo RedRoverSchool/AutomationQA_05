@@ -14,6 +14,7 @@ import java.util.List;
 
 public abstract class MainPage extends BasePage {
 
+    //Headers
     @FindBy(xpath = "//div[@id='header']/h1")
     private WebElement h1LogoHeader;
 
@@ -26,6 +27,7 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='main']/h3")
     private List<WebElement> h3Header;
 
+    //Top Menu
     final static String TOP_MENU_PATH = "//ul[@id='menu']/li/a[@href=";
 
     @FindBy(xpath = TOP_MENU_PATH + "'/']")
@@ -49,6 +51,7 @@ public abstract class MainPage extends BasePage {
     @FindBy (xpath = "//ul[@id='menu']//li")
     private List<WebElement> menuLinks;
 
+    //Footer Menu
     final static String FOOTER_MENU_PATH = "//div[@id='footer']/p/a[@href=";
 
     @FindBy(xpath = FOOTER_MENU_PATH + "'/']")
@@ -185,7 +188,7 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public List<String> getMenuLinksTextInLowerCase() {
+    public List<String> getMenuTextsInLowerCase() {
 
         return getListTextInLowerCase(menuLinks);
     }
@@ -202,7 +205,7 @@ public abstract class MainPage extends BasePage {
 
     public String getPageContext() {
 
-        return mainBody.getText();
+        return getText(mainBody);
     }
 
     public List<WebElement> getImages() {

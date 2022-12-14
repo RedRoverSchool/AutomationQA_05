@@ -59,7 +59,7 @@ public abstract class TablePage extends MainPage {
         return getListTextInUpperCase(namesLinks);
     }
 
-    public int getNamesListSize() {
+    public int getSize() {
 
         return getListSize(namesLinks);
     }
@@ -74,7 +74,7 @@ public abstract class TablePage extends MainPage {
         return getListText(tableHeaders);
     }
 
-    public List<String> getFirstsLetterFromLanguagesNames(){
+    public List<String> getFirstLettersFromLanguagesNames(){
         List<String> firstLetters = new ArrayList<>();
         for (String languageName: getNamesInUpperCase()){
             firstLetters.add(languageName.substring(0, 1));

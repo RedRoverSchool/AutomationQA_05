@@ -69,7 +69,7 @@ public class SearchLanguagesTest extends BaseTest {
                 openBaseURL()
                         .clickSearchLanguagesMenu()
                         .clickGoButton()
-                        .getNamesListSize();
+                        .getSize();
 
         Assert.assertTrue(languagesNames == 0);
     }
@@ -85,7 +85,7 @@ public class SearchLanguagesTest extends BaseTest {
                         .inputSearchCriteria(LANGUAGE_NAME)
                         .clickGoButton()
                         .clickSearchSubmenu()
-                        .getNamesListSize();
+                        .getSize();
 
         Assert.assertTrue(languagesNamesSize == 0);
     }

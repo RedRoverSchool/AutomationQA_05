@@ -61,7 +61,7 @@ public class MainTest extends BaseTest {
         StartPage startPage = new StartPage(getDriver());
 
         int actualAmount = startPage.getMenuLinksSize();
-        List<String> actualText = startPage.getMenuLinksTextInLowerCase();
+        List<String> actualText = startPage.getMenuTextsInLowerCase();
 
         Assert.assertEquals(actualAmount, expectedAmount);
         for(int i = 0; i < actualText.size(); i++) {
