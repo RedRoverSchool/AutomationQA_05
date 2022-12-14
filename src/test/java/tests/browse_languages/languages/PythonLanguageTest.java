@@ -8,15 +8,30 @@ import pages.browse_languages.languages.PythonLanguagePage;
 public class PythonLanguageTest extends BaseTest {
 
     @Test
+    public void testPythonLanguagePageHeader() {
+        final String expectedH2Header = "Language Python";
+
+        String actualH2Header =
+                openBaseURL()
+                        .clickBrowseLanguagesFooterMenu()
+                        .clickPSubmenu()
+                        .clickPythonLanguage()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
+
+    @Test
     public void testPythonOrgLink_NavigatesTo_ExternalPythonLanguagePage() {
         final String expectedExternalURL = "https://www.python.org/";
         final String expectedExternalTitle = "Welcome to Python.org";
 
-        String oldPythonLanguagePageURL = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickPSubmenu()
-                .clickPythonLanguage()
-                .getURL();
+        String oldPythonLanguagePageURL =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickPSubmenu()
+                        .clickPythonLanguage()
+                        .getURL();
         PythonLanguagePage pythonLanguagePage = new PythonLanguagePage(getDriver());
 
         pythonLanguagePage.clickPythonLanguageInfoLink();

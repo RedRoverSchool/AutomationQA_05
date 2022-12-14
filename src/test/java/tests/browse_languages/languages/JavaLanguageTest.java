@@ -8,7 +8,6 @@ public class JavaLanguageTest extends BaseTest {
 
     @Test
     public void testJavaLanguagePageHeader() {
-
         String expectedH2Header = "Language Java";
 
         String actualH2Header =
