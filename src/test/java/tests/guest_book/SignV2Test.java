@@ -14,7 +14,7 @@ public class SignV2Test extends BaseTest {
     @Test
     public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert(){
         final String urlAlertText = "http://my_text";
-        openBaseURL().clickGuestbookMenu().clickSignGuestbook().clickUrlIcon();
+        openBaseURL().clickGuestbookMenu().clickSignGuestbookSubmenu().clickUrlIcon();
         SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
@@ -30,14 +30,17 @@ public class SignV2Test extends BaseTest {
         final String message = "it is a message";
         final String expectedErrorMessage = "Error: Please enter at least a message, your email address and the security code.";
 
-        String actualErrorMessage =
+        SignGuestbookPage signGuestbookPage =
                 openBaseURL()
                         .clickGuestbookMenu()
-                        .clickSignGuestbook()
-                        .inputName(name)
-                        .inputMessage(message)
-                        .inputEmail(email)
-                        .clickSubmitButton().getErrorMessageText();
+                        .clickSignGuestbookSubmenu();
+        signGuestbookPage.inputName(name);
+        signGuestbookPage.inputMessage(message);
+        signGuestbookPage.inputEmail(email);
+
+        String actualErrorMessage = signGuestbookPage
+                .clickSubmitButton()
+                .getErrorMessageText();
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
     }

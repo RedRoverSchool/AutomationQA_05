@@ -229,4 +229,9 @@ public abstract class MainPage extends BasePage {
 
         return element.getCssValue("color");
     }
+
+    public String getH2HeaderColor() {
+
+        return getColor(h2Header);
+    }
 }

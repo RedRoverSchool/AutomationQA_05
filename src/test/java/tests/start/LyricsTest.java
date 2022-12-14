@@ -25,8 +25,7 @@ public class LyricsTest extends BaseTest {
 
         int actualResult =
                 openBaseURL()
-                        .clickSongLyricsSubmenu()
-                        .getAmountOfPTags();
+                        .clickSongLyricsSubmenu();
 
         Assert.assertEquals(actualResult, expectedResult);
     }

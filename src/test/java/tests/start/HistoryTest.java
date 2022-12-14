@@ -12,7 +12,6 @@ public class HistoryTest extends BaseTest {
     @Test
     public void testLinkText_HistorySubmenu() {
         final String expectedText = "History";
-        final String attribute = "href";
         final String expectedSubmenuInfoLink = "info.html";
 
         openBaseURL();
@@ -20,7 +19,7 @@ public class HistoryTest extends BaseTest {
         HistoryPage historyPage = new HistoryPage(getDriver());
 
         String actualText = historyPage.getHistorySubmenuText();
-        String actualHrefValue = historyPage.getHref(attribute);
+        String actualHrefValue = historyPage.getHistorySubmenuHref();
 
         Assert.assertEquals(expectedText, actualText);
         Assert.assertTrue(actualHrefValue.contains(expectedSubmenuInfoLink));

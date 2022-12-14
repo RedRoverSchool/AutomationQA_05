@@ -11,7 +11,10 @@ public class TopListRealTest extends BaseTest {
     public void testH2Text_WhenChoosingTopRatedRealSubmenu() {
         String expectedH2HeaderText = "Top Rated Real Languages";
 
-        String actualH2HeaderText = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu().getH2HeaderText();
+        String actualH2HeaderText = openBaseURL()
+                .clickTopListsMenu()
+                .clickTopRatedRealSubmenu()
+                .getH2HeaderText();
 
         Assert.assertEquals(actualH2HeaderText, expectedH2HeaderText);
     }
@@ -20,7 +23,10 @@ public class TopListRealTest extends BaseTest {
     public void testH2Color_WhenChoosingTopRatedRealSubmenu() {
         String expectedHexColor = "#1b651c";
 
-        String headerTextCssValue = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu().getH2HeaderColor();
+        String headerTextCssValue = openBaseURL()
+                .clickTopListsMenu()
+                .clickTopRatedRealSubmenu()
+                .getH2HeaderColor();
         String actualHexColor = Color.fromString(headerTextCssValue).asHex();
 
         Assert.assertEquals(actualHexColor, expectedHexColor);
