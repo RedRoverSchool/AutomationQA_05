@@ -41,7 +41,7 @@ public class LyricsTest extends BaseTest {
 
         String actualUrl = openBaseURL()
                 .clickSongLyricsSubmenu()
-                .getLyricsPageURL();
+                .getURL();
 
         new LyricsPage(getDriver()).clickLyricsLink();
 

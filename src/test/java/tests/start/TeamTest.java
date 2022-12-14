@@ -69,7 +69,7 @@ public class TeamTest extends BaseTest {
         List<String> actualTeamNames =
         openBaseURL()
                 .clickTeamSubmenu()
-                .getTeamNames();
+                .getH3HeadersTexts();
 
         Assert.assertEquals(actualTeamNames, expectedTeamNames);
     }

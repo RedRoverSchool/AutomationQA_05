@@ -3,19 +3,21 @@ package tests.browse_languages.languages;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.browse_languages.languages.AdaLanguagePage;
 
 public class AdaLanguageTest extends BaseTest {
 
     @Test
-    public void testChoosingLanguageAda() {
-        final String expectedLanguageName = "Language Ada";
+    public void testAdaLanguagePageHeader() {
 
-        AdaLanguagePage adaLanguagePage = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickASubmenu()
-                .clickAdaLanguage();
+        final String expectedH2Header = "Language Ada";
 
-        Assert.assertEquals(adaLanguagePage.getH2HeaderText(), expectedLanguageName);
+        String actualH2Header =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickASubmenu()
+                        .clickAdaLanguage()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
     }
 }

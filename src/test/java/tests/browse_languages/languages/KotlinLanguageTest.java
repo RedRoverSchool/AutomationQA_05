@@ -24,10 +24,10 @@ public class KotlinLanguageTest extends BTest {
         openBaseURL().
                 clickBrowseLanguagesMenu().
                 clickKSubmenu().
-                clickKotlinLink();
+                clickKotlinLanguage();
 
         String actualH2HeaderLanguageKotlin = kotlinLanguagePage.getH2HeaderText();
-        List<String> actualNamesInTextTable = kotlinLanguagePage.getTableListNames();
+        List<String> actualNamesInTextTable = kotlinLanguagePage.getNames();
         List<String> actuallinksDownload = kotlinLanguagePage.getDownloadSourceLinks();
         List<String> actuallinksAddComment = kotlinLanguagePage.getWriteCommentLinks();
         String actualH2HeaderAlternativeVersions = kotlinLanguagePage.getAlternativeVersionsHeader();

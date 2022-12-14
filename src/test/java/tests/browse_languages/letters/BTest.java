@@ -3,6 +3,7 @@ package tests.browse_languages.letters;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.browse_languages.languages.BashLanguagePage;
 import pages.browse_languages.letters.BPage;
 
 import java.util.List;
@@ -72,5 +73,19 @@ public class BTest extends BaseTest {
 
         Assert.assertEquals(actualLanguageName, expectedLanguage);
         Assert.assertEquals(actualAuthor, expectedAuthor);
+    }
+
+    @Test
+    public void testNavigatesWithFooterMenuChoosingLanguageBASH() {
+        final String expectedLanguageURL = "https://www.99-bottles-of-beer.net/language-bash-1815.html";
+        final String expectedLanguageTitle = "99 Bottles of Beer | Language BASH";
+
+        BashLanguagePage bashLanguagePage = openBaseURL()
+                .clickBrowseLanguagesFooterMenu()
+                .clickBSubmenu()
+                .clickBashLanguage();
+
+        Assert.assertEquals(bashLanguagePage.getURL(), expectedLanguageURL);
+        Assert.assertEquals(bashLanguagePage.getTitle(), expectedLanguageTitle);
     }
 }

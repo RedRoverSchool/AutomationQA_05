@@ -21,7 +21,7 @@ public class LuaLanguageTest extends BaseTest {
                 .clickLSubmenu()
                 .getURL();
 
-        new LPage(getDriver()).clickLuaLink();
+        new LPage(getDriver()).clickLuaLanguage();
 
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
 
