@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 public class KotlinLanguagePage extends LanguagePage{
 
     @FindBy(xpath = "//div[@id = 'voting']//input[@name = 'submitcomment']")
@@ -25,16 +23,6 @@ public class KotlinLanguagePage extends LanguagePage{
 
     @FindBy(xpath = "//div[@id = 'voting']//form//input[3]")
     private WebElement input4Voting;
-
-
-    @FindBy(id = "main")
-    private WebElement mainBody;
-
-    @FindBy(tagName = "a")
-    private List<WebElement> links;
-
-    @FindBy(tagName = "img")
-    private List<WebElement> images;
 
     public KotlinLanguagePage(WebDriver driver) {
         super(driver);
