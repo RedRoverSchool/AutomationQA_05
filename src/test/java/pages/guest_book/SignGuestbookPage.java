@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SignV2Page extends GuestBookSubmenuPage {
+public class SignGuestbookPage extends GuestbookSubmenuPage {
 
-    @FindBy(xpath = "//div [@id = 'main']/p")
+    @FindBy(xpath = "//div[@id='main']/p")
     private WebElement errorMessage;
 
     @FindBy(name = "name")
@@ -21,35 +21,34 @@ public class SignV2Page extends GuestBookSubmenuPage {
     @FindBy(name = "comment")
     private WebElement message;
 
-    @FindBy(xpath = "//a/img[@src = '/images/bb/bburl.gif']")
+    @FindBy(xpath = "//a/img[@src='/images/bb/bburl.gif']")
     private WebElement urlIcon;
 
     @FindBy(name = "submit")
     private WebElement submitButton;
 
-
-    public SignV2Page(WebDriver driver) {
+    public SignGuestbookPage(WebDriver driver) {
         super(driver);
     }
 
-    public SignV2Page inputName(String text){
-        input( text, name );
+    public SignGuestbookPage inputName(String text){
+        input(text, name);
 
         return this;
     }
 
-    public SignV2Page inputMessage(String text){
-        input( text, message);
+    public SignGuestbookPage inputMessage(String text){
+        input(text, message);
 
         return this;
     }
-    public SignV2Page inputEmail(String text){
-        input( text, email);
+    public SignGuestbookPage inputEmail(String text){
+        input(text, email);
 
         return this;
     }
 
-    public SignV2Page clickSubmitButton(){
+    public SignGuestbookPage clickSubmitButton(){
         click(submitButton);
 
         return this;

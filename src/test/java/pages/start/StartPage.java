@@ -3,7 +3,7 @@ package pages.start;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.guest_book.GuestBookV2Page;
+import pages.guest_book.ReadGuestbookPage;
 import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
@@ -78,10 +78,10 @@ public class StartPage extends StartSubmenuPage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public GuestBookV2Page clickGuestbookLink () {
+    public ReadGuestbookPage clickGuestbookLink () {
         click(guestbookLink);
 
-        return new GuestBookV2Page(getDriver());
+        return new ReadGuestbookPage(getDriver());
     }
 
     public TeamPage clickTeamMembersLink () {

@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.guest_book.GuestBookV2Page;
+import pages.guest_book.ReadGuestbookPage;
 import pages.start.HistoryPage;
 import pages.start.LyricsPage;
 import pages.start.StartPage;
@@ -149,7 +149,7 @@ public class StartTest extends BaseTest {
         final String expectedURL = "https://www.99-bottles-of-beer.net/guestbookv2.html";
         final String expectedTitle = "99 Bottles of Beer | Guestbook";
 
-        GuestBookV2Page guestBookV2Page = new GuestBookV2Page(getDriver());
+        ReadGuestbookPage readGuestBookPage = new ReadGuestbookPage(getDriver());
 
         String oldURL =
                 openBaseURL()
@@ -159,8 +159,8 @@ public class StartTest extends BaseTest {
 
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
 
-        String actualURL = guestBookV2Page.getURL();
-        String actualTitle = guestBookV2Page.getTitle();
+        String actualURL = readGuestBookPage.getURL();
+        String actualTitle = readGuestBookPage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);

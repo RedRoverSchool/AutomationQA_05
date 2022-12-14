@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.guest_book.SignV2Page;
+import pages.guest_book.SignGuestbookPage;
 
 import java.time.Duration;
 
@@ -15,7 +15,7 @@ public class SignV2Test extends BaseTest {
     public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert(){
         final String urlAlertText = "http://my_text";
         openBaseURL().clickGuestbookMenu().clickSignGuestbook().clickUrlIcon();
-        SignV2Page signV2Page = new SignV2Page(getDriver());
+        SignGuestbookPage signV2Page = new SignGuestbookPage(getDriver());
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 

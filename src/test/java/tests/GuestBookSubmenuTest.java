@@ -15,7 +15,7 @@ public class GuestBookSubmenuTest extends BaseTest {
         List<String> actualGuestbookSubmenuButtonsNames =
                 openBaseURL()
                         .clickGuestbookMenu()
-                        .getGuestbookSubmenuButtonsText();
+                        .getGuestbookSubmenus();
 
         Assert.assertEquals(actualGuestbookSubmenuButtonsNames, expectedGuestbookSubmenuButtonsNames);
     }

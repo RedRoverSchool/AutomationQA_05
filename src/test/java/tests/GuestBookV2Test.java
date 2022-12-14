@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.guest_book.GuestBookV2Page;
+import pages.guest_book.ReadGuestbookPage;
 
 public class GuestBookV2Test extends BaseTest {
     final static String URL_KEY_VALUE = "guest";
@@ -12,7 +12,7 @@ public class GuestBookV2Test extends BaseTest {
     public void testMainNavigationToButtonGuestbook() {
         String expectedResultGuestbookUrl = "https://www.99-bottles-of-beer.net/guestbookv2.html";
 
-        GuestBookV2Page GuestBookV2Page = new GuestBookV2Page(getDriver());
+        ReadGuestbookPage ReadGuestBookPage = new ReadGuestbookPage(getDriver());
 
         String actualResultGuestbookUrl = openBaseURL()
                 .clickGuestbookMenu()
