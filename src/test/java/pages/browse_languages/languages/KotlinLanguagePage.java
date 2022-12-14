@@ -3,7 +3,6 @@ package pages.browse_languages.languages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.search_languages.SearchLanguagesPage;
 
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class KotlinLanguagePage extends LanguagePage{
 
 //
     @FindBy(xpath = "//div[@id = 'voting']//form")
-    private WebElement searchForm;
+    private WebElement votingForm;
 
     @FindBy(xpath = "//div[@id = 'voting']//form//input[1]")
     private WebElement input1Voting;
@@ -45,10 +44,10 @@ public class KotlinLanguagePage extends LanguagePage{
     private WebElement input2Voting;
 
     @FindBy(xpath = "//div[@id = 'voting']//form//select")
-    private WebElement selectVoting;
+    private WebElement select3Voting;
 
     @FindBy(xpath = "//div[@id = 'voting']//form//input[3]")
-    private WebElement input3Voting;
+    private WebElement input4Voting;
 
 
     @FindBy(id = "main")
@@ -106,28 +105,46 @@ public class KotlinLanguagePage extends LanguagePage{
     }
 
     public String getAction() {
-        return getAttribute(searchForm, "action");
+        return getAttribute(votingForm, "action");
     }
 
     public String getMethod() {
-        return getAttribute(searchForm, "method");
+        return getAttribute(votingForm, "method");
     }
 
     public String getInput1Value() {
-        return getAttribute(input1SearchForm, "value");
+        return getAttribute(input1Voting, "value");
     }
 
     public String getInput2Value() {
-        return getAttribute(input2SearchForm, "value");
+        return getAttribute(input2Voting, "value");
+    }
+
+    public String getЫelect3Value() {
+        return getAttribute(select3Voting, "value");
+    }
+
+    public String getInput4Value() {
+        return getAttribute(input4Voting, "value");
     }
 
     public String getInput1Name() {
-        return getAttribute(input1SearchForm, "name");
+        return getAttribute(input1Voting, "name");
     }
 
     public String getInput2Name() {
-        return getAttribute(input2SearchForm, "name");
+        return getAttribute(input2Voting, "name");
     }
+
+    public String getSelect3Name() {
+        return getAttribute(select3Voting, "name");
+    }
+
+    public String getInput4Name() {
+        return getAttribute(input4Voting, "name");
+    }
+
+
 
     public String getPageContext() {
 

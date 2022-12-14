@@ -34,14 +34,20 @@ public class API_KotlinLanguageTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickKSubmenu()
-                        .clickKotlinLink();
+                        .clickKotlinLanguage();
 
-        Assert.assertTrue(kotlinLanguagePage.);
-        Assert.assertTrue(kotlinLanguagePage);
-        Assert.assertTrue(kotlinLanguagePage);
-        Assert.assertTrue(kotlinLanguagePage);
-        Assert.assertTrue(kotlinLanguagePage);
-        Assert.assertTrue(kotlinLanguagePage);
+        Assert.assertEquals(kotlinLanguagePage.getAction(), ACTION);
+        Assert.assertEquals(kotlinLanguagePage.getMethod(), METHOD);
+        Assert.assertEquals(kotlinLanguagePage. getInput1Name(), NAME_INPUT_1);
+        Assert.assertEquals(kotlinLanguagePage.getInput1Value(), VALUE_INPUT1);
+        Assert.assertEquals(kotlinLanguagePage.getInput2Name(), NAME_INPUT_2);
+        Assert.assertEquals(kotlinLanguagePage.getInput2Value(), VALUE_INPUT2);
+
+        Assert.assertEquals(kotlinLanguagePage.getSelect3Name(), NAME_INPUT_4);
+        Assert.assertEquals(kotlinLanguagePage.getЫelect3Value(), VALUE_INPUT4);
+
+        Assert.assertEquals(kotlinLanguagePage.getInput4Name(), NAME_INPUT_4);
+        Assert.assertEquals(kotlinLanguagePage.getInput4Value(), VALUE_INPUT4);
 
     }
 
