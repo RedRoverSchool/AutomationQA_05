@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class TopListsSubmenuPage extends TablePage {
@@ -56,4 +57,24 @@ public abstract class TopListsSubmenuPage extends TablePage {
 
         return new TopHitsPage(getDriver());
     }
+
+    public ArrayList<String> clickTopListsSubmenuLinksAndGetH2Header(){
+
+        ArrayList<String> subMenuListLinks = new ArrayList<String>();
+
+        TopListsPage topListsPage = new TopListsPage(getDriver());
+
+        for (WebElement topSubMenu : topListSubmenus) {
+            subMenuListLinks.add(topSubMenu.getAttribute("href"));
+        }
+
+        ArrayList<String> actualSubmenuH2HeaderTexts = new ArrayList<>();
+        for (String subMenuLink : subMenuListLinks) {
+            getDriver().navigate().to(subMenuLink);
+            actualSubmenuH2HeaderTexts.add(topListsPage.getH2HeaderText());
+        }
+
+        return actualSubmenuH2HeaderTexts;
+    }
+
 }

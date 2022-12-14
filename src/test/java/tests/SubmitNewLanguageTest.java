@@ -2,24 +2,25 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.submit_new_language.SubmitNewLanguagePage;
 
 public class SubmitNewLanguageTest extends BaseTest {
 
-    @Test
-    public void testErrorMessageSubmitLanguageButton() {
-        final String expectedResultErrorMessageSubmitLanguageButton = "Error: " +
-                "Precondition failed - Incomplete Input.";
-
-        String actualResultErrorMessageSubmitLanguageButton =
-                openBaseURL()
-                        .clickSubmitNewLanguageMenu()
-                        .clickGoButton()
-                        .getErrorMessage();
-
-        Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
-    }
+ //   @Test
+//    public void testErrorMessageSubmitLanguageButton() {
+//        final String expectedResultErrorMessageSubmitLanguageButton = "Error: " +
+//                "Precondition failed - Incomplete Input.";
+//
+//        String actualResultErrorMessageSubmitLanguageButton =
+//                openBaseURL()
+//                        .clickSubmitNewLanguageMenu()
+//                        .clickGoButton()
+//                        .getErrorMessage();
+//
+//        Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
+//    }
 
     @Test
     public void testPleaseNoteItemsQuantity() {
@@ -58,32 +59,33 @@ public class SubmitNewLanguageTest extends BaseTest {
         Assert.assertEquals(actualResultCategory,expectedResultCategory);
     }
 
-    @Test
-    public void testCaptchaErrorMessage () {
-        final String LANGUAGE = "java";
-        final String AUTHOR = "tester";
-        final String EMAIL = "jka59433@xcoxc.com";
-        final String CAPTCHA = "1";
-        final String CODE = "String";
-        final String ERROR_REASON = "Invalid security code";
-        final String PROMPT_COLOUR = "red";
-
-        openBaseURL()
-                .clickSubmitNewLanguageFooterMenu()
-                .inputLanguage(LANGUAGE)
-                .inputAuthor(AUTHOR)
-                .inputEmail(EMAIL)
-                .inputCaptcha(CAPTCHA)
-                .inputCode(CODE)
-                .clickGoButton();
-
-        SubmitNewLanguagePage submitNewLanguagePage = new SubmitNewLanguagePage(getDriver());
-
-        String actualResultErrorMessage = submitNewLanguagePage.getErrorMessage();
-        String actualResultPrompt = submitNewLanguagePage.getCaptchaStyle();
-
-        Assert.assertTrue(actualResultErrorMessage.contains(ERROR_REASON));
-        Assert.assertTrue(actualResultPrompt.contains(PROMPT_COLOUR));
-    }
+//    @Ignore
+//    @Test
+//    public void testCaptchaErrorMessage () {
+//        final String LANGUAGE = "java";
+//        final String AUTHOR = "tester";
+//        final String EMAIL = "jka59433@xcoxc.com";
+//        final String CAPTCHA = "1";
+//        final String CODE = "String";
+//        final String ERROR_REASON = "Invalid security code";
+//        final String PROMPT_COLOUR = "red";
+//
+//        openBaseURL()
+//                .clickSubmitNewLanguageFooterMenu()
+//                .inputLanguage(LANGUAGE)
+//                .inputAuthor(AUTHOR)
+//                .inputEmail(EMAIL)
+//                .inputCaptcha(CAPTCHA)
+//                .inputCode(CODE)
+//                .clickGoButton();
+//
+//        SubmitNewLanguagePage submitNewLanguagePage = new SubmitNewLanguagePage(getDriver());
+//
+//        String actualResultErrorMessage = submitNewLanguagePage.getErrorMessage();
+//        String actualResultPrompt = submitNewLanguagePage.getCaptchaStyle();
+//
+//        Assert.assertTrue(actualResultErrorMessage.contains(ERROR_REASON));
+//        Assert.assertTrue(actualResultPrompt.contains(PROMPT_COLOUR));
+//    }
 }
 
