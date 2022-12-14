@@ -23,6 +23,9 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = "//div[@id='main']/h2")
     private WebElement h2Header;
 
+    @FindBy(xpath = "//div[@id='main']/h3")
+    private List<WebElement> h3Header;
+
     final static String TOP_MENU_PATH = "//ul[@id='menu']/li/a[@href=";
 
     @FindBy(xpath = TOP_MENU_PATH + "'/']")
@@ -75,6 +78,12 @@ public abstract class MainPage extends BasePage {
     @FindBy(id = "main")
     private WebElement mainBody;
 
+    @FindBy(xpath = "//div[@id='main']//p[1]")
+    private WebElement firstParagraph;
+
+    @FindBy(xpath = "//div[@id = 'main']/p")
+    private List<WebElement> pTags;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -92,6 +101,11 @@ public abstract class MainPage extends BasePage {
     public String getH2HeaderText() {
 
         return getText(h2Header);
+    }
+
+    public List<String> getH3HeadersTexts() {
+
+        return getListText(h3Header);
     }
 
     public WebElement getH2Header() {
@@ -194,5 +208,20 @@ public abstract class MainPage extends BasePage {
     public List<WebElement> getImages() {
 
         return images;
+    }
+
+    public String getFirstParagraphText(){
+
+        return getText(firstParagraph);
+    }
+
+    public String getHref(WebElement element) {
+
+        return getAttribute(element, "href");
+    }
+
+    public int countParagraphs() {
+
+        return getListSize(pTags);
     }
 }

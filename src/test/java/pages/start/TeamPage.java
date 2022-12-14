@@ -8,28 +8,19 @@ import java.util.List;
 
 public class TeamPage extends StartSubmenuPage {
 
-    private final String WEBSITE_LINKS_BASE_PATH = "//div[@id='main']/p/a";
+    private final String TEAM_PAGE_LINKS_PATH = "//div[@id='main']/p/a";
 
-    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href='http://www.ls-la.net/']")
-    private WebElement oliverSchadeWebsiteLink;
-
-    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href='http://www.e-taste.org']")
-    private WebElement gregorScheithauerWebsiteLink;
-
-    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH + "[@href='http://sts.synflood.de/']")
-    private WebElement stefanSchelerWebsiteLink;
-
-    @FindBy(xpath = WEBSITE_LINKS_BASE_PATH)
+    @FindBy(xpath = TEAM_PAGE_LINKS_PATH)
     private List<WebElement> allTeamLinks;
 
-    @FindBy(xpath = "//div[@id='main']/h3")
-    private List<WebElement> h3Header;
+    @FindBy(xpath = TEAM_PAGE_LINKS_PATH + "[@href='http://www.ls-la.net/']")
+    private WebElement oliverSchadeWebsiteLink;
 
-    @FindBy(xpath = "//div[@id ='main']/h2")
-    private  WebElement h2Header;
+    @FindBy(xpath = TEAM_PAGE_LINKS_PATH + "[@href='http://www.e-taste.org']")
+    private WebElement gregorScheithauerWebsiteLink;
 
-    @FindBy(xpath = "//div[@id='main']/p/img[@src]")
-    private List<WebElement> allTeamImages;
+    @FindBy(xpath = TEAM_PAGE_LINKS_PATH + "[@href='http://sts.synflood.de/']")
+    private WebElement stefanSchelerWebsiteLink;
 
     public TeamPage(WebDriver driver) {
         super(driver);
@@ -47,14 +38,9 @@ public class TeamPage extends StartSubmenuPage {
         click(stefanSchelerWebsiteLink);
     }
 
-    public String getH2HeaderText() {
+    public List<String> getNamesOfTeamMembers() {
 
-        return getText(h2Header);
-    }
-
-    public List<String> getTeamNames() {
-
-        return getListText(h3Header);
+        return getH3HeadersTexts();
     }
 
     public List<String> getTeamLinks() {
@@ -64,6 +50,6 @@ public class TeamPage extends StartSubmenuPage {
 
     public int countTeamImages() {
 
-        return getListSize(allTeamImages);
+        return getListSize(getImages());
     }
 }

@@ -47,7 +47,7 @@ public class StartTest extends BaseTest {
                 "For more detailed information refer to historic information.";
 
         String teamWishes = openBaseURL()
-                .getTeamWishes();
+                .getFirstParagraphText();
 
         Assert.assertEquals(teamWishes, WISHES_FROM_THE_TEAM);
     }
@@ -57,7 +57,7 @@ public class StartTest extends BaseTest {
         final String expectedHeaderH2 = "Welcome to 99 Bottles of Beer";
 
         String actualHeader = openBaseURL()
-                .getH2();
+                .getH2HeaderText();
 
         Assert.assertEquals(actualHeader, expectedHeaderH2);
     }
@@ -81,16 +81,13 @@ public class StartTest extends BaseTest {
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
 
         HistoryPage historyPage = new HistoryPage(getDriver());
+        StartPage startPage = new StartPage(getDriver());
 
-        String oldURL =
-                openBaseURL()
-                        .getStartPageURL();
+        String oldURL = openBaseURL().getURL();
+        String actualURL = startPage.clickHistoricInformationLink().getURL();
 
-        new StartPage(getDriver()).clickHistoricInformationLink();
+        Assert.assertNotEquals(oldURL, actualURL);
 
-        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-
-        String actualURL = historyPage.getURL();
         String actualTitle = historyPage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);

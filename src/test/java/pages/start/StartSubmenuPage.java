@@ -61,4 +61,14 @@ public abstract class StartSubmenuPage extends MainPage {
 
         return getListText(startSubmenuButtons);
     }
+
+    public WebElement getHistorySubmenu() {
+
+        return historySubmenu;
+    }
+
+    public String getHistorySubmenuText() {
+
+        return getText(historySubmenu);
+    }
 }

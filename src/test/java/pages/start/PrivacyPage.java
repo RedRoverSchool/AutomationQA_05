@@ -6,23 +6,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class PrivacyPage extends StartSubmenuPage {
 
-    @FindBy(xpath="//div[@id = 'main']/p")
-    private WebElement emailAddress;
-
-    @FindBy(xpath="//div[@id = 'main']/h3")
-    private WebElement h3OliverSchadeHeader;
-
     public PrivacyPage(WebDriver driver) {
         super(driver);
     }
 
     public String getOliverSchadeSubmenuText() {
 
-        return getText(h3OliverSchadeHeader);
+        return getH3HeadersTexts().get(0);
     }
 
     public String getEmailAddress() {
 
-        return getText(emailAddress);
+        return getFirstParagraphText();
     }
 }
