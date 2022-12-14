@@ -15,13 +15,10 @@ public class API_KotlinLanguageTest extends BaseTest {
     final static String METHOD = "post";
     final static String NAME_INPUT_1 = "exampleid";
     final static String VALUE_INPUT1 = "2901";
-
     final static String NAME_INPUT_2 = "http_referer";
-    final static String VALUE_INPUT2 = "/language-kotlin-2901.html";
-
+    final static String VALUE_INPUT2 = "language-kotlin-2901.html";
     final static String NAME_SELECT = "rate";
     final static String VALUE_SELECT = "0";
-
     final static String NAME_INPUT_4 = "submitcomment";
     final static String VALUE_INPUT4 = "Vote";
 
@@ -54,7 +51,7 @@ public class API_KotlinLanguageTest extends BaseTest {
     public void test_API_HttpRequest_POST() {
         final String expectedMethod = "POST";
         final String expectedEndPoint = "vote.html";
-        final String expectedPayLoad = "exampleid=2901&http_referer=%2Flanguage-kotlin-2901.html&rate=0&submitcomment=Vote";
+        final String expectedPayLoad = PAYLOAD;
 
         List<String> httpRequest = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
@@ -81,7 +78,7 @@ public class API_KotlinLanguageTest extends BaseTest {
 
         List<String> httpResponse = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
-                .captureHttpResponses(expectedEndPoint);
+                .captureHttpResponses(TestUtils.getBaseUrl() + expectedEndPoint);
 
         KotlinLanguagePage kotlinLanguagePage = openBaseURL()
                     .clickBrowseLanguagesMenu()
@@ -93,7 +90,6 @@ public class API_KotlinLanguageTest extends BaseTest {
         Assert.assertEquals(httpResponse.get(1), expectedStatusText);
         Assert.assertEquals(httpResponse.get(2), TestUtils.getBaseUrl() + expectedEndPoint);
         Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStatndart);
-        Assert.assertEquals(httpResponse.get(4), expectedStatusCode);
         Assert.assertEquals(kotlinLanguagePage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 }
