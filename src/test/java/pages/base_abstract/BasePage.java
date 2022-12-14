@@ -126,7 +126,7 @@ public abstract class BasePage {
         return new int[0];
     }
 
-    protected boolean isImageDisplayed(WebElement image) {
+    public boolean isImageDisplayed(WebElement image) {
         try {
             boolean imageDisplayed = (Boolean) ((JavascriptExecutor) getDriver())
                     .executeScript(
