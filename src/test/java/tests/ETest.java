@@ -19,7 +19,7 @@ public class ETest extends BaseTest {
         String oldTitle = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickESubmenu()
-                .getEPageTitle();
+                .getTitle();
 
         new EPage(getDriver()).clickEnglishLink();
 

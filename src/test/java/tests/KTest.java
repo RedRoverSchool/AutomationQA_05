@@ -37,7 +37,7 @@ public class KTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickKSubmenu()
-                .getKPageURL();
+                .getURL();
 
         new KPage(getDriver()).clickKotlinLink();
 

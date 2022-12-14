@@ -19,9 +19,4 @@ public class DPage extends LetterPage {
 
         return new DelphiLanguagePage(getDriver());
     }
-
-    public String getDPageUPL() {
-
-        return getURL();
-    }
 }

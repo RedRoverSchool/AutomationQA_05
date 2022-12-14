@@ -38,7 +38,7 @@ public class CTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickCSubmenu()
-                .getCPageURL();
+                .getURL();
 
         new CPage(getDriver()).clickCheetahLink();
 

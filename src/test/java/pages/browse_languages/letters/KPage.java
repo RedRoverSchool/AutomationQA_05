@@ -3,6 +3,7 @@ package pages.browse_languages.letters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.browse_languages.languages.KotlinLanguagePage;
 
 public class KPage extends LetterPage {
 
@@ -13,12 +14,9 @@ public class KPage extends LetterPage {
         super(driver);
     }
 
-    public void clickKotlinLink() {
+    public KotlinLanguagePage clickKotlinLink() {
         click(kotlinLink);
-    }
 
-    public String getKPageURL() {
-
-        return getURL();
+        return new KotlinLanguagePage(getDriver());
     }
 }

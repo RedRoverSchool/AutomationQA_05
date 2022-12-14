@@ -24,7 +24,7 @@ public class JTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickJSubmenu()
-                .getJPageURL();
+                .getURL();
 
         new JPage(getDriver()).clickJQueryLink();
 
@@ -48,7 +48,7 @@ public class JTest extends BaseTest {
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickJSubmenu()
-                .getJPageURL();
+                .getURL();
 
         new JPage(getDriver()).clickJavaScriptLink();
 
