@@ -3,6 +3,7 @@ package pages.base_abstract;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Reporter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,6 +102,26 @@ public abstract class BasePage {
         }
 
         return visibleList;
+    }
+
+    public List<Integer> getListIntegersFromTexts(List<WebElement> list) {
+        List<Integer> numbers = new ArrayList<>();
+
+        if (list.size() > 0) {
+            List<String> texts = getListText(list);
+            for (String text : texts) {
+                try {
+                    numbers.add(Integer.parseInt(text));
+                }
+                catch (Exception e){
+                    Reporter.log("String is not parsable");
+                }
+            }
+
+            return numbers;
+        }
+
+        return numbers;
     }
 
     public int getListSize(List<WebElement> list) {

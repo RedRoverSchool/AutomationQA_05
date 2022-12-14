@@ -22,7 +22,7 @@ public class ABCTest extends BaseTest {
         ABCPage abcPage = new ABCPage(getDriver());
 
         List<String> availableLetters =
-                abcPage.getSubmenuLettersLowerCase();
+                abcPage.getSubmenuNamesInLowerCase();
 
         for(int i = 0; i < availableLetters.size(); i++) {
             submenuLetters.get(i).click();

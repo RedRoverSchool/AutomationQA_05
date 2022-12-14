@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class TablePage extends MainPage {
@@ -22,10 +22,10 @@ public abstract class TablePage extends MainPage {
     private List<WebElement> tableHeaders;
 
     @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/td[4]")
-    private List<WebElement> commentColumn;
+    private List<WebElement> commentsColumn;
 
     @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/td[2]")
-    private List<WebElement> authorColumn;
+    private List<WebElement> authorsColumn;
 
 
     final static String TABLE_MAIN_PATH = "//div[@id='main']/table/tbody/tr";
@@ -72,12 +72,6 @@ public abstract class TablePage extends MainPage {
         return getListTextInLowerCase(topRatedLanguagesLinks).get(0);
     }
 
-    public List<String> getVersionsList(WebElement element) {
-        click(element);
-
-        return getListTextInLowerCase(namesLinks);
-    }
-
     public List<String> getHeaders() {
 
         return getListText(tableHeaders);
@@ -122,36 +116,20 @@ public abstract class TablePage extends MainPage {
         return getAttribute(infoLink, "href");
     }
 
-    public List<Integer> getIntegerList(List<WebElement> list) {
-        List<Integer> integerList = new ArrayList<>();
+    public Integer getCommentWithMaxCount() {
+        Integer[] commentsCount = (Integer[]) getListIntegersFromTexts(commentsColumn).toArray();
+        Arrays.sort(commentsCount);
 
-        if (getListSize(list) > 0) {
-            for (WebElement element : list) {
-                integerList.add(Integer.valueOf(element.getText()));
-            }
-        }
-
-        return integerList;
+        return commentsCount[commentsCount.length - 1];
     }
 
-    public List<Integer> getSortedList(List<Integer> list) {
-        Collections.sort(list);
+    public List<WebElement> getComments() {
 
-        return list;
-    }
-
-    public Integer getMaxList(List<Integer> list) {
-
-        return getSortedList(list).get(list.size() - 1);
-    }
-
-    public List<Integer> getComments() {
-
-        return getIntegerList(commentColumn);
+        return commentsColumn;
     }
 
     public List<String> getAuthors() {
 
-        return getListText(authorColumn);
+        return getListText(authorsColumn);
     }
 }
