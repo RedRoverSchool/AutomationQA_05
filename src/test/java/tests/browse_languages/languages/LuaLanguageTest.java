@@ -4,35 +4,40 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.LuaLanguagePage;
-import pages.browse_languages.letters.LPage;
 
 public class LuaLanguageTest extends BaseTest {
 
     @Test
-    public void testLuaLanguageLink_NavigatesTo_LuaLanguagePage() {
+    public void testLuaLanguagePageHeader() {
+        final String expectedH2Header = "Language LUA";
 
-        final String expectedURL = "https://www.99-bottles-of-beer.net/language-lua-365.html";
-        final String expectedTitle = "99 Bottles of Beer | Language LUA";
+        String actualH2Header =
+                openBaseURL()
+                        .clickBrowseLanguagesFooterMenu()
+                        .clickLSubmenu()
+                        .clickLuaLanguage()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
+
+    @Test
+    public void testJoveProhostingComLink_NavigatesTo_ExternalLuaLanguagePage() {
+        final String expectedExternalURL = "http://jove.prohosting.com/~philho/";
+        final String expectedExternalTitle = "jove.prohosting.com";
+
+        String oldLuaLanguagePageURL =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickLSubmenu()
+                        .getURL();
 
         LuaLanguagePage luaLanguagePage = new LuaLanguagePage(getDriver());
 
-        String oldURL = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickLSubmenu()
-                .getURL();
+        luaLanguagePage.clickLuaLanguageInfoLink();
 
-        new LPage(getDriver()).clickLuaLanguage();
-
-        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-
-        String actualUrl = luaLanguagePage.getURL();
-        String actualTitle = luaLanguagePage.getTitle();
-
-        Assert.assertEquals(actualUrl, expectedURL);
-        Assert.assertEquals(actualTitle, expectedTitle);
-
-        luaLanguagePage.clickRedditLink();
-
-        Assert.assertNotEquals(actualUrl, getDriver().getCurrentUrl());
+        Assert.assertNotEquals(oldLuaLanguagePageURL, getExternalPageURL());
+        Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
+        Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
     }
 }

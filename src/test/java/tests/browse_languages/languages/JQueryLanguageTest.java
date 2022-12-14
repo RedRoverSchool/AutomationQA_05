@@ -7,10 +7,22 @@ import pages.browse_languages.languages.JQueryLanguagePage;
 
 public class JQueryLanguageTest extends BaseTest {
 
+    @Test
+    public void testJQueryLanguagePageHeader() {
+        final String expectedH2Header = "Language jQuery";
+
+        String actualH2Header =
+                openBaseURL()
+                        .clickBrowseLanguagesFooterMenu()
+                        .clickJSubmenu()
+                        .clickJQueryLanguage()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
 
     @Test
     public void testJQueryComLink_NavigatesTo_ExternalJQueryLanguagePage() {
-
         final String expectedExternalURL = "http://jquery.com";
         final String expectedExternalTitle = "jQuery";
 
@@ -28,20 +40,5 @@ public class JQueryLanguageTest extends BaseTest {
         Assert.assertNotEquals(oldJQueryLanguagePageURL, getExternalPageURL());
         Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
         Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
-    }
-
-    @Test
-    public void testJQueryLanguagePageHeader() {
-
-        final String expectedH2Header = "Language jQuery";
-
-        String actualH2Header =
-                openBaseURL()
-                        .clickBrowseLanguagesFooterMenu()
-                        .clickJSubmenu()
-                        .clickJQueryLanguage()
-                        .getH2HeaderText();
-
-        Assert.assertEquals(actualH2Header, expectedH2Header);
     }
 }

@@ -8,7 +8,6 @@ public class DelphiLanguageTest extends BaseTest {
 
     @Test
     public void testDelphiLanguagePageHeader() {
-
         final String expectedH2Header = "Language Delphi";
 
         String actualH2Header =

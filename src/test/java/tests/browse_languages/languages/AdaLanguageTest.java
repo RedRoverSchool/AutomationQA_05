@@ -8,7 +8,6 @@ public class AdaLanguageTest extends BaseTest {
 
     @Test
     public void testAdaLanguagePageHeader() {
-
         final String expectedH2Header = "Language Ada";
 
         String actualH2Header =

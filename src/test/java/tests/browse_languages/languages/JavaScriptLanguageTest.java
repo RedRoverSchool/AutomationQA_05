@@ -13,14 +13,14 @@ public class JavaScriptLanguageTest extends BaseTest {
 
     @Test
     public void testJavaScriptLanguagePageHeader() {
-
         String expectedH2Header = "Language JavaScript";
 
-        String actualH2Header = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickJSubmenu()
-                .clickJavaScriptLanguage()
-                .getH2HeaderText();
+        String actualH2Header =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickJSubmenu()
+                        .clickJavaScriptLanguage()
+                        .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);
     }

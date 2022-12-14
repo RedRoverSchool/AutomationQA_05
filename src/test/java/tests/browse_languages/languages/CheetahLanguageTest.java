@@ -8,6 +8,20 @@ import pages.browse_languages.languages.CheetahLanguagePage;
 public class CheetahLanguageTest extends BaseTest {
 
     @Test
+    public void testCheetahLanguagePageHeader() {
+        final String expectedH2Header = "Language Cheetah";
+
+        String actualH2Header =
+                openBaseURL()
+                        .clickBrowseLanguagesFooterMenu()
+                        .clickCSubmenu()
+                        .clickCheetahLanguage()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
+
+    @Test
     public void testCheetahTemplateOrgLink_NavigatesTo_ExternalCheetahLanguagePage() {
         final String expectedExternalURL = "https://cheetahtemplate.org/";
         final String expectedExternalTitle =
@@ -27,20 +41,5 @@ public class CheetahLanguageTest extends BaseTest {
         Assert.assertNotEquals(oldCheetahLanguagePageURL, getExternalPageURL());
         Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
         Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
-    }
-
-    @Test
-    public void testCheetahLanguagePageHeader() {
-
-        final String expectedH2Header = "Language Cheetah";
-
-        String actualH2Header =
-                openBaseURL()
-                        .clickBrowseLanguagesFooterMenu()
-                        .clickCSubmenu()
-                        .clickCheetahLanguage()
-                        .getH2HeaderText();
-
-        Assert.assertEquals(actualH2Header, expectedH2Header);
     }
 }

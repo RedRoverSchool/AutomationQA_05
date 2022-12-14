@@ -8,6 +8,20 @@ import pages.browse_languages.languages.YacasLanguagePage;
 public class YacasLanguageTest extends BaseTest {
 
     @Test
+    public void testYacasLanguagePageHeader() {
+        final String expectedH2Header = "Language Yacas";
+
+        String actualH2Header =
+                openBaseURL()
+                        .clickBrowseLanguagesFooterMenu()
+                        .clickYSubmenu()
+                        .clickYacasLanguage()
+                        .getH2HeaderText();
+
+        Assert.assertEquals(actualH2Header, expectedH2Header);
+    }
+
+    @Test
     public void testVotingNiceCodingIsSelected() {
 
         String expectedResult = "**** Nice Coding";
