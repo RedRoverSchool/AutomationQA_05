@@ -20,9 +20,9 @@ public class TopHitsTest extends BaseTest {
         String oldUrl = openBaseURL()
                 .clickTopListsMenu()
                 .clickTopHitsSubmenu()
-                .getTopHitsPageURL();
+                .getURL();
 
-        new TopHitsPage(getDriver()).clickShakespeareLink();
+        new TopHitsPage(getDriver()).clickShakespeareLanguage();
         Assert.assertNotEquals(oldUrl, getDriver().getCurrentUrl());
 
         String actualUrl = shakespeareLanguagePage.getURL();

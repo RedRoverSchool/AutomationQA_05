@@ -16,7 +16,7 @@ public class SubmitNewLanguageTest extends BaseTest {
                 openBaseURL()
                         .clickSubmitNewLanguageMenu()
                         .clickSubmitLanguageButton()
-                        .getErrorMessage();
+                        .getErrorMessageText();
 
         Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
     }
@@ -68,18 +68,16 @@ public class SubmitNewLanguageTest extends BaseTest {
         final String ERROR_REASON = "Invalid security code";
         final String PROMPT_COLOUR = "red";
 
-        openBaseURL()
-                .clickSubmitNewLanguageFooterMenu()
-                .inputLanguage(LANGUAGE)
-                .inputAuthor(AUTHOR)
-                .inputEmail(EMAIL)
-                .inputCaptcha(CAPTCHA)
-                .inputCode(CODE)
-                .clickGoButton();
+        SubmitNewLanguagePage submitNewLanguagePage = openBaseURL()
+                .clickSubmitNewLanguageFooterMenu();
+        submitNewLanguagePage.inputLanguage(LANGUAGE);
+        submitNewLanguagePage.inputAuthor(AUTHOR);
+        submitNewLanguagePage.inputEmail(EMAIL);
+        submitNewLanguagePage.inputCaptcha(CAPTCHA);
+        submitNewLanguagePage.inputCode(CODE);
+        submitNewLanguagePage.clickSubmitLanguageButton();
 
-        SubmitNewLanguagePage submitNewLanguagePage = new SubmitNewLanguagePage(getDriver());
-
-        String actualResultErrorMessage = submitNewLanguagePage.getErrorMessage();
+        String actualResultErrorMessage = submitNewLanguagePage.getErrorMessageText();
         String actualResultPrompt = submitNewLanguagePage.getCaptchaStyle();
 
         Assert.assertTrue(actualResultErrorMessage.contains(ERROR_REASON));

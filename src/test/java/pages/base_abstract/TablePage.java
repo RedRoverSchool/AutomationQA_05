@@ -18,13 +18,13 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = TABLE_CATEGORY_PATH + "td[2]/a")
     List<WebElement> topRatedLanguagesLinks;
 
-    @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/th")
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "th")
     private List<WebElement> tableHeaders;
 
-    @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/td[4]")
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[4]")
     private List<WebElement> commentsColumn;
 
-    @FindBy(xpath = TABLE_CATEGORY_PATH + "tr/td[2]")
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[2]")
     private List<WebElement> authorsColumn;
 
 
@@ -59,7 +59,7 @@ public abstract class TablePage extends MainPage {
         return getListTextInUpperCase(namesLinks);
     }
 
-    public int getNamesListSize() {
+    public int getSize() {
 
         return getListSize(namesLinks);
     }
@@ -74,7 +74,7 @@ public abstract class TablePage extends MainPage {
         return getListText(tableHeaders);
     }
 
-    public List<String> getFirstsLetterFromLanguagesNames(){
+    public List<String> getFirstLettersFromLanguagesNames(){
         List<String> firstLetters = new ArrayList<>();
         for (String languageName: getNamesInUpperCase()){
             firstLetters.add(languageName.substring(0, 1));

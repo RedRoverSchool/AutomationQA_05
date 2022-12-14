@@ -71,4 +71,9 @@ public abstract class StartSubmenuPage extends MainPage {
 
         return getText(historySubmenu);
     }
+
+    public String getHistorySubmenuHref() {
+
+        return getHref(historySubmenu);
+    }
 }
