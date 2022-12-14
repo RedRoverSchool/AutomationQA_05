@@ -51,8 +51,8 @@ public class TopHitsTest extends BaseTest {
         List <String>  actualTopListSubMenuLinkTexts = openBaseURL()
                 .clickTopListsMenu()
                 .getSubmenusTexts();
-        ///
-        openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinks();
+
+        openBaseURL().clickTopListsMenu().clickTopListsSubmenuLinksAndGetH2Header();
 
         Assert.assertEquals(actualCountSubMenuLinks, expectedCountSubMenuLinks);
         Assert.assertEquals(actualTopListSubMenuLinkTexts, topListsSubMenuLinkTexts);
