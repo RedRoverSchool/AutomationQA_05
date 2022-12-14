@@ -1,5 +1,6 @@
 package pages.base_abstract;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -122,6 +123,26 @@ public abstract class BasePage {
         }
 
         return numbers;
+    }
+
+    protected boolean isImageDisplayed(WebElement image) {
+        try {
+            boolean imageDisplayed = (Boolean) ((JavascriptExecutor) getDriver())
+                    .executeScript(
+                            "return (typeof arguments[0].naturalWidth !=\"undefined\" " +
+                                    "&& arguments[0].naturalWidth > 0);", image
+                    );
+            if (imageDisplayed) {
+
+                return true;
+            } else {
+                Reporter.log(image + "image is broken ", true);
+            }
+        } catch (Exception e) {
+            System.out.println("Image not loading");
+        }
+
+        return false;
     }
 
     public int getListSize(List<WebElement> list) {

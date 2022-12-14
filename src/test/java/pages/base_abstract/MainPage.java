@@ -66,6 +66,15 @@ public abstract class MainPage extends BasePage {
     @FindBy(xpath = FOOTER_MENU_PATH + "'/submitnewlanguage.html']")
     private WebElement submitNewLanguageFooterMenu;
 
+    @FindBy(tagName = "a")
+    private List<WebElement> links;
+
+    @FindBy(tagName = "img")
+    private List<WebElement> images;
+
+    @FindBy(id = "main")
+    private WebElement mainBody;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -170,5 +179,20 @@ public abstract class MainPage extends BasePage {
     public int getMenuLinksSize() {
 
         return getListSize(menuLinks);
+    }
+
+    public List<WebElement> getLinks() {
+
+        return links;
+    }
+
+    public String getPageContext() {
+
+        return mainBody.getText();
+    }
+
+    public List<WebElement> getImages() {
+
+        return images;
     }
 }

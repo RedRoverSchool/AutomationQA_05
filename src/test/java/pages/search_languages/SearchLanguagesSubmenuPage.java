@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
 
 public abstract class SearchLanguagesSubmenuPage extends TablePage {
+
     @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = './search.html']")
     private WebElement searchSubmenu;
 

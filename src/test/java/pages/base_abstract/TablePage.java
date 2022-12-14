@@ -39,9 +39,6 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = TABLE_MAIN_PATH + "[5]/td[2]/a")
     private WebElement infoLink;
 
-    @FindBy(tagName = "a")
-    private List<String> links;
-
 
     public TablePage(WebDriver driver) {
         super(driver);

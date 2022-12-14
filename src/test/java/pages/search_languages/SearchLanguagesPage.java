@@ -4,9 +4,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Reporter;
-
-import java.util.List;
 
 public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
 
@@ -16,10 +13,7 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
     @FindBy(name = "submitsearch")
     private WebElement goButton;
 
-    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = './search.html']")
-    private WebElement searchSubmenu;
-
-    @FindBy(xpath = "//form")
+    @FindBy(id = "searchlanguages")
     private WebElement searchForm;
 
     @FindBy(xpath = "//form//input[1]")
@@ -27,16 +21,6 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
 
     @FindBy(xpath = "//form//input[2]")
     private WebElement input2SearchForm;
-
-    @FindBy(id = "main")
-    private WebElement mainBody;
-
-    @FindBy(tagName = "a")
-    private List<WebElement> links;
-
-    @FindBy(tagName = "img")
-    private List<WebElement> images;
-
 
     public SearchLanguagesPage(WebDriver driver) {
         super(driver);
@@ -66,12 +50,6 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
         return this;
     }
 
-    public SearchLanguagesPage clickSearchSubmenu() {
-        click(searchSubmenu);
-
-        return this;
-    }
-
     public String getAction() {
         return getAttribute(searchForm, "action");
     }
@@ -94,40 +72,5 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
 
     public String getInput2Name() {
         return getAttribute(input2SearchForm, "name");
-    }
-
-    public String getPageContext() {
-
-        return mainBody.getText();
-    }
-
-    public List<WebElement> getLinks() {
-
-        return links;
-    }
-
-    public List<WebElement> getImages() {
-
-        return images;
-    }
-
-    public boolean isImageDisplayed(WebElement image) {
-        try {
-            boolean imageDisplayed = (Boolean) ((JavascriptExecutor) getDriver())
-                    .executeScript(
-                            "return (typeof arguments[0].naturalWidth !=\"undefined\" " +
-                                    "&& arguments[0].naturalWidth > 0);", image
-                    );
-            if (imageDisplayed) {
-
-                return true;
-            } else {
-                Reporter.log(image + "image is broken ", true);
-            }
-        } catch (Exception e) {
-            System.out.println("Image not loading");
-        }
-
-        return false;
     }
 }
