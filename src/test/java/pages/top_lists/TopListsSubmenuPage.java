@@ -7,7 +7,7 @@ import pages.base_abstract.TablePage;
 
 import java.util.List;
 
-public abstract class TopListsSubmenuPage extends TablePage {
+public class TopListsSubmenuPage extends TablePage {
 
     final static String TOP_LISTS_PATH = "//ul[@id='submenu']//a[@href=";
 
@@ -25,6 +25,9 @@ public abstract class TopListsSubmenuPage extends TablePage {
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a")
     private List<WebElement> topListSubmenus;
+
+    @FindBy(xpath = "//ul[@id = 'submenu']//a[@href='./toplist_assembly.html']")
+    private WebElement topRatedAssembly;
 
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
@@ -58,4 +61,16 @@ public abstract class TopListsSubmenuPage extends TablePage {
 
         return new TopHitsPage(getDriver());
     }
+
+    public TopRatedAssemblyPage clickTopRatedAssemblyPageSubmenu() {
+        click(topRatedAssembly);
+
+        return new TopRatedAssemblyPage(getDriver());
+    }
+
+    public String getTopListAssemblyPageURL() {
+
+        return getURL();
+    }
+
 }
