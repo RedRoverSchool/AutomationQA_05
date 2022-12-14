@@ -35,5 +35,4 @@ public class LTest extends BaseTest {
 
         Assert.assertNotEquals(actualUrl, getDriver().getCurrentUrl());
     }
-
 }
