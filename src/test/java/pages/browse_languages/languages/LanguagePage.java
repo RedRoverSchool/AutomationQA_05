@@ -24,7 +24,7 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
     @FindBy(xpath = "//div[@id='voting']/h2")
     private List<WebElement> votingHeader;
 
-    @FindBy(xpath = "//a[contains(@href, '/download/')]")
+    @FindBy(xpath = "//a[contains(@href,'/download/')]")
     private List<WebElement> downloadSourceLinks;
 
     @FindBy(xpath = "//a[@href = '#addcomment']")

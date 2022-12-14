@@ -1,4 +1,4 @@
-package tests;
+package tests.browse_languages;
 
 import base.BaseTest;
 import org.testng.Assert;

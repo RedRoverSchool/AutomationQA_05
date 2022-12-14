@@ -1,4 +1,4 @@
-package tests;
+package tests.guest_book;
 
 import base.BaseTest;
 import org.testng.Assert;
