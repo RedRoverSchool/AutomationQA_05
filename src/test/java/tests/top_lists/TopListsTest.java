@@ -20,6 +20,7 @@ public class TopListsTest extends BaseTest {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
     @Test
     public void testTopRatedAssemblySubmenu_NavigatesTo_TopRatedAssemblyPage() {
 

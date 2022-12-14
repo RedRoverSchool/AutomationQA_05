@@ -69,8 +69,6 @@ public class TopListsSubmenuPage extends TablePage {
     }
 
     public String getTopListAssemblyPageURL() {
-
         return getURL();
     }
-
 }
