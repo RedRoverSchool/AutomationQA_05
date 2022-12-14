@@ -8,7 +8,7 @@ import pages.guest_book.ReadGuestbookPage;
 import pages.search_languages.SearchLanguagesPage;
 import pages.start.StartPage;
 import pages.submit_new_language.SubmitNewLanguagePage;
-import pages.top_lists.TopListsPage;
+import pages.top_lists.TopRatedPage;
 
 import java.util.List;
 
@@ -131,10 +131,10 @@ public abstract class MainPage extends BasePage {
         return new SearchLanguagesPage(getDriver());
     }
 
-    public TopListsPage clickTopListsMenu() {
+    public TopRatedPage clickTopListsMenu() {
         click(topListsMenu);
 
-        return new TopListsPage(getDriver());
+        return new TopRatedPage(getDriver());
     }
 
     public ReadGuestbookPage clickGuestbookMenu() {
@@ -167,10 +167,10 @@ public abstract class MainPage extends BasePage {
         return new SearchLanguagesPage(getDriver());
     }
 
-    public TopListsPage clickTopListFooterMenu() {
+    public TopRatedPage clickTopListFooterMenu() {
         click(topListFooterMenu);
 
-        return new TopListsPage(getDriver());
+        return new TopRatedPage(getDriver());
     }
 
     public ReadGuestbookPage clickGuestBookFooterMenu() {

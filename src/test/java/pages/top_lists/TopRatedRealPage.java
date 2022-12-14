@@ -2,9 +2,9 @@ package pages.top_lists;
 
 import org.openqa.selenium.WebDriver;
 
-public class TopListRealPage extends TopListsSubmenuPage {
+public class TopRatedRealPage extends TopListsSubmenuPage {
 
-    public TopListRealPage(WebDriver driver) {
+    public TopRatedRealPage(WebDriver driver) {
         super(driver);
     }
 

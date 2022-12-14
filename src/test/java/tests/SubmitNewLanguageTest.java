@@ -15,7 +15,7 @@ public class SubmitNewLanguageTest extends BaseTest {
         String actualResultErrorMessageSubmitLanguageButton =
                 openBaseURL()
                         .clickSubmitNewLanguageMenu()
-                        .clickGoButton()
+                        .clickSubmitLanguageButton()
                         .getErrorMessage();
 
         Assert.assertEquals(actualResultErrorMessageSubmitLanguageButton, expectedResultErrorMessageSubmitLanguageButton);
@@ -52,7 +52,7 @@ public class SubmitNewLanguageTest extends BaseTest {
                 .clickSubmitNewLanguageFooterMenu()
                 .clickCategoryField()
                 .clickEsotericLanguageOption()
-                .clickGoButton()
+                .clickSubmitLanguageButton()
                 .getSelectedLanguageCategory();
 
         Assert.assertEquals(actualResultCategory,expectedResultCategory);

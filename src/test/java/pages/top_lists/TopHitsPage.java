@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class TopHitsPage extends TopListsSubmenuPage {
 
-    @FindBy (xpath = "//table[@id = 'category']//a[text() = 'Shakespeare']")
+    @FindBy (xpath = "//table[@id='category']//a[text()='Shakespeare']")
     private WebElement shakespeareLanguage;
 
-    @FindBy (xpath = "//table[@id = 'category']//a[text() = 'Whitespace')]")
+    @FindBy (xpath = "//table[@id='category']//a[text()='Whitespace')]")
     private WebElement whitespaceLanguage;
 
     public TopHitsPage(WebDriver driver) {

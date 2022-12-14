@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.top_lists.TopListEsotericPage;
+import pages.top_lists.TopRatedEsotericPage;
 
 
 public class TopListEsotericTest extends BaseTest {
@@ -13,9 +13,9 @@ public class TopListEsotericTest extends BaseTest {
         String topRatedRealLanguagesFirstLanguage = openBaseURL()
                 .clickTopListsMenu()
                 .clickTopRatedRealSubmenu().getMostRatedRealLanguage();
-        TopListEsotericPage topListEsotericPage = new TopListEsotericPage(getDriver());
+        TopRatedEsotericPage topRatedEsotericPage = new TopRatedEsotericPage(getDriver());
 
-        String theMostRatedEsotericLanguage = topListEsotericPage
+        String theMostRatedEsotericLanguage = topRatedEsotericPage
                 .clickTopRatedEsotericSubmenu()
                 .getMostRatedEsotericLanguage();
 
