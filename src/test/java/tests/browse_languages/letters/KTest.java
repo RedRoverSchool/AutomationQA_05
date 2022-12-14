@@ -28,11 +28,10 @@ public class KTest extends BaseTest {
 
     @Test
     public void testKotlinLink_NavigatesTo_KotlinLanguagePage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-kotlin-2901.html";
         final String expectedTitle = "99 Bottles of Beer | Language Kotlin";
 
-
+        KPage kPage = new KPage(getDriver());
         KotlinLanguagePage kotlinLanguagePage = new KotlinLanguagePage(getDriver());
 
         String oldURL = openBaseURL()
@@ -40,14 +39,11 @@ public class KTest extends BaseTest {
                 .clickKSubmenu()
                 .getURL();
 
-        new KPage(getDriver()).clickKotlinLink();
-
-        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-
-        String actualUrl = kotlinLanguagePage.getURL();
+        String actualURL = kPage.clickKotlinLanguage().getURL();
         String actualTitle = kotlinLanguagePage.getTitle();
 
-        Assert.assertEquals(actualUrl, expectedURL);
+        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

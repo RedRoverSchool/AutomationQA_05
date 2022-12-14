@@ -56,7 +56,7 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     private List<WebElement> letters;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href]")
-    private List<WebElement> submenu;
+    private List<WebElement> submenus;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
@@ -122,8 +122,10 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new MPage(getDriver());
     }
 
-    public void clickNSubmenu() {
+    public NPage clickNSubmenu() {
         click(nSubmenu);
+
+        return new NPage(getDriver());
     }
 
     public PPage clickPSubmenu() {
@@ -144,9 +146,14 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new ZPage(getDriver());
     }
 
-    public List<String> getSubmenusNames() {
+    public List<WebElement> getSubmenus() {
 
-        return getListText(submenu);
+        return submenus;
+    }
+
+    public List<String> getSubmenusNamesInLowerCase() {
+
+        return getListTextInLowerCase(submenus);
     }
 
     public String getHrefN() {
@@ -157,5 +164,10 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
     public String getHrefJ() {
 
         return getAttribute(jSubmenu, "href");
+    }
+
+    public String getSubmenuAText() {
+
+        return getText(aSubmenu);
     }
 }

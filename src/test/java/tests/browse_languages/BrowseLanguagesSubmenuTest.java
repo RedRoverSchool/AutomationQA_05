@@ -12,24 +12,15 @@ import java.util.List;
 public class BrowseLanguagesSubmenuTest extends BaseTest {
 
     @Test
-    public void testLinkAndSymbolA() {
-        final String letter = "A";
-        final String expectedLinkURL = "https://www.99-bottles-of-beer.net/a.html";
+    public void testASubmenuLink() {
+        final String expectedLink = "https://www.99-bottles-of-beer.net/a.html";
 
-        BrowseLanguagesSubmenuPage browseLanguagesSubmenuPage = openBaseURL()
-                .clickBrowseLanguagesMenu();
+        String actualLink =  openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickASubmenu()
+                .getURL();
 
-        String actualResultCurrentURL = browseLanguagesSubmenuPage.getURL();
-
-
-        String actualLinkURL = browseLanguagesSubmenuPage
-                .getLinkBySymbol(letter);
-
-        Assert.assertEquals(actualLinkURL, expectedLinkURL);
-
-        browseLanguagesSubmenuPage.clickASubmenu();
-
-        Assert.assertNotEquals(actualResultCurrentURL, expectedLinkURL);
+        Assert.assertEquals(actualLink, expectedLink);
     }
 
     @Test

@@ -9,7 +9,7 @@ import java.util.List;
 public class MTest extends BaseTest {
 
     @Test
-    public void testSortLanguagesByLetterM() {
+    public void testLanguagesNamesStartWithLetterM() {
         final String letterM = "m";
 
         List<String> listMLanguages =

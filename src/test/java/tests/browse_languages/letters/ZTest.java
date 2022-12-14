@@ -11,20 +11,18 @@ import java.util.List;
 public class ZTest extends BaseTest {
 
     @Test
-    public void testNamesOfLanguagesOnPageZStartWithZ() {
-        String expectedFirstLetter = "z";
+    public void testLanguagesNamesStartWithZ() {
+        final String letterZ = "z";
 
-        List<String> listZLanguages = openBaseURL().clickBrowseLanguagesMenu().clickZSubmenuButton().getNames();
+        List<String> zLanguages = openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickZSubmenuButton()
+                .getNamesInLowerCase();
 
-        Assert.assertTrue(listZLanguages.size() > 0);
-
-        String actualFirstLetter = null;
-        for (int i = 0; i < listZLanguages.size(); i++) {
-            actualFirstLetter = String.valueOf(listZLanguages.get(i).charAt(0));
+        Assert.assertTrue(zLanguages.size() > 0);
+        for (String language : zLanguages) {
+            Assert.assertEquals(String.valueOf(language.charAt(0)), letterZ);
         }
-
-        Assert.assertEquals(actualFirstLetter, expectedFirstLetter);
-        Assert.assertTrue(listZLanguages.size() > 0);
     }
 
     @Test
@@ -32,6 +30,7 @@ public class ZTest extends BaseTest {
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-zim-718.html";
         final String expectedTitle = "99 Bottles of Beer | Language Zim";
 
+        ZPage zPage = new ZPage(getDriver());
         ZimLanguagePage ZimLanguagePage = new ZimLanguagePage(getDriver());
 
         String oldURL = openBaseURL()
@@ -39,13 +38,10 @@ public class ZTest extends BaseTest {
                 .clickZSubmenuButton()
                 .getURL();
 
-        new ZPage(getDriver()).clickZimLink();
-
-        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-
-        String actualUrl = ZimLanguagePage.getURL();
+        String actualUrl = zPage.clickZimLanguage().getURL();
         String actualTitle = ZimLanguagePage.getTitle();
 
+        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }

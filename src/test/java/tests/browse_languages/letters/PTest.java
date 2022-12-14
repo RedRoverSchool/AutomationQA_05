@@ -11,26 +11,20 @@ import java.util.List;
 public class PTest extends BaseTest {
 
     @Test
-    public void testPLanguagesSortedAssending() {
+    public void testPLanguagesNamesSortedAscending() {
 
         List<String> pLanguagesNames = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickPSubmenu()
-                .getNames();
-
-        List<String> displayedLanguages = new ArrayList<String>();
-        List<String> sortedLanguages = new ArrayList<String>();
+                .getNamesInLowerCase();
 
         Assert.assertTrue(pLanguagesNames.size() > 0);
-        List<String> textList = new ArrayList<>();
-        List<String> textList1 = new ArrayList<>();
 
-        for (String pLanguage : pLanguagesNames) {
-            textList.add(pLanguage.toLowerCase());
-            textList1.add(pLanguage.toLowerCase());
-        }
-        Collections.sort(textList1);
+        List<String> displayedLanguages = new ArrayList<>();
+        displayedLanguages.addAll(pLanguagesNames);
 
-        Assert.assertEquals(displayedLanguages, sortedLanguages);
+        Collections.sort(pLanguagesNames);
+
+        Assert.assertEquals(displayedLanguages, pLanguagesNames);
     }
 }

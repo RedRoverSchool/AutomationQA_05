@@ -6,26 +6,27 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.WebElement;
 import pages.browse_languages.letters.ABCPage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 public class ABCTest extends BaseTest {
 
     @Test
-    public void test_ABCLetterCategoryLanguagesColumInformation() throws InterruptedException {
+    public void test_ABCLetterCategoryLanguagesColumnInformation() {
 
-        List<WebElement> submenuLetters =
+        List<WebElement> lettersSubmenus =
                  openBaseURL()
                         .clickBrowseLanguagesMenu()
-                        .getSubmenuLettersElement();
+                        .getSubmenus();
 
         ABCPage abcPage = new ABCPage(getDriver());
 
-        List<String> availableLetters =
-                abcPage.getSubmenuNamesInLowerCase();
+        List<String> namesInLowerCases = abcPage.getSubmenusNamesInLowerCase();
 
-        for(int i = 0; i < availableLetters.size(); i++) {
-            submenuLetters.get(i).click();
+        for(int i = 0; i < lettersSubmenus.size(); i++) {
+            lettersSubmenus.get(i).click();
             List<String> firstLetters = abcPage.getFirstsLetterFromLanguagesNames();
             if (i == 0) {
                 for (String letter : firstLetters) {
@@ -35,7 +36,7 @@ public class ABCTest extends BaseTest {
             }
             else {
                 for (String letter : firstLetters) {
-                    Assert.assertEquals(letter, availableLetters.get(i));
+                    Assert.assertEquals(letter, namesInLowerCases.get(i));
                 }
             }
         }
@@ -43,18 +44,19 @@ public class ABCTest extends BaseTest {
 
     @Test
     public void testABCPageURL() {
-        String expectedURL = "https://www.99-bottles-of-beer.net/abc.html";
+        final String expectedURL = "https://www.99-bottles-of-beer.net/abc.html";
 
         String actualPageURL =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .getURL();
+
         Assert.assertEquals(actualPageURL, expectedURL);
     } 
     
     @Test
     public void testDefaultHeaderForABCPage() {
-        String expectedH2Header = "Category A";
+        final String expectedH2Header = "Category A";
 
         String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
@@ -64,13 +66,16 @@ public class ABCTest extends BaseTest {
     }
 
     @Test
-    public void testTextABC() {
-        final String expectedResult = "Category A";
+    public void testTableHeaderNames() {
+        final List<String> expectedHeaderNames = new ArrayList<>(
+                Arrays.asList("Language", "Author", "Date", "Comments", "Rate"));
 
-        openBaseURL().clickBrowseLanguagesMenu();
-        ABCPage abcPage = new ABCPage(getDriver());
-        String actualResult = abcPage.getH2HeaderText();
+        List<String> actualHeaderNames =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickYSubmenu()
+                        .getHeaders();
 
-        Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertEquals(actualHeaderNames, expectedHeaderNames);
     }
 }
