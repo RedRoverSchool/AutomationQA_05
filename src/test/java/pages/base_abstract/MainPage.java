@@ -224,4 +224,9 @@ public abstract class MainPage extends BasePage {
 
         return getListSize(pTags);
     }
+
+    public String getColor(WebElement element) {
+
+        return element.getCssValue("color");
+    }
 }

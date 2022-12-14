@@ -13,9 +13,7 @@ public class JavaScriptLanguagePage extends LanguagePage {
         super(driver);
     }
 
-    public JavaScriptLanguagePage clickJavaScriptDeepLink() {
+    public void clickJavaScriptInfoLink() {
         click(JavaScriptDeepLink);
-
-        return new JavaScriptLanguagePage(getDriver());
     }
 }

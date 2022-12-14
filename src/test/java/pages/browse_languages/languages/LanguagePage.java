@@ -10,25 +10,25 @@ import java.util.List;
 public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
     @FindBy(xpath = "//div[@id='voting']/p[2]/a")
-    private List<WebElement> externalLinksList;
+    private List<WebElement> externalLinks;
 
-    @FindBy(xpath = "//div[@id = 'voting']//option[5]")
+    @FindBy(xpath = "//div[@id='voting']//option[5]")
     private WebElement niceCodingRate;
 
-    @FindBy(xpath = "//div[@id = 'alternatives']/h2")
-    private WebElement h2HeaderAlternativeVersions;
+    @FindBy(xpath = "//div[@id='alternatives']/h2")
+    private WebElement alternativeVersionsHeader;
 
-    @FindBy(xpath = "//div[@id = 'comments']/h2")
-    private WebElement h2HeaderComments;
+    @FindBy(xpath = "//div[@id='comments']/h2")
+    private WebElement commentsHeader;
 
-    @FindBy(xpath = "//div[@id = 'voting']//h2")
-    private List<WebElement> h2HeaderVoting;
+    @FindBy(xpath = "//div[@id='voting']/h2")
+    private List<WebElement> votingHeader;
 
-    @FindBy(xpath = "//a[@href = '/download/2901']")
-    private List<WebElement> linksDownload;
+    @FindBy(xpath = "//a[contains(@href, '/download/')]")
+    private List<WebElement> downloadSourceLinks;
 
     @FindBy(xpath = "//a[@href = '#addcomment']")
-    private List<WebElement> linksAddComment;
+    private List<WebElement> writeCommentLinks;
 
     @FindBy(xpath = "//a[@title= 'reddit' and @href]")
     private WebElement redditLink;
@@ -37,12 +37,12 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
         super(driver);
     }
 
-    public List<WebElement> getExternalLinksList() {
+    public List<WebElement> getExternalLinks() {
 
-        return getListIfVisible(externalLinksList);
+        return getListIfVisible(externalLinks);
     }
 
-    public LanguagePage clickNiceCoding() {
+    public LanguagePage clickNiceCodingOption() {
         click(niceCodingRate);
 
         return this;
@@ -50,32 +50,32 @@ public abstract class LanguagePage extends BrowseLanguagesSubmenuPage {
 
     public String getVotingFieldText() {
 
-        return clickNiceCoding().getText(niceCodingRate);
+        return getText(niceCodingRate);
     }
 
-    public String getH2HeaderTextAlternativeVersions() {
+    public String getAlternativeVersionsHeader() {
 
-        return getText(h2HeaderAlternativeVersions);
+        return getText(alternativeVersionsHeader);
     }
 
-    public String getH2HeaderTextComments() {
+    public String getCommentsHeader() {
 
-        return getText(h2HeaderComments);
+        return getText(commentsHeader);
     }
 
-    public List<String> getH2HeaderTextVoting() {
+    public List<String> getVotingHeader() {
 
-        return getListText(h2HeaderVoting);
+        return getListText(votingHeader);
     }
 
-    public List<String> getTextlinksDownload() {
+    public List<String> getDownloadSourceLinks() {
 
-        return getListText(linksDownload);
+        return getListText(downloadSourceLinks);
     }
 
-    public List<String> getTextlinksAddComment() {
+    public List<String> getWriteCommentLinks() {
 
-        return getListText(linksAddComment);
+        return getListText(writeCommentLinks);
     }
 
     public void clickRedditLink() {

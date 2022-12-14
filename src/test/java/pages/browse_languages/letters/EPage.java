@@ -8,14 +8,14 @@ import pages.browse_languages.languages.EnglishLanguagePage;
 public class EPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-english-966.html']")
-    private WebElement englishLink;
+    private WebElement englishLanguage;
 
     public EPage(WebDriver driver) {
         super(driver);
     }
 
-    public EnglishLanguagePage clickEnglishLink() {
-        click(englishLink);
+    public EnglishLanguagePage clickEnglishLanguage() {
+        click(englishLanguage);
 
         return new EnglishLanguagePage(getDriver());
     }

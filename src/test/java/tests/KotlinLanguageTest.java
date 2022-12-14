@@ -27,11 +27,11 @@ public class KotlinLanguageTest extends BTest {
 
         String actualH2HeaderLanguageKotlin = kotlinLanguagePage.getH2HeaderText();
         List<String> actualNamesInTextTable = kotlinLanguagePage.getTableListNames();
-        List<String> actuallinksDownload = kotlinLanguagePage.getTextlinksDownload();
-        List<String> actuallinksAddComment = kotlinLanguagePage.getTextlinksAddComment();
-        String actualH2HeaderAlternativeVersions = kotlinLanguagePage.getH2HeaderTextAlternativeVersions();
-        String actualH2HeaderComments = kotlinLanguagePage.getH2HeaderTextComments();
-        List<String> actualH2HeaderTextVoting = kotlinLanguagePage.getH2HeaderTextVoting();
+        List<String> actuallinksDownload = kotlinLanguagePage.getDownloadSourceLinks();
+        List<String> actuallinksAddComment = kotlinLanguagePage.getWriteCommentLinks();
+        String actualH2HeaderAlternativeVersions = kotlinLanguagePage.getAlternativeVersionsHeader();
+        String actualH2HeaderComments = kotlinLanguagePage.getCommentsHeader();
+        List<String> actualH2HeaderTextVoting = kotlinLanguagePage.getVotingHeader();
 
         Assert.assertEquals(actualH2HeaderLanguageKotlin, expectedH2HeaderLanguageKotlin);
         Assert.assertEquals(actualNamesInTextTable, expectedNamesInTextTable);

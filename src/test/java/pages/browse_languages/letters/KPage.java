@@ -8,14 +8,14 @@ import pages.browse_languages.languages.KotlinLanguagePage;
 public class KPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href = 'language-kotlin-2901.html']")
-    private WebElement kotlinLink;
+    private WebElement kotlinLanguage;
 
     public KPage(WebDriver driver) {
         super(driver);
     }
 
-    public KotlinLanguagePage clickKotlinLink() {
-        click(kotlinLink);
+    public KotlinLanguagePage clickKotlinLanguage() {
+        click(kotlinLanguage);
 
         return new KotlinLanguagePage(getDriver());
     }

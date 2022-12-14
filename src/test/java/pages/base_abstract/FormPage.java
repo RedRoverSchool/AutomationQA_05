@@ -4,25 +4,20 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.guest_book.SignGuestbookPage;
 
 public abstract class FormPage extends MainPage {
     @FindBy(name = "name")
     WebElement name;
 
-    @FindBy(name = "location")
-    WebElement location;
-
     @FindBy(name = "email")
     WebElement email;
 
-    @FindBy(name = "comment")
-    WebElement message;
+    @FindBy(xpath = "//div[@id='main']/p")
+    private WebElement errorMessage;
 
     @FindBy(xpath = "//a/img[@src = '/images/bb/bburl.gif']")
     WebElement urlIcon;
-
-    @FindBy(name = "submit")
-    WebElement submitButton;
 
     public FormPage(WebDriver driver) {
         super(driver);
@@ -42,5 +37,19 @@ public abstract class FormPage extends MainPage {
         alert.accept();
         alert.accept();
     }
+
+    public void inputName(String text){
+        input(text, name);
+    }
+
+    public void inputEmail(String text){
+        input(text, email);
+    }
+
+    public String getErrorMessageText() {
+
+        return getText(errorMessage);
+    }
+
 }
 

@@ -8,14 +8,14 @@ import pages.browse_languages.languages.PythonLanguagePage;
 public class PPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-python-808.html']")
-    private WebElement PythonLink;
+    private WebElement PythonLanguage;
 
     public PPage(WebDriver driver) {
         super(driver);
     }
 
-    public PythonLanguagePage clickPythonLink() {
-        click(PythonLink);
+    public PythonLanguagePage clickPythonLanguage() {
+        click(PythonLanguage);
 
         return new PythonLanguagePage(getDriver());
     }

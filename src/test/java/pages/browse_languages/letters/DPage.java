@@ -8,14 +8,14 @@ import pages.browse_languages.languages.DelphiLanguagePage;
 public class DPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-delphi-867.html']")
-    private WebElement delphiLink;
+    private WebElement delphiLanguage;
 
     public DPage(WebDriver driver) {
         super(driver);
     }
 
-    public DelphiLanguagePage clickDelphiLink() {
-        click(delphiLink);
+    public DelphiLanguagePage clickDelphiLanguage() {
+        click(delphiLanguage);
 
         return new DelphiLanguagePage(getDriver());
     }

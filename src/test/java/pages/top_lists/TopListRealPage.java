@@ -12,9 +12,4 @@ public class TopListRealPage extends TopListsSubmenuPage {
 
         return getMostRatedLanguage();
     }
-
-    public String getH2HeaderColor() {
-
-        return getH2Header().getCssValue("color");
-    }
 }

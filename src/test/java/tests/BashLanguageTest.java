@@ -31,7 +31,7 @@ public class BashLanguageTest extends BaseTest {
                 .clickBrowseLanguagesFooterMenu()
                 .clickBSubmenu()
                 .clickBashLanguageLink()
-                .getExternalLinksList()
+                .getExternalLinks()
                 .size();
 
         Assert.assertEquals(activeBookmark, expectedActiveBookmark);

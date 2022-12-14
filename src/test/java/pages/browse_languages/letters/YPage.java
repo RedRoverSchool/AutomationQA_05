@@ -9,23 +9,23 @@ import pages.browse_languages.languages.YacasLanguagePage;
 public class YPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-yabasic-64.html']")
-    private WebElement yabasicLink;
+    private WebElement yabasicLanguage;
 
     @FindBy(xpath = "//a[@href='language-yacas-65.html']")
-    private WebElement yacasLink;
+    private WebElement yacasLanguage;
 
     public YPage(WebDriver driver) {
         super(driver);
     }
 
-    public YabasicLanguagePage clickYabasicLink() {
-        click(yabasicLink);
+    public YabasicLanguagePage clickYabasicLanguage() {
+        click(yabasicLanguage);
 
         return new YabasicLanguagePage(getDriver());
     }
 
-    public YacasLanguagePage clickYacasLink() {
-        click(yacasLink);
+    public YacasLanguagePage clickYacasLanguage() {
+        click(yacasLanguage);
 
         return new YacasLanguagePage(getDriver());
     }
