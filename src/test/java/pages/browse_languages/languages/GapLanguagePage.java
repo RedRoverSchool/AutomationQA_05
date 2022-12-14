@@ -2,9 +2,9 @@ package pages.browse_languages.languages;
 
 import org.openqa.selenium.WebDriver;
 
-public class EnglishLanguagePage extends LanguagePage {
+public class GapLanguagePage extends LanguagePage {
 
-    public EnglishLanguagePage(WebDriver driver) {
+    public GapLanguagePage(WebDriver driver) {
         super(driver);
     }
 }

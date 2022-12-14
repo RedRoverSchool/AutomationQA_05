@@ -14,7 +14,7 @@ public class APage extends LetterPage {
         super(driver);
     }
 
-    public AdaLanguagePage clickAdaLanguageLanguage() {
+    public AdaLanguagePage clickAdaLanguage() {
         click(adaLanguage);
 
         return new AdaLanguagePage(getDriver());

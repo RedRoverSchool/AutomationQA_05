@@ -9,9 +9,10 @@ import pages.browse_languages.letters.CPage;
 import java.util.List;
 
 public class CTest extends BaseTest {
+
     @Test
-    public void testABCNavigationSubmenuClickLetterC() {
-        String expectedFirstLetter = "C";
+    public void testAllLanguagesStartWithLetterC() {
+        final String letterC = "C";
 
         List<String> languagesNamesInUpperCase = openBaseURL()
                 .clickBrowseLanguagesMenu()
@@ -21,18 +22,17 @@ public class CTest extends BaseTest {
         Assert.assertTrue(languagesNamesInUpperCase.size() > 0);
 
         for (String languageName : languagesNamesInUpperCase) {
-            Assert.assertEquals(
-                    languageName.toUpperCase().substring(0, 1), expectedFirstLetter
-            );
+            Assert.assertEquals(languageName.substring(0, 1), letterC);
         }
     }
 
     @Test
-    public void testCheetahLink_NavigatesTo_CheetahLanguagePage() {
+    public void testCheetahLanguageLink_NavigatesTo_CheetahLanguagePage() {
 
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-cheetah-1179.html";
         final String expectedTitle = "99 Bottles of Beer | Language Cheetah";
 
+        CPage cPage = new CPage(getDriver());
         CheetahLanguagePage cheetahLanguagePage = new CheetahLanguagePage(getDriver());
 
         String oldURL = openBaseURL()
@@ -40,14 +40,11 @@ public class CTest extends BaseTest {
                 .clickCSubmenu()
                 .getURL();
 
-        new CPage(getDriver()).clickCheetahLink();
-
-        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-
-        String actualURL = cheetahLanguagePage.getURL();
+        String newURL = cPage.clickCheetahLanguage().getURL();
         String actualTitle = cheetahLanguagePage.getTitle();
 
-        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertNotEquals(oldURL, newURL);
+        Assert.assertEquals(newURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

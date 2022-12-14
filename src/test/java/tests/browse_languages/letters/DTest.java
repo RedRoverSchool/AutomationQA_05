@@ -11,24 +11,27 @@ import java.util.List;
 public class DTest extends BaseTest {
 
     @Test
-    public void testABCNavigationSubmenuLetterD_languagesNamesStartFromLetterD(){
-        String expectedLetter = "D";
+    public void testLanguagesNamesStartWithLetterD(){
+        final String letterD = "D";
+
         List<String> languagesNamesList = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickDSubmenu()
                 .getNamesInUpperCase();
+
         Assert.assertTrue(languagesNamesList.size() > 0);
         for(String languageName:languagesNamesList){
-            Assert.assertEquals(languageName.substring(0, 1),expectedLetter);
+
+            Assert.assertEquals(languageName.substring(0, 1),letterD);
         }
     }
 
     @Test
     public void testDelphiLink_NavigatesTo_DelphiLanguagePage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-delphi-867.html";
         final String expectedTitle = "99 Bottles of Beer | Language Delphi";
 
+        DPage dPage = new DPage(getDriver());
         DelphiLanguagePage delphiLanguagePage = new DelphiLanguagePage(getDriver());
 
         String oldURL = openBaseURL()
@@ -36,14 +39,11 @@ public class DTest extends BaseTest {
                 .clickDSubmenu()
                 .getURL();
 
-        new DPage(getDriver()).clickDelphiLink();
-
-        Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-
-        String actualURL = delphiLanguagePage.getURL();
+        String newURL = dPage.clickDelphiLanguage().getURL();
         String actualTitle = delphiLanguagePage.getTitle();
 
-        Assert.assertEquals(actualURL, expectedURL);
+        Assert.assertNotEquals(oldURL, newURL);
+        Assert.assertEquals(newURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

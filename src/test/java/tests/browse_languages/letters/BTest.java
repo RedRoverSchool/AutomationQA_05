@@ -3,17 +3,16 @@ package tests.browse_languages.letters;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.openqa.selenium.WebElement;
 import pages.browse_languages.letters.BPage;
 
 import java.util.List;
 
 public class BTest extends BaseTest {
 
-    private final String letter = "b";
-
     @Test
-    public void testSortingLanguagesByLetterB() {
+    public void testLanguagesNamesStartWithLetterB() {
+        final String letterB = "b";
+
         List<String> listBLanguages =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
@@ -23,31 +22,22 @@ public class BTest extends BaseTest {
         Assert.assertTrue(listBLanguages.size() > 0);
 
         for (String languageName : listBLanguages) {
-            Assert.assertTrue(languageName.startsWith(letter));
+            Assert.assertTrue(languageName.startsWith(letterB));
         }
     }
-    
-    @Test
-    public void testCatagoryWithLetterB() {
-
-        String categoryBHeader =
-                openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .clickBSubmenu()
-                        .getH2HeaderText();
-        Assert.assertTrue(categoryBHeader.toLowerCase().endsWith(letter));
-    }
 
     @Test
-    public void testCategoryBDescription() {
-        String expectedDescriptionText = "All languages starting with the letter B are shown, sorted by Language.";
+    public void testLanguagesDescription() {
+        final String expectedDescription = "All languages starting with the letter B " +
+                "are shown, sorted by Language.";
 
-        WebElement categoryDescriptionB =
+        String actualDescription =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickBSubmenu()
                         .getPageDescription();
-        Assert.assertEquals(expectedDescriptionText, categoryDescriptionB.getText());
+
+        Assert.assertEquals(actualDescription, expectedDescription);
     }
 
     @Test
@@ -64,28 +54,23 @@ public class BTest extends BaseTest {
     }
 
     @Test
-    public void testBPageAuthorMostCommentedLanguage() {
-        final int expectedMaxComment = 12;
+    public void testLanguageAndAuthorName_ForMostCommentedLanguage() {
+        final String expectedLanguage = "BASIC";
         final String expectedAuthor = "M. Eric Carr";
 
-        BPage bPage = openBaseURL()
+        BPage bPage = new BPage(getDriver());
+
+        List<String> comments = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickBSubmenu();
-
-        int maxComment = bPage.getCommentWithMaxCount();
-
-        Assert.assertEquals(maxComment, expectedMaxComment);
-
-        int maxCommentIndex = bPage
                 .clickBSubmenu()
-                .getComments()
-                .indexOf(bPage.getCommentWithMaxCount());
+                .getComments();
 
-        String authorName = bPage
-                .clickBSubmenu()
-                .getAuthors()
-                .get(maxCommentIndex);
+        int maxCount = bPage.getMaxCount(comments);
+        int maxCountIndex = bPage.getIndexForMaxCount(comments, maxCount);
+        String actualLanguageName = bPage.getNames().get(maxCountIndex);
+        String actualAuthor = bPage.getAuthors().get(maxCountIndex);
 
-        Assert.assertEquals(authorName, expectedAuthor);
+        Assert.assertEquals(actualLanguageName, expectedLanguage);
+        Assert.assertEquals(actualAuthor, expectedAuthor);
     }
 }

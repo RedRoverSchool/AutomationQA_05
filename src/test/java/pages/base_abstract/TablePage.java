@@ -117,7 +117,7 @@ public abstract class TablePage extends MainPage {
         return getListText(authorsColumn);
     }
 
-    public List<String> getCommentsTexts() {
+    public List<String> getComments() {
 
         return getListText(commentsColumn);
     }
@@ -141,9 +141,5 @@ public abstract class TablePage extends MainPage {
         }
 
         return -1;
-    }
-
-    public int getElementIndex(WebElement element) {
-
     }
 }
