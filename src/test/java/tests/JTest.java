@@ -78,7 +78,7 @@ public class JTest extends BaseTest {
         String actualTitle = jrLanguagePage.getTitle();
 
         Assert.assertEquals(actualURL, expectedURL);
-        Assert.assertEquals(actualTitle, actualTitle);
+        Assert.assertEquals(actualTitle, expectedTitle);
 
 
 
