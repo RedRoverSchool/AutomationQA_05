@@ -3,6 +3,7 @@ package pages.browse_languages.letters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.browse_languages.languages.JRLanguagePage;
 import pages.browse_languages.languages.JavaLanguagePage;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
 
@@ -22,6 +23,9 @@ public class JPage extends LetterPage {
 
     @FindBy(id = "main")
     private WebElement mainBody;
+
+    @FindBy(xpath =" //a[@href='language-jr-999.html']")
+    private WebElement JRLink;
 
     public JPage(WebDriver driver) {
         super(driver);
@@ -51,5 +55,11 @@ public class JPage extends LetterPage {
     public String getPageContext() {
 
         return mainBody.getText();
+    }
+
+    public JRLanguagePage clickJrLink() {
+        click(JRLink);
+
+        return new JRLanguagePage(getDriver());
     }
 }
