@@ -1,15 +1,10 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.devtools.v101.domsnapshot.model.StringIndex;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.ShakespeareLanguagePage;
 import pages.top_lists.TopHitsPage;
-import pages.top_lists.TopListsPage;
-import pages.top_lists.TopListsSubmenuPage;
-
-import java.util.List;
 
 public class TopHitsTest extends BaseTest {
 
