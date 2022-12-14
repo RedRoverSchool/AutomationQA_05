@@ -15,7 +15,7 @@ public class YacasLanguageTest extends BaseTest {
         YacasLanguagePage yacasLanguagePage = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickYSubmenu()
-                .clickYacasLink();
+                .clickYacasLanguage();
 
         String actualResult = yacasLanguagePage.getVotingFieldText();
 

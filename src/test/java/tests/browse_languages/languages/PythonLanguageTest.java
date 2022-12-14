@@ -15,7 +15,7 @@ public class PythonLanguageTest extends BaseTest {
         String oldPythonLanguagePageURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickPSubmenu()
-                .clickPythonLink()
+                .clickPythonLanguage()
                 .getURL();
         PythonLanguagePage pythonLanguagePage = new PythonLanguagePage(getDriver());
 

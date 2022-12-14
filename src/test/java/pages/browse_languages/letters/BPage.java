@@ -14,7 +14,7 @@ public class BPage extends LetterPage {
         super(driver);
     }
 
-    public BashLanguagePage clickBashLanguageLanguage() {
+    public BashLanguagePage clickBashLanguage() {
         click(bashLanguage);
 
         return new BashLanguagePage(getDriver());

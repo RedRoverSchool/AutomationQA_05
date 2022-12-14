@@ -13,15 +13,16 @@ public class JavaScriptLanguageTest extends BaseTest {
 
     @Test
     public void testJavaScriptLanguagePageHeader() {
-        String EXPECTED_JS_H2_HEADER = "Language JavaScript";
 
-        String actualJSH2Header = openBaseURL()
+        String expectedH2Header = "Language JavaScript";
+
+        String actualH2Header = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickJSubmenu()
-                .clickJavaScriptLink()
+                .clickJavaScriptLanguage()
                 .getH2HeaderText();
 
-        Assert.assertEquals(actualJSH2Header, EXPECTED_JS_H2_HEADER);
+        Assert.assertEquals(actualH2Header, expectedH2Header);
     }
 
     @Test
@@ -34,7 +35,7 @@ public class JavaScriptLanguageTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickJSubmenu()
-                        .clickJavaScriptLink()
+                        .clickJavaScriptLanguage()
                         .getLanguageInfoFields();
 
         Assert.assertEquals(actualListNames, expectedListNames);
@@ -51,41 +52,27 @@ public class JavaScriptLanguageTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickJSubmenu()
-                        .clickJavaScriptLink()
+                        .clickJavaScriptLanguage()
                         .getLanguageInfoValues();
 
         Assert.assertEquals(actualListValues, expectedListValues);
     }
 
     @Test
-    public void testJSDeepLinkText() {
-
-        final String expectedDeepLink = "http://en.wikipedia.org/wiki/Javascript";
-
-        String actualDeepLink =
-                openBaseURL()
-                        .clickBrowseLanguagesMenu()
-                        .clickJSubmenu()
-                        .clickJavaScriptLink()
-                        .getHrefDeepLink();
-
-        Assert.assertEquals(actualDeepLink, expectedDeepLink);
-    }
-
-    @Test
-    public void testJavaScriptDeeLink_NavigatesTo_CorrespondingPage() {
+    public void testJavaScriptEnWikipediaOrgLink_NavigatesTo_JavaScriptLanguagePage() {
         final String expectedExternalURL = "https://en.wikipedia.org/wiki/JavaScript";
         final String expectedExternalTitle = "JavaScript - Wikipedia";
 
-        String oldJSLanguagePageURL = openBaseURL()
-                .clickBrowseLanguagesMenu()
-                .clickJSubmenu()
-                .clickJavaScriptLink()
-                .getURL();
+        String oldJSLanguagePageURL =
+                openBaseURL()
+                        .clickBrowseLanguagesMenu()
+                        .clickJSubmenu()
+                        .clickJavaScriptLanguage()
+                        .getURL();
 
         JavaScriptLanguagePage javaScriptLanguagePage = new JavaScriptLanguagePage(getDriver());
 
-        javaScriptLanguagePage.clickJavaScriptDeepLink();
+        javaScriptLanguagePage.clickJavaScriptLanguageInfoLink();
 
         Assert.assertNotEquals(oldJSLanguagePageURL, getExternalPageURL());
         Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
