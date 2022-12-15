@@ -34,17 +34,10 @@ public class EnglishLanguageTest extends BaseTest {
 
         EnglishLanguagePage englishLanguagePage = new EnglishLanguagePage(getDriver());
         String actualURL = englishLanguagePage
-                .clickFormReference()
+                .clickFormLink()
                 .getURL();
 
         Assert.assertNotEquals(oldURL,actualURL);
         Assert.assertEquals(actualURL,expectedURL);
-
-
-
-
-
-
-
     }
 }

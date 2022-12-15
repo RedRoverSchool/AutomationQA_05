@@ -15,7 +15,7 @@ public class EnglishLanguagePage extends LanguagePage {
     private WebElement writeComment;
 
     @FindBy(xpath = "//div[@id='addcomments']//a[@href='/submitnewlanguage.html']")
-    private WebElement formReference;
+    private WebElement formLink;
 
     public EnglishLanguagePage clickWriteComment() {
         click(writeComment);
@@ -23,8 +23,8 @@ public class EnglishLanguagePage extends LanguagePage {
         return this;
     }
 
-    public SubmitNewLanguagePage clickFormReference() {
-        click(formReference);
+    public SubmitNewLanguagePage clickFormLink() {
+        click(formLink);
 
         return new SubmitNewLanguagePage(getDriver());
     }
