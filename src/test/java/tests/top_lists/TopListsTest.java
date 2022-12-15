@@ -32,7 +32,7 @@ public class TopListsTest extends BaseTest {
                 .clickTopListFooterMenu()
                 .getTopListAssemblyPageURL();
 
-        new TopListsSubmenuPage(getDriver()).clickTopRatedAssemblyPageSubmenu();
+        new TopRatedAssemblyPage(getDriver()).clickTopRatedAssemblyPageSubmenu();
 
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
 
