@@ -7,7 +7,8 @@ import pages.base_abstract.TablePage;
 
 import java.util.List;
 
-public class TopListsSubmenuPage extends TablePage {
+
+    public abstract class TopListsSubmenuPage extends TablePage {
 
     final static String TOP_LISTS_PATH = "//ul[@id='submenu']//a[@href=";
 
@@ -72,5 +73,4 @@ public class TopListsSubmenuPage extends TablePage {
 
         return getURL();
     }
-
 }
