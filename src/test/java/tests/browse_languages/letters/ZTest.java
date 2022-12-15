@@ -3,6 +3,7 @@ package tests.browse_languages.letters;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.base_abstract.MainPage;
 import pages.browse_languages.languages.ZimLanguagePage;
 import pages.browse_languages.letters.ZPage;
 
@@ -44,5 +45,19 @@ public class ZTest extends BaseTest {
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testH2TextPageZ() {
+        final String expectedResult = "Category Z";
+
+        String actualResult = openBaseURL()
+                .clickTopListsMenu()
+                .clickTopHitsSubmenu()
+                .clickBrowseLanguagesFooterMenu()
+                .clickZSubmenuButton()
+                .getH2HeaderText();
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
