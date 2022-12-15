@@ -70,8 +70,6 @@ import java.util.List;
     }
 
     public String getTopListAssemblyPageURL() {
-
         return getURL();
     }
-
 }
