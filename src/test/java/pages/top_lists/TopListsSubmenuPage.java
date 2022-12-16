@@ -20,13 +20,11 @@ public abstract class TopListsSubmenuPage extends TablePage {
     @FindBy(xpath = TOP_LISTS_PATH + "'./newcomments.html']")
     private WebElement newCommentsSubmenu;
 
-    @FindBy(xpath = TOP_LISTS_PATH + "'./toplist.html']")
+    @FindBy(xpath = TOP_LISTS_PATH + "'./tophits.html']")
     private WebElement topHitsSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a")
     private List<WebElement> topListSubmenus;
-
-
 
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
