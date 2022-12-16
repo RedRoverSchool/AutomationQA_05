@@ -5,19 +5,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.MainPage;
 
+import java.util.List;
+
 public abstract class StartSubmenuPage extends MainPage {
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='team.html']")
     private WebElement teamSubmenu;
 
-    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']")
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='lyrics.html']")
     private WebElement songLyricsSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
     private WebElement historySubmenu;
 
-    @FindBy(xpath = "//ul[@id ='submenu']/li/a[@href = 'impressum.html']")
+    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='impressum.html']")
     private WebElement privacySubmenu;
+
+    @FindBy(xpath = "//ul[@id='submenu']/li/a")
+    private List<WebElement> startSubmenuButtons;
 
     public StartSubmenuPage(WebDriver driver) {
         super(driver);
@@ -50,5 +55,25 @@ public abstract class StartSubmenuPage extends MainPage {
     public String getSongLyricsSubmenuText() {
 
         return getText(songLyricsSubmenu);
+    }
+
+    public List<String> getStartSubmenuButtonsText() {
+
+        return getListText(startSubmenuButtons);
+    }
+
+    public WebElement getHistorySubmenu() {
+
+        return historySubmenu;
+    }
+
+    public String getHistorySubmenuText() {
+
+        return getText(historySubmenu);
+    }
+
+    public String getHistorySubmenuHref() {
+
+        return getHref(historySubmenu);
     }
 }

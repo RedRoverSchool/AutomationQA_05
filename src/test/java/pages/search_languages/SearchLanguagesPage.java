@@ -12,9 +12,14 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
     @FindBy(name = "submitsearch")
     private WebElement goButton;
 
-    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = './search.html']")
-    private WebElement searchSubmenu;
+    @FindBy(id = "searchlanguages")
+    private WebElement searchForm;
 
+    @FindBy(xpath = "//form//input[1]")
+    private WebElement input1SearchForm;
+
+    @FindBy(xpath = "//form//input[2]")
+    private WebElement input2SearchForm;
 
     public SearchLanguagesPage(WebDriver driver) {
         super(driver);
@@ -44,9 +49,33 @@ public class SearchLanguagesPage extends SearchLanguagesSubmenuPage {
         return this;
     }
 
-    public SearchLanguagesPage clickSearchSubmenu() {
-        click(searchSubmenu);
+    public String getAction() {
 
-        return this;
+        return getAttribute(searchForm, "action");
+    }
+
+    public String getMethod() {
+
+        return getAttribute(searchForm, "method");
+    }
+
+    public String getInput1Value() {
+
+        return getAttribute(input1SearchForm, "value");
+    }
+
+    public String getInput2Value() {
+
+        return getAttribute(input2SearchForm, "value");
+    }
+
+    public String getInput1Name() {
+
+        return getAttribute(input1SearchForm, "name");
+    }
+
+    public String getInput2Name() {
+
+        return getAttribute(input2SearchForm, "name");
     }
 }

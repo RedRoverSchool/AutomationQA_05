@@ -5,36 +5,40 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class TablePage extends MainPage {
 
-    @FindBy(xpath = "//table[@id='category']/tbody/tr/td[1]/a")
-    private List<WebElement> namesList;
+    final static String TABLE_CATEGORY_PATH = "//table[@id='category']/tbody/tr/";
 
-    @FindBy (xpath = "//table [@id = 'category']/tbody/tr/td[2]/a")
-    List <WebElement> topRatedLanguagesList;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[1]/a")
+    private List<WebElement> namesLinks;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li")
-    private List<WebElement> letters;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[2]/a")
+    List<WebElement> topRatedLanguagesLinks;
 
-    @FindBy(xpath = "//div[@id='main']//tbody/tr/td[1]/a")
-    private List<WebElement> languageColum;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "th")
+    private List<WebElement> tableHeaders;
 
-    @FindBy(xpath = "//table[@id = 'category']/tbody/tr/th")
-    private List<WebElement> tableHeaderNames;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[4]")
+    private List<WebElement> commentsColumn;
 
-    @FindBy(xpath = "//*[@id='main']/table/tbody//strong")
-    private List<WebElement> tableListNames;
+    @FindBy(xpath = TABLE_CATEGORY_PATH + "td[2]")
+    private List<WebElement> authorsColumn;
 
-    @FindBy(xpath = "//*[@id='main']/table/tbody//td[2]")
-    private List<WebElement> tableListValues;
 
-    @FindBy(tagName = "a")
-    private List<String> tableLinksList;
+    final static String TABLE_MAIN_PATH = "//div[@id='main']/table/tbody/tr";
 
-    @FindBy(xpath = "//*[@id='main']//a[contains(text(),'http://en.wikipedia.org/wiki/Javascript')]")
-    private WebElement tableDeepLink;
+    @FindBy(xpath = TABLE_MAIN_PATH + "/td/strong")
+    private List<WebElement> languageInfoFields;
+
+    @FindBy(xpath = TABLE_MAIN_PATH + "/td[2]")
+    private List<WebElement> languageInfoValues;
+
+    @FindBy(xpath = TABLE_MAIN_PATH + "[5]/td[2]/a")
+    private WebElement infoLink;
+
 
     public TablePage(WebDriver driver) {
         super(driver);
@@ -42,98 +46,56 @@ public abstract class TablePage extends MainPage {
 
     public List<String> getNames() {
 
-        return getListText(namesList);
+        return getListText(namesLinks);
     }
 
     public List<String> getNamesInLowerCase() {
 
-        return getListTextInLowerCase(namesList);
+        return getListTextInLowerCase(namesLinks);
     }
-    
+
     public List<String> getNamesInUpperCase() {
 
-        return getListTextInUpperCase(namesList);
+        return getListTextInUpperCase(namesLinks);
     }
 
-    public int getNamesListSize() {
+    public int getSize() {
 
-        return getListSize(namesList);
-    }
-
-    public String getFirstLanguageFromTheList_NameInLowerCase(List<WebElement> elementList){
-        List <String> texts = getListTextInLowerCase(elementList);
-        String textResult = "";
-        if(texts.size() > 0){
-            for (String textResult1 : texts) {
-                textResult = texts.get(0);
-            }
-
-            return textResult;
-        }
-
-        return "";
-    }
-
-    public String getFirstLanguageFromTheList_NameInUpperCase(List<WebElement> elementList){
-        List <String> texts = getListTextInUpperCase(elementList);
-        String textResult = "";
-        if(texts.size() > 0){
-            for (String textResult1 : texts) {
-                textResult = texts.get(0);
-            }
-
-            return textResult;
-        }
-
-        return "";
+        return getListSize(namesLinks);
     }
 
     public String getMostRatedLanguage() {
 
-        return getFirstLanguageFromTheList_NameInLowerCase(topRatedLanguagesList);
+        return getListTextInLowerCase(topRatedLanguagesLinks).get(0);
     }
 
-    public List<String> getSubmenuLettersLowerCase(){
+    public List<String> getHeaders() {
 
-        return getListText(letters);
+        return getListText(tableHeaders);
     }
 
-    public List<WebElement> getSubmenuLettersElement(){
-        return letters;
-    }
-
-    public List<String> getColumLanguageList(){
-
-        return getListTextInUpperCase(languageColum);
-    }
-
-    public List<String> getTableHeaderNames(){
-
-        return getListText(tableHeaderNames);
-    }
-
-
-    public List<String> getFirstsLetterFromLanguagesNames(){
+    public List<String> getFirstLettersFromLanguagesNames(){
         List<String> firstLetters = new ArrayList<>();
         for (String languageName: getNamesInUpperCase()){
-            firstLetters.add(languageName.substring(0,1));
+            firstLetters.add(languageName.substring(0, 1));
         }
+
         return firstLetters;
     }
 
-    public List<String> getTableListNames(){
+    public List<String> getLanguageInfoFields(){
 
-        return getListText(tableListNames);
+        return getListText(languageInfoFields);
     }
 
-    public List<String> getTableListValues(){
+    public List<String> getLanguageInfoValues() {
 
-        return getListText(tableListValues);
+        return getListText(languageInfoValues);
     }
 
     public List<WebElement> getLanguagesLinks() {
 
-        return namesList;
+        return namesLinks;
     }
 
     public String getTextFromRandomLink(int r, List<WebElement> elementsList) {
@@ -142,12 +104,42 @@ public abstract class TablePage extends MainPage {
     }
 
     public void clickRandomLink(int r, List<WebElement> elementsList) {
-
         click(elementsList.get(r - 1));
     }
 
-    public String getHrefDeepLink(String attribute) {
+    public String getHrefDeepLink() {
 
-        return getAttribute(tableDeepLink, "href");
+        return getAttribute(infoLink, "href");
+    }
+
+    public List<String> getAuthors() {
+
+        return getListText(authorsColumn);
+    }
+
+    public List<String> getComments() {
+
+        return getListText(commentsColumn);
+    }
+
+    public int getMaxCount(List<String> list) {
+        int[] counts = getIntegersFromTexts(list);
+
+        Arrays.sort(counts);
+
+        return counts[counts.length - 1];
+    }
+
+    public int getIndexForMaxCount(List<String> list, int number) {
+        if (list.size() > 0) {
+            for (int i = 0; i < list.size(); i ++) {
+                if (list.get(i).equals(String.valueOf(number))) {
+
+                    return i;
+                }
+            }
+        }
+
+        return -1;
     }
 }

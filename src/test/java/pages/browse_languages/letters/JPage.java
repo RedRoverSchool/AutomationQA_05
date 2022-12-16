@@ -3,42 +3,43 @@ package pages.browse_languages.letters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.browse_languages.languages.JQueryLanguagePage;
 import pages.browse_languages.languages.JavaLanguagePage;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
 
 public class JPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-java-3.html']")
-    private WebElement javaLink;
+    private WebElement javaLanguage;
 
     @FindBy(xpath = "//a[@href='language-javascript-1948.html']")
-    private WebElement javaScriptLink;
+    private WebElement javaScriptLanguage;
 
     @FindBy(xpath = "//a[@href='language-jquery-1361.html']")
-    private WebElement jQueryLink;
+    private WebElement jQueryLanguage;
+
+    final static String ACTION = "j.html";
+    final static String METHOD = "post";
 
     public JPage(WebDriver driver) {
         super(driver);
     }
 
-    public JavaLanguagePage clickJavaLink() {
-        click(javaLink);
+    public JavaLanguagePage clickJavaLanguage() {
+        click(javaLanguage);
 
         return new JavaLanguagePage(getDriver());
     }
 
-    public JavaScriptLanguagePage clickJavaScriptLink() {
-        click(javaScriptLink);
+    public JavaScriptLanguagePage clickJavaScriptLanguage() {
+        click(javaScriptLanguage);
 
         return new JavaScriptLanguagePage(getDriver());
     }
 
-    public void clickJQueryLink() {
-        click(jQueryLink);
-    }
+    public JQueryLanguagePage clickJQueryLanguage() {
+        click(jQueryLanguage);
 
-    public String getJPageURL() {
-
-        return getURL();
+        return new JQueryLanguagePage(getDriver());
     }
 }
