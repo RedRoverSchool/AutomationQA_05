@@ -48,7 +48,7 @@ public class ZTest extends BaseTest {
     }
 
     @Test
-    public void testH2TextPageZ() {
+    public void testH2Header() {
         final String expectedResult = "Category Z";
 
         String actualResult = openBaseURL()
