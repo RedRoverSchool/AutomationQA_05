@@ -105,7 +105,7 @@ public class API_KotlinLanguageTest extends BaseTest {
     }
 
     @Test
-    public void test_API_AllLanguagesLinksAreNotBroken() {
+    public void test_API_AllLinksAreNotBroken() {
         String linkURL = "";
         int responseCode;
         int actualWorkingLinksCount = 0;
