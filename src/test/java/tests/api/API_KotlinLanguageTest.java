@@ -154,7 +154,6 @@ public class API_KotlinLanguageTest extends BaseTest {
     public void test_API_AllImagesAreNotBroken() {
         String imageURL = "";
         int responseCode;
-        String reqestCode = null;
         int actualWorkingImagesCount = 0;
         KotlinLanguagePage kotlinLanguagePage = new KotlinLanguagePage(getDriver());
 
