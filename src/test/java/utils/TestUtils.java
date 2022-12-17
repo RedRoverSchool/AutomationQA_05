@@ -3,6 +3,73 @@ package utils;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public final class TestUtils {
+    private static final String bottles = " bottles of beer";
+    private static final String wall = " on the wall";
+    private static final String commaSpace = ", ";
+    private static final String dot = ".";
+    private static final String take = "Take one down and pass it around";
+    private static final String br = "\n";
+    private static final String noMore = "No more";
+
+    private static StringBuilder method1(int i, String bottles) {
+        return new StringBuilder()
+                .append(i)
+                .append(bottles)
+                .append(wall)
+                .append(commaSpace)
+                .append(i)
+                .append(bottles)
+                .append(dot)
+                .append(br)
+                .append(take)
+                .append(commaSpace);
+    }
+
+    private static StringBuilder method2(int i, String bottles) {
+
+        return new StringBuilder()
+                .append(i)
+                .append(bottles)
+                .append(wall)
+                .append(dot);
+    }
+
+    public static String createSongLyrics() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(method1(99, bottles));
+
+        for (int i = 98; i >= 1; i--) {
+            if (i == 1) {
+                sb
+                        .append(method2(i, bottles.replace("s", "")))
+                        .append(method1(i, bottles.replace("s", "")));
+                break;
+            }
+            sb
+                    .append(method2(i, bottles))
+                    .append(method1(i, bottles));
+        }
+        sb
+                .append(noMore.toLowerCase())
+                .append(bottles)
+                .append(wall)
+                .append(dot)
+                .append(noMore)
+                .append(bottles)
+                .append(wall)
+                .append(commaSpace)
+                .append(noMore.toLowerCase())
+                .append(bottles)
+                .append(dot)
+                .append(br)
+                .append("Go to the store and buy some more")
+                .append(commaSpace)
+                .append(method2(99, bottles));
+
+        return sb.toString();
+
+    }
 
     private static void getBottles(StringBuilder lyrics, int number, String btl) {
 
