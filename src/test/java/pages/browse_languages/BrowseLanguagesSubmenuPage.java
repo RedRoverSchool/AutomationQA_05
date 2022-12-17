@@ -195,4 +195,14 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
             getLetters().get(index).click();
         }
     }
+
+    public String getTextSymbol(int index) {
+
+        return getTextByIndex(index, letters);
+    }
+
+    public String getHref(int index) {
+
+        return getAttributeByIndex(index, submenus, "href");
+    }
 }
