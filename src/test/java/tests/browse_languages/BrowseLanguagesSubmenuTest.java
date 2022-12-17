@@ -1,11 +1,13 @@
 package tests.browse_languages;
 
 import base.BaseTest;
+import jdk.dynalink.beans.StaticClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.BrowseLanguagesSubmenuPage;
 import pages.browse_languages.letters.ABCPage;
 import pages.browse_languages.letters.NPage;
+import utils.StaticProvider;
 
 import java.util.List;
 
@@ -56,5 +58,32 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
         List<String> actualSubmenusNames = browseLanguagesSubmenuPage.getSubmenusNames();
 
         Assert.assertEquals(actualSubmenusNames, expectedlettersSubmenu);
+    }
+
+    @Test(dataProviderClass = StaticProvider.class, dataProvider = "letterSubmenu")
+    public void testLetterSubmenuNavigate(
+            int index, String symbol) {
+
+        ABCPage abcPage = openBaseURL()
+                .clickBrowseLanguagesMenu();
+
+        String oldURL = abcPage.getURL();
+        String oldTitle = abcPage.getTitle();
+
+        abcPage.clickOnSymdolSubmenu(index);
+
+        String actualURL = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
+
+        if (index != 1) {
+            Assert.assertNotEquals(actualURL, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+
+        Assert.assertNotEquals(actualURL, oldURL);
+
+        if (index == 1) {
+            Assert.assertEquals(actualTitle, oldTitle);
+        }
     }
 }

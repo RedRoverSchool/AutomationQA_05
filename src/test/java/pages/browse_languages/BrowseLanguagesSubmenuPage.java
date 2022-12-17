@@ -184,4 +184,15 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
         return new ZPage(getDriver());
     }
+
+    public List<WebElement> getLetters() {
+
+        return letters;
+    }
+
+    public void clickOnSymdolSubmenu(int index) {
+        if (getLetters().size() > 0) {
+            getLetters().get(index).click();
+        }
+    }
 }
