@@ -1,6 +1,7 @@
 package pages;
 
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.start.StartPage;
@@ -69,20 +70,41 @@ public class MainTest extends BaseTest {
         }
     }
 
-    @Test(dataProviderClass = TestData.class,
-            dataProvider = "MainTestData")
+    @Test(dataProviderClass = TestData.class, dataProvider = "MainTestData")
     public void testTopMenusNavigateToCorrespondingPages(
             int index, String menuText,String href, String url, String title) {
 
         StartPage startPage = openBaseURL();
 
+        List<WebElement> topMenus = startPage.getTopMenuLinks();
+
         String oldURL = startPage.getURL();
         String oldTitle = startPage.getTitle();
 
-        startPage.clickTopMenu(index);
+        String actualUrl = startPage.clickMenu(index, topMenus).getURL();
+        String actualTitle = startPage.clickMenu(index, topMenus).getTitle();
 
-        String actualUrl = getDriver().getCurrentUrl();
-        String actualTitle = getDriver().getTitle();
+        if (index != 0) {
+            Assert.assertNotEquals(actualUrl, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+        Assert.assertEquals(actualUrl, url);
+        Assert.assertEquals(actualTitle, title);
+    }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "MainTestData")
+    public void testFooterMenusNavigateToCorrespondingPages(
+            int index, String menuText,String href, String url, String title) {
+
+        StartPage startPage = openBaseURL();
+
+        List<WebElement> footerMenus = startPage.getFooterMenuLinks();
+
+        String oldURL = startPage.getURL();
+        String oldTitle = startPage.getTitle();
+
+        String actualUrl = startPage.clickMenu(index, footerMenus).getURL();
+        String actualTitle = startPage.clickMenu(index, footerMenus).getTitle();
 
         if (index != 0) {
             Assert.assertNotEquals(actualUrl, oldURL);
@@ -92,14 +114,3 @@ public class MainTest extends BaseTest {
         Assert.assertEquals(actualTitle, title);
     }
 }
-
-
-
-
-
-
-
-
-
-
-

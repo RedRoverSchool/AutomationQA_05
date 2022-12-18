@@ -4,10 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FormPage;
+import pages.start.StartPage;
 
 import java.util.List;
 
-public abstract class GuestbookSubmenuPage extends FormPage {
+public abstract class GuestbookSubmenuPage extends FormPage<ReadGuestbookPage> {
 
     private static final String GUEST_BOOK_SUBMENU_PATH = "//ul[@id='submenu']/li/a";
 
@@ -22,6 +23,11 @@ public abstract class GuestbookSubmenuPage extends FormPage {
 
     public GuestbookSubmenuPage(WebDriver driver) {
         super(driver);
+    }
+
+    protected ReadGuestbookPage createGeneric() {
+
+        return new ReadGuestbookPage(getDriver());
     }
 
     public List<String> getGuestbookSubmenus() {
