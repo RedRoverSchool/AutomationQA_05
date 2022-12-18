@@ -4,10 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
+import pages.start.StartPage;
 
 import java.util.List;
 
-public abstract class TopListsSubmenuPage extends TablePage {
+public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
 
     final static String TOP_LISTS_PATH = "//ul[@id='submenu']//a[@href=";
 
@@ -28,6 +29,11 @@ public abstract class TopListsSubmenuPage extends TablePage {
 
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
+    }
+
+    protected TopRatedPage createGeneric() {
+
+        return new TopRatedPage(getDriver());
     }
 
     public List<String> getSubmenusTexts() {

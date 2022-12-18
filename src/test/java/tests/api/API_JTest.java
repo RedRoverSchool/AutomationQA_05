@@ -8,8 +8,6 @@ import pages.browse_languages.letters.JPage;
 
 import java.util.List;
 
-import static utils.TestUtils.getBaseUrl;
-
 public class API_JTest  extends BaseTest  {
 
     final static String ACTION = "j.html";

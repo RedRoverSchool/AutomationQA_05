@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public abstract class FormPage extends MainPage {
+public abstract class FormPage<Generic> extends MainPage<Generic> {
 
     @FindBy(name = "name")
     WebElement name;
