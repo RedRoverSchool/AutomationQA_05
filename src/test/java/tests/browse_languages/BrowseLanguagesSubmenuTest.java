@@ -1,7 +1,6 @@
 package tests.browse_languages;
 
 import base.BaseTest;
-import jdk.dynalink.beans.StaticClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.BrowseLanguagesSubmenuPage;
@@ -60,7 +59,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
         Assert.assertEquals(actualSubmenusNames, expectedlettersSubmenu);
     }
 
-    @Test(dataProviderClass = StaticProvider.class, dataProvider = "letterSubmenu")
+    @Test(dataProviderClass = StaticProvider.class, dataProvider = "symbolLettersSubmenu")
     public void testLetterSubmenuNavigate(
             int index, String symbol, String url, String title) {
 

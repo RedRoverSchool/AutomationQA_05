@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 public class StaticProvider {
 
     @DataProvider(name = "letterSubmenu")
-    public static Object[][] createLetersSubmenu() {
+    public static Object[][] symbolLettersSubmenu() {
 
         return new Object[][] {
                 {0, "0-9", "https://www.99-bottles-of-beer.net/0.html", "99 Bottles of Beer | Browse category 0-9"},
