@@ -101,6 +101,11 @@ public abstract class TablePage<Generic> extends MainPage<Generic> {
 
     public String getTextFromRandomLink(int r, List<WebElement> elementsList) {
 
+        if (r == 0) {
+
+            return getText(elementsList.get(0));
+        }
+
         return getText(elementsList.get(r - 1));
     }
 
