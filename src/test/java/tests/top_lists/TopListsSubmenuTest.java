@@ -28,4 +28,30 @@ public class TopListsSubmenuTest extends BaseTest {
         Assert.assertTrue(actualSubmenuTexts.size() > 0);
         Assert.assertEquals(actualSubmenuTexts, expectedSubmenuTexts);
     }
+
+    @Test
+    public void testTopListsSubMenuLinksNavigateToRelevantPages() {
+        int expectedCountSubMenuLinks = 7;
+
+        ArrayList<String> expectedSubmenuH2HeaderTexts = new ArrayList<>();
+        expectedSubmenuH2HeaderTexts.add("Top Rated");
+        expectedSubmenuH2HeaderTexts.add("Top Rated Real Languages");
+        expectedSubmenuH2HeaderTexts.add("Top Rated Esoteric Languages");
+        expectedSubmenuH2HeaderTexts.add("Top Rated Assembly Languages");
+        expectedSubmenuH2HeaderTexts.add("Top Hits");
+        expectedSubmenuH2HeaderTexts.add("New Languages this month");
+        expectedSubmenuH2HeaderTexts.add("New Comments");
+
+        int actualCountSubMenuLinks = openBaseURL()
+                .clickTopListsMenu()
+                .getSubmenusTexts().size();
+
+        Assert.assertEquals(actualCountSubMenuLinks, expectedCountSubMenuLinks);
+
+        ArrayList<String> actualSubmenuH2HeaderTexts = openBaseURL()
+                .clickTopListsMenu()
+                .clickTopListsSubmenuLinksAndGetH2Header();
+
+        Assert.assertEquals(expectedSubmenuH2HeaderTexts, actualSubmenuH2HeaderTexts);
+    }
 }
