@@ -88,7 +88,7 @@ public class NstzyaTest extends BaseTest {
         return getElement(by, driver).getText();
     }
 
-
+    @Ignore
     @Test
     public void testSearchForLanguageByNameField_HappyPath() {
 
@@ -108,7 +108,7 @@ public class NstzyaTest extends BaseTest {
         }
     }
 
-
+    @Ignore
     @Test
     public void testAllLinksInsideMain_WhenClickingOnLinks_HappyPath() {
 
@@ -161,7 +161,7 @@ public class NstzyaTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-
+    @Ignore
     @Test
     public void testRandomLinkIsClickable_whenOpenBrowseLanguageMenu_JSubmenu_HappyPath() {
 

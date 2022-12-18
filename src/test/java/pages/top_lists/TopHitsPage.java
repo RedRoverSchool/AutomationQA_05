@@ -6,27 +6,23 @@ import org.openqa.selenium.support.FindBy;
 
 public class TopHitsPage extends TopListsSubmenuPage {
 
-    //   @FindBy (xpath = "//table[@id = 'category']//a[@href ='language-shakespeare-664.html']")
-    @FindBy (xpath = "//table[@id = 'category']//a[text() = 'Shakespeare']")
-    private WebElement shakespeareLink;
+    private static final String LANGUAGE_PATH = "//table[@id='category']";
 
-    @FindBy (xpath = "//table[@id = 'category']//a[@href = 'language-whitespace-154.html']")
-    private WebElement whitespaceLink;
+    @FindBy (xpath = LANGUAGE_PATH + "//a[text()='Shakespeare']")
+    private WebElement shakespeareLanguage;
+
+    @FindBy (xpath = LANGUAGE_PATH + "//a[text()='Whitespace')]")
+    private WebElement whitespaceLanguage;
 
     public TopHitsPage(WebDriver driver) {
         super(driver);
     }
 
-    public void clickShakespeareLink() {
-        click(shakespeareLink);
+    public void clickShakespeareLanguage() {
+        click(shakespeareLanguage);
     }
 
-    public void clickWhitespaceLink() {
-        click(whitespaceLink);
-    }
-
-    public String getTopHitsPageURL() {
-
-        return getURL();
+    public void clickWhitespaceLanguage() {
+        click(whitespaceLanguage);
     }
 }

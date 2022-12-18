@@ -1,5 +1,6 @@
 package utils;
 
+import base.BaseTest;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 
@@ -8,13 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ReportUtils {
+    private static final String BASE_URL = BaseTest.getBaseUrl();
 
-//    Reporter
-//    ITestContext
-//    ITestResult
-
-    private final static String H_LINE = " ==========================================================================================\n";
-    public final static String END_LINE = "\n______________________________________________________________________________________________________________________________";
+    private final static String H_LINE =
+            " ==========================================================================================\n";
+    public final static String END_LINE =
+            "\n______________________________________________________________________________________________________________________________";
 
     private static String getCurrentDateTime() {
         Date date = new Date();
@@ -45,11 +45,10 @@ public class ReportUtils {
     }
 
     public static String getReportHeader(ITestContext context){
-
         String header = "\tTest Run\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
         String currentDate = "\tDate: " + getCurrentDateTime() + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
         String projectName = "\tProject: AutomationQA_05" + "\n";
-        String baseURL = "\tBASE_URL: " + TestUtils.getBaseUrl() + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
+        String baseURL = "\tBASE_URL: " + BASE_URL + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
 
         return H_LINE + header + currentDate + projectName + baseURL + H_LINE;
     }
@@ -59,12 +58,6 @@ public class ReportUtils {
         String testName = method.getName();
 
         return className.substring(22, className.length() - 1) + "/" + testName;
-    }
-
-    public static String getClassName(ITestResult result) {
-        String className = result.getTestClass().toString();
-
-        return className.substring(22, className.length() - 1);
     }
 
     public static String getTestStatistics(Method method, ITestResult result) {

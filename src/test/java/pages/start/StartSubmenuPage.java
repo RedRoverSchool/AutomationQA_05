@@ -7,25 +7,58 @@ import pages.base_abstract.MainPage;
 
 import java.util.List;
 
-public abstract class StartSubmenuPage extends MainPage {
+public abstract class StartSubmenuPage extends MainPage<StartPage> {
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='team.html']")
+    private static final String START_SUBMENU_PATH = "//ul[@id='submenu']/li/a";
+
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='team.html']")
     private WebElement teamSubmenu;
 
-    @FindBy(xpath = "//ul[@id = 'submenu']/li/a[@href = 'lyrics.html']")
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='lyrics.html']")
     private WebElement songLyricsSubmenu;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='info.html']")
     private WebElement historySubmenu;
 
-    @FindBy(xpath = "//ul[@id ='submenu']/li/a[@href = 'impressum.html']")
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='impressum.html']")
     private WebElement privacySubmenu;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a")
+    @FindBy(xpath = START_SUBMENU_PATH)
     private List<WebElement> startSubmenuButtons;
 
     public StartSubmenuPage(WebDriver driver) {
         super(driver);
+    }
+
+    protected StartPage createGeneric() {
+
+        return new StartPage(getDriver());
+    }
+
+
+    public String getSongLyricsSubmenuText() {
+
+        return getText(songLyricsSubmenu);
+    }
+
+    public List<String> getStartSubmenuButtonsText() {
+
+        return getListText(startSubmenuButtons);
+    }
+
+    public WebElement getHistorySubmenu() {
+
+        return historySubmenu;
+    }
+
+    public String getHistorySubmenuText() {
+
+        return getText(historySubmenu);
+    }
+
+    public String getHistorySubmenuHref() {
+
+        return getHref(historySubmenu);
     }
 
     public TeamPage clickTeamSubmenu() {
@@ -50,15 +83,5 @@ public abstract class StartSubmenuPage extends MainPage {
         click(privacySubmenu);
 
         return new PrivacyPage(getDriver());
-    }
-
-    public String getSongLyricsSubmenuText() {
-
-        return getText(songLyricsSubmenu);
-    }
-
-    public List<String> getStartSubmenuButtonsText() {
-
-        return getListText(startSubmenuButtons);
     }
 }

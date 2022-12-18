@@ -4,52 +4,45 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class FormPage extends MainPage {
+public abstract class FormPage<Generic> extends MainPage<Generic> {
+
     @FindBy(name = "name")
     WebElement name;
-
-    @FindBy(name = "location")
-    WebElement location;
 
     @FindBy(name = "email")
     WebElement email;
 
-    @FindBy(name = "comment")
-    WebElement message;
+    @FindBy(xpath = "//div[@id='main']/p")
+    private WebElement errorMessage;
 
-    @FindBy(xpath = "//a/img[@src = '/images/bb/bburl.gif']")
+    @FindBy(xpath = "//a/img[@src='/images/bb/bburl.gif']")
     WebElement urlIcon;
-
-    @FindBy(name = "submit")
-    WebElement submitButton;
 
     public FormPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void inputName(String text){
+        input(text, name);
+    }
+
+    public void inputEmail(String text){
+        input(text, email);
+    }
+
+    public String getErrorMessageText() {
+
+        return getText(errorMessage);
     }
 
     public void clickUrlIcon() {
         click(urlIcon);
     }
 
-    public String getAlertText(WebDriverWait wait){
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-
-        return alert.getText();
-    }
-
     public String getAlertText(Alert alert){
 
         return alert.getText();
-    }
-
-    public void acceptAlert(WebDriverWait wait, String text){
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        alert.sendKeys(text);
-        alert.accept();
-        alert.accept();
     }
 
     public void acceptAlert(Alert alert, String text){
@@ -58,4 +51,3 @@ public abstract class FormPage extends MainPage {
         alert.accept();
     }
 }
-
