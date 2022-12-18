@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class TablePage extends MainPage {
+public abstract class TablePage<Generic> extends MainPage<Generic> {
 
     //Table Category
     final static String TABLE_CATEGORY_PATH = "//table[@id='category']/tbody/tr/";

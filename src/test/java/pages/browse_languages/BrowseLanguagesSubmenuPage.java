@@ -5,10 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
 import pages.browse_languages.letters.*;
+import pages.start.StartPage;
 
 import java.util.List;
 
-public abstract class BrowseLanguagesSubmenuPage extends TablePage {
+public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
     @FindBy(xpath = "//a[@href='a.html']")
     private WebElement aSubmenu;
@@ -63,6 +64,11 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
+    }
+
+    protected ABCPage createGeneric() {
+
+        return new ABCPage(getDriver());
     }
 
     public List<WebElement> getSubmenus() {
