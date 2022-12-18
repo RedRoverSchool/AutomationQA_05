@@ -13,19 +13,19 @@ import java.lang.reflect.Method;
 
 public abstract class BaseTest {
 
-    private WebDriver driver;
+    private static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
 
-    private String BASE_URL = TestUtils.getBaseUrl();
+    private WebDriver driver;
 
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
-
         Reporter.log(ReportUtils.getReportHeader(context), true);
     }
 
     @BeforeMethod
     protected void beforeMethod(Method method, ITestResult result) {
         driver = BaseUtils.createDriver();
+
         Reporter.log(ReportUtils.END_LINE, true);
         Reporter.log("TEST RUN", true);
         Reporter.log(ReportUtils.getClassNameTestName(method, result), true);
@@ -34,11 +34,17 @@ public abstract class BaseTest {
     @AfterMethod
     protected void afterMethod(Method method, ITestResult result) {
         Reporter.log(ReportUtils.getTestStatistics(method, result), true);
+
         driver.quit();
     }
 
     protected WebDriver getDriver() {
         return driver;
+    }
+
+    public static String getBaseUrl() {
+
+        return BASE_URL;
     }
 
     public StartPage openBaseURL() {

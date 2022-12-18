@@ -8,35 +8,20 @@ import java.util.List;
 
 public class LyricsPage extends StartSubmenuPage {
 
-    @FindBy(xpath = "//div[@id = 'main']/h2")
-    private WebElement h2Header;
-
-    @FindBy(xpath = "//div[@id = 'main']/p")
+    @FindBy(xpath = "//div[@id='main']/p")
     private List<WebElement> pTags;
-
-    @FindBy(xpath = "//a[@href='lyrics.html']")
-    private WebElement lyricsLink;
 
     public LyricsPage(WebDriver driver) {
         super(driver);
     }
 
-    public String getH2HeaderText() {
+    public String getSongLyrics() {
+        StringBuilder sbSongLyrics = new StringBuilder();
 
-        return getText(h2Header);
-    }
+        for (String text : getListText(pTags)) {
+            sbSongLyrics.append(text);
+        }
 
-    public int getAmountOfPTags() {
-
-        return getListSize(pTags);
-    }
-
-    public void clickLyricsLink() {
-        click(lyricsLink);
-    }
-
-    public String getLyricsPageURL() {
-
-        return getURL();
+        return sbSongLyrics.toString();
     }
 }
