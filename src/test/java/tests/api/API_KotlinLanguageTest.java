@@ -7,8 +7,6 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.KotlinLanguagePage;
-import pages.search_languages.SearchLanguagesPage;
-import utils.TestUtils;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -16,8 +14,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 import java.util.List;
-
-import static utils.TestUtils.getBaseUrl;
 
 public class API_KotlinLanguageTest extends BaseTest {
 
