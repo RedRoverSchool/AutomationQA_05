@@ -4,6 +4,9 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.start.LyricsPage;
+import utils.TestUtils;
+
+import java.util.List;
 
 public class LyricsTest extends BaseTest {
 
@@ -48,5 +51,16 @@ public class LyricsTest extends BaseTest {
 
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void test99BottlesSongLyrics() {
+        final String expectedSongLyrics = TestUtils.createSongLyrics();
+
+        String actualSongLyrics = openBaseURL()
+                .clickSongLyricsSubmenu()
+                .getSongLyrics();
+
+        Assert.assertEquals(actualSongLyrics, expectedSongLyrics);
     }
 }

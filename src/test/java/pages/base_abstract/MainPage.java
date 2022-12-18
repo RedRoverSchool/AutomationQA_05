@@ -12,7 +12,7 @@ import pages.top_lists.TopRatedPage;
 
 import java.util.List;
 
-public abstract class MainPage extends BasePage {
+public abstract class MainPage<Generic> extends BasePage {
 
     //Headers
     @FindBy(xpath = "//div[@id='header']/h1")
@@ -49,10 +49,13 @@ public abstract class MainPage extends BasePage {
     private WebElement submitNewLanguageMenu;
 
     @FindBy (xpath = "//ul[@id='menu']//li")
-    private List<WebElement> menuLinks;
+    private List<WebElement> topMenuLinks;
 
     //Footer Menu
     final static String FOOTER_MENU_PATH = "//div[@id='footer']/p/a[@href=";
+
+    @FindBy(xpath = "//div[@id='footer']/p/a")
+    private List<WebElement> footerMenuLinks;
 
     @FindBy(xpath = FOOTER_MENU_PATH + "'/']")
     private WebElement startFooterMenu;
@@ -91,6 +94,8 @@ public abstract class MainPage extends BasePage {
         super(driver);
     }
 
+    protected abstract Generic createGeneric();
+
     public String getH1LogoHeaderText() {
 
         return getText(h1LogoHeader);
@@ -113,12 +118,12 @@ public abstract class MainPage extends BasePage {
 
     public List<String> getMenuTextsInLowerCase() {
 
-        return getListTextInLowerCase(menuLinks);
+        return getListTextInLowerCase(topMenuLinks);
     }
 
     public int getMenuLinksSize() {
 
-        return getListSize(menuLinks);
+        return getListSize(topMenuLinks);
     }
 
     public List<WebElement> getLinks() {
@@ -154,6 +159,16 @@ public abstract class MainPage extends BasePage {
     public String getH2HeaderColor() {
 
         return getColor(h2Header);
+    }
+
+    public List<WebElement> getTopMenuLinks() {
+
+        return topMenuLinks;
+    }
+
+    public List<WebElement> getFooterMenuLinks() {
+
+        return footerMenuLinks;
     }
 
     public StartPage clickStartMenu() {
@@ -231,5 +246,11 @@ public abstract class MainPage extends BasePage {
     public int countParagraphs() {
 
         return getListSize(pTags);
+    }
+
+    public Generic clickMenu(int index, List<WebElement> menus) {
+        menus.get(index).click();
+
+        return createGeneric();
     }
 }

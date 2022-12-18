@@ -13,8 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-import static utils.TestUtils.getBaseUrl;
-
 public class API_SearchLanguagesTest extends BaseTest {
 
     final static String LANGUAGE_NAME = "python";

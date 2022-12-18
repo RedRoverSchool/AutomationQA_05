@@ -46,7 +46,7 @@ public class API_KotlinLanguageTest extends BaseTest {
                         .clickKSubmenu()
                         .clickKotlinLanguage();
 
-        Assert.assertEquals(kotlinLanguagePage.getAction(), TestUtils.getBaseUrl() + ACTION);
+        Assert.assertEquals(kotlinLanguagePage.getAction(), getBaseUrl() + ACTION);
         Assert.assertEquals(kotlinLanguagePage.getMethod(), METHOD);
         Assert.assertEquals(kotlinLanguagePage.getInput1Name(), NAME_INPUT_1);
         Assert.assertEquals(kotlinLanguagePage.getInput1Value(), VALUE_INPUT1);
@@ -75,7 +75,7 @@ public class API_KotlinLanguageTest extends BaseTest {
                 .clickVoteButton();
 
         Assert.assertEquals(httpRequest.get(0), expectedMethod);
-        Assert.assertEquals(httpRequest.get(1), TestUtils.getBaseUrl() + expectedEndPoint);
+        Assert.assertEquals(httpRequest.get(1), getBaseUrl() + expectedEndPoint);
         Assert.assertEquals(httpRequest.get(2).substring(9, 91), expectedPayLoad);
         Assert.assertEquals(httpRequest.get(3), "Optional.empty");
     }
@@ -89,7 +89,7 @@ public class API_KotlinLanguageTest extends BaseTest {
 
         List<String> httpResponse = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
-                .captureHttpResponses(TestUtils.getBaseUrl() + expectedEndPoint);
+                .captureHttpResponses(getBaseUrl() + expectedEndPoint);
 
         openBaseURL()
                     .clickBrowseLanguagesMenu()
@@ -99,7 +99,7 @@ public class API_KotlinLanguageTest extends BaseTest {
 
         Assert.assertEquals(httpResponse.get(0), expectedStatusCode);
         Assert.assertEquals(httpResponse.get(1), expectedStatusText);
-        Assert.assertEquals(httpResponse.get(2), TestUtils.getBaseUrl() + expectedEndPoint);
+        Assert.assertEquals(httpResponse.get(2), getBaseUrl() + expectedEndPoint);
         Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStatndart);
         Assert.assertEquals(new KotlinLanguagePage(getDriver()).getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }

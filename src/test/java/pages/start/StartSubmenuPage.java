@@ -7,7 +7,7 @@ import pages.base_abstract.MainPage;
 
 import java.util.List;
 
-public abstract class StartSubmenuPage extends MainPage {
+public abstract class StartSubmenuPage extends MainPage<StartPage> {
 
     private static final String START_SUBMENU_PATH = "//ul[@id='submenu']/li/a";
 
@@ -29,6 +29,12 @@ public abstract class StartSubmenuPage extends MainPage {
     public StartSubmenuPage(WebDriver driver) {
         super(driver);
     }
+
+    protected StartPage createGeneric() {
+
+        return new StartPage(getDriver());
+    }
+
 
     public String getSongLyricsSubmenuText() {
 

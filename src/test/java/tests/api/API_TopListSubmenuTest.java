@@ -12,8 +12,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-import static utils.TestUtils.getBaseUrl;
-
 public class API_TopListSubmenuTest extends BaseTest {
 
     @Test
