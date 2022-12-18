@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
 import pages.browse_languages.letters.*;
-import pages.start.StartPage;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import org.testng.annotations.DataProvider;
 
 public class StaticProvider {
 
-    @DataProvider(name = "letterSubmenu")
+    @DataProvider(name = "lettersSubmenu")
     public static Object[][] symbolLettersSubmenu() {
 
         return new Object[][] {
