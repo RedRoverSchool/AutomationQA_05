@@ -7,50 +7,34 @@ import pages.base_abstract.MainPage;
 
 import java.util.List;
 
-public abstract class StartSubmenuPage extends MainPage {
+public abstract class StartSubmenuPage extends MainPage<StartPage> {
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='team.html']")
+    private static final String START_SUBMENU_PATH = "//ul[@id='submenu']/li/a";
+
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='team.html']")
     private WebElement teamSubmenu;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='lyrics.html']")
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='lyrics.html']")
     private WebElement songLyricsSubmenu;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='info.html']")
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='info.html']")
     private WebElement historySubmenu;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href='impressum.html']")
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href='impressum.html']")
     private WebElement privacySubmenu;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a")
+    @FindBy(xpath = START_SUBMENU_PATH)
     private List<WebElement> startSubmenuButtons;
 
     public StartSubmenuPage(WebDriver driver) {
         super(driver);
     }
 
-    public TeamPage clickTeamSubmenu() {
-        click(teamSubmenu);
+    protected StartPage createGeneric() {
 
-        return new TeamPage(getDriver());
+        return new StartPage(getDriver());
     }
 
-    public LyricsPage clickSongLyricsSubmenu() {
-        click(songLyricsSubmenu);
-
-        return new LyricsPage(getDriver());
-    }
-
-    public HistoryPage clickHistorySubmenu() {
-        click(historySubmenu);
-
-        return new HistoryPage(getDriver());
-    }
-
-    public PrivacyPage clickPrivacySubmenu() {
-        click(privacySubmenu);
-
-        return new PrivacyPage(getDriver());
-    }
 
     public String getSongLyricsSubmenuText() {
 
@@ -75,5 +59,29 @@ public abstract class StartSubmenuPage extends MainPage {
     public String getHistorySubmenuHref() {
 
         return getHref(historySubmenu);
+    }
+
+    public TeamPage clickTeamSubmenu() {
+        click(teamSubmenu);
+
+        return new TeamPage(getDriver());
+    }
+
+    public LyricsPage clickSongLyricsSubmenu() {
+        click(songLyricsSubmenu);
+
+        return new LyricsPage(getDriver());
+    }
+
+    public HistoryPage clickHistorySubmenu() {
+        click(historySubmenu);
+
+        return new HistoryPage(getDriver());
+    }
+
+    public PrivacyPage clickPrivacySubmenu() {
+        click(privacySubmenu);
+
+        return new PrivacyPage(getDriver());
     }
 }

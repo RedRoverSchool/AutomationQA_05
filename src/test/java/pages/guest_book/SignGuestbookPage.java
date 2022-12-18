@@ -22,10 +22,8 @@ public class SignGuestbookPage extends GuestbookSubmenuPage {
         super(driver);
     }
 
-    public SignGuestbookPage inputMessage(String text){
+    public void inputMessage(String text){
         input(text, message);
-
-        return this;
     }
 
     public SignGuestbookPage clickSubmitButton(){

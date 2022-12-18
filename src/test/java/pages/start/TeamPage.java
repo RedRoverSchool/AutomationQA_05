@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TeamPage extends StartSubmenuPage {
 
-    private final String TEAM_PAGE_LINKS_PATH = "//div[@id='main']/p/a";
+    private static final String TEAM_PAGE_LINKS_PATH = "//div[@id='main']/p/a";
 
     @FindBy(xpath = TEAM_PAGE_LINKS_PATH)
     private List<WebElement> allTeamLinks;
@@ -26,18 +26,6 @@ public class TeamPage extends StartSubmenuPage {
         super(driver);
     }
 
-    public void clickOliverSchadeWebsiteLink() {
-        click(oliverSchadeWebsiteLink);
-    }
-
-    public void clickGregorScheithauerWebsiteLink() {
-        click(gregorScheithauerWebsiteLink);
-    }
-
-    public void clickStefanSchelerWebsiteLink() {
-        click(stefanSchelerWebsiteLink);
-    }
-
     public List<String> getNamesOfTeamMembers() {
 
         return getH3HeadersTexts();
@@ -51,5 +39,17 @@ public class TeamPage extends StartSubmenuPage {
     public int countTeamImages() {
 
         return getListSize(getImages());
+    }
+
+    public void clickOliverSchadeWebsiteLink() {
+        click(oliverSchadeWebsiteLink);
+    }
+
+    public void clickGregorScheithauerWebsiteLink() {
+        click(gregorScheithauerWebsiteLink);
+    }
+
+    public void clickStefanSchelerWebsiteLink() {
+        click(stefanSchelerWebsiteLink);
     }
 }

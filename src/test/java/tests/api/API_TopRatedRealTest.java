@@ -6,47 +6,66 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
-import pages.search_languages.SearchLanguagesPage;
+import pages.top_lists.TopRatedRealPage;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class API_SearchLanguagesTest extends BaseTest {
+public class API_TopRatedRealTest extends BaseTest {
 
-    final static String LANGUAGE_NAME = "python";
-    final static String ACTION = "search.html";
-    final static String METHOD = "post";
-    final static String NAME_INPUT_1 = "search";
-    final static String NAME_INPUT_2 = "submitsearch";
-    final static String VALUE_INPUT2 = "GO";
-    final static String PAYLOAD = NAME_INPUT_1 + "=" + LANGUAGE_NAME + "&" + NAME_INPUT_2 + "=" + VALUE_INPUT2;
-    final static String PAGE_CONTEXT_BEFORE_REQUEST = "Search Languages\n" + "Search for:";
+    final static String ACTION = "toplist_real.html";
 
     @Test
     public void testAttributes_DefaultValues() {
-        SearchLanguagesPage searchLanguagesPage =
-                openBaseURL().clickSearchLanguagesFooterMenu();
+        final String PAGE_CONTEXT_BEFORE_REQUEST =
+                "Top Rated Real Languages\n" +
+                "# Language Author Date Comments Rate\n" +
+                "1. REBOL Anonymous 04/20/05 1\n" +
+                "2. Express Lori Smallwood 04/20/05 0\n" +
+                "3. NetLogo (Some kind of logo for Multi Agent System) Antoine Cervoise 07/16/10 0\n" +
+                "4. clojure (More clojurisk and human readable versio) Thomas G. Kristensen 03/08/10 0\n" +
+                "5. Scheme (original version) Tim Goodwin 04/20/05 2\n" +
+                "6. Racket (Now with full and complete lyrics!) Eli Barzilay, Ian Gibson 08/10/12 0\n" +
+                "7. Haskell Iavor 03/03/06 5\n" +
+                "8. Smalltalk (Squeak, VisualWorks) Jim Freeman 07/03/05 4\n" +
+                "9. Cobra Tim Locke 07/11/10 0\n" +
+                "10. D Stewart Gordon 05/31/05 4\n" +
+                "11. OCaml (working with new versions, using printf) David Baelde 11/08/05 0\n" +
+                "12. Python (This example demonstrates the simplicity) Gerold Penz 07/23/05 15\n" +
+                "13. Sisal Pat Miller 04/20/05 3\n" +
+                "14. Ada (multitasking) tmoran[at]bix[dot]com 04/20/05 0\n" +
+                "15. Factor (Factor 0.83) John Kimber 08/23/06 0\n" +
+                "16. Self David Eddyshaw 04/20/05 0\n" +
+                "17. Forth (ANS standard) Ian Osgood 07/12/05 12\n" +
+                "18. Ruby (Using continuations, singleton classes) Victor Borja 09/15/06 9\n" +
+                "19. Modula-2 (ISO Modula-2 version) Terry Ross 08/25/08 0\n" +
+                "20. Io Laurent Vogel 04/20/05 2\n" +
+                "21. Cat Tim Locke 02/19/09 0\n" +
+                "22. Tcl (alternative version) mackenga 07/14/05 0\n" +
+                "23. PL/M-80 John Durbetaki 04/20/05 0\n" +
+                "24. Perl (bottled by Acme::EyeDrops) Andrew Savige 06/04/05 76\n" +
+                "25. Kotlin Franck Rasolo 06/22/12 0";
 
-        Assert.assertEquals(searchLanguagesPage.getAction(), getBaseUrl() + ACTION);
-        Assert.assertEquals(searchLanguagesPage.getMethod(), METHOD);
-        Assert.assertEquals(searchLanguagesPage.getInput1Name(), NAME_INPUT_1);
-        Assert.assertEquals(searchLanguagesPage.getInput2Name(), NAME_INPUT_2);
-        Assert.assertEquals(searchLanguagesPage.getInput2Value(), VALUE_INPUT2);
-        Assert.assertEquals(searchLanguagesPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
+        TopRatedRealPage topRatedRealPage = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu();
+
+        Assert.assertEquals(topRatedRealPage.getHref(), getBaseUrl() + ACTION);
+        Assert.assertEquals(topRatedRealPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 
     @Test
     public void test_API_HttpRequest_GET() {
         final String expectedMethod = "GET";
-        final String expectedEndPoint = "search.html";
+        final String expectedEndPoint = "toplist_real.html";
 
         List<String> httpRequest = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
                 .captureHttpRequests(expectedEndPoint, expectedMethod);
 
-        openBaseURL().clickSearchLanguagesFooterMenu();
+        openBaseURL()
+                .clickTopListsMenu()
+                .clickTopRatedRealSubmenu();
 
         Assert.assertEquals(httpRequest.get(0), expectedMethod);
         Assert.assertEquals(httpRequest.get(1), getBaseUrl() + expectedEndPoint);
@@ -58,73 +77,33 @@ public class API_SearchLanguagesTest extends BaseTest {
     public void test_API_HttpResponse_GET() {
         final String expectedStatusCode = "200";
         final String expectedStatusText = "OK";
-        final String expectedEndPoint = "search.html";
+        final String expectedEndPoint = "toplist_real.html";
         final double expectedResponseTimeStandard = 3;
 
         List<String> httpResponse = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
                 .captureHttpResponses(expectedEndPoint);
-
-        openBaseURL().clickSearchLanguagesFooterMenu();
-
-        Assert.assertEquals(httpResponse.get(0), expectedStatusCode);
-        Assert.assertEquals(httpResponse.get(1), expectedStatusText);
-        Assert.assertEquals(httpResponse.get(2), getBaseUrl() + expectedEndPoint);
-        Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStandard);
-    }
-
-    @Test
-    public void test_API_HttpRequest_POST() {
-
-        List<String> httpRequest = new CaptureNetworkTraffic()
-                .setUpDevTool(getDriver())
-                .captureHttpRequests(ACTION, METHOD.toUpperCase());
 
         openBaseURL()
-                .clickSearchLanguagesFooterMenu()
-                .inputSearchCriteria(LANGUAGE_NAME)
-                .clickGoButton();
-
-        Assert.assertEquals(httpRequest.get(0).toLowerCase(), METHOD);
-        Assert.assertEquals(httpRequest.get(1), getBaseUrl() + ACTION);
-        Assert.assertEquals(httpRequest.get(2), "Optional[" + PAYLOAD + "]");
-        Assert.assertEquals(httpRequest.get(3), "Optional.empty");
-    }
-
-    @Test(dependsOnMethods = "test_API_HttpRequest_POST")
-    public void test_API_HttpResponse_POST() {
-        final String expectedStatusCode = "200";
-        final String expectedStatusText = "OK";
-        final String expectedEndPoint = "search.html";
-        final double expectedResponseTimeStandard = 3;
-
-        List<String> httpResponse = new CaptureNetworkTraffic()
-                .setUpDevTool(getDriver())
-                .captureHttpResponses(expectedEndPoint);
-
-        SearchLanguagesPage searchLanguagesPage = openBaseURL()
-                .clickSearchLanguagesFooterMenu()
-                .inputSearchCriteria(LANGUAGE_NAME)
-                .clickGoButton();
+                .clickTopListsMenu()
+                .clickTopRatedRealSubmenu();
 
         Assert.assertEquals(httpResponse.get(0), expectedStatusCode);
         Assert.assertEquals(httpResponse.get(1), expectedStatusText);
         Assert.assertEquals(httpResponse.get(2), getBaseUrl() + expectedEndPoint);
         Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStandard);
-        Assert.assertNotEquals(searchLanguagesPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 
     @Test
-    public void test_API_AllLanguagesLinksAreNotBroken() {
+    public void test_API_AllTopRatedRealLanguagesListLinksAreNotBroken () {
         String linkURL = "";
         int responseCode;
         int actualWorkingLinksCount = 0;
 
         List<WebElement> aTags = openBaseURL()
-                .clickSearchLanguagesMenu()
-                .inputSearchCriteria(LANGUAGE_NAME)
-                .clickGoButton()
-                .getLanguagesLinks();
+                .clickTopListsMenu()
+                .clickTopRatedRealSubmenu()
+                .getLinks();
 
         final int expectedWorkingLinksCount = aTags.size();
         int internalLinks = expectedWorkingLinksCount;
@@ -165,12 +144,11 @@ public class API_SearchLanguagesTest extends BaseTest {
         String imageURL = "";
         int responseCode;
         int actualWorkingImagesCount = 0;
-        SearchLanguagesPage searchLanguagesPage = new SearchLanguagesPage(getDriver());
+        TopRatedRealPage topRatedRealPage = new TopRatedRealPage(getDriver());
 
         List<WebElement> imgTags = openBaseURL()
-                .clickSearchLanguagesMenu()
-                .inputSearchCriteria(LANGUAGE_NAME)
-                .clickGoButton()
+                .clickTopListsMenu()
+                .clickTopRatedRealSubmenu()
                 .getImages();
 
         final int expectedWorkingImagesCount = imgTags.size();
@@ -185,7 +163,7 @@ public class API_SearchLanguagesTest extends BaseTest {
 
                     responseCode = connection.getResponseCode();
 
-                    if (responseCode < 400 && searchLanguagesPage.isImageDisplayed(image)) {
+                    if (responseCode < 400 && topRatedRealPage.isImageDisplayed(image)) {
                         actualWorkingImagesCount++;
                     } else {
                         Reporter.log(imageURL + " is broken, responseCode " + responseCode + "OR image not displayed", true);

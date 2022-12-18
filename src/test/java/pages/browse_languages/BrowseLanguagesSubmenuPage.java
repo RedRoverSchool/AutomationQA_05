@@ -5,10 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
 import pages.browse_languages.letters.*;
+import pages.start.StartPage;
 
 import java.util.List;
 
-public abstract class BrowseLanguagesSubmenuPage extends TablePage {
+public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
     @FindBy(xpath = "//a[@href='a.html']")
     private WebElement aSubmenu;
@@ -65,6 +66,41 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         super(driver);
     }
 
+    protected ABCPage createGeneric() {
+
+        return new ABCPage(getDriver());
+    }
+
+    public List<WebElement> getSubmenus() {
+
+        return submenus;
+    }
+
+    public List<String> getSubmenusNames() {
+
+        return getListText(submenus);
+    }
+
+    public String getHrefJ() {
+
+        return getAttribute(jSubmenu, "href");
+    }
+
+    public WebElement getNSubmenu() {
+
+        return nSubmenu;
+    }
+
+    public String getNSubmenuText() {
+
+        return getText(nSubmenu);
+    }
+
+    public String getHrefN() {
+
+        return getAttribute(nSubmenu, "href");
+    }
+
     public APage clickASubmenu() {
         click(aSubmenu);
 
@@ -93,6 +129,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         click(eSubmenu);
 
         return new EPage(getDriver());
+    }
+
+    public FPage clickFSubmenu() {
+        click(fSubmenu);
+
+        return new FPage(getDriver());
     }
 
     public GPage clickGSubmenu() {
@@ -143,40 +185,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new YPage(getDriver());
     }
 
-    public ZPage clickZSubmenuButton() {
+    public ZPage clickZSubmenu() {
         click(zSubmenu);
 
         return new ZPage(getDriver());
-    }
-
-    public List<WebElement> getSubmenus() {
-
-        return submenus;
-    }
-
-    public List<String> getSubmenusNames() {
-
-        return getListText(submenus);
-    }
-
-    public String getHrefN() {
-
-        return getAttribute(nSubmenu, "href");
-    }
-
-    public String getHrefJ() {
-
-        return getAttribute(jSubmenu, "href");
-    }
-
-    public String getSubmenuAText() {
-
-        return getText(aSubmenu);
-    }
-
-    public FPage clickFSubmenu() {
-        click(fSubmenu);
-
-        return new FPage(getDriver());
     }
 }
