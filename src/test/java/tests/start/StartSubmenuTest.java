@@ -15,7 +15,7 @@ public class StartSubmenuTest extends BaseTest {
 
         LyricsPage songLyricsSubmenuPage = openBaseURL().clickSongLyricsSubmenu();
 
-        String actualURL = songLyricsSubmenuPage. getDriver().getCurrentUrl();
+        String actualURL = songLyricsSubmenuPage.getURL();
 
         Assert.assertEquals(actualURL, expectedURL);
     }
@@ -31,7 +31,9 @@ public class StartSubmenuTest extends BaseTest {
 
     @Test
     public void testStartSubmenuButtonsNames() {
-        List<String> expectedStartSubmenuButtonsNames = List.of("Team", "Song Lyrics", "History", "Privacy");
+        List<String> expectedStartSubmenuButtonsNames = List.of(
+                "Team", "Song Lyrics", "History", "Privacy"
+        );
 
         List<String> actualStartSubmenuButtonsNames =
                 openBaseURL()

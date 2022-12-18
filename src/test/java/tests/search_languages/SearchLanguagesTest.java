@@ -44,7 +44,6 @@ public class SearchLanguagesTest extends BaseTest {
 
     @Test
     public void testSearchForLanguagesByNameJava() {
-
         final String LANGUAGE_NAME = "java";
 
         List<String> languagesNames =
@@ -64,14 +63,13 @@ public class SearchLanguagesTest extends BaseTest {
 
     @Test
     public void testSearchForLanguagesNameEmpty() {
-
         int languagesNames =
                 openBaseURL()
                         .clickSearchLanguagesMenu()
                         .clickGoButton()
                         .getSize();
 
-        Assert.assertTrue(languagesNames == 0);
+        Assert.assertEquals(languagesNames, 0);
     }
 
     @Test
@@ -87,6 +85,6 @@ public class SearchLanguagesTest extends BaseTest {
                         .clickSearchSubmenu()
                         .getSize();
 
-        Assert.assertTrue(languagesNamesSize == 0);
+        Assert.assertEquals(languagesNamesSize, 0);
     }
 }

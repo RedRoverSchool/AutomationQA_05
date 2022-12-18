@@ -9,8 +9,8 @@ public class SubmitNewLanguageTest extends BaseTest {
 
     @Test
     public void testErrorMessageSubmitLanguageButton() {
-        final String expectedResultErrorMessageSubmitLanguageButton = "Error: " +
-                "Precondition failed - Incomplete Input.";
+        final String expectedResultErrorMessageSubmitLanguageButton =
+                "Error: Precondition failed - Incomplete Input.";
 
         String actualResultErrorMessageSubmitLanguageButton =
                 openBaseURL()

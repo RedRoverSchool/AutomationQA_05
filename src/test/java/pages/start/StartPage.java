@@ -10,7 +10,7 @@ import java.util.List;
 
 public class StartPage extends StartSubmenuPage {
 
-    private final String START_PAGE_LINKS_PATH = "//div[@id='main']/p/a";
+    private static final String START_PAGE_LINKS_PATH = "//div[@id='main']/p/a";
 
     @FindBy(xpath = START_PAGE_LINKS_PATH + "[@href]")
     private List<WebElement> textsWithLinks;

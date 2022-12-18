@@ -3,12 +3,75 @@ package utils;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public final class TestUtils {
+    private static final String bottles = " bottles of beer";
+    private static final String wall = " on the wall";
+    private static final String commaSpace = ", ";
+    private static final String dot = ".";
+    private static final String take = "Take one down and pass it around";
+    private static final String br = "\n";
+    private static final String noMore = "No more";
 
-    private static final String BASE_URL = "https://www.99-bottles-of-beer.net/";
+    private static StringBuilder method1(String i, String bottles, String action) {
+        return new StringBuilder()
+                .append(i)
+                .append(bottles)
+                .append(dot)
+                .append(br)
+                .append(action)
+                .append(commaSpace);
+    }
 
-    public static String getBaseUrl() {
+    private static StringBuilder method2(String i, String bottles, String separator) {
 
-        return BASE_URL;
+        return new StringBuilder()
+                .append(i)
+                .append(bottles)
+                .append(wall)
+                .append(separator);
+    }
+
+    private static StringBuilder switchNumber(String number) {
+        StringBuilder sb = new StringBuilder();
+
+        switch (number) {
+            case "99":
+                return sb.append(method2(number, bottles, commaSpace))
+                        .append(method1(number, bottles, take));
+            case "1":
+                String bottle = bottles.replace("s", "");
+
+                return sb.append(method2(number, bottle, dot))
+                        .append(method2(number, bottle, commaSpace))
+                        .append(method1(number, bottle, take));
+            case "noMore":
+                String no_more = noMore.toLowerCase();
+
+                return sb.append(method2(no_more, bottles, dot))
+                        .append(method2(noMore, bottles, commaSpace))
+                        .append(method1(no_more, bottles, "Go to the store and buy some more"))
+                        .append(method2("99", bottles, dot));
+            default:
+                return sb.append(method2(number, bottles, dot))
+                        .append(method2(number, bottles, commaSpace))
+                        .append(method1(number, bottles, take));
+        }
+    }
+
+    public static String createSongLyrics() {
+        StringBuilder sb = new StringBuilder();
+        String option = "";
+
+        for (int i = 99; i >= 0; i--) {
+            if (i == 0) {
+                option = "noMore";
+            } else {
+                option = String.valueOf(i);
+            }
+            sb.append(switchNumber(option));
+        }
+
+        return sb.toString();
+
     }
 
     private static void getBottles(StringBuilder lyrics, int number, String btl) {

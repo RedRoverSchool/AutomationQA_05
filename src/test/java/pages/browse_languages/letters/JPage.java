@@ -17,10 +17,7 @@ public class JPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-jquery-1361.html']")
     private WebElement jQueryLanguage;
-
-    final static String ACTION = "j.html";
-    final static String METHOD = "post";
-
+    
     public JPage(WebDriver driver) {
         super(driver);
     }

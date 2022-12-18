@@ -10,12 +10,10 @@ public class TopHitsTest extends BaseTest {
 
     @Test
     public void testShakespeareLink_NavigatesTo_ShakespeareLanguagePage(){
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-shakespeare-664.html";
         final String expectedTitle = "99 Bottles of Beer | Language Shakespeare";
 
-        ShakespeareLanguagePage shakespeareLanguagePage =
-                new ShakespeareLanguagePage(getDriver());
+        ShakespeareLanguagePage shakespeareLanguagePage = new ShakespeareLanguagePage(getDriver());
 
         String oldUrl = openBaseURL()
                 .clickTopListsMenu()

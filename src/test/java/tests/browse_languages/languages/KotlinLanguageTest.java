@@ -16,10 +16,10 @@ public class KotlinLanguageTest extends BTest {
         final String expectedH2HeaderAlternativeVersions = "Alternative Versions";
         final String expectedH2HeaderComments = "Comments";
 
-        List<String> expectedNamesInTextTable = List.of("Date:", "Author:", "URL:", "Comments:", "Info:", "Score:");
-        List<String> expectedLinksDownload = List.of("Download Source", "Download Source");
-        List<String> expectedLinksAddComment = List.of("Write Comment", "Write Comment");
-        List<String> expectedH2HeaderTextVoting = List.of("Voting", "Category", "Bookmarking");
+        final List<String> expectedNamesInTextTable = List.of("Date:", "Author:", "URL:", "Comments:", "Info:", "Score:");
+        final List<String> expectedLinksDownload = List.of("Download Source", "Download Source");
+        final List<String> expectedLinksAddComment = List.of("Write Comment", "Write Comment");
+        final List<String> expectedH2HeaderTextVoting = List.of("Voting", "Category", "Bookmarking");
 
         KotlinLanguagePage kotlinLanguagePage = new KotlinLanguagePage(getDriver());
 
@@ -34,7 +34,7 @@ public class KotlinLanguageTest extends BTest {
 
         List<String> actualNamesInTextTable = kotlinLanguagePage.getLanguageInfoFields();
         List<String> actualLinksDownload = kotlinLanguagePage.getDownloadSourceLinks();
-        List<String> actualLinksAddComment = kotlinLanguagePage.getWriteCommentLinks();
+        List<String> actualLinksAddComment = kotlinLanguagePage.getWriteCommentLinksTexts();
         List<String> actualH2HeaderTextVoting = kotlinLanguagePage.getVotingHeader();
 
         Assert.assertEquals(actualH2HeaderLanguageKotlin, expectedH2HeaderLanguageKotlin);

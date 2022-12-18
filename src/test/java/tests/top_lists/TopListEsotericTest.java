@@ -12,7 +12,9 @@ public class TopListEsotericTest extends BaseTest {
     public void testTheMostRatedRealLanguageIsDifferFromMostRatedEsotericLanguage() {
         String topRatedRealLanguagesFirstLanguage = openBaseURL()
                 .clickTopListsMenu()
-                .clickTopRatedRealSubmenu().getMostRatedRealLanguage();
+                .clickTopRatedRealSubmenu()
+                .getMostRatedRealLanguage();
+
         TopRatedEsotericPage topRatedEsotericPage = new TopRatedEsotericPage(getDriver());
 
         String theMostRatedEsotericLanguage = topRatedEsotericPage

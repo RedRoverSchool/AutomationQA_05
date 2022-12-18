@@ -16,7 +16,7 @@ public class ZTest extends BaseTest {
 
         List<String> zLanguages = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickZSubmenuButton()
+                .clickZSubmenu()
                 .getNamesInLowerCase();
 
         Assert.assertTrue(zLanguages.size() > 0);
@@ -35,7 +35,7 @@ public class ZTest extends BaseTest {
 
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickZSubmenuButton()
+                .clickZSubmenu()
                 .getURL();
 
         String actualUrl = zPage.clickZimLanguage().getURL();
@@ -44,5 +44,19 @@ public class ZTest extends BaseTest {
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
         Assert.assertEquals(actualUrl, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void testH2Header() {
+        final String expectedResult = "Category Z";
+
+        String actualResult = openBaseURL()
+                .clickTopListsMenu()
+                .clickTopHitsSubmenu()
+                .clickBrowseLanguagesFooterMenu()
+                .clickZSubmenu()
+                .getH2HeaderText();
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

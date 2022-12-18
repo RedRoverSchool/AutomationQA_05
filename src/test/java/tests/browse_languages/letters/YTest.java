@@ -97,6 +97,7 @@ public class YTest extends BaseTest {
                 .getLanguagesLinks();
 
         Assert.assertTrue(languageNames.size() > 0);
+        System.out.println(languageNames.size());
 
         int r = new Random().nextInt(languageNames.size());
 

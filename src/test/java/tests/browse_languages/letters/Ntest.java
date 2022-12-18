@@ -11,7 +11,6 @@ public class Ntest extends BaseTest {
 
     @Test
     public void testNSubmenu_NavigationTo_NPage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/n.html";
         final String expectedTitle = "99 Bottles of Beer | Browse category N";
 

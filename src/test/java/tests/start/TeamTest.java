@@ -10,7 +10,6 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testLsLaNetLink_NavigatesTo_ExternalOliverSchadePage() {
-
         final String expectedExternalURL = "http://www.ls-la.net/";
         final String expectedExternalTitle = "Index of /";
 
@@ -24,7 +23,6 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testETasteOrgLink_NavigatesTo_ExternalGregorScheithauer() {
-
         final String expectedExternalURL = "http://www.e-taste.org/";
         final String expectedExternalTitle = "Ce domaine a été enregistré par Youdot.io";
 
@@ -38,7 +36,6 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testStsSynfloodDe_NavigatesTo_ExternalStefanScheler() {
-
         final String expectedExternalURL = "http://sts.synflood.de/";
         final String expectedExternalTitle = "sts.synflood.de";
 
@@ -64,7 +61,9 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testTeamNames() {
-        List<String> expectedTeamNames = List.of("Oliver Schade", "Gregor Scheithauer", "Stefan Scheler");
+        final List<String> expectedTeamNames = List.of(
+                "Oliver Schade", "Gregor Scheithauer", "Stefan Scheler"
+        );
 
         List<String> actualTeamNames =
         openBaseURL()
@@ -76,7 +75,7 @@ public class TeamTest extends BaseTest {
 
     @Test
     public void testTeamLinks() {
-        List<String> expectedTeamLinks = List.of("ls-la.net", "E-Taste.org", "sts.synflood.de");
+        final List<String> expectedTeamLinks = List.of("ls-la.net", "E-Taste.org", "sts.synflood.de");
 
         List<String> actualTeamLinks =
                 openBaseURL()
