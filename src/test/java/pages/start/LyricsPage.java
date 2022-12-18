@@ -15,8 +15,13 @@ public class LyricsPage extends StartSubmenuPage {
         super(driver);
     }
 
-    public List<String> getSongLyrics() {
+    public String getSongLyrics() {
+        StringBuilder sbSongLyrics = new StringBuilder();
 
-        return getListText(pTags);
+        for (String text : getListText(pTags)) {
+            sbSongLyrics.append(text);
+        }
+
+        return sbSongLyrics.toString();
     }
 }

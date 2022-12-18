@@ -11,61 +11,64 @@ public final class TestUtils {
     private static final String br = "\n";
     private static final String noMore = "No more";
 
-    private static StringBuilder method1(int i, String bottles) {
+    private static StringBuilder method1(String i, String bottles, String action) {
         return new StringBuilder()
-                .append(i)
-                .append(bottles)
-                .append(wall)
-                .append(commaSpace)
                 .append(i)
                 .append(bottles)
                 .append(dot)
                 .append(br)
-                .append(take)
+                .append(action)
                 .append(commaSpace);
     }
 
-    private static StringBuilder method2(int i, String bottles) {
+    private static StringBuilder method2(String i, String bottles, String separator) {
 
         return new StringBuilder()
                 .append(i)
                 .append(bottles)
                 .append(wall)
-                .append(dot);
+                .append(separator);
+    }
+
+    private static StringBuilder switchNumber(String number) {
+        StringBuilder sb = new StringBuilder();
+
+        switch (number) {
+            case "99":
+                return sb.append(method2(number, bottles, commaSpace))
+                        .append(method1(number, bottles, take));
+            case "1":
+                String bottle = bottles.replace("s", "");
+
+                return sb.append(method2(number, bottle, dot))
+                        .append(method2(number, bottle, commaSpace))
+                        .append(method1(number, bottle, take));
+            case "noMore":
+                String no_more = noMore.toLowerCase();
+
+                return sb.append(method2(no_more, bottles, dot))
+                        .append(method2(noMore, bottles, commaSpace))
+                        .append(method1(no_more, bottles, "Go to the store and buy some more"))
+                        .append(method2("99", bottles, dot));
+            default:
+                return sb.append(method2(number, bottles, dot))
+                        .append(method2(number, bottles, commaSpace))
+                        .append(method1(number, bottles, take));
+        }
     }
 
     public static String createSongLyrics() {
         StringBuilder sb = new StringBuilder();
+        String option = "";
 
-        sb.append(method1(99, bottles));
-
-        for (int i = 98; i >= 1; i--) {
-            if (i == 1) {
-                sb
-                        .append(method2(i, bottles.replace("s", "")))
-                        .append(method1(i, bottles.replace("s", "")));
-                break;
+        for (int i = 99; i >= 0; i--) {
+            if (i == 0) {
+                option = "noMore";
+            } else {
+                option = String.valueOf(i);
             }
-            sb
-                    .append(method2(i, bottles))
-                    .append(method1(i, bottles));
+            sb.append(switchNumber(option));
         }
-        sb
-                .append(noMore.toLowerCase())
-                .append(bottles)
-                .append(wall)
-                .append(dot)
-                .append(noMore)
-                .append(bottles)
-                .append(wall)
-                .append(commaSpace)
-                .append(noMore.toLowerCase())
-                .append(bottles)
-                .append(dot)
-                .append(br)
-                .append("Go to the store and buy some more")
-                .append(commaSpace)
-                .append(method2(99, bottles));
 
         return sb.toString();
 

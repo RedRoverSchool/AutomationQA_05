@@ -161,6 +161,16 @@ public abstract class MainPage<Generic> extends BasePage {
         return getColor(h2Header);
     }
 
+    public List<WebElement> getTopMenuLinks() {
+
+        return topMenuLinks;
+    }
+
+    public List<WebElement> getFooterMenuLinks() {
+
+        return footerMenuLinks;
+    }
+
     public StartPage clickStartMenu() {
         click(startMenu);
 
@@ -238,20 +248,9 @@ public abstract class MainPage<Generic> extends BasePage {
         return getListSize(pTags);
     }
 
-    public List<WebElement> getTopMenuLinks() {
-
-        return topMenuLinks;
-    }
-
-    public List<WebElement> getFooterMenuLinks() {
-
-        return footerMenuLinks;
-    }
-
     public Generic clickMenu(int index, List<WebElement> menus) {
         menus.get(index).click();
 
         return createGeneric();
     }
-
 }

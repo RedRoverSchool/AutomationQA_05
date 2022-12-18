@@ -57,27 +57,10 @@ public class LyricsTest extends BaseTest {
     public void test99BottlesSongLyrics() {
         final String expectedSongLyrics = TestUtils.createSongLyrics();
 
-        List<String> songLyrics = openBaseURL()
+        String actualSongLyrics = openBaseURL()
                 .clickSongLyricsSubmenu()
                 .getSongLyrics();
-
-        StringBuilder sbSongLyrics = new StringBuilder();
-
-        for (String text : songLyrics) {
-            sbSongLyrics.append(text);
-        }
-
-        String actualSongLyrics = sbSongLyrics.toString();
 
         Assert.assertEquals(actualSongLyrics, expectedSongLyrics);
     }
 }
-
-
-
-
-
-
-
-
-
