@@ -14,8 +14,8 @@ public abstract class LetterPage extends BrowseLanguagesSubmenuPage {
         super(driver);
     }
 
-    public WebElement getPageDescription() {
+    public String getPageDescription() {
 
-        return languageDescription;
+        return getText(languageDescription);
     }
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import base.BaseTest;
 
@@ -121,6 +122,7 @@ public class AnzhelikaBaaTest extends BaseTest {
     Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Ignore
     @Test
     public void testH2TagText_WhenSearchingLanguagesStartWithLetterA_HappyPath() {
         final String expectedResult = "Category A";

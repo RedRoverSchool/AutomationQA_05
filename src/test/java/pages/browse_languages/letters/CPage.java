@@ -8,14 +8,14 @@ import pages.browse_languages.languages.CheetahLanguagePage;
 public class CPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-cheetah-1179.html']")
-    private WebElement cheetahLink;
+    private WebElement cheetahLanguage;
 
     public CPage(WebDriver driver) {
         super(driver);
     }
 
-    public CheetahLanguagePage clickCheetahLink() {
-        click(cheetahLink);
+    public CheetahLanguagePage clickCheetahLanguage() {
+        click(cheetahLanguage);
 
         return new CheetahLanguagePage(getDriver());
     }

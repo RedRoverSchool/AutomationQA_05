@@ -9,7 +9,7 @@ import java.util.List;
 public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
     @FindBy(xpath = "//p/input[@name='submitlanguage']")
-    private WebElement submitLanguage;
+    private WebElement submitLanguageButton;
 
     @FindBy(xpath = "//div[@id='main']/ul/li")
     private List<WebElement> bullets;
@@ -35,14 +35,12 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     @FindBy(name = "code")
     private WebElement code;
 
-    final String STYLE = "style";
-
     public SubmitNewLanguagePage(WebDriver driver) {
         super(driver);
     }
 
-    public SubmitNewLanguagePage clickGoButton() {
-        click(submitLanguage);
+    public SubmitNewLanguagePage clickSubmitLanguageButton() {
+        click(submitLanguageButton);
 
         return this;
     }
@@ -95,9 +93,6 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
     public String getCaptchaStyle() {
 
-        return captcha.getAttribute(STYLE);
+        return captcha.getAttribute("style");
     }
 }
-
-
-
