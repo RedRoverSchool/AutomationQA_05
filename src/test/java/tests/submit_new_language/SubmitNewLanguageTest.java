@@ -2,6 +2,7 @@ package tests.submit_new_language;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.submit_new_language.SubmitNewLanguagePage;
 
@@ -84,4 +85,3 @@ public class SubmitNewLanguageTest extends BaseTest {
         Assert.assertTrue(actualResultPrompt.contains(PROMPT_COLOUR));
     }
 }
-

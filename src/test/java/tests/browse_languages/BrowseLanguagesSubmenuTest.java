@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.browse_languages.BrowseLanguagesSubmenuPage;
 import pages.browse_languages.letters.ABCPage;
 import pages.browse_languages.letters.NPage;
+import utils.StaticProvider;
 
 import java.util.List;
 
@@ -56,5 +57,33 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
         List<String> actualSubmenusNames = browseLanguagesSubmenuPage.getSubmenusNames();
 
         Assert.assertEquals(actualSubmenusNames, expectedlettersSubmenu);
+    }
+
+    @Test(dataProviderClass = StaticProvider.class, dataProvider = "lettersSubmenu")
+    public void testLetterSubmenuNavigate(
+            int index, String symbol, String url, String title) {
+
+        ABCPage abcPage = openBaseURL()
+                .clickBrowseLanguagesMenu();
+
+        String oldURL = abcPage.getURL();
+        String oldTitle = abcPage.getTitle();
+        String actualSymbol =  abcPage.getTextSymbol(index);
+        String actualURLHref = abcPage.getHref(index);
+
+        abcPage.clickOnSymdolSubmenu(index);
+
+        String actualURL = getDriver().getCurrentUrl();
+        String actualTitle = getDriver().getTitle();
+
+        if (index != 1) {
+            Assert.assertNotEquals(actualURL, oldURL);
+            Assert.assertNotEquals(actualTitle, oldTitle);
+        }
+
+        Assert.assertEquals(actualSymbol, symbol);
+        Assert.assertEquals(actualURLHref, url);
+        Assert.assertEquals(actualURL, url);
+        Assert.assertEquals(actualTitle, title);
     }
 }

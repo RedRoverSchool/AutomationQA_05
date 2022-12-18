@@ -73,8 +73,8 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
     public ArrayList<String> clickTopListsSubmenuLinksAndGetH2Header(){
 
         ArrayList<String> subMenuListLinks = new ArrayList<String>();
-        
-        TopRatedPage topRatePage = new TopRatedPage(getDriver());
+
+        TopRatedPage topRatedPage = new TopRatedPage(getDriver());
 
         for (WebElement topSubMenu : topListSubmenus) {
             subMenuListLinks.add(topSubMenu.getAttribute("href"));
@@ -83,8 +83,8 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
         ArrayList<String> actualSubmenuH2HeaderTexts = new ArrayList<>();
         for (String subMenuLink : subMenuListLinks) {
             getDriver().navigate().to(subMenuLink);
-            actualSubmenuH2HeaderTexts.add(topRatePage.getH2HeaderText());
-            }
+            actualSubmenuH2HeaderTexts.add(topRatedPage.getH2HeaderText());
+        }
 
         return actualSubmenuH2HeaderTexts;
     }
