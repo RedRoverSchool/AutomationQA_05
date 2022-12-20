@@ -2,9 +2,10 @@ package tests.submit_new_language;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.submit_new_language.SubmitNewLanguagePage;
+
+import java.util.List;
 
 public class SubmitNewLanguageTest extends BaseTest {
 
@@ -83,5 +84,19 @@ public class SubmitNewLanguageTest extends BaseTest {
 
         Assert.assertTrue(actualResultErrorMessage.contains(ERROR_REASON));
         Assert.assertTrue(actualResultPrompt.contains(PROMPT_COLOUR));
+    }
+
+    @Test
+    public void testIncludesLanguageCategory() {
+        final List<String> expectedIncludesLanguageCategory = List.of(
+                "real language", "esoteric language", "assembly language");
+
+        List<String> actualIncludesLanguageCategory =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu()
+                        .clickCategoryField()
+                        .getCategoryTexts();
+
+        Assert.assertEquals(actualIncludesLanguageCategory, expectedIncludesLanguageCategory);
     }
 }

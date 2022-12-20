@@ -20,6 +20,9 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']/option[text()='esoteric language']")
     private WebElement esotericLanguageOption;
 
+    @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']/option")
+    private List<WebElement> languageOptions;
+
     @FindBy(xpath = "//select[@name='category']/option[@selected]")
     private WebElement languageCategorySelected;
 
@@ -65,6 +68,11 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     public String getSelectedLanguageCategory() {
 
         return getText(languageCategorySelected);
+    }
+
+    public List<String> getCategoryTexts() {
+
+        return getListText(languageOptions);
     }
 
     public SubmitNewLanguagePage inputLanguage(String text) {
