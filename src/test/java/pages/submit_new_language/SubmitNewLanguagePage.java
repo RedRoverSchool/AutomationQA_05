@@ -8,22 +8,24 @@ import java.util.List;
 
 public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
+    private static final String SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH = "//form[@id='addlanguage']/p/select[@name='category']";
+
     @FindBy(xpath = "//p/input[@name='submitlanguage']")
     private WebElement submitLanguageButton;
 
     @FindBy(xpath = "//div[@id='main']/ul/li")
     private List<WebElement> bullets;
 
-    @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']")
+    @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH)
     private WebElement category;
 
-    @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']/option[text()='esoteric language']")
+    @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH + "/option[text()='esoteric language']")
     private WebElement esotericLanguageOption;
 
-    @FindBy(xpath = "//form[@id='addlanguage']/p/select[@name='category']/option")
+    @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH + "/option")
     private List<WebElement> languageOptions;
 
-    @FindBy(xpath = "//select[@name='category']/option[@selected]")
+    @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH + "/option[@selected]")
     private WebElement languageCategorySelected;
 
     @FindBy(name = "language")
