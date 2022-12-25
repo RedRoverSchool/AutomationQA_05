@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.browse_languages.languages.JQueryLanguagePage;
 import pages.browse_languages.languages.JavaLanguagePage;
 import pages.browse_languages.languages.JavaScriptLanguagePage;
+import pages.browse_languages.languages.ScalaLanguagePage;
 
 public class JPage extends LetterPage {
 
@@ -39,4 +40,5 @@ public class JPage extends LetterPage {
 
         return new JQueryLanguagePage(getDriver());
     }
+
 }

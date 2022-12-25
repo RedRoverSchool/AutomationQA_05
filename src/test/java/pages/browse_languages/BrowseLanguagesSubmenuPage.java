@@ -61,6 +61,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href]")
     private List<WebElement> submenus;
 
+    @FindBy(xpath = "//a[@href='s.html']")
+    private WebElement sSubmenu;
+
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -210,4 +213,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
         return getAttributeByIndex(index, submenus, "href");
     }
+
+    public SPage clickSSubmenu() {
+        click(sSubmenu);
+
+        return new SPage(getDriver());
+    }
+
+
 }
