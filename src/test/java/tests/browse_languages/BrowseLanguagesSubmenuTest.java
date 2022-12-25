@@ -1,12 +1,12 @@
 package tests.browse_languages;
 
+import TestData.TestData;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.BrowseLanguagesSubmenuPage;
 import pages.browse_languages.letters.ABCPage;
 import pages.browse_languages.letters.NPage;
-import utils.StaticProvider;
 
 import java.util.List;
 
@@ -59,7 +59,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
         Assert.assertEquals(actualSubmenusNames, expectedlettersSubmenu);
     }
 
-    @Test(dataProviderClass = StaticProvider.class, dataProvider = "lettersSubmenu")
+    @Test(dataProvider = "lettersSubmenu", dataProviderClass = TestData.class)
     public void testLetterSubmenuNavigate(
             int index, String symbol, String url, String title) {
 

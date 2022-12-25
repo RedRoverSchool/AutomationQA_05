@@ -87,4 +87,18 @@ public class SearchLanguagesTest extends BaseTest {
 
         Assert.assertEquals(languagesNamesSize, 0);
     }
+
+    @Test
+    public void testTwoCharactersInputReturnsLanguageListWithThoseCharacters () {
+        final String TWO_CHARACTERS = "py";
+
+        List<String> pyLanguagesNames = openBaseURL()
+                .clickSearchLanguagesMenu()
+                .clickSearchForField()
+                .inputSearchCriteria(TWO_CHARACTERS)
+                .clickGoButton()
+                .getNamesInLowerCase();
+
+        Assert.assertTrue(pyLanguagesNames.contains(TWO_CHARACTERS));
+    }
 }
