@@ -165,4 +165,14 @@ public abstract class BasePage {
 
         return getDriver().getTitle();
     }
+
+    public String getTextByIndex(int index, List<WebElement> elements) {
+
+        return elements.get(index).getText();
+    }
+
+    public String getAttributeByIndex(int index, List<WebElement> elements, String attribute) {
+
+        return elements.get(index).getAttribute(attribute);
+    }
 }

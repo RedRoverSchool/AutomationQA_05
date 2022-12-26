@@ -12,7 +12,6 @@ public class GTest extends BaseTest {
 
     @Test
     public void testGAPLanguageLink_NavigatesTo_GAPLanguagePage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/language-gap-275.html";
         final String expectedTitle = "99 Bottles of Beer | Language GAP";
 

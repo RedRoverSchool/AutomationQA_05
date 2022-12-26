@@ -8,8 +8,6 @@ import org.testng.annotations.Test;
 import org.testng.Reporter;
 import pages.browse_languages.languages.BashLanguagePage;
 
-import static utils.TestUtils.getBaseUrl;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;

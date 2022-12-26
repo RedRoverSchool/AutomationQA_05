@@ -11,17 +11,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class API_StartTest extends BaseTest {
+public class API_BrowseLanguagesSubmenuTest extends BaseTest {
 
     @Test
-    public void test_API_AllLinksInsideMainAreNotBroken() {
+    public void test_API_AllLanguagesLinksAreNotBroken() {
         String linkURL = "";
         int responseCode;
         int actualWorkingLinksCount = 0;
 
         List<WebElement> aTags = openBaseURL()
-                .clickStartMenu()
-                .getLinks();
+                .clickBrowseLanguagesMenu()
+                .getSubmenus();
 
         final int expectedWorkingLinksCount = aTags.size();
         int internalLinks = expectedWorkingLinksCount;
@@ -31,7 +31,7 @@ public class API_StartTest extends BaseTest {
 
             if (linkURL != null && !linkURL.isBlank() && !linkURL.isEmpty()) {
                 if (!linkURL.startsWith(getBaseUrl())) {
-                    Reporter.log(linkURL + " is external link ", true);
+                    Reporter.log(linkURL + " is externalLink ", true);
                     internalLinks--;
                 } else {
                     try {
@@ -44,7 +44,7 @@ public class API_StartTest extends BaseTest {
                         if (responseCode < 400) {
                             actualWorkingLinksCount++;
                         } else {
-                            Reporter.log(linkURL + " is broken, responseCode" + responseCode, true);
+                            Reporter.log(linkURL + " is broken, responseCode " + responseCode, true);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

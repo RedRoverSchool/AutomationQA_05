@@ -23,19 +23,20 @@ public class EnglishLanguageTest extends BaseTest {
 
     @Test
     public void testFormLinkNavigatesToSubmitNewLanguagePage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
-        String oldURL = openBaseURL()
+
+        EnglishLanguagePage englishLanguagePage = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickESubmenu()
-                .clickEnglishLanguage()
-                .clickWriteComment()
-                .getURL();
+                .clickEnglishLanguage();
 
-        EnglishLanguagePage englishLanguagePage = new EnglishLanguagePage(getDriver());
-        String actualURL = englishLanguagePage
-                .clickFormLink()
-                .getURL();
+        englishLanguagePage.clickWriteComment();
+
+        String oldURL = englishLanguagePage.getURL();
+
+        englishLanguagePage.clickFormLink();
+
+        String actualURL = englishLanguagePage.getURL();
 
         Assert.assertNotEquals(oldURL,actualURL);
         Assert.assertEquals(actualURL,expectedURL);

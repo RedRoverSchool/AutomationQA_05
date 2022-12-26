@@ -74,7 +74,7 @@ public class ABCTest extends BaseTest {
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .clickYSubmenu()
-                        .getHeaders();
+                        .getTableHeaders();
 
         Assert.assertEquals(actualHeaderNames, expectedHeaderNames);
     }

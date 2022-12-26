@@ -24,7 +24,7 @@ public class YacasLanguageTest extends BaseTest {
     @Test
     public void testVotingNiceCodingIsSelected() {
 
-        String expectedResult = "**** Nice Coding";
+        final String expectedResult = "**** Nice Coding";
 
         YacasLanguagePage yacasLanguagePage = openBaseURL()
                 .clickBrowseLanguagesMenu()

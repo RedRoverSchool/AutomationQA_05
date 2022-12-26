@@ -5,9 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TopListsSubmenuPage extends TablePage {
+public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
 
     final static String TOP_LISTS_PATH = "//ul[@id='submenu']//a[@href=";
 
@@ -20,16 +21,29 @@ public abstract class TopListsSubmenuPage extends TablePage {
     @FindBy(xpath = TOP_LISTS_PATH + "'./newcomments.html']")
     private WebElement newCommentsSubmenu;
 
-    @FindBy(xpath = TOP_LISTS_PATH + "'./toplist.html']")
+    @FindBy(xpath = TOP_LISTS_PATH + "'./tophits.html']")
     private WebElement topHitsSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a")
     private List<WebElement> topListSubmenus;
 
-
-
     public TopListsSubmenuPage(WebDriver driver) {
         super(driver);
+    }
+
+    protected TopRatedPage createGeneric() {
+
+        return new TopRatedPage(getDriver());
+    }
+
+    public List<String> getSubmenusTexts() {
+
+        return getListText(topListSubmenus);
+    }
+
+    public String getHref() {
+
+        return getAttribute(topRatedRealSubmenu, "href");
     }
 
     public TopRatedRealPage clickTopRatedRealSubmenu() {
@@ -50,19 +64,28 @@ public abstract class TopListsSubmenuPage extends TablePage {
         return new NewCommentsPage(getDriver());
     }
 
-    public List<String> getSubmenusTexts() {
-
-        return getListText(topListSubmenus);
-    }
-
     public TopHitsPage clickTopHitsSubmenu() {
         click(topHitsSubmenu);
 
         return new TopHitsPage(getDriver());
     }
 
-    public String getHrefJ() {
+    public ArrayList<String> clickTopListsSubmenuLinksAndGetH2Header(){
 
-        return getAttribute(topRatedRealSubmenu, "href");
+        ArrayList<String> subMenuListLinks = new ArrayList<String>();
+
+        TopRatedPage topRatedPage = new TopRatedPage(getDriver());
+
+        for (WebElement topSubMenu : topListSubmenus) {
+            subMenuListLinks.add(topSubMenu.getAttribute("href"));
+        }
+
+        ArrayList<String> actualSubmenuH2HeaderTexts = new ArrayList<>();
+        for (String subMenuLink : subMenuListLinks) {
+            getDriver().navigate().to(subMenuLink);
+            actualSubmenuH2HeaderTexts.add(topRatedPage.getH2HeaderText());
+        }
+
+        return actualSubmenuH2HeaderTexts;
     }
 }

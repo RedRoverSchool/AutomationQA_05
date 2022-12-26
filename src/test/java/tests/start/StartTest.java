@@ -12,22 +12,36 @@ import pages.submit_new_language.SubmitNewLanguagePage;
 
 import java.util.List;
 
-import static utils.TestUtils.getBaseUrl;
-
 public class StartTest extends BaseTest {
 
-    @Test
-    public void testClickStartFromHomepage() {
+    @Test(priority = -5, suiteName = "Smoke", alwaysRun = true)
+    public void testBaseURLLoadedSuccessfully() {
 
-        String urlAfterClickingStartFromHomepage =
+        StartPage startPage = openBaseURL();
+
+        String actualURL = startPage.getURL();
+        String actualTitle = startPage.getTitle();
+
+        String h1LogoHeader = startPage.getH1LogoHeaderText();
+        String h2LogoHeader = startPage.getH2LogoHeaderText();
+
+        Assert.assertEquals(actualURL, getBaseUrl());
+        Assert.assertEquals(actualTitle, "99 Bottles of Beer | Start");
+        Assert.assertEquals(h1LogoHeader, "99 Bottles of Beer");
+        Assert.assertEquals(h2LogoHeader, "one program in 1500 variations");
+    }
+
+    @Test(priority = -4, dependsOnMethods = "testBaseURLLoadedSuccessfully")
+    public void testClickStartFromHomepage() {
+        String actualURL =
                 openBaseURL()
                         .clickStartMenu()
                         .getURL();
 
-        Assert.assertEquals(urlAfterClickingStartFromHomepage, getBaseUrl());
+        Assert.assertEquals(actualURL, getBaseUrl());
     }
 
-    @Test
+    @Test(priority = -3, dependsOnMethods = {"testBaseURLLoadedSuccessfully", "testClickStartFromHomepage"})
     public void testBaseURLShown_WhenLandingToStartPage() {
         final String expectedUrl = getBaseUrl();
 
@@ -40,7 +54,7 @@ public class StartTest extends BaseTest {
         Assert.assertEquals(actualUrl, expectedUrl);
     }
 
-    @Test
+    @Test(priority = 5, suiteName = "Total Regression")
     public void testWishesFromTheTeamFirstParagraph() {
         final String WISHES_FROM_THE_TEAM = "This Website holds a collection of the Song 99 Bottles of Beer programmed in different programming languages. " +
                 "Actually the song is represented in 1500 different programming languages and variations. " +
@@ -52,7 +66,7 @@ public class StartTest extends BaseTest {
         Assert.assertEquals(teamWishes, WISHES_FROM_THE_TEAM);
     }
 
-    @Test
+    @Test(dependsOnMethods = "testTextsWithLinksOnStartPage")
     public void testHeaderTextH2() {
         final String expectedHeaderH2 = "Welcome to 99 Bottles of Beer";
 
@@ -64,8 +78,13 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testTextsWithLinksOnStartPage() {
-        List<String> expectedTextsWithLinks =
-                List.of("historic information", "here", "submit your own piece of code", "guestbook", "team members");
+        final List<String> expectedTextsWithLinks = List.of(
+                "historic information",
+                "here",
+                "submit your own piece of code",
+                "guestbook",
+                "team members"
+        );
 
         List<String> actualTextsWithLinks =
                 openBaseURL()
@@ -76,7 +95,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testHistoricInformationLink_NavigatesTo_HistoryPage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/info.html";
         final String expectedTitle = "99 Bottles of Beer | Background and historic information";
 
@@ -96,7 +114,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testHereLink_NavigatesTo_LyricsPage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
         final String expectedTitle = "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer";
 
@@ -119,7 +136,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testSubmitYourOwnPieceofCodeLink_NavigatesTo_SubmitNewLanguagePage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
         final String expectedTitle = "99 Bottles of Beer | Submit new Language";
 
@@ -140,9 +156,8 @@ public class StartTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    @Test
+    @Test(dependsOnMethods = "testHeaderTextH2")
     public void testGuestbookLink_NavigatesTo_GuestbookV2Page() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/guestbookv2.html";
         final String expectedTitle = "99 Bottles of Beer | Guestbook";
 
@@ -165,7 +180,6 @@ public class StartTest extends BaseTest {
 
     @Test
     public void testTeamMembersLink_NavigatesTo_TeamPage() {
-
         final String expectedURL = "https://www.99-bottles-of-beer.net/team.html";
         final String expectedTitle = "99 Bottles of Beer | The Team";
 

@@ -13,15 +13,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-import static utils.TestUtils.getBaseUrl;
-
 public class API_TopRatedRealTest extends BaseTest {
 
     final static String ACTION = "toplist_real.html";
 
     @Test
     public void testAttributes_DefaultValues() {
-        String PAGE_CONTEXT_BEFORE_REQUEST =
+        final String PAGE_CONTEXT_BEFORE_REQUEST =
                 "Top Rated Real Languages\n" +
                 "# Language Author Date Comments Rate\n" +
                 "1. REBOL Anonymous 04/20/05 1\n" +
@@ -52,7 +50,7 @@ public class API_TopRatedRealTest extends BaseTest {
 
         TopRatedRealPage topRatedRealPage = openBaseURL().clickTopListsMenu().clickTopRatedRealSubmenu();
 
-        Assert.assertEquals(topRatedRealPage.getHrefJ(), getBaseUrl() + ACTION);
+        Assert.assertEquals(topRatedRealPage.getHref(), getBaseUrl() + ACTION);
         Assert.assertEquals(topRatedRealPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 

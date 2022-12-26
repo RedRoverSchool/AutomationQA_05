@@ -8,7 +8,7 @@ import pages.browse_languages.letters.*;
 
 import java.util.List;
 
-public abstract class BrowseLanguagesSubmenuPage extends TablePage {
+public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
     @FindBy(xpath = "//a[@href='a.html']")
     private WebElement aSubmenu;
@@ -65,6 +65,41 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         super(driver);
     }
 
+    protected ABCPage createGeneric() {
+
+        return new ABCPage(getDriver());
+    }
+
+    public List<WebElement> getSubmenus() {
+
+        return submenus;
+    }
+
+    public List<String> getSubmenusNames() {
+
+        return getListText(submenus);
+    }
+
+    public String getHrefJ() {
+
+        return getAttribute(jSubmenu, "href");
+    }
+
+    public WebElement getNSubmenu() {
+
+        return nSubmenu;
+    }
+
+    public String getNSubmenuText() {
+
+        return getText(nSubmenu);
+    }
+
+    public String getHrefN() {
+
+        return getAttribute(nSubmenu, "href");
+    }
+
     public APage clickASubmenu() {
         click(aSubmenu);
 
@@ -93,6 +128,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         click(eSubmenu);
 
         return new EPage(getDriver());
+    }
+
+    public FPage clickFSubmenu() {
+        click(fSubmenu);
+
+        return new FPage(getDriver());
     }
 
     public GPage clickGSubmenu() {
@@ -143,40 +184,30 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage {
         return new YPage(getDriver());
     }
 
-    public ZPage clickZSubmenuButton() {
+    public ZPage clickZSubmenu() {
         click(zSubmenu);
 
         return new ZPage(getDriver());
     }
 
-    public List<WebElement> getSubmenus() {
+    public List<WebElement> getLetters() {
 
-        return submenus;
+        return letters;
     }
 
-    public List<String> getSubmenusNames() {
-
-        return getListText(submenus);
+    public void clickOnSymdolSubmenu(int index) {
+        if (getLetters().size() > 0) {
+            getLetters().get(index).click();
+        }
     }
 
-    public String getHrefN() {
+    public String getTextSymbol(int index) {
 
-        return getAttribute(nSubmenu, "href");
+        return getTextByIndex(index, letters);
     }
 
-    public String getHrefJ() {
+    public String getHref(int index) {
 
-        return getAttribute(jSubmenu, "href");
-    }
-
-    public String getSubmenuAText() {
-
-        return getText(aSubmenu);
-    }
-
-    public FPage clickFSubmenu() {
-        click(fSubmenu);
-
-        return new FPage(getDriver());
+        return getAttributeByIndex(index, submenus, "href");
     }
 }

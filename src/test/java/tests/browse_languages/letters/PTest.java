@@ -12,7 +12,6 @@ public class PTest extends BaseTest {
 
     @Test
     public void testPLanguagesNamesSortedAscending() {
-
         List<String> pLanguagesNames = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickPSubmenu()

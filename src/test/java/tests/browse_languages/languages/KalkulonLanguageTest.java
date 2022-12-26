@@ -4,17 +4,17 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class JavaLanguageTest extends BaseTest {
+public class KalkulonLanguageTest extends BaseTest {
 
     @Test
-    public void testJavaLanguagePageHeader() {
-        final String expectedH2Header = "Language Java";
+    public void testKalkulonLanguagePageHeader() {
+        final String expectedH2Header = "Language Kalkulon";
 
         String actualH2Header =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()
-                        .clickJSubmenu()
-                        .clickJavaLanguage()
+                        .clickKSubmenu()
+                        .clickKalkulonLanguage()
                         .getH2HeaderText();
 
         Assert.assertEquals(actualH2Header, expectedH2Header);

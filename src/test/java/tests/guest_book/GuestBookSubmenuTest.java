@@ -9,14 +9,17 @@ import java.util.List;
 public class GuestBookSubmenuTest extends BaseTest {
 
     @Test
-    public void testGuestbookSubmenuButtonsNames() {
-        List<String> expectedGuestbookSubmenuButtonsNames = List.of("Sign Guestbook", "Read Guestbook");
+    public void testGuestbookSubmenusNames() {
+        final List<String> expectedGuestbookSubmenusNames = List.of(
+                "Sign Guestbook",
+                "Read Guestbook"
+        );
 
-        List<String> actualGuestbookSubmenuButtonsNames =
+        List<String> actualGuestbookSubmenusNames =
                 openBaseURL()
                         .clickGuestbookMenu()
                         .getGuestbookSubmenus();
 
-        Assert.assertEquals(actualGuestbookSubmenuButtonsNames, expectedGuestbookSubmenuButtonsNames);
+        Assert.assertEquals(actualGuestbookSubmenusNames, expectedGuestbookSubmenusNames);
     }
 }

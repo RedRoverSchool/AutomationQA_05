@@ -8,7 +8,6 @@ public class TopListsTest extends BaseTest {
 
     @Test
     public void testH2HeaderText() {
-
         final String expectedResult = "Top Rated";
 
         String actualResult =

@@ -8,7 +8,7 @@ public class PrivacyTest extends BaseTest {
 
     @Test
     public void testTextInHeaderH2() {
-        String expectedH2Header = "Privacy";
+        final String expectedH2Header = "Privacy";
 
         String actualTextInHeaderH2 =
                 openBaseURL()
@@ -20,7 +20,7 @@ public class PrivacyTest extends BaseTest {
 
     @Test
     public void testEmail() {
-        String expectedEmail = "os@ls-la.net";
+        final String expectedEmail = "os@ls-la.net";
 
         String actualEmail =
                 openBaseURL()
@@ -31,7 +31,7 @@ public class PrivacyTest extends BaseTest {
     }
     
     public void testTextInHeaderH3() {
-        String expectedTextInHeaderH3 = "Oliver Schade";
+        final String expectedTextInHeaderH3 = "Oliver Schade";
 
         String actualTextInHeaderH3 =
                 openBaseURL()

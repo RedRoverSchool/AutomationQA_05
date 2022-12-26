@@ -8,17 +8,17 @@ public class NewCommentsTest extends BaseTest {
 
     @Test
     public void testPageNewCommentsH2() {
-        final String expectedResultH2Text = "New Comments";
-        final String expectedResultCurrentURL = "https://www.99-bottles-of-beer.net/newcomments.html";
+        final String expectedH2Text = "New Comments";
+        final String expectedURL = "https://www.99-bottles-of-beer.net/newcomments.html";
 
-        String actualdResultH2Text = openBaseURL()
+        String actualH2Text = openBaseURL()
                 .clickTopListsMenu()
                 .clickNewCommentsSubmenu()
                 .getH2HeaderText();
 
-        String actualdResultCurrentURL = getExternalPageURL();
+        String actualURL = getExternalPageURL();
 
-        Assert.assertEquals(actualdResultH2Text, expectedResultH2Text);
-        Assert.assertEquals(actualdResultCurrentURL, expectedResultCurrentURL);
+        Assert.assertEquals(actualH2Text, expectedH2Text);
+        Assert.assertEquals(actualURL, expectedURL);
     }
 }

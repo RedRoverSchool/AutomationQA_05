@@ -13,8 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-import static utils.TestUtils.getBaseUrl;
-
 public class API_SearchLanguagesTest extends BaseTest {
 
     final static String LANGUAGE_NAME = "python";
@@ -23,7 +21,6 @@ public class API_SearchLanguagesTest extends BaseTest {
     final static String NAME_INPUT_1 = "search";
     final static String NAME_INPUT_2 = "submitsearch";
     final static String VALUE_INPUT2 = "GO";
-    //search=python&submitsearch=GO - payload
     final static String PAYLOAD = NAME_INPUT_1 + "=" + LANGUAGE_NAME + "&" + NAME_INPUT_2 + "=" + VALUE_INPUT2;
     final static String PAGE_CONTEXT_BEFORE_REQUEST = "Search Languages\n" + "Search for:";
 

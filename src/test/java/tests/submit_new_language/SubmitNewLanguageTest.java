@@ -5,12 +5,14 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.submit_new_language.SubmitNewLanguagePage;
 
+import java.util.List;
+
 public class SubmitNewLanguageTest extends BaseTest {
 
     @Test
     public void testErrorMessageSubmitLanguageButton() {
-        final String expectedResultErrorMessageSubmitLanguageButton = "Error: " +
-                "Precondition failed - Incomplete Input.";
+        final String expectedResultErrorMessageSubmitLanguageButton =
+                "Error: Precondition failed - Incomplete Input.";
 
         String actualResultErrorMessageSubmitLanguageButton =
                 openBaseURL()
@@ -83,5 +85,18 @@ public class SubmitNewLanguageTest extends BaseTest {
         Assert.assertTrue(actualResultErrorMessage.contains(ERROR_REASON));
         Assert.assertTrue(actualResultPrompt.contains(PROMPT_COLOUR));
     }
-}
 
+    @Test
+    public void testIncludesLanguageCategory() {
+        final List<String> expectedIncludesLanguageCategory = List.of(
+                "real language", "esoteric language", "assembly language");
+
+        List<String> actualIncludesLanguageCategory =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu()
+                        .clickCategoryField()
+                        .getCategoryTexts();
+
+        Assert.assertEquals(actualIncludesLanguageCategory, expectedIncludesLanguageCategory);
+    }
+}

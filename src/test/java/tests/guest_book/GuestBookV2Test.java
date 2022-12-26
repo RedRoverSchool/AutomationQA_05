@@ -3,27 +3,28 @@ package tests.guest_book;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.guest_book.ReadGuestbookPage;
 
 public class GuestBookV2Test extends BaseTest {
-    final static String URL_KEY_VALUE = "guest";
 
     @Test
-    public void testMainNavigationToButtonGuestbook() {
-        String expectedResultGuestbookUrl = "https://www.99-bottles-of-beer.net/guestbookv2.html";
+    public void testGuestbookMenuNavigatesToGuestbookPage() {
+        final String expectedGuestbookUrl = "https://www.99-bottles-of-beer.net/guestbookv2.html";
 
-        ReadGuestbookPage ReadGuestBookPage = new ReadGuestbookPage(getDriver());
-
-        String actualResultGuestbookUrl = openBaseURL()
+        String actualGuestbookUrl = openBaseURL()
                 .clickGuestbookMenu()
                 .getDriver().getCurrentUrl();
 
-        Assert.assertEquals(actualResultGuestbookUrl, expectedResultGuestbookUrl);
+        Assert.assertEquals(actualGuestbookUrl, expectedGuestbookUrl);
     }
 
     @Test
-    public void test_MainFooterGuestBookv2_AramH20() {
-        String guestBoopPageURL = openBaseURL().clickGuestbookMenu().getURL();
-        Assert.assertTrue(guestBoopPageURL.contains(URL_KEY_VALUE));
+    public void testMainFooterGuestBookv2NavigatesToGuestbookPage() {
+        final String urlKeyValue = "guest";
+
+        String guestBoopPageURL = openBaseURL()
+                .clickGuestBookFooterMenu()
+                .getURL();
+
+        Assert.assertTrue(guestBoopPageURL.contains(urlKeyValue));
     }
 }

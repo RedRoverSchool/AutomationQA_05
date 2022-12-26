@@ -2,9 +2,9 @@ package pages.browse_languages.languages;
 
 import org.openqa.selenium.WebDriver;
 
-public class KotlinLanguagePage extends LanguagePage{
+public class KalkulonLanguagePage extends LanguagePage{
 
-    public KotlinLanguagePage(WebDriver driver) {
+    public KalkulonLanguagePage(WebDriver driver) {
         super(driver);
     }
 }

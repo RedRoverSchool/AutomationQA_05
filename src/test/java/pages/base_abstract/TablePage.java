@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class TablePage extends MainPage {
+public abstract class TablePage<Generic> extends MainPage<Generic> {
 
+    //Table Category
     final static String TABLE_CATEGORY_PATH = "//table[@id='category']/tbody/tr/";
 
     @FindBy(xpath = TABLE_CATEGORY_PATH + "td[1]/a")
@@ -27,7 +28,7 @@ public abstract class TablePage extends MainPage {
     @FindBy(xpath = TABLE_CATEGORY_PATH + "td[2]")
     private List<WebElement> authorsColumn;
 
-
+    //Table Main
     final static String TABLE_MAIN_PATH = "//div[@id='main']/table/tbody/tr";
 
     @FindBy(xpath = TABLE_MAIN_PATH + "/td/strong")
@@ -69,7 +70,7 @@ public abstract class TablePage extends MainPage {
         return getListTextInLowerCase(topRatedLanguagesLinks).get(0);
     }
 
-    public List<String> getHeaders() {
+    public List<String> getTableHeaders() {
 
         return getListText(tableHeaders);
     }
@@ -100,11 +101,12 @@ public abstract class TablePage extends MainPage {
 
     public String getTextFromRandomLink(int r, List<WebElement> elementsList) {
 
-        return getText(elementsList.get(r - 1));
-    }
+        if (r == 0) {
 
-    public void clickRandomLink(int r, List<WebElement> elementsList) {
-        click(elementsList.get(r - 1));
+            return getText(elementsList.get(0));
+        }
+
+        return getText(elementsList.get(r - 1));
     }
 
     public String getHrefDeepLink() {
@@ -141,5 +143,9 @@ public abstract class TablePage extends MainPage {
         }
 
         return -1;
+    }
+
+    public void clickRandomLink(int r, List<WebElement> elementsList) {
+        click(elementsList.get(r - 1));
     }
 }

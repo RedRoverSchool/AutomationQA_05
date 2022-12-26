@@ -9,7 +9,7 @@ public class TopListRealTest extends BaseTest {
 
     @Test
     public void testH2Text_WhenChoosingTopRatedRealSubmenu() {
-        String expectedH2HeaderText = "Top Rated Real Languages";
+        final String expectedH2HeaderText = "Top Rated Real Languages";
 
         String actualH2HeaderText = openBaseURL()
                 .clickTopListsMenu()
@@ -21,7 +21,7 @@ public class TopListRealTest extends BaseTest {
 
     @Test
     public void testH2Color_WhenChoosingTopRatedRealSubmenu() {
-        String expectedHexColor = "#1b651c";
+        final String expectedHexColor = "#1b651c";
 
         String headerTextCssValue = openBaseURL()
                 .clickTopListsMenu()

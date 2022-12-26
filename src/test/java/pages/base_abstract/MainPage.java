@@ -12,7 +12,7 @@ import pages.top_lists.TopRatedPage;
 
 import java.util.List;
 
-public abstract class MainPage extends BasePage {
+public abstract class MainPage<Generic> extends BasePage {
 
     //Headers
     @FindBy(xpath = "//div[@id='header']/h1")
@@ -49,10 +49,13 @@ public abstract class MainPage extends BasePage {
     private WebElement submitNewLanguageMenu;
 
     @FindBy (xpath = "//ul[@id='menu']//li")
-    private List<WebElement> menuLinks;
+    private List<WebElement> topMenuLinks;
 
     //Footer Menu
     final static String FOOTER_MENU_PATH = "//div[@id='footer']/p/a[@href=";
+
+    @FindBy(xpath = "//div[@id='footer']/p/a")
+    private List<WebElement> footerMenuLinks;
 
     @FindBy(xpath = FOOTER_MENU_PATH + "'/']")
     private WebElement startFooterMenu;
@@ -91,6 +94,8 @@ public abstract class MainPage extends BasePage {
         super(driver);
     }
 
+    protected abstract Generic createGeneric();
+
     public String getH1LogoHeaderText() {
 
         return getText(h1LogoHeader);
@@ -111,9 +116,59 @@ public abstract class MainPage extends BasePage {
         return getListText(h3Header);
     }
 
-    public WebElement getH2Header() {
+    public List<String> getMenuTextsInLowerCase() {
 
-        return h2Header;
+        return getListTextInLowerCase(topMenuLinks);
+    }
+
+    public int getMenuLinksSize() {
+
+        return getListSize(topMenuLinks);
+    }
+
+    public List<WebElement> getLinks() {
+
+        return links;
+    }
+
+    public String getPageContext() {
+
+        return getText(mainBody);
+    }
+
+    public List<WebElement> getImages() {
+
+        return images;
+    }
+
+    public String getFirstParagraphText(){
+
+        return getText(firstParagraph);
+    }
+
+    public String getHref(WebElement element) {
+
+        return getAttribute(element, "href");
+    }
+
+    public String getColor(WebElement element) {
+
+        return element.getCssValue("color");
+    }
+
+    public String getH2HeaderColor() {
+
+        return getColor(h2Header);
+    }
+
+    public List<WebElement> getTopMenuLinks() {
+
+        return topMenuLinks;
+    }
+
+    public List<WebElement> getFooterMenuLinks() {
+
+        return footerMenuLinks;
     }
 
     public StartPage clickStartMenu() {
@@ -188,53 +243,14 @@ public abstract class MainPage extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public List<String> getMenuTextsInLowerCase() {
-
-        return getListTextInLowerCase(menuLinks);
-    }
-
-    public int getMenuLinksSize() {
-
-        return getListSize(menuLinks);
-    }
-
-    public List<WebElement> getLinks() {
-
-        return links;
-    }
-
-    public String getPageContext() {
-
-        return getText(mainBody);
-    }
-
-    public List<WebElement> getImages() {
-
-        return images;
-    }
-
-    public String getFirstParagraphText(){
-
-        return getText(firstParagraph);
-    }
-
-    public String getHref(WebElement element) {
-
-        return getAttribute(element, "href");
-    }
-
     public int countParagraphs() {
 
         return getListSize(pTags);
     }
 
-    public String getColor(WebElement element) {
+    public Generic clickMenu(int index, List<WebElement> menus) {
+        menus.get(index).click();
 
-        return element.getCssValue("color");
-    }
-
-    public String getH2HeaderColor() {
-
-        return getColor(h2Header);
+        return createGeneric();
     }
 }

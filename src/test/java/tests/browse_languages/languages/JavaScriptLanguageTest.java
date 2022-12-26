@@ -13,7 +13,7 @@ public class JavaScriptLanguageTest extends BaseTest {
 
     @Test
     public void testJavaScriptLanguagePageHeader() {
-        String expectedH2Header = "Language JavaScript";
+        final String expectedH2Header = "Language JavaScript";
 
         String actualH2Header =
                 openBaseURL()
@@ -27,8 +27,7 @@ public class JavaScriptLanguageTest extends BaseTest {
 
     @Test
     public void testTableListNames() {
-
-        List<String> expectedListNames = new ArrayList<>(
+        final List<String> expectedListNames = new ArrayList<>(
                 Arrays.asList("Date:", "Author:", "URL:", "Comments:", "Info:", "Score:"));
 
         List<String> actualListNames =
@@ -43,8 +42,7 @@ public class JavaScriptLanguageTest extends BaseTest {
 
     @Test
     public void testTableListValues() {
-
-        List<String> expectedListValues = new ArrayList<>(
+        final List<String> expectedListValues = new ArrayList<>(
                 Arrays.asList("01/09/09", "JavaScribe", "n/a", "4",
                         "http://en.wikipedia.org/wiki/Javascript", "(3.04 in 374 votes)"));
 
