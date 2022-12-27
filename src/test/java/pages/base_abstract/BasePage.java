@@ -47,6 +47,16 @@ public abstract class BasePage {
         return element.getAttribute(attribute);
     }
 
+    public String getTextByIndex(int index, List<WebElement> elements) {
+
+        return elements.get(index).getText();
+    }
+
+    public String getAttributeByIndex(int index, List<WebElement> elements, String attribute) {
+
+        return elements.get(index).getAttribute(attribute);
+    }
+
     public int getListSize(List<WebElement> list) {
 
         return list.size();
@@ -114,13 +124,12 @@ public abstract class BasePage {
         int[] numbers;
 
         if (list.size() > 0) {
-             numbers = new int[list.size()];
+            numbers = new int[list.size()];
 
             for (int i = 0; i < numbers.length; i++) {
                 try {
                     numbers[i] = Integer.parseInt(list.get(i));
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     Reporter.log("String is not parsable");
                 }
             }
@@ -164,15 +173,5 @@ public abstract class BasePage {
     public String getTitle() {
 
         return getDriver().getTitle();
-    }
-
-    public String getTextByIndex(int index, List<WebElement> elements) {
-
-        return elements.get(index).getText();
-    }
-
-    public String getAttributeByIndex(int index, List<WebElement> elements, String attribute) {
-
-        return elements.get(index).getAttribute(attribute);
     }
 }

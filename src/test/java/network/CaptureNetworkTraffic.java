@@ -21,34 +21,6 @@ public class CaptureNetworkTraffic {
         return this;
     }
 
-    public List<String> captureHttpRequests() {
-        List<String> request = new ArrayList<>();
-
-        devTools.addListener(Network.requestWillBeSent(),
-                entry -> {
-                    request.add(entry.getRequest().getMethod());
-                    request.add(entry.getRequest().getUrl());
-                    request.add(entry.getRequest().getPostData().toString());
-                    request.add(entry.getRequest().getTrustTokenParams().toString());
-                });
-
-        return request;
-    }
-
-    public List<String> captureHttpResponses() {
-        List<String> response = new ArrayList<>();
-
-        devTools.addListener(Network.responseReceived(),
-                entry -> {
-                    response.add(entry.getResponse().getStatus().toString());
-                    response.add(entry.getResponse().getStatusText());
-                    response.add(entry.getResponse().getUrl());
-                    response.add(entry.getResponse().getResponseTime().toString());
-                });
-
-        return response;
-    }
-
     public List<String> captureHttpRequests(String endPoint, String method) {
         List<String> methodRequest = new ArrayList<>();
 

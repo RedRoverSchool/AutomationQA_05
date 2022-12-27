@@ -3,7 +3,6 @@ package tests.browse_languages.letters;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.browse_languages.letters.BPage;
 import pages.browse_languages.letters.FPage;
 
 import java.util.List;

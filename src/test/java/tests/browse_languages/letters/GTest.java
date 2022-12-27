@@ -3,9 +3,7 @@ package tests.browse_languages.letters;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.browse_languages.languages.CheetahLanguagePage;
 import pages.browse_languages.languages.GapLanguagePage;
-import pages.browse_languages.letters.CPage;
 import pages.browse_languages.letters.GPage;
 
 public class GTest extends BaseTest {

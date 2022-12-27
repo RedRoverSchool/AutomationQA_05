@@ -11,7 +11,7 @@ import java.util.List;
 public class DTest extends BaseTest {
 
     @Test
-    public void testLanguagesNamesStartWithLetterD(){
+    public void testLanguagesNamesStartWithLetterD() {
         final String letterD = "D";
 
         List<String> languagesNamesList = openBaseURL()
@@ -20,9 +20,9 @@ public class DTest extends BaseTest {
                 .getNamesInUpperCase();
 
         Assert.assertTrue(languagesNamesList.size() > 0);
-        for(String languageName:languagesNamesList){
+        for (String languageName : languagesNamesList) {
 
-            Assert.assertEquals(languageName.substring(0, 1),letterD);
+            Assert.assertEquals(languageName.substring(0, 1), letterD);
         }
     }
 

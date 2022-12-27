@@ -8,10 +8,10 @@ public class TopHitsPage extends TopListsSubmenuPage {
 
     private static final String LANGUAGE_PATH = "//table[@id='category']";
 
-    @FindBy (xpath = LANGUAGE_PATH + "//a[text()='Shakespeare']")
+    @FindBy(xpath = LANGUAGE_PATH + "//a[text()='Shakespeare']")
     private WebElement shakespeareLanguage;
 
-    @FindBy (xpath = LANGUAGE_PATH + "//a[text()='Whitespace')]")
+    @FindBy(xpath = LANGUAGE_PATH + "//a[text()='Whitespace')]")
     private WebElement whitespaceLanguage;
 
     public TopHitsPage(WebDriver driver) {

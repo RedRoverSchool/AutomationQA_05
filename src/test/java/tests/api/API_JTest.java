@@ -14,42 +14,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class API_JTest  extends BaseTest  {
+public class API_JTest extends BaseTest {
 
-    final static String ACTION = "j.html";
+    final static String J_END_POINT = "j.html";
 
     @Test
     public void testAttributes_DefaultValues() {
-        final String PAGE_CONTEXT_BEFORE_REQUEST = "Category J\n" +
-                "All languages starting with the letter J are shown, sorted by Language.\n" +
-                "Language Author Date Comments Rate\n" +
-                "J Roger Hui 04/20/05 6\n" +
-                "jamal Feherke 10/11/05 0\n" +
-                "Jamfile David Brandon 04/20/05 0\n" +
-                "Java Anonymous 04/20/05 33\n" +
-                "Java 2 Micro Edition Stefan Scheler 04/20/05 0\n" +
-                "Java Servlet Gregor Scheithauer 05/08/05 0\n" +
-                "JavaFX Filip Dreger 04/13/09 0\n" +
-                "JavaScript JavaScribe 01/09/09 4\n" +
-                "jBase PROC dbell 01/05/06 0\n" +
-                "JBPM Easy 06/25/10 0\n" +
-                "JCL Anonymous 04/20/05 3\n" +
-                "JOSS Laurent Vogel 04/20/05 0\n" +
-                "Joy inforichland 07/05/09 0\n" +
-                "jQuery Vincent Battaglia 12/27/06 1\n" +
-                "JR Aaron Keen 01/02/06 0\n" +
-                "JScript Philipp Winterberg 04/20/05 2\n" +
-                "JScript/NET Chris R. Timmons 04/20/05 0\n" +
-                "JSP Davy Boy Hayes 01/24/06 0\n" +
-                "JSTL Dave Johnston 03/07/06 0\n" +
-                "Julie - Chapel (AKA Julie4Chapel) Fahad Khan 05/08/07 0\n" +
-                "JustBasic John Fredrickson 02/21/06 1\n" +
-                "Justif Marinus Oosters 07/30/10 0";
 
-        JPage jPage = openBaseURL().clickBrowseLanguagesMenu().clickJSubmenu();
+        JPage jPage = openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickJSubmenu();
 
-        Assert.assertEquals(jPage.getHrefJ(), getBaseUrl() + ACTION);
-        Assert.assertEquals(jPage.getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
+        Assert.assertEquals(jPage.getJHref(), getBaseUrl() + J_END_POINT);
+        Assert.assertNotNull(jPage.getPageContext());
     }
 
     @Test
@@ -89,7 +66,7 @@ public class API_JTest  extends BaseTest  {
     }
 
     @Test
-    public void test_API_AllJLinksAreNotBroken () {
+    public void test_API_AllJLinksAreNotBroken() {
         String linkURL = "";
         int responseCode;
         int actualWorkingLinksCount = 0;

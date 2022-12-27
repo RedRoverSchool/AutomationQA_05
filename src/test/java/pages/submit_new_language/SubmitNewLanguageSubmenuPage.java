@@ -2,7 +2,6 @@ package pages.submit_new_language;
 
 import org.openqa.selenium.WebDriver;
 import pages.base_abstract.FormPage;
-import pages.start.StartPage;
 
 public abstract class SubmitNewLanguageSubmenuPage extends FormPage<SubmitNewLanguagePage> {
 
@@ -10,7 +9,7 @@ public abstract class SubmitNewLanguageSubmenuPage extends FormPage<SubmitNewLan
         super(driver);
     }
 
-    protected SubmitNewLanguagePage createGeneric() {
+    protected SubmitNewLanguagePage createPage() {
 
         return new SubmitNewLanguagePage(getDriver());
     }

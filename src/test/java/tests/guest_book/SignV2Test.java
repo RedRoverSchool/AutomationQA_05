@@ -13,8 +13,7 @@ import java.time.Duration;
 public class SignV2Test extends BaseTest {
 
     @Test
-    public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert(){
-        final String urlAlertText = "http://my_text";
+    public void testSignGuestBookVerifyTextInAlertUrlandAcceptAlert() {
 
         openBaseURL()
                 .clickGuestbookMenu()
@@ -30,7 +29,7 @@ public class SignV2Test extends BaseTest {
     }
 
     @Test
-    public void testErrorMessageIfSubmitWithoutCaptcha(){
+    public void testErrorMessageIfSubmitWithoutCaptcha() {
         final String name = "Guest";
         final String email = "guest@gmail.com";
         final String message = "it is a message";

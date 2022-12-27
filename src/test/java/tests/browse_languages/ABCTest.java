@@ -1,9 +1,9 @@
 package tests.browse_languages;
 
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.openqa.selenium.WebElement;
 import pages.browse_languages.letters.ABCPage;
 
 import java.util.ArrayList;
@@ -19,13 +19,13 @@ public class ABCTest extends BaseTest {
         ABCPage abcPage = new ABCPage(getDriver());
 
         List<WebElement> lettersSubmenus =
-                 openBaseURL()
+                openBaseURL()
                         .clickBrowseLanguagesMenu()
                         .getSubmenus();
 
         List<String> submenusNames = abcPage.getSubmenusNames();
 
-        for(int i = 0; i < lettersSubmenus.size(); i++) {
+        for (int i = 0; i < lettersSubmenus.size(); i++) {
             lettersSubmenus.get(i).click();
             List<String> firstLetters = abcPage.getFirstLettersFromLanguagesNames();
             if (i == 0) {
@@ -33,8 +33,7 @@ public class ABCTest extends BaseTest {
                     char symbol = letter.charAt(0);
                     Assert.assertTrue(symbol >= 48 && symbol <= 57);
                 }
-            }
-            else {
+            } else {
                 for (String letter : firstLetters) {
                     Assert.assertEquals(letter, submenusNames.get(i));
                 }
@@ -52,8 +51,8 @@ public class ABCTest extends BaseTest {
                         .getURL();
 
         Assert.assertEquals(actualPageURL, expectedURL);
-    } 
-    
+    }
+
     @Test
     public void testDefaultHeaderForABCPage() {
         final String expectedH2Header = "Category A";

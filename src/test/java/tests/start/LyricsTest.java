@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 import pages.start.LyricsPage;
 import utils.TestUtils;
 
-import java.util.List;
-
 public class LyricsTest extends BaseTest {
 
     @Test

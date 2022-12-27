@@ -56,7 +56,7 @@ public class KTest extends BaseTest {
         KPage kPage = new KPage(getDriver());
         KalkulonLanguagePage kalkulonLanguagePage = new KalkulonLanguagePage(getDriver());
 
-        String oldURL =  openBaseURL()
+        String oldURL = openBaseURL()
                 .clickBrowseLanguagesFooterMenu()
                 .clickKSubmenu()
                 .getURL();
@@ -65,7 +65,7 @@ public class KTest extends BaseTest {
         String actualTitle = kalkulonLanguagePage.getTitle();
 
         Assert.assertNotEquals(oldURL, getDriver().getCurrentUrl());
-        Assert.assertEquals(actualURL,expectedURL);
+        Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 }

@@ -13,7 +13,7 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
     @Test(priority = -4)
     public void testTextAndLinksSubmenu() {
-        final List<String> expectedlettersSubmenu = List.of("0-9","A", "B", "C", "D", "E", "F", "G", "H", "I"
+        final List<String> expectedlettersSubmenu = List.of("0-9", "A", "B", "C", "D", "E", "F", "G", "H", "I"
                 , "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
         BrowseLanguagesSubmenuPage browseLanguagesSubmenuPage = openBaseURL()

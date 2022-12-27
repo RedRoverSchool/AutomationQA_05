@@ -121,7 +121,7 @@ public class StartTest extends BaseTest {
 
         String oldURL =
                 openBaseURL()
-                        .getStartPageURL();
+                        .getURL();
 
         new StartPage(getDriver()).clickHereLink();
 
@@ -135,7 +135,7 @@ public class StartTest extends BaseTest {
     }
 
     @Test
-    public void testSubmitYourOwnPieceofCodeLink_NavigatesTo_SubmitNewLanguagePage() {
+    public void testSubmitYourOwnPieceOfCodeLink_NavigatesTo_SubmitNewLanguagePage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
         final String expectedTitle = "99 Bottles of Beer | Submit new Language";
 
@@ -143,7 +143,7 @@ public class StartTest extends BaseTest {
 
         String oldURL =
                 openBaseURL()
-                        .getStartPageURL();
+                        .getURL();
 
         new StartPage(getDriver()).clickSubmitYourOwnPieceOfCodeLink();
 
@@ -165,7 +165,7 @@ public class StartTest extends BaseTest {
 
         String oldURL =
                 openBaseURL()
-                        .getStartPageURL();
+                        .getURL();
 
         new StartPage(getDriver()).clickGuestbookLink();
 
@@ -187,7 +187,7 @@ public class StartTest extends BaseTest {
 
         String oldURL =
                 openBaseURL()
-                        .getStartPageURL();
+                        .getURL();
 
         new StartPage(getDriver()).clickTeamMembersLink();
 

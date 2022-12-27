@@ -31,7 +31,7 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
         super(driver);
     }
 
-    protected TopRatedPage createGeneric() {
+    protected TopRatedPage createPage() {
 
         return new TopRatedPage(getDriver());
     }
@@ -70,7 +70,7 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
         return new TopHitsPage(getDriver());
     }
 
-    public ArrayList<String> clickTopListsSubmenuLinksAndGetH2Header(){
+    public ArrayList<String> clickTopListsSubmenuLinksAndGetH2Header() {
 
         ArrayList<String> subMenuListLinks = new ArrayList<String>();
 

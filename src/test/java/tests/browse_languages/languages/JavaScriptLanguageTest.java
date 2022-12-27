@@ -57,7 +57,7 @@ public class JavaScriptLanguageTest extends BaseTest {
     }
 
     @Test
-    public void testJavaScriptEnWikipediaOrgLink_NavigatesTo_JavaScriptLanguagePage() {
+    public void testJavaScriptInfoLink_NavigatesTo_JavaScriptLanguageWikiPage() {
         final String expectedExternalURL = "https://en.wikipedia.org/wiki/JavaScript";
         final String expectedExternalTitle = "JavaScript - Wikipedia";
 

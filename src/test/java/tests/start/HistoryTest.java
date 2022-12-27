@@ -1,10 +1,8 @@
 package tests.start;
 
 import base.BaseTest;
-
 import org.testng.Assert;
-import org.testng.annotations.*;
-
+import org.testng.annotations.Test;
 import pages.start.HistoryPage;
 
 public class HistoryTest extends BaseTest {
@@ -55,13 +53,13 @@ public class HistoryTest extends BaseTest {
     }
 
     @Test
-    public void testNumberOfImages(){
+    public void testNumberOfImages() {
         final int expectedNumberOfImages = 2;
 
         int actualNumberOfImages = openBaseURL()
                 .clickHistorySubmenu()
                 .countHistoryPageImages();
 
-        Assert.assertEquals(actualNumberOfImages,expectedNumberOfImages);
+        Assert.assertEquals(actualNumberOfImages, expectedNumberOfImages);
     }
 }

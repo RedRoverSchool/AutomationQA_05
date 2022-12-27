@@ -13,6 +13,7 @@ public class SPage extends LetterPage {
     public SPage(WebDriver driver) {
         super(driver);
     }
+
     public ScalaLanguagePage clickScalaLanguage() {
         click(scalaLanguage);
 

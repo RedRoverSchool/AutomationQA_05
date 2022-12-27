@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-
 import java.util.List;
 
 public class API_KotlinLanguageTest extends BaseTest {
@@ -29,8 +28,8 @@ public class API_KotlinLanguageTest extends BaseTest {
     final static String VALUE_INPUT4 = "Vote";
 
     final static String PAYLOAD = NAME_INPUT_1 + "=" + VALUE_INPUT1 + "&" + NAME_INPUT_2 + "="
-            + URLEncoder.encode(VALUE_INPUT2) + "&" + NAME_SELECT + "=" + VALUE_SELECT + "&" +  NAME_INPUT_4
-            + "=" +  VALUE_INPUT4;
+            + URLEncoder.encode(VALUE_INPUT2) + "&" + NAME_SELECT + "=" + VALUE_SELECT + "&" + NAME_INPUT_4
+            + "=" + VALUE_INPUT4;
     final static String PAGE_CONTEXT_BEFORE_REQUEST = "Voting\n" + "Error: Please select something.\n" + "Back";
 
     @Test
@@ -58,7 +57,6 @@ public class API_KotlinLanguageTest extends BaseTest {
     public void test_API_HttpRequest_POST() {
         final String expectedMethod = "POST";
         final String expectedEndPoint = "vote.html";
-        final String expectedPayLoad = PAYLOAD;
 
         List<String> httpRequest = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
@@ -72,7 +70,7 @@ public class API_KotlinLanguageTest extends BaseTest {
 
         Assert.assertEquals(httpRequest.get(0), expectedMethod);
         Assert.assertEquals(httpRequest.get(1), getBaseUrl() + expectedEndPoint);
-        Assert.assertEquals(httpRequest.get(2).substring(9, 91), expectedPayLoad);
+        Assert.assertEquals(httpRequest.get(2).substring(9, 91), PAYLOAD);
         Assert.assertEquals(httpRequest.get(3), "Optional.empty");
     }
 
@@ -81,22 +79,22 @@ public class API_KotlinLanguageTest extends BaseTest {
         final String expectedStatusCode = "200";
         final String expectedStatusText = "OK";
         final String expectedEndPoint = "vote.html";
-        final double expectedResponseTimeStatndart = 3;
+        final double expectedResponseTimeStandard = 3;
 
         List<String> httpResponse = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
                 .captureHttpResponses(getBaseUrl() + expectedEndPoint);
 
         openBaseURL()
-                    .clickBrowseLanguagesMenu()
-                    .clickKSubmenu()
-                    .clickKotlinLanguage()
-                    .clickVoteButton();
+                .clickBrowseLanguagesMenu()
+                .clickKSubmenu()
+                .clickKotlinLanguage()
+                .clickVoteButton();
 
         Assert.assertEquals(httpResponse.get(0), expectedStatusCode);
         Assert.assertEquals(httpResponse.get(1), expectedStatusText);
         Assert.assertEquals(httpResponse.get(2), getBaseUrl() + expectedEndPoint);
-        Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStatndart);
+        Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStandard);
         Assert.assertEquals(new KotlinLanguagePage(getDriver()).getPageContext(), PAGE_CONTEXT_BEFORE_REQUEST);
     }
 

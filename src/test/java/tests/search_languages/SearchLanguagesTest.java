@@ -16,6 +16,7 @@ public class SearchLanguagesTest extends BaseTest {
                 openBaseURL()
                         .clickSearchLanguagesMenu()
                         .clickSearchForField()
+                        .clearSearchForField()
                         .inputSearchCriteria(LANGUAGE_NAME)
                         .clickGoButton()
                         .getNamesInLowerCase();
@@ -56,20 +57,20 @@ public class SearchLanguagesTest extends BaseTest {
 
         Assert.assertTrue(languagesNames.size() > 0);
 
-        for (String languagesName : languagesNames){
+        for (String languagesName : languagesNames) {
             Assert.assertTrue(languagesName.contains(LANGUAGE_NAME));
         }
     }
 
     @Test
     public void testSearchForLanguagesNameEmpty() {
-        int languagesNames =
+        int languagesCount =
                 openBaseURL()
                         .clickSearchLanguagesMenu()
                         .clickGoButton()
                         .getSize();
 
-        Assert.assertEquals(languagesNames, 0);
+        Assert.assertEquals(languagesCount, 0);
     }
 
     @Test
@@ -89,7 +90,7 @@ public class SearchLanguagesTest extends BaseTest {
     }
 
     @Test
-    public void testTwoCharactersInputReturnsLanguageListWithThoseCharacters () {
+    public void testTwoCharactersInputReturnsLanguageListWithThoseCharacters() {
         final String TWO_CHARACTERS = "py";
 
         List<String> pyLanguagesNames = openBaseURL()

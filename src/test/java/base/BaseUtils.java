@@ -24,7 +24,7 @@ public final class BaseUtils {
         if (properties == null) {
             properties = new Properties();
             if (isServerRun()) {
-                 properties.setProperty(PROP_CHROME_OPTIONS, System.getenv(ENV_CHROME_OPTIONS));
+                properties.setProperty(PROP_CHROME_OPTIONS, System.getenv(ENV_CHROME_OPTIONS));
             } else {
                 try {
                     InputStream inputStream = BaseUtils.class.getClassLoader().getResourceAsStream("local.properties");
@@ -34,12 +34,14 @@ public final class BaseUtils {
                         System.exit(1);
                     }
                     properties.load(inputStream);
-                } catch (IOException ignore) {}
+                } catch (IOException ignore) {
+                }
             }
         }
     }
 
     private static final ChromeOptions chromeOptions;
+
     static {
         initProperties();
 

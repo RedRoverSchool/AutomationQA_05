@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.TablePage;
-import pages.browse_languages.letters.ABCPage;
-import pages.start.StartPage;
 
 public abstract class SearchLanguagesSubmenuPage extends TablePage<SearchLanguagesPage> {
 
@@ -16,13 +14,13 @@ public abstract class SearchLanguagesSubmenuPage extends TablePage<SearchLanguag
         super(driver);
     }
 
-    public SearchLanguagesPage clickSearchSubmenu() {
-        click(searchSubmenu);
+    protected SearchLanguagesPage createPage() {
 
         return new SearchLanguagesPage(getDriver());
     }
 
-    protected SearchLanguagesPage createGeneric() {
+    public SearchLanguagesPage clickSearchSubmenu() {
+        click(searchSubmenu);
 
         return new SearchLanguagesPage(getDriver());
     }

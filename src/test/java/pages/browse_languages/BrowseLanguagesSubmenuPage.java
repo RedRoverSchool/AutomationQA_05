@@ -68,7 +68,7 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         super(driver);
     }
 
-    protected ABCPage createGeneric() {
+    protected ABCPage createPage() {
 
         return new ABCPage(getDriver());
     }
@@ -83,7 +83,7 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return getListText(submenus);
     }
 
-    public String getHrefJ() {
+    public String getJHref() {
 
         return getAttribute(jSubmenu, "href");
     }
@@ -98,9 +98,30 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return getText(nSubmenu);
     }
 
-    public String getHrefN() {
+    public String getNHref() {
 
         return getAttribute(nSubmenu, "href");
+    }
+
+    public List<WebElement> getLetters() {
+
+        return letters;
+    }
+
+    public String getTextSymbol(int index) {
+
+        return getTextByIndex(index, letters);
+    }
+
+    public String getHref(int index) {
+
+        return getAttributeByIndex(index, submenus, "href");
+    }
+
+    public void clickOnSymbolSubmenu(int index) {
+        if (getLetters().size() > 0) {
+            getLetters().get(index).click();
+        }
     }
 
     public APage clickASubmenu() {
@@ -193,32 +214,9 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return new ZPage(getDriver());
     }
 
-    public List<WebElement> getLetters() {
-
-        return letters;
-    }
-
-    public void clickOnSymdolSubmenu(int index) {
-        if (getLetters().size() > 0) {
-            getLetters().get(index).click();
-        }
-    }
-
-    public String getTextSymbol(int index) {
-
-        return getTextByIndex(index, letters);
-    }
-
-    public String getHref(int index) {
-
-        return getAttributeByIndex(index, submenus, "href");
-    }
-
     public SPage clickSSubmenu() {
         click(sSubmenu);
 
         return new SPage(getDriver());
     }
-
-
 }
