@@ -6,39 +6,42 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
-import pages.browse_languages.letters.JPage;
-import pages.top_lists.TopRatedRealPage;
+import pages.browse_languages.languages.MagnumLanguagePage;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class API_JTest extends BaseTest {
-
-    final static String J_END_POINT = "j.html";
+public class API_MagnumLanguageTest extends BaseTest {
+    final static String LANGUAGE_NAME = "Language Magnum";
+    final static String ACTION_MAGNUM = "language-magnum-654.html";
 
     @Test
-    public void testAttributes_DefaultValues() {
-
-        JPage jPage = openBaseURL()
+    public void testAttributes_DefaultValuesMagnum() {
+        MagnumLanguagePage magnumLanguagePage = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickJSubmenu();
+                .clickMSubmenu()
+                .clickMagnumLanguage();
 
-        Assert.assertEquals(jPage.getJHref(), getBaseUrl() + J_END_POINT);
-        Assert.assertNotNull(jPage.getPageContext());
+        Assert.assertEquals(magnumLanguagePage.getURL(), getBaseUrl() + ACTION_MAGNUM);
+        Assert.assertEquals(magnumLanguagePage.getH2HeaderText(), LANGUAGE_NAME);
+        Assert.assertNotNull(magnumLanguagePage.getPageContext());
     }
 
     @Test
     public void test_API_HttpRequest_GET() {
         final String expectedMethod = "GET";
-        final String expectedEndPoint = "j.html";
+        final String expectedEndPoint = "language-magnum-654.html";
 
         List<String> httpRequest = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
                 .captureHttpRequests(expectedEndPoint, expectedMethod);
 
-        openBaseURL().clickBrowseLanguagesMenu().clickJSubmenu();
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickMSubmenu()
+                .clickMagnumLanguage();
 
         Assert.assertEquals(httpRequest.get(0), expectedMethod);
         Assert.assertEquals(httpRequest.get(1), getBaseUrl() + expectedEndPoint);
@@ -50,31 +53,36 @@ public class API_JTest extends BaseTest {
     public void test_API_HttpResponse_GET() {
         final String expectedStatusCode = "200";
         final String expectedStatusText = "OK";
-        final String expectedEndPoint = "j.html";
+        final String expectedEndPoint = "language-magnum-654.html";
         final double expectedResponseTimeStandard = 3;
 
         List<String> httpResponse = new CaptureNetworkTraffic()
                 .setUpDevTool(getDriver())
                 .captureHttpResponses(expectedEndPoint);
 
-        openBaseURL().clickBrowseLanguagesMenu().clickJSubmenu();
+        openBaseURL()
+                .clickBrowseLanguagesMenu()
+                .clickMSubmenu()
+                .clickMagnumLanguage();
 
         Assert.assertEquals(httpResponse.get(0), expectedStatusCode);
         Assert.assertEquals(httpResponse.get(1), expectedStatusText);
         Assert.assertEquals(httpResponse.get(2), getBaseUrl() + expectedEndPoint);
-        Assert.assertTrue(Double.parseDouble(httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStandard);
+        Assert.assertTrue(Double.parseDouble(
+                httpResponse.get(3).substring(10, 14)) <= expectedResponseTimeStandard);
     }
 
     @Test
-    public void test_API_AllJLinksAreNotBroken() {
+    public void API_AllLanguagesLinksAreNotBroken() {
         String linkURL = "";
         int responseCode;
         int actualWorkingLinksCount = 0;
 
         List<WebElement> aTags = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickJSubmenu()
-                .getLinks();
+                .clickMSubmenu()
+                .clickMagnumLanguage()
+                .getLanguagesLinks();
 
         final int expectedWorkingLinksCount = aTags.size();
         int internalLinks = expectedWorkingLinksCount;
@@ -115,11 +123,12 @@ public class API_JTest extends BaseTest {
         String imageURL = "";
         int responseCode;
         int actualWorkingImagesCount = 0;
-        TopRatedRealPage topRatedRealPage = new TopRatedRealPage(getDriver());
+        MagnumLanguagePage magnumLanguagePage = new MagnumLanguagePage(getDriver());
 
         List<WebElement> imgTags = openBaseURL()
                 .clickBrowseLanguagesMenu()
-                .clickJSubmenu()
+                .clickMSubmenu()
+                .clickMagnumLanguage()
                 .getImages();
 
         final int expectedWorkingImagesCount = imgTags.size();
@@ -134,7 +143,7 @@ public class API_JTest extends BaseTest {
 
                     responseCode = connection.getResponseCode();
 
-                    if (responseCode < 400 && topRatedRealPage.isImageDisplayed(image)) {
+                    if (responseCode < 400 && magnumLanguagePage.isImageDisplayed(image)) {
                         actualWorkingImagesCount++;
                     } else {
                         Reporter.log(imageURL + " is broken, responseCode " + responseCode

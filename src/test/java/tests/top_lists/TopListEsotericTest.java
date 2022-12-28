@@ -21,6 +21,6 @@ public class TopListEsotericTest extends BaseTest {
                 .clickTopRatedEsotericSubmenu()
                 .getMostRatedEsotericLanguage();
 
-        Assert.assertNotEquals(topRatedRealLanguagesFirstLanguage, theMostRatedEsotericLanguage );
+        Assert.assertNotEquals(topRatedRealLanguagesFirstLanguage, theMostRatedEsotericLanguage);
     }
 }

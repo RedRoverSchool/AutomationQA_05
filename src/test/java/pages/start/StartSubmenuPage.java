@@ -30,11 +30,10 @@ public abstract class StartSubmenuPage extends MainPage<StartPage> {
         super(driver);
     }
 
-    protected StartPage createGeneric() {
+    protected StartPage createPage() {
 
         return new StartPage(getDriver());
     }
-
 
     public String getSongLyricsSubmenuText() {
 
@@ -44,11 +43,6 @@ public abstract class StartSubmenuPage extends MainPage<StartPage> {
     public List<String> getStartSubmenuButtonsText() {
 
         return getListText(startSubmenuButtons);
-    }
-
-    public WebElement getHistorySubmenu() {
-
-        return historySubmenu;
     }
 
     public String getHistorySubmenuText() {

@@ -4,10 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import pages.start.StartPage;
 import utils.ReportUtils;
-import utils.TestUtils;
 
 import java.lang.reflect.Method;
 
@@ -19,6 +20,7 @@ public abstract class BaseTest {
 
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
+
         Reporter.log(ReportUtils.getReportHeader(context), true);
     }
 
@@ -39,6 +41,7 @@ public abstract class BaseTest {
     }
 
     protected WebDriver getDriver() {
+
         return driver;
     }
 

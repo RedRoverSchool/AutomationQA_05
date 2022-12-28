@@ -1,4 +1,4 @@
-package pages;
+package tests;
 
 import TestData.TestData;
 import base.BaseTest;
@@ -31,7 +31,7 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void testMainMenuURLEqualsFooterMenu() {
+    public void testTopMenuURLs_AreTheSameAs_FooterMenuURLs() {
         List<String> mainMenuURLList = new ArrayList<>();
         List<String> mainMenuFooterURLList = new ArrayList<>();
 
@@ -55,25 +55,25 @@ public class MainTest extends BaseTest {
     }
 
     @Test
-    public void testNavigationMenuLinksAmountAndText() {
+    public void testNavigationMenuLinksAmountAndTexts() {
         final int expectedAmount = 6;
-        final String[] expectedText = {"Start", "Browse Languages", "Search Languages", "Top Lists", "Guestbook", "Submit new Language"};
+        final String[] expectedTexts = {"Start", "Browse Languages", "Search Languages", "Top Lists", "Guestbook", "Submit new Language"};
 
         openBaseURL();
         StartPage startPage = new StartPage(getDriver());
 
-        int actualAmount = startPage.getMenuLinksSize();
+        int actualAmount = startPage.getMenuLinksAmount();
         List<String> actualText = startPage.getMenuTextsInLowerCase();
 
         Assert.assertEquals(actualAmount, expectedAmount);
-        for(int i = 0; i < actualText.size(); i++) {
-            Assert.assertEquals(actualText.get(i), expectedText[i].toLowerCase());
+        for (int i = 0; i < actualText.size(); i++) {
+            Assert.assertEquals(actualText.get(i), expectedTexts[i].toLowerCase());
         }
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "MainTestData")
     public void testTopMenusNavigateToCorrespondingPages(
-            int index, String menuText,String href, String url, String title) {
+            int index, String menuText, String href, String url, String title) {
 
         StartPage startPage = openBaseURL();
 
@@ -95,7 +95,7 @@ public class MainTest extends BaseTest {
 
     @Test(dataProviderClass = TestData.class, dataProvider = "MainTestData")
     public void testFooterMenusNavigateToCorrespondingPages(
-            int index, String menuText,String href, String url, String title) {
+            int index, String menuText, String href, String url, String title) {
 
         StartPage startPage = openBaseURL();
 

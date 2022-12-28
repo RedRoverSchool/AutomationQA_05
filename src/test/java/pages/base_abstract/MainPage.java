@@ -12,7 +12,7 @@ import pages.top_lists.TopRatedPage;
 
 import java.util.List;
 
-public abstract class MainPage<Generic> extends BasePage {
+public abstract class MainPage<GenericType> extends BasePage {
 
     //Headers
     @FindBy(xpath = "//div[@id='header']/h1")
@@ -48,7 +48,7 @@ public abstract class MainPage<Generic> extends BasePage {
     @FindBy(xpath = TOP_MENU_PATH + "'/submitnewlanguage.html']")
     private WebElement submitNewLanguageMenu;
 
-    @FindBy (xpath = "//ul[@id='menu']//li")
+    @FindBy(xpath = "//ul[@id='menu']//li")
     private List<WebElement> topMenuLinks;
 
     //Footer Menu
@@ -94,7 +94,7 @@ public abstract class MainPage<Generic> extends BasePage {
         super(driver);
     }
 
-    protected abstract Generic createGeneric();
+    protected abstract GenericType createPage();
 
     public String getH1LogoHeaderText() {
 
@@ -121,7 +121,7 @@ public abstract class MainPage<Generic> extends BasePage {
         return getListTextInLowerCase(topMenuLinks);
     }
 
-    public int getMenuLinksSize() {
+    public int getMenuLinksAmount() {
 
         return getListSize(topMenuLinks);
     }
@@ -141,7 +141,7 @@ public abstract class MainPage<Generic> extends BasePage {
         return images;
     }
 
-    public String getFirstParagraphText(){
+    public String getFirstParagraphText() {
 
         return getText(firstParagraph);
     }
@@ -243,14 +243,14 @@ public abstract class MainPage<Generic> extends BasePage {
         return new SubmitNewLanguagePage(getDriver());
     }
 
+    public GenericType clickMenu(int index, List<WebElement> menus) {
+        menus.get(index).click();
+
+        return createPage();
+    }
+
     public int countParagraphs() {
 
         return getListSize(pTags);
-    }
-
-    public Generic clickMenu(int index, List<WebElement> menus) {
-        menus.get(index).click();
-
-        return createGeneric();
     }
 }

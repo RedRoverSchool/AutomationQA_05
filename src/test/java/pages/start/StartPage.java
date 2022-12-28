@@ -39,11 +39,6 @@ public class StartPage extends StartSubmenuPage {
         return getListText(textsWithLinks);
     }
 
-    public String getStartPageURL() {
-
-        return getURL();
-    }
-
     public HistoryPage clickHistoricInformationLink() {
         click(historicInformationLink);
 
@@ -56,19 +51,19 @@ public class StartPage extends StartSubmenuPage {
         return new LyricsPage(getDriver());
     }
 
-    public SubmitNewLanguagePage clickSubmitYourOwnPieceOfCodeLink () {
+    public SubmitNewLanguagePage clickSubmitYourOwnPieceOfCodeLink() {
         click(submitYourOwnPieceOfCodeLink);
 
         return new SubmitNewLanguagePage(getDriver());
     }
 
-    public ReadGuestbookPage clickGuestbookLink () {
+    public ReadGuestbookPage clickGuestbookLink() {
         click(guestbookLink);
 
         return new ReadGuestbookPage(getDriver());
     }
 
-    public TeamPage clickTeamMembersLink () {
+    public TeamPage clickTeamMembersLink() {
         click(teamMembersLink);
 
         return new TeamPage(getDriver());

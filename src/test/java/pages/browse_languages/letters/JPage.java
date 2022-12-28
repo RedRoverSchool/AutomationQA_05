@@ -17,7 +17,10 @@ public class JPage extends LetterPage {
 
     @FindBy(xpath = "//a[@href='language-jquery-1361.html']")
     private WebElement jQueryLanguage;
-    
+
+    @FindBy(xpath = " //a[@href='language-jr-999.html']")
+    private WebElement jRLanguage;
+
     public JPage(WebDriver driver) {
         super(driver);
     }
@@ -38,5 +41,9 @@ public class JPage extends LetterPage {
         click(jQueryLanguage);
 
         return new JQueryLanguagePage(getDriver());
+    }
+
+    public void clickJrLanguage() {
+        click(jRLanguage);
     }
 }

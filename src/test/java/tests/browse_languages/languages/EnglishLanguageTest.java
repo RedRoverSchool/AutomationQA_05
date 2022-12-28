@@ -22,7 +22,7 @@ public class EnglishLanguageTest extends BaseTest {
     }
 
     @Test
-    public void testFormLinkNavigatesToSubmitNewLanguagePage() {
+    public void testFormLink_NavigatesTo_SubmitNewLanguagePage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/submitnewlanguage.html";
 
         EnglishLanguagePage englishLanguagePage = openBaseURL()
@@ -38,7 +38,7 @@ public class EnglishLanguageTest extends BaseTest {
 
         String actualURL = englishLanguagePage.getURL();
 
-        Assert.assertNotEquals(oldURL,actualURL);
-        Assert.assertEquals(actualURL,expectedURL);
+        Assert.assertNotEquals(oldURL, actualURL);
+        Assert.assertEquals(actualURL, expectedURL);
     }
 }

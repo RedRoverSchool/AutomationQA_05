@@ -29,12 +29,12 @@ public class SubmitNewLanguageTest extends BaseTest {
 
         int actualItemsQuantity =
                 openBaseURL()
-                       .clickSubmitNewLanguageMenu()
-                       .countBullets();
+                        .clickSubmitNewLanguageMenu()
+                        .countBullets();
 
-        Assert.assertEquals(actualItemsQuantity,expectedItemsQuantity);
+        Assert.assertEquals(actualItemsQuantity, expectedItemsQuantity);
     }
-  
+
     @Test
     public void testH2Header_SubmitNewLanguage() {
         final String expectedResult = "Submit New Language";
@@ -57,11 +57,11 @@ public class SubmitNewLanguageTest extends BaseTest {
                 .clickSubmitLanguageButton()
                 .getSelectedLanguageCategory();
 
-        Assert.assertEquals(actualResultCategory,expectedResultCategory);
+        Assert.assertEquals(actualResultCategory, expectedResultCategory);
     }
 
     @Test
-    public void testCaptchaErrorMessage () {
+    public void testCaptchaErrorMessage() {
         final String LANGUAGE = "java";
         final String AUTHOR = "tester";
         final String EMAIL = "jka59433@xcoxc.com";
@@ -71,13 +71,13 @@ public class SubmitNewLanguageTest extends BaseTest {
         final String PROMPT_COLOUR = "red";
 
         SubmitNewLanguagePage submitNewLanguagePage = openBaseURL()
-                .clickSubmitNewLanguageFooterMenu();
-        submitNewLanguagePage.inputLanguage(LANGUAGE);
-        submitNewLanguagePage.inputAuthor(AUTHOR);
-        submitNewLanguagePage.inputEmail(EMAIL);
-        submitNewLanguagePage.inputCaptcha(CAPTCHA);
-        submitNewLanguagePage.inputCode(CODE);
-        submitNewLanguagePage.clickSubmitLanguageButton();
+                .clickSubmitNewLanguageFooterMenu()
+                .inputLanguage(LANGUAGE)
+                .inputAuthor(AUTHOR)
+                .inputEmail(EMAIL)
+                .inputCaptcha(CAPTCHA)
+                .inputCode(CODE)
+                .clickSubmitLanguageButton();
 
         String actualResultErrorMessage = submitNewLanguagePage.getErrorMessageText();
         String actualResultPrompt = submitNewLanguagePage.getCaptchaStyle();

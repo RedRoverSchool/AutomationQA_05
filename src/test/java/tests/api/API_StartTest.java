@@ -20,7 +20,7 @@ public class API_StartTest extends BaseTest {
         int actualWorkingLinksCount = 0;
 
         List<WebElement> aTags = openBaseURL()
-                .clickStartMenu()
+                .clickStartFooterMenu()
                 .getLinks();
 
         final int expectedWorkingLinksCount = aTags.size();

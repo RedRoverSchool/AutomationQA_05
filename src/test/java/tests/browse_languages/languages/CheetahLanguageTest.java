@@ -22,7 +22,7 @@ public class CheetahLanguageTest extends BaseTest {
     }
 
     @Test
-    public void testCheetahTemplateOrgLink_NavigatesTo_ExternalCheetahLanguagePage() {
+    public void testCheetahInfoLink_NavigatesTo_ExternalCheetahLanguagePage() {
         final String expectedExternalURL = "https://cheetahtemplate.org/";
         final String expectedExternalTitle =
                 "Cheetah3, the Python-Powered Template Engine — Cheetah3 - The Python-Powered Template Engine";

@@ -10,7 +10,7 @@ import java.util.List;
 public class StartSubmenuTest extends BaseTest {
 
     @Test
-    public void  testSongLyricsSubMenuNavigatesToSongLyricsPage() {
+    public void testSongLyricsSubMenuNavigatesToSongLyricsPage() {
         final String expectedURL = "https://www.99-bottles-of-beer.net/lyrics.html";
 
         LyricsPage songLyricsSubmenuPage = openBaseURL().clickSongLyricsSubmenu();
@@ -21,7 +21,7 @@ public class StartSubmenuTest extends BaseTest {
     }
 
     @Test
-    public void  testSongLyricsSubmenuButtonText() {
+    public void testSongLyricsSubmenuButtonText() {
         final String expectedSongLyricsSubmenuText = "Song Lyrics";
 
         String actualSongLyricsSubmenuText = openBaseURL().getSongLyricsSubmenuText();

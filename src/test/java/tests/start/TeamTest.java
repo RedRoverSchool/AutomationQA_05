@@ -44,7 +44,6 @@ public class TeamTest extends BaseTest {
                 .clickStefanSchelerWebsiteLink();
 
         Assert.assertEquals(getExternalPageURL(), expectedExternalURL);
-        //Assert.assertEquals(getExternalPageTitle(), expectedExternalTitle);
     }
 
     @Test
@@ -66,9 +65,9 @@ public class TeamTest extends BaseTest {
         );
 
         List<String> actualTeamNames =
-        openBaseURL()
-                .clickTeamSubmenu()
-                .getH3HeadersTexts();
+                openBaseURL()
+                        .clickTeamSubmenu()
+                        .getH3HeadersTexts();
 
         Assert.assertEquals(actualTeamNames, expectedTeamNames);
     }
@@ -91,8 +90,8 @@ public class TeamTest extends BaseTest {
 
         int actualTwoImagesOfTeamCreators =
                 openBaseURL()
-                .clickTeamSubmenu()
-                .countTeamImages();
+                        .clickTeamSubmenu()
+                        .countTeamImages();
 
         Assert.assertEquals(actualTwoImagesOfTeamCreators, expectedTwoImagesOfTeamCreators);
     }

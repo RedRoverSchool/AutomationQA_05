@@ -16,12 +16,12 @@ public class LyricsPage extends StartSubmenuPage {
     }
 
     public String getSongLyrics() {
-        StringBuilder sbSongLyrics = new StringBuilder();
+        StringBuilder songLyrics = new StringBuilder();
 
         for (String text : getListText(pTags)) {
-            sbSongLyrics.append(text);
+            songLyrics.append(text);
         }
 
-        return sbSongLyrics.toString();
+        return songLyrics.toString();
     }
 }

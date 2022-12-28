@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.base_abstract.FormPage;
-import pages.start.StartPage;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public abstract class GuestbookSubmenuPage extends FormPage<ReadGuestbookPage> {
         super(driver);
     }
 
-    protected ReadGuestbookPage createGeneric() {
+    protected ReadGuestbookPage createPage() {
 
         return new ReadGuestbookPage(getDriver());
     }

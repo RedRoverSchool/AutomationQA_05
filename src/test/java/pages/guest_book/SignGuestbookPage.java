@@ -22,11 +22,11 @@ public class SignGuestbookPage extends GuestbookSubmenuPage {
         super(driver);
     }
 
-    public void inputMessage(String text){
+    public void inputMessage(String text) {
         input(text, message);
     }
 
-    public SignGuestbookPage clickSubmitButton(){
+    public SignGuestbookPage clickSubmitButton() {
         click(submitButton);
 
         return this;

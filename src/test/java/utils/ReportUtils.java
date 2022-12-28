@@ -38,13 +38,13 @@ public class ReportUtils {
 
     private static String getTestRunTime(ITestResult result) {
         final long time = result.getEndMillis() - result.getStartMillis();
-        int minutes = (int) ((time/1000)/60);
-        int seconds = (int) (time/1000)%60;
+        int minutes = (int) ((time / 1000) / 60);
+        int seconds = (int) (time / 1000) % 60;
 
         return "" + minutes + " min " + seconds + " sec";
     }
 
-    public static String getReportHeader(ITestContext context){
+    public static String getReportHeader(ITestContext context) {
         String header = "\tTest Run\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
         String currentDate = "\tDate: " + getCurrentDateTime() + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
         String projectName = "\tProject: AutomationQA_05" + "\n";

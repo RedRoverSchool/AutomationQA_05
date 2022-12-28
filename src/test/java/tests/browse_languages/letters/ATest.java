@@ -36,7 +36,7 @@ public class ATest extends BaseTest {
         final String expectedTitle = "99 Bottles of Beer | Language Ada";
 
         APage aPage = new APage(getDriver());
-        AdaLanguagePage adaLanguagePage = new AdaLanguagePage (getDriver());
+        AdaLanguagePage adaLanguagePage = new AdaLanguagePage(getDriver());
 
         String oldURL = openBaseURL()
                 .clickBrowseLanguagesMenu()

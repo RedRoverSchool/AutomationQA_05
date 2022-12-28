@@ -26,7 +26,7 @@ public class BashLanguageTest extends BaseTest {
     }
 
     @Test(priority = 4)
-    public void testFrLangFreeFrCoursLink_NavigatesTo_ExternalBashLanguagePage() {
+    public void testBashLanguageInfoLink_NavigatesTo_ExternalBashLanguagePage() {
         final String expectedExternalURL = "http://fr.lang.free.fr/cours/";
         final String expectedExternalTitle = "Frédéric Lang - Site Personnel";
 
@@ -47,10 +47,10 @@ public class BashLanguageTest extends BaseTest {
     }
 
     @Test(priority = 3)
-    public void testBookmarkActive() {
-        final int expectedActiveBookmark = 14;
+    public void testActiveBookmarks() {
+        final int expectedActiveBookmarks = 14;
 
-        int activeBookmark =
+        int activeBookmarks =
                 openBaseURL()
                         .clickBrowseLanguagesFooterMenu()
                         .clickBSubmenu()
@@ -58,7 +58,7 @@ public class BashLanguageTest extends BaseTest {
                         .getExternalLinks()
                         .size();
 
-        Assert.assertEquals(activeBookmark, expectedActiveBookmark);
+        Assert.assertEquals(activeBookmarks, expectedActiveBookmarks);
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "externalBookmarking")

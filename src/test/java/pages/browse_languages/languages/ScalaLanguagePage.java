@@ -2,9 +2,9 @@ package pages.browse_languages.languages;
 
 import org.openqa.selenium.WebDriver;
 
-public class YacasLanguagePage extends LanguagePage {
+public class ScalaLanguagePage extends LanguagePage {
 
-    public YacasLanguagePage(WebDriver driver) {
+    public ScalaLanguagePage(WebDriver driver) {
         super(driver);
     }
 }

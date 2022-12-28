@@ -1,7 +1,6 @@
 package tests.browse_languages.letters;
 
 import base.BaseTest;
-import com.beust.ah.A;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.letters.ABCPage;
