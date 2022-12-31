@@ -125,11 +125,6 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return getAttribute(jSubmenu, "href");
     }
 
-    public List<WebElement> getLetters() {
-
-        return submenus;
-    }
-
     public String getTextSymbol(int index) {
 
         return getTextByIndex(index, submenus);
