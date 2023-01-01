@@ -10,7 +10,6 @@ import pages.browse_languages.letters.YPage;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class YTest extends BaseTest {
 
