@@ -79,7 +79,7 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
     @FindBy(xpath = "//a[@href='v.html']")
     private WebElement vSubmenu;
 
-    @FindBy(xpath = "//a[@href='W.html']")
+    @FindBy(xpath = "//a[@href='w.html']")
     private WebElement wSubmenu;
 
     @FindBy(xpath = "//a[@href='x.html']")
