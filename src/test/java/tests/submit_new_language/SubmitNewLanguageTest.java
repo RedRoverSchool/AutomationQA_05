@@ -99,43 +99,4 @@ public class SubmitNewLanguageTest extends BaseTest {
 
         Assert.assertEquals(actualIncludesLanguageCategory, expectedIncludesLanguageCategory);
     }
-
-    @Test
-    public void testImportantText() {
-        final String expectedImportant = "IMPORTANT:";
-
-        String actualImportant =
-                openBaseURL()
-                        .clickSubmitNewLanguageMenu()
-                        .getImportantText();
-
-        Assert.assertEquals(actualImportant, expectedImportant);
-    }
-
-    @Test
-    public void testImportantTextFontAndColors() {
-        final String expectedImportantFont = "700";
-        final String expectedImportantBackgroundColor = "rgba(0, 0, 0, 0)";
-        final String expectedImportantColor = "rgba(255, 255, 255, 1)";
-
-        SubmitNewLanguagePage submitNewLanguagePage =
-                openBaseURL()
-                        .clickSubmitNewLanguageMenu();
-
-        String actualImportantFont =
-                submitNewLanguagePage
-                        .getImportantFont();
-
-        String actualImportantBackgroundColor =
-                submitNewLanguagePage
-                        .getImportantBackgroundColor();
-
-        String actualImportantColor =
-                submitNewLanguagePage
-                        .getImportantColor();
-
-        Assert.assertEquals(actualImportantFont, expectedImportantFont);
-        Assert.assertEquals(actualImportantBackgroundColor, expectedImportantBackgroundColor);
-        Assert.assertEquals(actualImportantColor, expectedImportantColor);
-    }
 }

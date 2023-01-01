@@ -159,16 +159,6 @@ public abstract class MainPage<GenericType> extends BasePage {
         return element.getCssValue("color");
     }
 
-    public String getFontSize(WebElement element) {
-
-        return element.getCssValue("font-weight");
-    }
-
-    public String getBackgroundColor(WebElement element) {
-
-        return element.getCssValue("background-color");
-    }
-
     public String getH2HeaderColor() {
 
         return getColor(h2Header);
