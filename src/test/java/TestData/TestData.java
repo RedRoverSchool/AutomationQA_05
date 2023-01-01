@@ -71,4 +71,18 @@ public class TestData {
                 {13, "Privacy error", "https://www.technorati.com/faves"},
         };
     }
+
+    @DataProvider(name = "TopListSubmenu")
+    public static Object[][] topLitSubmenu() {
+
+        return new Object[][]{
+                {0, "99 Bottles of Beer | Top Rated", "https://www.99-bottles-of-beer.net/toplist.html"},
+                {1, "99 Bottles of Beer | Top Rated Real Languages", "https://www.99-bottles-of-beer.net/toplist_real.html"},
+                {2, "99 Bottles of Beer | Top Rated Esoteric Languages", "https://www.99-bottles-of-beer.net/toplist_esoteric.html"},
+                {3, "99 Bottles of Beer | Top Rated Assembly Languages", "https://www.99-bottles-of-beer.net/toplist_assembly.html"},
+                {4, "99 Bottles of Beer | Top Hits", "https://www.99-bottles-of-beer.net/tophits.html"},
+                {5, "99 Bottles of Beer | New Languages this month", "https://www.99-bottles-of-beer.net/toplist_newlanguagesthismonth.html"},
+                {6, "99 Bottles of Beer | New Comments", "https://www.99-bottles-of-beer.net/newcomments.html"}
+        };
+    }
 }

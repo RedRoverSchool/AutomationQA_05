@@ -93,6 +93,9 @@ public abstract class MainPage<GenericType> extends BasePage {
     @FindBy(xpath = "//div[@id='main']/table/tbody/tr/td[1]")
     private List<WebElement> languageInfoDate;
 
+    @FindBy(xpath = "//ul[@id='submenu']/li")
+    private List<WebElement> topListSubmenu;
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -182,6 +185,11 @@ public abstract class MainPage<GenericType> extends BasePage {
     public List<WebElement> getFooterMenuLinks() {
 
         return footerMenuLinks;
+    }
+
+    public List<WebElement> getSubMenuLinks() {
+
+        return topListSubmenu;
     }
 
     public StartPage clickStartMenu() {

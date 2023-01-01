@@ -62,18 +62,22 @@ public class BashLanguageTest extends BaseTest {
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "externalBookmarking")
-    public void testBookmarkingNavigateToCorrespondingPage(
-            int index, String title, String href) {
+    public void testBookmarkingNavigateToCorrespondingPage(int index, String href) {
 
         BashLanguagePage bashLanguagePage = openBaseURL()
                 .clickBrowseLanguagesMenu()
                 .clickBSubmenu()
                 .clickBashLanguage();
 
-        List<WebElement> bookmarkList = bashLanguagePage.getExternalLinks();
+        List<WebElement> bookmarkList = bashLanguagePage
+                .getExternalLinks();
 
-        String oldURL = bashLanguagePage.getURL();
-        String actualBookmarkUrl = bashLanguagePage.clickMenu(index, bookmarkList).getURL();
+        String oldURL = bashLanguagePage
+                .getURL();
+
+        String actualBookmarkUrl = bashLanguagePage
+                .clickMenu(index, bookmarkList)
+                .getURL();
 
         Assert.assertNotEquals(actualBookmarkUrl, oldURL);
         Assert.assertTrue(actualBookmarkUrl.contains(href));
