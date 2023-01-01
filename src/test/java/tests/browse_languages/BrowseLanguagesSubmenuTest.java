@@ -5,7 +5,7 @@ import base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.browse_languages.BrowseLanguagesSubmenuPage;
+import pages.browse_languages.letters.ABCPage;
 
 import java.util.List;
 
@@ -13,15 +13,15 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
 
     @Test(priority = -4)
     public void testTextAndLinksSubmenu() {
-        final List<String> expectedlettersSubmenu = List.of("0-9", "A", "B", "C", "D", "E", "F", "G", "H", "I"
+        final List<String> expectedLettersSubmenu = List.of("0-9", "A", "B", "C", "D", "E", "F", "G", "H", "I"
                 , "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
 
-        BrowseLanguagesSubmenuPage browseLanguagesSubmenuPage = openBaseURL()
+        ABCPage abcPage = openBaseURL()
                 .clickBrowseLanguagesMenu();
 
-        List<String> actualSubmenusNames = browseLanguagesSubmenuPage.getSubmenusNames();
+        List<String> actualSubmenusNames = abcPage.getSubmenusNames();
 
-        Assert.assertEquals(actualSubmenusNames, expectedlettersSubmenu);
+        Assert.assertEquals(actualSubmenusNames, expectedLettersSubmenu);
     }
 
     @Test(priority = -4, dependsOnMethods = "testTextAndLinksSubmenu",
@@ -29,18 +29,18 @@ public class BrowseLanguagesSubmenuTest extends BaseTest {
     public void testLetterSubmenuNavigate(
             int index, String symbol, String url, String title) {
 
-        BrowseLanguagesSubmenuPage browseLanguagesSubmenuPage = openBaseURL()
+        ABCPage abcPage = openBaseURL()
                 .clickBrowseLanguagesMenu();
 
-        List<WebElement> lettersList = browseLanguagesSubmenuPage.getSubmenus();
+        List<WebElement> lettersList = abcPage.getSubmenus();
 
-        String oldURL = browseLanguagesSubmenuPage.getURL();
-        String oldTitle = browseLanguagesSubmenuPage.getTitle();
-        String actualSymbol =  browseLanguagesSubmenuPage.getTextSymbol(index);
-        String actualURLHref = browseLanguagesSubmenuPage.getHref(index);
+        String oldURL = abcPage.getURL();
+        String oldTitle = abcPage.getTitle();
+        String actualSymbol = abcPage.getTextSymbol(index);
+        String actualURLHref = abcPage.getHref(index);
 
-        String actualURL = browseLanguagesSubmenuPage.clickMenu(index, lettersList).getURL();
-        String actualTitle = browseLanguagesSubmenuPage.clickMenu(index, lettersList).getTitle();
+        String actualURL = abcPage.clickMenu(index, lettersList).getURL();
+        String actualTitle = abcPage.clickMenu(index, lettersList).getTitle();
 
         if (index != 1) {
             Assert.assertNotEquals(actualURL, oldURL);
