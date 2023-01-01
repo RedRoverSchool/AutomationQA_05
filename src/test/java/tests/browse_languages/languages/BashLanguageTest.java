@@ -62,7 +62,7 @@ public class BashLanguageTest extends BaseTest {
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "externalBookmarking")
-    public void testBookmarkingNavigateToCorrespondingPage(int index, String href) {
+    public void testBookmarkingNavigateToCorrespondingPage(int index, String text, String href) {
 
         BashLanguagePage bashLanguagePage = openBaseURL()
                 .clickBrowseLanguagesMenu()
