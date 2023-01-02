@@ -125,6 +125,11 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return getAttribute(jSubmenu, "href");
     }
 
+    public List<WebElement> getLetters() {
+
+        return letters;
+    }
+
     public String getTextSymbol(int index) {
 
         return getTextByIndex(index, submenus);
@@ -213,6 +218,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return new PPage(getDriver());
     }
 
+    public SPage clickSSubmenu() {
+        click(sSubmenu);
+
+        return new SPage(getDriver());
+    }
+
     public YPage clickYSubmenu() {
         click(ySubmenu);
 
@@ -223,11 +234,5 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         click(zSubmenu);
 
         return new ZPage(getDriver());
-    }
-
-    public SPage clickSSubmenu() {
-        click(sSubmenu);
-
-        return new SPage(getDriver());
     }
 }
