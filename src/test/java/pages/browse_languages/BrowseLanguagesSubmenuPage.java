@@ -10,6 +10,9 @@ import java.util.List;
 
 public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
+    @FindBy(xpath = "//a[@href='0.html']")
+    private WebElement zeroSubmenu;
+
     @FindBy(xpath = "//a[@href='a.html']")
     private WebElement aSubmenu;
 
@@ -31,6 +34,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
     @FindBy(xpath = "//a[@href='g.html']")
     private WebElement gSubmenu;
 
+    @FindBy(xpath = "//a[@href='h.html']")
+    private WebElement hSubmenu;
+
+    @FindBy(xpath = "//a[@href='i.html']")
+    private WebElement iSubmenu;
+
     @FindBy(xpath = "//a[@href='j.html']")
     private WebElement jSubmenu;
 
@@ -46,8 +55,35 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
     @FindBy(xpath = "//a[@href='n.html']")
     private WebElement nSubmenu;
 
+    @FindBy(xpath = "//a[@href='o.html']")
+    private WebElement oSubmenu;
+
     @FindBy(xpath = "//a[@href='p.html']")
     private WebElement pSubmenu;
+
+    @FindBy(xpath = "//a[@href='q.html']")
+    private WebElement qSubmenu;
+
+    @FindBy(xpath = "//a[@href='r.html']")
+    private WebElement rSubmenu;
+
+    @FindBy(xpath = "//a[@href='s.html']")
+    private WebElement sSubmenu;
+
+    @FindBy(xpath = "//a[@href='t.html']")
+    private WebElement tSubmenu;
+
+    @FindBy(xpath = "//a[@href='u.html']")
+    private WebElement uSubmenu;
+
+    @FindBy(xpath = "//a[@href='v.html']")
+    private WebElement vSubmenu;
+
+    @FindBy(xpath = "//a[@href='w.html']")
+    private WebElement wSubmenu;
+
+    @FindBy(xpath = "//a[@href='x.html']")
+    private WebElement xSubmenu;
 
     @FindBy(xpath = "//a[@href='y.html']")
     private WebElement ySubmenu;
@@ -60,9 +96,6 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href]")
     private List<WebElement> submenus;
-
-    @FindBy(xpath = "//a[@href='s.html']")
-    private WebElement sSubmenu;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
@@ -88,21 +121,6 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return getAttribute(jSubmenu, "href");
     }
 
-    public WebElement getNSubmenu() {
-
-        return nSubmenu;
-    }
-
-    public String getNSubmenuText() {
-
-        return getText(nSubmenu);
-    }
-
-    public String getNHref() {
-
-        return getAttribute(nSubmenu, "href");
-    }
-
     public List<WebElement> getLetters() {
 
         return letters;
@@ -116,12 +134,6 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
     public String getHref(int index) {
 
         return getAttributeByIndex(index, submenus, "href");
-    }
-
-    public void clickOnSymbolSubmenu(int index) {
-        if (getLetters().size() > 0) {
-            getLetters().get(index).click();
-        }
     }
 
     public APage clickASubmenu() {
@@ -202,6 +214,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return new PPage(getDriver());
     }
 
+    public SPage clickSSubmenu() {
+        click(sSubmenu);
+
+        return new SPage(getDriver());
+    }
+
     public YPage clickYSubmenu() {
         click(ySubmenu);
 
@@ -212,11 +230,5 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         click(zSubmenu);
 
         return new ZPage(getDriver());
-    }
-
-    public SPage clickSSubmenu() {
-        click(sSubmenu);
-
-        return new SPage(getDriver());
     }
 }

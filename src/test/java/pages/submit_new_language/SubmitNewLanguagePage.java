@@ -16,6 +16,9 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     @FindBy(xpath = "//div[@id='main']/ul/li")
     private List<WebElement> bullets;
 
+    @FindBy(xpath = "//div[@id='main']/ul/li/span/b")
+    private WebElement spanImportant;
+
     @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH)
     private WebElement category;
 
@@ -104,5 +107,25 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     public String getCaptchaStyle() {
 
         return captcha.getAttribute("style");
+    }
+
+    public String getImportantText() {
+
+        return getText(spanImportant);
+    }
+
+    public String getImportantFont() {
+
+        return getFontSize(spanImportant);
+    }
+
+    public String getImportantBackgroundColor() {
+
+        return getBackgroundColor(spanImportant);
+    }
+
+    public String getImportantColor() {
+
+        return getColor(spanImportant);
     }
 }
