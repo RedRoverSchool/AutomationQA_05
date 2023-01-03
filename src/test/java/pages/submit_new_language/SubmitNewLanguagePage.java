@@ -43,6 +43,42 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     @FindBy(name = "code")
     private WebElement code;
 
+    @FindBy(id = "addlanguage")
+    private WebElement addlanguageform;
+
+    @FindBy(xpath = "//form//input[1]")
+    private WebElement input1Submitlanguage;
+
+    @FindBy(xpath = "//form//input[2]")
+    private WebElement input2Submitlanguage;
+
+    @FindBy(xpath = "//form//input[3]")
+    private WebElement input3Submitlanguage;
+
+    @FindBy(xpath = "//form//input[4]")
+    private WebElement input4Submitlanguage;
+
+    @FindBy(xpath = "//form//input[5]")
+    private WebElement input5Submitlanguage;
+
+    @FindBy(xpath = "//form//input[6]")
+    private WebElement input6Submitlanguage;
+
+    @FindBy(xpath = "//form//input[7]")
+    private WebElement input7Submitlanguage;
+
+    @FindBy(xpath = "//form//input[8]")
+    private WebElement input8Submitlanguage;
+
+    @FindBy(xpath = "//form//select[1]")
+    private WebElement select1Submitlanguage;
+
+    @FindBy(xpath = "//form//textarea[1]")
+    private WebElement textarea1Submitlanguage;
+
+    @FindBy(xpath = "//form//textarea[2]")
+    private WebElement textarea2Submitlanguage;
+
     public SubmitNewLanguagePage(WebDriver driver) {
         super(driver);
     }
@@ -127,5 +163,75 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     public String getImportantColor() {
 
         return getColor(spanImportant);
+    }
+
+    public String getAction() {
+
+        return getAttribute(addlanguageform, "action");
+    }
+
+    public String getMethod() {
+
+        return getAttribute(addlanguageform, "method");
+    }
+
+    public String getFormText() {
+
+        return getText(addlanguageform);
+    }
+
+    public String getInput1Name() {
+
+        return getAttribute(input1Submitlanguage, "name");
+    }
+
+    public String getInput2Name() {
+
+        return getAttribute(input2Submitlanguage, "name");
+    }
+
+    public String getInput3Name() {
+
+        return getAttribute(input3Submitlanguage, "name");
+    }
+
+    public String getInput4Name() {
+
+        return getAttribute(input4Submitlanguage, "name");
+    }
+
+    public String getInput5Name() {
+
+        return getAttribute(input5Submitlanguage, "name");
+    }
+
+    public String getInput6Name() {
+
+        return getAttribute(input6Submitlanguage, "name");
+    }
+
+    public String getInput7Name() {
+
+        return getAttribute(input7Submitlanguage, "name");
+    }
+
+    public String getInput8Value() {
+
+        return getAttribute(input8Submitlanguage, "value");
+    }
+
+    public String getSelect1Name() {
+
+        return getAttribute(select1Submitlanguage, "name");
+    }
+
+    public String getTextarea1Name() {
+
+        return getAttribute(textarea1Submitlanguage, "name");
+    }
+
+    public String getTextarea2Name() {
+
+        return getAttribute(textarea2Submitlanguage, "name");
     }
 }
