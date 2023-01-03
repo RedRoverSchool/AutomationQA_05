@@ -78,4 +78,9 @@ public abstract class StartSubmenuPage extends MainPage<StartPage> {
 
         return new PrivacyPage(getDriver());
     }
+
+    public List<WebElement> getStartSubmenus() {
+
+        return startSubmenuButtons;
+    }
 }

@@ -85,4 +85,15 @@ public class TestData {
                 {6, "99 Bottles of Beer | New Comments", "https://www.99-bottles-of-beer.net/newcomments.html"}
         };
     }
+
+    @DataProvider(name = "StartSubmenu")
+    public static Object[][] startSubmenu() {
+
+        return new Object[][]{
+                {0, "https://www.99-bottles-of-beer.net/team.html", "99 Bottles of Beer | The Team"},
+                {1, "https://www.99-bottles-of-beer.net/lyrics.html", "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer"},
+                {2, "https://www.99-bottles-of-beer.net/info.html", "99 Bottles of Beer | Background and historic information"},
+                {3, "https://www.99-bottles-of-beer.net/impressum.html", "99 Bottles of Beer | Impressum"}
+        };
+    }
 }
