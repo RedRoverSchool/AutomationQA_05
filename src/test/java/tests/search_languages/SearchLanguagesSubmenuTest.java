@@ -33,9 +33,6 @@ public class SearchLanguagesSubmenuTest extends BaseTest {
                 .clickMenu(index, searchLanguagesSubmenus)
                 .getTitle();
 
-        System.out.println(actualUrl);
-        System.out.println(actualTitle);
-
         Assert.assertEquals(actualNameSubmenu, submenuText);
         Assert.assertEquals(actualUrl, oldUrl);
         Assert.assertEquals(actualTitle, oldTitle);
