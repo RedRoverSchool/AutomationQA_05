@@ -13,7 +13,7 @@ public abstract class SearchLanguagesSubmenuPage extends TablePage<SearchLanguag
     private WebElement searchSubmenu;
 
     @FindBy(xpath = "//ul[@id='submenu']/li/a[@href]")
-    private List<WebElement> submanus;
+    private List<WebElement> submenus;
 
     public SearchLanguagesSubmenuPage(WebDriver driver) {
         super(driver);
@@ -32,11 +32,11 @@ public abstract class SearchLanguagesSubmenuPage extends TablePage<SearchLanguag
 
     public List<WebElement> getSearchLanguagesSubmenu() {
 
-        return submanus;
+        return submenus;
     }
 
     public String getTextSearchLanguagesSubmenu(int index) {
 
-        return submanus.get(index).getText();
+        return getTextByIndex(index, submenus);
     }
 }
