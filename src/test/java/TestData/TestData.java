@@ -105,4 +105,15 @@ public class TestData {
                         "99 Bottles of Beer | Search Languages"}
         };
     }
+
+    @DataProvider(name = "GuestbookSubmenu")
+    public static Object[][] guestbookSubmenu() {
+
+        return new Object[][]{
+                {0, "Sign Guestbook", "./signv2.html", "https://www.99-bottles-of-beer.net/signv2.html",
+                        "99 Bottles of Beer | Sign Guestbook"},
+                {1, "Read Guestbook", "./guestbookv2.html", "https://www.99-bottles-of-beer.net/guestbookv2.html",
+                        "99 Bottles of Beer | Guestbook"}
+        };
+    }
 }
