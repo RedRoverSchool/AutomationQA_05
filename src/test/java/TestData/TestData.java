@@ -96,4 +96,13 @@ public class TestData {
                 {3, "https://www.99-bottles-of-beer.net/impressum.html", "99 Bottles of Beer | Impressum"}
         };
     }
+
+    @DataProvider(name = "SearchLanguagesSubmenu")
+    public static Object[][] searchLanguagesSubmenu() {
+
+        return new Object[][]{
+                {0, "New Search", "./search.html",  "https://www.99-bottles-of-beer.net/search.html",
+                        "99 Bottles of Beer | Search Languages"},
+        };
+    }
 }
