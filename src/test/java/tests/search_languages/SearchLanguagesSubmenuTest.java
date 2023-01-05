@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.search_languages.SearchLanguagesPage;
-import pages.start.StartPage;
 
 import java.util.List;
 

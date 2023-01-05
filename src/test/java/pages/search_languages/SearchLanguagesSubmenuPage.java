@@ -1,13 +1,9 @@
 package pages.search_languages;
 
-import TestData.TestData;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import pages.base_abstract.TablePage;
-import pages.start.StartPage;
 
 import java.util.List;
 
@@ -43,5 +39,4 @@ public abstract class SearchLanguagesSubmenuPage extends TablePage<SearchLanguag
 
         return submanus.get(index).getText();
     }
-
 }
