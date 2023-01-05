@@ -102,7 +102,7 @@ public class TestData {
 
         return new Object[][]{
                 {0, "New Search", "./search.html",  "https://www.99-bottles-of-beer.net/search.html",
-                        "99 Bottles of Beer | Search Languages"},
+                        "99 Bottles of Beer | Search Languages"}
         };
     }
 }
