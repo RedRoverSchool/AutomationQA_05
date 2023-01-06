@@ -4,10 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
+    private static final String SUBMIT_NEW_LANGUAGE_PAGE_P_PATH = "//form[@id='addlanguage']/p";
     private static final String SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH = "//form[@id='addlanguage']/p/select[@name='category']";
 
     @FindBy(xpath = "//p/input[@name='submitlanguage']")
@@ -30,6 +32,13 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
     @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_CATEGORY_PATH + "/option[@selected]")
     private WebElement languageCategorySelected;
+
+    @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_P_PATH + "/input[@style]")
+    private List<WebElement> inputStyle;
+
+    @FindBy(xpath = SUBMIT_NEW_LANGUAGE_PAGE_P_PATH + "/textarea[@style]")
+    private List<WebElement> textareaStyle;
+
 
     @FindBy(name = "language")
     private WebElement language;
@@ -84,6 +93,19 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
 
     public SubmitNewLanguagePage(WebDriver driver) {
         super(driver);
+    }
+
+    public List<WebElement> getFieldsWithRedBorder() {
+        List<WebElement> borders = new ArrayList<>();
+        borders.addAll(inputStyle);
+        borders.addAll(textareaStyle);
+
+        return borders;
+    }
+
+    public int countRequiredFields() {
+
+        return getListSize(getFieldsWithRedBorder());
     }
 
     public SubmitNewLanguagePage clickSubmitLanguageButton() {

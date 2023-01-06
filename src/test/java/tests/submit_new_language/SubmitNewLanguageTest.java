@@ -176,6 +176,19 @@ public class SubmitNewLanguageTest extends BaseTest {
         Assert.assertEquals(actualBorderOfRequiredFieldAuthor, expectedBorderOfRequiredFieldAuthor);
         Assert.assertEquals(actualBorderOfRequiredFieldEmail, expectedBorderOfRequiredFieldEmail);
         Assert.assertEquals(actualBorderOfRequiredFieldCaptcha, expectedBorderOfRequiredFieldCaptcha);
-        Assert.assertEquals(actualBorderOfRequiredFieldCode,expectedBorderOfRequiredFieldCode);
+        Assert.assertEquals(actualBorderOfRequiredFieldCode, expectedBorderOfRequiredFieldCode);
+    }
+
+    @Test
+    public void testNumberRequiredFieldWithRedBorder() {
+        final int expectedNumberRequiredFieldWithRedBorder = 5;
+
+        int actualNumberRequiredFieldWithRedBorder =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu()
+                        .clickSubmitLanguageButton()
+                        .countRequiredFields();
+
+        Assert.assertEquals(actualNumberRequiredFieldWithRedBorder, expectedNumberRequiredFieldWithRedBorder);
     }
 }
