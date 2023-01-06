@@ -158,19 +158,19 @@ public class SubmitNewLanguageTest extends BaseTest {
 
         String actualBorderOfRequiredFieldAuthor =
                 submitNewLanguagePage
-                        .getLanguageBorder();
+                        .getAuthorBorder();
 
         String actualBorderOfRequiredFieldEmail =
                 submitNewLanguagePage
-                        .getLanguageBorder();
+                        .getEmailBorder();
 
         String actualBorderOfRequiredFieldCaptcha =
                 submitNewLanguagePage
-                        .getLanguageBorder();
+                        .getCaptchaBorder();
 
         String actualBorderOfRequiredFieldCode =
                 submitNewLanguagePage
-                        .getLanguageBorder();
+                        .getCodeBorder();
 
         Assert.assertEquals(actualBorderOfRequiredFieldLanguage, expectedBorderOfRequiredFieldLanguage);
         Assert.assertEquals(actualBorderOfRequiredFieldAuthor, expectedBorderOfRequiredFieldAuthor);
