@@ -41,6 +41,11 @@ public abstract class TopListsSubmenuPage extends TablePage<TopRatedPage> {
         return getListText(topListSubmenus);
     }
 
+    public List<WebElement> getSubmenus() {
+
+        return topListSubmenus;
+    }
+
     public String getHref() {
 
         return getAttribute(topRatedRealSubmenu, "href");

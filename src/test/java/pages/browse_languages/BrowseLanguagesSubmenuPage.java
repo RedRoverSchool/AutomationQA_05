@@ -10,91 +10,95 @@ import java.util.List;
 
 public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
-    @FindBy(xpath = "//a[@href='0.html']")
+    final static String LETTERS_SUBMENU_PATH = "//div[@id='navigation']/ul[@id='submenu']";
+
+    final static String LETTERS_SUBMENU_PATH_HREF = LETTERS_SUBMENU_PATH + "/li/a[@href=";
+
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'0.html']")
     private WebElement zeroSubmenu;
 
-    @FindBy(xpath = "//a[@href='a.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'a.html']")
     private WebElement aSubmenu;
 
-    @FindBy(xpath = "//a[@href='b.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'b.html']")
     private WebElement bSubmenu;
 
-    @FindBy(xpath = "//a[@href='c.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'c.html']")
     private WebElement cSubmenu;
 
-    @FindBy(xpath = "//a[@href='d.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'d.html']")
     private WebElement dSubmenu;
 
-    @FindBy(xpath = "//a[@href='e.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'e.html']")
     private WebElement eSubmenu;
 
-    @FindBy(xpath = "//a[@href='f.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'f.html']")
     private WebElement fSubmenu;
 
-    @FindBy(xpath = "//a[@href='g.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'g.html']")
     private WebElement gSubmenu;
 
-    @FindBy(xpath = "//a[@href='h.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'h.html']")
     private WebElement hSubmenu;
 
-    @FindBy(xpath = "//a[@href='i.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'i.html']")
     private WebElement iSubmenu;
 
-    @FindBy(xpath = "//a[@href='j.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'j.html']")
     private WebElement jSubmenu;
 
-    @FindBy(xpath = "//a[@href='k.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'k.html']")
     private WebElement kSubmenu;
 
-    @FindBy(xpath = "//a[@href='l.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'l.html']")
     private WebElement lSubmenu;
 
-    @FindBy(xpath = "//a[@href='m.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'m.html']")
     private WebElement mSubmenu;
 
-    @FindBy(xpath = "//a[@href='n.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'n.html']")
     private WebElement nSubmenu;
 
-    @FindBy(xpath = "//a[@href='o.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'o.html']")
     private WebElement oSubmenu;
 
-    @FindBy(xpath = "//a[@href='p.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'p.html']")
     private WebElement pSubmenu;
 
-    @FindBy(xpath = "//a[@href='q.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'q.html']")
     private WebElement qSubmenu;
 
-    @FindBy(xpath = "//a[@href='r.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'r.html']")
     private WebElement rSubmenu;
 
-    @FindBy(xpath = "//a[@href='s.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'s.html']")
     private WebElement sSubmenu;
 
-    @FindBy(xpath = "//a[@href='t.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'t.html']")
     private WebElement tSubmenu;
 
-    @FindBy(xpath = "//a[@href='u.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'u.html']")
     private WebElement uSubmenu;
 
-    @FindBy(xpath = "//a[@href='v.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'v.html']")
     private WebElement vSubmenu;
 
-    @FindBy(xpath = "//a[@href='W.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'w.html']")
     private WebElement wSubmenu;
 
-    @FindBy(xpath = "//a[@href='x.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'x.html']")
     private WebElement xSubmenu;
 
-    @FindBy(xpath = "//a[@href='y.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'y.html']")
     private WebElement ySubmenu;
 
-    @FindBy(xpath = "//a[@href='z.html']")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH_HREF + "'z.html']")
     private WebElement zSubmenu;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH + "/li")
     private List<WebElement> letters;
 
-    @FindBy(xpath = "//ul[@id='submenu']/li/a[@href]")
+    @FindBy(xpath = LETTERS_SUBMENU_PATH + "/li/a[@href]")
     private List<WebElement> submenus;
 
     public BrowseLanguagesSubmenuPage(WebDriver driver) {
@@ -121,21 +125,6 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return getAttribute(jSubmenu, "href");
     }
 
-    public WebElement getNSubmenu() {
-
-        return nSubmenu;
-    }
-
-    public String getNSubmenuText() {
-
-        return getText(nSubmenu);
-    }
-
-    public String getNHref() {
-
-        return getAttribute(nSubmenu, "href");
-    }
-
     public List<WebElement> getLetters() {
 
         return letters;
@@ -143,18 +132,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
 
     public String getTextSymbol(int index) {
 
-        return getTextByIndex(index, letters);
+        return getTextByIndex(index, submenus);
     }
 
     public String getHref(int index) {
 
         return getAttributeByIndex(index, submenus, "href");
-    }
-
-    public void clickOnSymbolSubmenu(int index) {
-        if (getLetters().size() > 0) {
-            getLetters().get(index).click();
-        }
     }
 
     public APage clickASubmenu() {
@@ -235,6 +218,12 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         return new PPage(getDriver());
     }
 
+    public SPage clickSSubmenu() {
+        click(sSubmenu);
+
+        return new SPage(getDriver());
+    }
+
     public YPage clickYSubmenu() {
         click(ySubmenu);
 
@@ -245,11 +234,5 @@ public abstract class BrowseLanguagesSubmenuPage extends TablePage<ABCPage> {
         click(zSubmenu);
 
         return new ZPage(getDriver());
-    }
-
-    public SPage clickSSubmenu() {
-        click(sSubmenu);
-
-        return new SPage(getDriver());
     }
 }

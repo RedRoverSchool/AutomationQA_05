@@ -1,8 +1,11 @@
 package tests.top_lists;
 
+import TestData.TestData;
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.top_lists.TopListsSubmenuPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,5 +56,27 @@ public class TopListsSubmenuTest extends BaseTest {
                 .clickTopListsSubmenuLinksAndGetH2Header();
 
         Assert.assertEquals(expectedSubmenuH2HeaderTexts, actualSubmenuH2HeaderTexts);
+    }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "TopListSubmenu")
+    public void testSubMenuLinksNavigateToCorrespondingPages(
+            int index, String title, String url) {
+
+        TopListsSubmenuPage topListsSubmenuPage = openBaseURL()
+                .clickTopListsMenu();
+
+        List<WebElement> submenus = topListsSubmenuPage
+                .getSubmenus();
+
+        String actualUrl = topListsSubmenuPage
+                .clickMenu(index, submenus)
+                .getURL();
+
+        String actualTitle = topListsSubmenuPage
+                .clickMenu(index, submenus)
+                .getTitle();
+
+        Assert.assertEquals(actualUrl, url );
+        Assert.assertEquals(actualTitle, title);
     }
 }

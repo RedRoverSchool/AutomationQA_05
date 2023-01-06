@@ -80,4 +80,50 @@ public class TestData {
                 {0, "Submit New Language", "/submitnewlanguage.html", "https://www.99-bottles-of-beer.net/submitnewlanguage.html", "99 Bottles of Beer | Submit new Language"}
         };
     }
+
+
+    @DataProvider(name = "TopListSubmenu")
+    public static Object[][] topListSubmenu() {
+
+        return new Object[][]{
+                {0, "99 Bottles of Beer | Top Rated", "https://www.99-bottles-of-beer.net/toplist.html"},
+                {1, "99 Bottles of Beer | Top Rated Real Languages", "https://www.99-bottles-of-beer.net/toplist_real.html"},
+                {2, "99 Bottles of Beer | Top Rated Esoteric Languages", "https://www.99-bottles-of-beer.net/toplist_esoteric.html"},
+                {3, "99 Bottles of Beer | Top Rated Assembly Languages", "https://www.99-bottles-of-beer.net/toplist_assembly.html"},
+                {4, "99 Bottles of Beer | Top Hits", "https://www.99-bottles-of-beer.net/tophits.html"},
+                {5, "99 Bottles of Beer | New Languages this month", "https://www.99-bottles-of-beer.net/toplist_newlanguagesthismonth.html"},
+                {6, "99 Bottles of Beer | New Comments", "https://www.99-bottles-of-beer.net/newcomments.html"}
+        };
+    }
+
+    @DataProvider(name = "StartSubmenu")
+    public static Object[][] startSubmenu() {
+
+        return new Object[][]{
+                {0, "https://www.99-bottles-of-beer.net/team.html", "99 Bottles of Beer | The Team"},
+                {1, "https://www.99-bottles-of-beer.net/lyrics.html", "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer"},
+                {2, "https://www.99-bottles-of-beer.net/info.html", "99 Bottles of Beer | Background and historic information"},
+                {3, "https://www.99-bottles-of-beer.net/impressum.html", "99 Bottles of Beer | Impressum"}
+        };
+    }
+
+    @DataProvider(name = "SearchLanguagesSubmenu")
+    public static Object[][] searchLanguagesSubmenu() {
+
+        return new Object[][]{
+                {0, "New Search", "./search.html",  "https://www.99-bottles-of-beer.net/search.html",
+                        "99 Bottles of Beer | Search Languages"}
+        };
+    }
+
+    @DataProvider(name = "GuestbookSubmenu")
+    public static Object[][] guestbookSubmenu() {
+
+        return new Object[][]{
+                {0, "Sign Guestbook", "./signv2.html", "https://www.99-bottles-of-beer.net/signv2.html",
+                        "99 Bottles of Beer | Sign Guestbook"},
+                {1, "Read Guestbook", "./guestbookv2.html", "https://www.99-bottles-of-beer.net/guestbookv2.html",
+                        "99 Bottles of Beer | Guestbook"}
+        };
+    }
 }

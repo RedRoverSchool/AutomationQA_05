@@ -99,4 +99,96 @@ public class SubmitNewLanguageTest extends BaseTest {
 
         Assert.assertEquals(actualIncludesLanguageCategory, expectedIncludesLanguageCategory);
     }
+
+    @Test
+    public void testImportantText() {
+        final String expectedImportant = "IMPORTANT:";
+
+        String actualImportant =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu()
+                        .getImportantText();
+
+        Assert.assertEquals(actualImportant, expectedImportant);
+    }
+
+    @Test
+    public void testImportantTextFontAndColors() {
+        final String expectedImportantFont = "700";
+        final String expectedImportantBackgroundColor = "rgba(0, 0, 0, 0)";
+        final String expectedImportantColor = "rgba(255, 255, 255, 1)";
+
+        SubmitNewLanguagePage submitNewLanguagePage =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu();
+
+        String actualImportantFont =
+                submitNewLanguagePage
+                        .getImportantFont();
+
+        String actualImportantBackgroundColor =
+                submitNewLanguagePage
+                        .getImportantBackgroundColor();
+
+        String actualImportantColor =
+                submitNewLanguagePage
+                        .getImportantColor();
+
+        Assert.assertEquals(actualImportantFont, expectedImportantFont);
+        Assert.assertEquals(actualImportantBackgroundColor, expectedImportantBackgroundColor);
+        Assert.assertEquals(actualImportantColor, expectedImportantColor);
+    }
+
+    @Test
+    public void testRequiredFieldsCircledRedWhenClickingButtonSubmitLanguage() {
+        final String expectedBorderOfRequiredFieldLanguage = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldAuthor = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldEmail = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldCaptcha = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldCode = "1px solid rgb(255, 0, 0)";
+
+        SubmitNewLanguagePage submitNewLanguagePage =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu()
+                        .clickSubmitLanguageButton();
+
+        String actualBorderOfRequiredFieldLanguage =
+                submitNewLanguagePage
+                        .getLanguageBorder();
+
+        String actualBorderOfRequiredFieldAuthor =
+                submitNewLanguagePage
+                        .getAuthorBorder();
+
+        String actualBorderOfRequiredFieldEmail =
+                submitNewLanguagePage
+                        .getEmailBorder();
+
+        String actualBorderOfRequiredFieldCaptcha =
+                submitNewLanguagePage
+                        .getCaptchaBorder();
+
+        String actualBorderOfRequiredFieldCode =
+                submitNewLanguagePage
+                        .getCodeBorder();
+
+        Assert.assertEquals(actualBorderOfRequiredFieldLanguage, expectedBorderOfRequiredFieldLanguage);
+        Assert.assertEquals(actualBorderOfRequiredFieldAuthor, expectedBorderOfRequiredFieldAuthor);
+        Assert.assertEquals(actualBorderOfRequiredFieldEmail, expectedBorderOfRequiredFieldEmail);
+        Assert.assertEquals(actualBorderOfRequiredFieldCaptcha, expectedBorderOfRequiredFieldCaptcha);
+        Assert.assertEquals(actualBorderOfRequiredFieldCode, expectedBorderOfRequiredFieldCode);
+    }
+
+    @Test
+    public void testNumberRequiredFieldWithRedBorder() {
+        final int expectedNumberRequiredFieldWithRedBorder = 5;
+
+        int actualNumberRequiredFieldWithRedBorder =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu()
+                        .clickSubmitLanguageButton()
+                        .countRequiredFields();
+
+        Assert.assertEquals(actualNumberRequiredFieldWithRedBorder, expectedNumberRequiredFieldWithRedBorder);
+    }
 }

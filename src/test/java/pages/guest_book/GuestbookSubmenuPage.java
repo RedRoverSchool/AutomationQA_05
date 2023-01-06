@@ -34,6 +34,11 @@ public abstract class GuestbookSubmenuPage extends FormPage<ReadGuestbookPage> {
         return getListText(guestbookSubmenus);
     }
 
+    public List<WebElement> getGuestbookSubmenusLinks() {
+
+        return guestbookSubmenus;
+    }
+
     public ReadGuestbookPage clickReadGuestbookSubmenu() {
         click(readGuestbook);
 

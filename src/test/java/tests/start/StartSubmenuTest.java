@@ -1,9 +1,12 @@
 package tests.start;
 
+import TestData.TestData;
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.start.LyricsPage;
+import pages.start.StartSubmenuPage;
 
 import java.util.List;
 
@@ -40,5 +43,33 @@ public class StartSubmenuTest extends BaseTest {
                         .getStartSubmenuButtonsText();
 
         Assert.assertEquals(actualStartSubmenuButtonsNames, expectedStartSubmenuButtonsNames);
+    }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "StartSubmenu")
+    public void testFooterStartSubmenusNavigateToCorrespondingPages(
+            int index, String url, String title) {
+
+        StartSubmenuPage startSubmenuPage = openBaseURL()
+                .clickStartFooterMenu();
+
+        List<WebElement> startSubmenus = startSubmenuPage
+                .getStartSubmenus();
+
+        String oldUrl = startSubmenuPage.getURL();
+        String oldTitle = startSubmenuPage.getTitle();
+
+        String actualUrl = startSubmenuPage
+                .clickMenu(index, startSubmenus)
+                .getURL();
+
+        String actualTitle = startSubmenuPage
+                .clickMenu(index, startSubmenus)
+                .getTitle();
+
+        Assert.assertNotEquals(actualUrl, oldUrl);
+        Assert.assertNotEquals(actualTitle, oldTitle);
+
+        Assert.assertEquals(actualUrl, url);
+        Assert.assertEquals(actualTitle, title);
     }
 }
