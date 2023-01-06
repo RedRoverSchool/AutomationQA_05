@@ -40,6 +40,8 @@ public abstract class TablePage<GenericType> extends MainPage<GenericType> {
     @FindBy(xpath = TABLE_MAIN_PATH + "[5]/td[2]/a")
     private WebElement infoLink;
 
+    @FindBy(xpath = "//div[@id='main']/table/tbody/tr/td[1]")
+    private List<WebElement> languageInfoDate;
 
     public TablePage(WebDriver driver) {
         super(driver);
@@ -142,5 +144,10 @@ public abstract class TablePage<GenericType> extends MainPage<GenericType> {
 
     public void clickRandomLink(int r, List<WebElement> elementsList) {
         click(elementsList.get(r));
+    }
+
+    public List<String> languageInfoDates(){
+
+        return getListText(languageInfoDate);
     }
 }

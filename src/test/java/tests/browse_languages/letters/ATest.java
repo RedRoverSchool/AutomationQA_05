@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.AdaLanguagePage;
+import pages.browse_languages.languages.LanguagePage;
 import pages.browse_languages.letters.APage;
 
 import java.util.Arrays;
@@ -59,6 +60,7 @@ public class ATest extends BaseTest {
 
         final List<String> expectedInfoColumn = Arrays.asList("Date:", "Author:", "URL:", "Comments:", "Info:", "Score:");
         APage apage = new APage(getDriver());
+
         List<WebElement> languagesSubmenus =
                 openBaseURL()
                         .clickBrowseLanguagesMenu()

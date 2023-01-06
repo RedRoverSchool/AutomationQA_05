@@ -71,4 +71,13 @@ public class TestData {
                 {13, "Privacy error", "https://www.technorati.com/faves"},
         };
     }
+
+
+    @DataProvider(name = "newLanguageSubmenu")
+    public static Object[][] submitNewLanguageSubmenu() {
+
+        return new Object[][]{
+                {0, "Submit New Language", "/submitnewlanguage.html", "https://www.99-bottles-of-beer.net/submitnewlanguage.html", "99 Bottles of Beer | Submit new Language"}
+        };
+    }
 }
