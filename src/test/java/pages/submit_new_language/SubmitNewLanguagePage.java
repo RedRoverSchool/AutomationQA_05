@@ -37,6 +37,9 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     @FindBy(name = "author")
     private WebElement author;
 
+    @FindBy(name = "email")
+    private WebElement email;
+
     @FindBy(name = "captcha")
     private WebElement captcha;
 
@@ -163,6 +166,31 @@ public class SubmitNewLanguagePage extends SubmitNewLanguageSubmenuPage {
     public String getImportantColor() {
 
         return getColor(spanImportant);
+    }
+
+    public String getLanguageBorder() {
+
+        return getBorder(language);
+    }
+
+    public String getAuthorBorder() {
+
+        return getBorder(author);
+    }
+
+    public String getEmailBorder() {
+
+        return getBorder(email);
+    }
+
+    public String getCaptchaBorder() {
+
+        return getBorder(captcha);
+    }
+
+    public String getCodeBorder() {
+
+        return getBorder(code);
     }
 
     public String getAction() {

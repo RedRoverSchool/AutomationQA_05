@@ -138,4 +138,44 @@ public class SubmitNewLanguageTest extends BaseTest {
         Assert.assertEquals(actualImportantBackgroundColor, expectedImportantBackgroundColor);
         Assert.assertEquals(actualImportantColor, expectedImportantColor);
     }
+
+    @Test
+    public void testRequiredFieldsCircledRedWhenClickingButtonSubmitLanguage() {
+        final String expectedBorderOfRequiredFieldLanguage = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldAuthor = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldEmail = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldCaptcha = "1px solid rgb(255, 0, 0)";
+        final String expectedBorderOfRequiredFieldCode = "1px solid rgb(255, 0, 0)";
+
+        SubmitNewLanguagePage submitNewLanguagePage =
+                openBaseURL()
+                        .clickSubmitNewLanguageMenu()
+                        .clickSubmitLanguageButton();
+
+        String actualBorderOfRequiredFieldLanguage =
+                submitNewLanguagePage
+                        .getLanguageBorder();
+
+        String actualBorderOfRequiredFieldAuthor =
+                submitNewLanguagePage
+                        .getLanguageBorder();
+
+        String actualBorderOfRequiredFieldEmail =
+                submitNewLanguagePage
+                        .getLanguageBorder();
+
+        String actualBorderOfRequiredFieldCaptcha =
+                submitNewLanguagePage
+                        .getLanguageBorder();
+
+        String actualBorderOfRequiredFieldCode =
+                submitNewLanguagePage
+                        .getLanguageBorder();
+
+        Assert.assertEquals(actualBorderOfRequiredFieldLanguage, expectedBorderOfRequiredFieldLanguage);
+        Assert.assertEquals(actualBorderOfRequiredFieldAuthor, expectedBorderOfRequiredFieldAuthor);
+        Assert.assertEquals(actualBorderOfRequiredFieldEmail, expectedBorderOfRequiredFieldEmail);
+        Assert.assertEquals(actualBorderOfRequiredFieldCaptcha, expectedBorderOfRequiredFieldCaptcha);
+        Assert.assertEquals(actualBorderOfRequiredFieldCode,expectedBorderOfRequiredFieldCode);
+    }
 }
