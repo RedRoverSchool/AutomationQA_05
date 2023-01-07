@@ -26,6 +26,9 @@ public abstract class StartSubmenuPage extends MainPage<StartPage> {
     @FindBy(xpath = START_SUBMENU_PATH)
     private List<WebElement> startSubmenuButtons;
 
+    @FindBy(xpath = START_SUBMENU_PATH + "[@href]")
+    private List<WebElement> submenus;
+
     public StartSubmenuPage(WebDriver driver) {
         super(driver);
     }
@@ -82,5 +85,15 @@ public abstract class StartSubmenuPage extends MainPage<StartPage> {
     public List<WebElement> getStartSubmenus() {
 
         return startSubmenuButtons;
+    }
+
+    public String getTextStartSubmenu(int index) {
+
+        return getTextByIndex(index, startSubmenuButtons);
+    }
+
+    public String getHref(int index) {
+
+        return getAttributeByIndex(index, submenus, "href");
     }
 }
