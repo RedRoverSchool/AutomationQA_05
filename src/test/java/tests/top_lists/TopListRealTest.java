@@ -29,6 +29,8 @@ public class TopListRealTest extends BaseTest {
                 .getH2HeaderColor();
         String actualHexColor = Color.fromString(headerTextCssValue).asHex();
 
+        System.out.println(Color.fromString(headerTextCssValue));
+
         Assert.assertEquals(actualHexColor, expectedHexColor);
     }
 }

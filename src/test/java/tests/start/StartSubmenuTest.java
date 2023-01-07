@@ -47,7 +47,7 @@ public class StartSubmenuTest extends BaseTest {
 
     @Test(dataProviderClass = TestData.class, dataProvider = "StartSubmenu")
     public void testFooterStartSubmenusNavigateToCorrespondingPages(
-            int index, String url, String title) {
+            int index, String submenuText, String urlHref, String url, String title) {
 
         StartSubmenuPage startSubmenuPage = openBaseURL()
                 .clickStartFooterMenu();
