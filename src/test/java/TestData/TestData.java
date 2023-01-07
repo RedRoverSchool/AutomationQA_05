@@ -100,10 +100,10 @@ public class TestData {
     public static Object[][] startSubmenu() {
 
         return new Object[][]{
-                {0, "https://www.99-bottles-of-beer.net/team.html", "99 Bottles of Beer | The Team"},
-                {1, "https://www.99-bottles-of-beer.net/lyrics.html", "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer"},
-                {2, "https://www.99-bottles-of-beer.net/info.html", "99 Bottles of Beer | Background and historic information"},
-                {3, "https://www.99-bottles-of-beer.net/impressum.html", "99 Bottles of Beer | Impressum"}
+                {0, "Team", "https://www.99-bottles-of-beer.net/team.html", "https://www.99-bottles-of-beer.net/team.html", "99 Bottles of Beer | The Team"},
+                {1, "Song Lyrics", "https://www.99-bottles-of-beer.net/lyrics.html", "https://www.99-bottles-of-beer.net/lyrics.html", "99 Bottles of Beer | The lyrics to the song 99 Bottles of Beer"},
+                {2, "History", "https://www.99-bottles-of-beer.net/info.html", "https://www.99-bottles-of-beer.net/info.html", "99 Bottles of Beer | Background and historic information"},
+                {3, "Privacy", "https://www.99-bottles-of-beer.net/impressum.html", "https://www.99-bottles-of-beer.net/impressum.html", "99 Bottles of Beer | Impressum"}
         };
     }
 

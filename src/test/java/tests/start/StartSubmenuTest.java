@@ -75,7 +75,7 @@ public class StartSubmenuTest extends BaseTest {
 
     @Test(dataProviderClass = TestData.class, dataProvider = "StartSubmenu")
     public void testStartSubmenuNavigateToCorrespondingPages(
-            int index, String url, String title) {
+            int index, String submenuText, String urlHref, String url, String title) {
 
         StartSubmenuPage startSubmenuPage =
                 openBaseURL();
@@ -107,6 +107,9 @@ public class StartSubmenuTest extends BaseTest {
                 startSubmenuPage
                         .getHref(index);
 
+        Assert.assertEquals(actualNameSubmenu, submenuText);
+        Assert.assertEquals(actualURLHref, urlHref);
+
         if (index != 0) {
             Assert.assertNotEquals(actualUrl, oldUrl);
             Assert.assertNotEquals(actualTitle, oldTitle);
@@ -115,7 +118,5 @@ public class StartSubmenuTest extends BaseTest {
 
         Assert.assertEquals(actualUrl, url);
         Assert.assertEquals(actualTitle, title);
-//        Assert.assertEquals(actualNameSubmenu, submenuText);
-//        Assert.assertEquals(actualURLHref, href);
     }
 }
