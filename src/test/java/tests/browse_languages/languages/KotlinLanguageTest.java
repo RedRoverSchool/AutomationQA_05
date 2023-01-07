@@ -1,13 +1,13 @@
 package tests.browse_languages.languages;
 
+import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.browse_languages.languages.KotlinLanguagePage;
-import tests.browse_languages.letters.BTest;
 
 import java.util.List;
 
-public class KotlinLanguageTest extends BTest {
+public class KotlinLanguageTest extends BaseTest {
 
     @Test
     public void testKotlinPageContent() {
