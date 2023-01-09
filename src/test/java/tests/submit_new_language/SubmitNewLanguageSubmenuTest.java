@@ -1,6 +1,6 @@
 package tests.submit_new_language;
 
-import TestData.TestData;
+import testData.TestData;
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
